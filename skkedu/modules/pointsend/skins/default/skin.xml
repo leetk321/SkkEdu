@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<skin version="0.2">
+	<title xml:lang="ko">포인트 선물 기본 스킨</title>
+	<title xml:lang="en">Point Gift Basic Theme</title>
+	<title xml:lang="jp">ポイントプレゼント基本スキン</title>
+	<description xml:lang="ko">포인트 선물 모듈의 기본 스킨입니다.</description>
+	<description xml:lang="en">It is the basic theme of point gift module.</description>
+	<description xml:lang="jp">ポイントプレゼント基本スキン.</description>
+	<version>1.0</version>
+	<date>2016-12-17</date>
+
+	<author email_address="contact@funnyxe.com" link="https://funnyxe.com">
+		<name xml:lang="ko">SimpleCode</name>
+		<name xml:lang="en">SimpleCode</name>
+		<name xml:lang="jp">SimpleCode</name>
+	</author>
+
+	<license>GPLv2</license>
+	<colorset>
+		<color name="default">
+			<title xml:lang="ko">기본</title>
+			<title xml:lang="en">Basic</title>
+			<title xml:lang="jp">基本</title>
+		</color>
+	</colorset>
+</skin>

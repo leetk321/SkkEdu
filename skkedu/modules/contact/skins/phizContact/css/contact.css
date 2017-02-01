@@ -1,0 +1,68 @@
+*, :before, :after {
+-webkit-box-sizing: border-box;
+-moz-box-sizing: border-box;
+box-sizing: border-box;
+}
+.contact_us{overflow:hidden;width:100%}
+.contactTitle{overflow:hidden;margin:20px 0 30px;padding:0 0 8px;border-bottom:1px solid #e1e1e1;zoom:1}
+.contactTitle h2{float:left;margin:0;padding:0;color:#1e2831;font-family:Verdana;font-size:16px}
+.contactTitle a{float:right;padding-left:14px;background:url('../img/iconSetup.gif') no-repeat scroll 0 transparent;color:#666;text-decoration:none;white-space:nowrap}
+#terms .termsTitle,.termsTitle{margin:0 0 18px;color:#444;font-size:12px}
+#terms .termsTitle h3{margin:0;font-size:12px}
+#terms{overflow:hidden;width:100%;margin-bottom:30px;text-align:justify}
+#terms-main p{margin-bottom:6px;font-size:11px}
+#agree_check{padding: 10px 0 0 0;
+margin: 10px 0 0 0;
+border-top: 1px dotted #ccc;}
+#agree_check input{margin:2px 9px 0}
+#agree_check span{padding-left:8px;vertical-align:top}
+#contact_form{margin:20px 0 0}
+.formTitle{min-width:100%;margin:0 0 15px;padding:0 0 8px 24px;border-bottom:1px solid #e6e6e6;background:url(../img/icon2.gif) no-repeat 0 0;color:#333;font-family:Arial,Helvetica,sans-serif;font-size:12px;font-weight:bold}
+.formTitle p{margin:0}
+.formTitle p img{padding-left:6px;vertical-align:middle}
+#formComponents {position:relative;width:100%}
+#formComponents:after{ content: "";display:block; clear:both;}
+#formComponents dl,
+#formComponents dt,
+#formComponents dd{margin:0;padding:0}
+#formComponents dl{margin:0 0 22px}
+#formComponents dt{margin-bottom:6px;font-weight:bold}
+#formComponents dt img{margin-left:4px;vertical-align:middle}
+#formComponents dd ul{overflow:hidden;margin:0;padding:0;zoom:1}
+#formComponents dd ul li{float:left;margin:0;margin-right:8px;padding:0;list-style:none}
+#formComponents dd ul li input{margin:0;margin:1px 4px 0 0;*vertical-align:middle\9;_vertical-align:top}
+#formComponents dd ul li label{color:#62676a}
+.send{text-align:center}
+#mail_content ul{margin:0;padding:0}
+#mail_content li{margin:0 0 5px;list-style:none}
+#mail_content li .mail_var_title{margin-right:5px;}
+#formComponents textarea{width:100%; height: 80px; font-size: 11px}
+.comment_textarea textarea{width:100%; height: 152px !important; font-size: 11px}
+textarea{width:100%;}
+fieldset {border: 0; padding-left: 0; padding-right: 6px;}
+#success_form {margin-top: 20px;}
+#link_back_contact {margin-top:20px;}
+#link_back_contact a{color:black}
+.subject{width:250px}
+.mandatory_field {position:relative;display:block;width:100%}
+.mandatory_field:after { content: "";display:block; clear:both;}
+#terms-main{border: 1px solid #ddd;padding: 15px 15px 10px 15px;border-radius: 5px;background: #f8f8f8;margin-bottom: 15px;}
+.termsText{max-height: 200px;overflow: auto;}
+.text-center{text-align:center}
+.p-btn {
+display: inline-block;
+padding: 6px 12px;
+margin-bottom: 0;
+font-size: 14px;
+font-weight: normal;
+line-height: 1.428571429;
+text-align: center;
+white-space: nowrap;
+vertical-align: middle;
+cursor: pointer;
+color:#fff;
+background-color: #cc4036;
+border: 1px solid transparent;
+border-radius: 4px;
+text-decoration: none;
+}

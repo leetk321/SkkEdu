@@ -1,0 +1,23 @@
+@charset "utf-8";
+
+/**
+ * 김무건 || Elkha (elkha1914@hotmail.com)
+ * http://elkha.kr
+ * 2010-08-19
+ * Valid CSS Transitional
+ **/
+
+.ePoint {}
+.ePoint * { margin:0; padding:0; border-collapse:collapse; white-space:nowrap; font-style:normal; }
+.ePoint table { width:100%; }
+.ePoint caption { margin:5px; text-align:right; font-weight:bold; }
+.ePoint thead { border-top:1px solid #e6e6e6; border-bottom:1px solid #e6e6e6; background:#f9f9f9; }
+.ePoint th { text-align:center; padding:5px; }
+.ePoint tbody {}
+.ePoint td { padding:6px 10px; border-bottom:1px dashed #eee; text-align:center; }
+.ePoint td.point { width:100%; }
+.ePoint td.point span { display:block; background:#f7f7f7; text-align:left; }
+.ePoint td.point span em { display:block; overflow:hidden; width:0; padding:1px 0; background:#a9cefc; color:#fff; font:bold 13px Tahoma; text-align:center; }
+.ePoint td.nick { text-align:left; }
+.ePoint td.nick span { cursor:pointer; }
+.ePoint address { display:block; position:absolute; z-index:-1; width:0; height:0; overflow:hidden; }

@@ -1,0 +1,1099 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widget version="0.2">
+	<title xml:lang="ko">XE 갤러리 위젯</title>
+	<title xml:lang="en">XE 갤러리 위젯</title>
+	<description xml:lang="ko">이미지를 다양한 스타일로 출력하는 XE 갤러리 위젯입니다.</description>
+	<description xml:lang="en">이미지를 다양한 스타일로 출력하는 XE 갤러리 위젯입니다.</description>
+	<version>0.3</version>
+	<date>2013-01-03</date>
+	<author email_address="study4you@gmail.com" link="http://study4you.kr/">
+		<name xml:lang="ko">배워서남준다</name>
+		<name xml:lang="en">배워서남준다</name>
+	</author>
+	<extra_vars>
+		<group>
+			<title xml:lang="ko">1. 이미지 추출 설정</title>
+			<title xml:lang="en">1. 이미지 추출 설정</title>
+			<var id="colect_type" type="select">
+				<name xml:lang="ko">1-1. 추출 대상</name>
+				<name xml:lang="en">1-1. 추출 대상</name>
+				<options>
+					<value>module</value>
+					<name xml:lang="ko">모듈</name>
+					<name xml:lang="en">모듈</name>
+				</options>
+				<options>
+					<value>document</value>
+					<name xml:lang="ko">문서</name>
+					<name xml:lang="en">문서</name>
+				</options>
+			</var>
+			<var id="module_srls" type="module_srl_list">
+				<name xml:lang="ko">1-2. 대상 모듈</name>
+				<name xml:lang="en">1-2. 대상 모듈</name>
+				<description xml:lang="ko">추출대상이 모듈인 경우, 선택한 모듈에 등록된 글을 대상으로 컨텐츠를 가져옵니다.</description>
+				<description xml:lang="en">추출대상이 모듈인 경우, 선택한 모듈에 등록된 글을 대상으로 컨텐츠를 가져옵니다.</description>
+			</var>
+			<var id="document_srl" type="text">
+				<name xml:lang="ko">1-3. 문서 번호</name>
+				<name xml:lang="en">1-3. 문서 번호</name>
+				<description xml:lang="ko">추출대상이 문서인 경우, 입력한 문서번호에 등록된 글을 대상으로 컨텐츠를 가져옵니다.</description>
+				<description xml:lang="en">추출대상이 문서인 경우, 입력한 문서번호에 등록된 글을 대상으로 컨텐츠를 가져옵니다.</description>
+			</var>
+			<var id="in_document" type="select">
+				<name xml:lang="ko">1-4. 본문삽입된 이미지</name>
+				<name xml:lang="en">1-4. 본문삽입된 이미지</name>
+				<description xml:lang="ko">추출대상이 문서인 경우, 본문에 삽입된 이미지 출력 여부를 선택합니다.</description>
+				<description xml:lang="en">추출대상이 문서인 경우, 본문에 삽입된 이미지 출력 여부를 선택합니다.</description>
+				<options>
+					<value>N</value>
+					<name xml:lang="ko">출력안함</name>
+					<name xml:lang="en">출력안함</name>
+				</options>
+				<options>
+					<value>Y</value>
+					<name xml:lang="ko">출력</name>
+					<name xml:lang="en">출력</name>
+				</options>
+			</var>
+			<var id="category_srl" type="text">
+				<name xml:lang="ko">1-5. 카테고리 번호</name>
+				<name xml:lang="en">1-5. 카테고리 번호</name>
+				<description xml:lang="ko">입력할 경우 해당 카테고리번호의 이미지를 가져옵니다.</description>
+				<description xml:lang="en">입력할 경우 해당 카테고리번호의 이미지를 가져옵니다.</description>
+			</var>
+			<var id="duration" type="text">
+				<name xml:lang="ko">1-6. 기간(일)</name>
+				<name xml:lang="en">1-6. 기간(일)</name>
+				<description xml:lang="ko">숫자만 입력하세요. (기본 : 0) [ 0 = 전체, 10 = 10일전, 50 = 50일전... ]</description>
+				<description xml:lang="en">숫자만 입력하세요. (기본 : 0) [ 0 = 전체, 10 = 10일전, 50 = 50일전... ]</description>
+			</var>
+			<var id="attached_list" type="text">
+				<name xml:lang="ko">1-7. 이미지 선택</name>
+				<name xml:lang="en">1-7. 이미지 선택</name>
+				<description xml:lang="ko">게시글에 첨부된 이미지가 여러개인경우, 화면에 출력되는 이미지를 선택할 수 있습니다. (기본 : 0) [ 0 = 모두출력, 1 = 1st, 2 = 2nd... 99 = 랜덤 ]</description>
+				<description xml:lang="en">게시글에 첨부된 이미지가 여러개인경우, 화면에 출력되는 이미지를 선택할 수 있습니다. (기본 : 0) [ 0 = 모두출력, 1 = 1st, 2 = 2nd... 99 = 랜덤 ]</description>
+			</var>
+		</group>
+
+		<group>
+			<title xml:lang="ko">2. 기본 설정 - 입력하지 않으면 기본값이 적용됩니다.</title>
+			<title xml:lang="en">2. 기본 설정 - 입력하지 않으면 기본값이 적용됩니다.</title>
+			<var id="list_count" type="text">
+				<name xml:lang="ko">2-1. 전체 목록수</name>
+				<name xml:lang="en">2-1. 전체 목록수</name>
+				<description xml:lang="ko">전체 목록의 수를 정하실 수 있습니다. (기본 6개)</description>
+				<description xml:lang="en">전체 목록의 수를 정하실 수 있습니다. (기본 6개)</description>
+			</var>
+			<var id="image_width" type="text">
+				<name xml:lang="ko">2-2. 큰이미지 가로 넓이</name>
+				<name xml:lang="en">2-2. 큰이미지 가로 넓이</name>
+				<description xml:lang="ko">큰이미지의 가로넓이를 지정하실 수 있습니다. (기본 400)</description>
+				<description xml:lang="en">큰이미지의 가로넓이를 지정하실 수 있습니다. (기본 400)</description>
+			</var>
+			<var id="image_height" type="text">
+				<name xml:lang="ko">2-3. 큰이미지 세로 높이</name>
+				<name xml:lang="en">2-3. 큰이미지 세로 높이</name>
+				<description xml:lang="ko">큰이미지의 세로 높이를 지정할 수 있습니다. (기본 280)</description>
+				<description xml:lang="en">큰이미지의 세로 높이를 지정할 수 있습니다. (기본 280)</description>
+			</var>
+			<var id="thumb_width" type="text">
+				<name xml:lang="ko">2-4. 썸네일 가로 넓이</name>
+				<name xml:lang="en">2-4. 썸네일 가로 넓이</name>
+				<description xml:lang="ko">썸네일의 가로넓이를 지정하실 수 있습니다. (기본 132)</description>
+				<description xml:lang="en">썸네일의 가로넓이를 지정하실 수 있습니다. (기본 132)</description>
+			</var>
+			<var id="thumb_height" type="text">
+				<name xml:lang="ko">2-5. 썸네일 세로 높이</name>
+				<name xml:lang="en">2-5. 썸네일 세로 높이</name>
+				<description xml:lang="ko">썸네일의 세로 높이를 지정할 수 있습니다. (기본 92)</description>
+				<description xml:lang="en">썸네일의 세로 높이를 지정할 수 있습니다. (기본 92)</description>
+			</var>
+			<var id="cols_list_count" type="text">
+				<name xml:lang="ko">2-6. 썸네일 가로 이미지 수</name>
+				<name xml:lang="en">2-6. 썸네일 가로 이미지 수</name>
+				<description xml:lang="ko">썸네일 이미지 가로 갯수입니다. (기본 2개)</description>
+				<description xml:lang="en">썸네일 이미지 가로 갯수입니다. (기본 2개)</description>
+			</var>
+			<var id="show_list" type="select-multi-order">
+				<name xml:lang="ko">2-7. 표시 항목</name>
+				<name xml:lang="en">2-7. 표시 항목</name>
+				<options init="true">
+					<value>show_image</value>
+					<name xml:lang="ko">큰이미지</name>
+					<name xml:lang="en">큰이미지</name>
+				</options>
+				<options init="true">
+					<value>show_thumb</value>
+					<name xml:lang="ko">썸네일</name>
+					<name xml:lang="en">썸네일</name>
+				</options>
+				<options init="true">
+					<value>show_title</value>
+					<name xml:lang="ko">제목 표시</name>
+					<name xml:lang="en">제목 표시</name>
+				</options>
+				<options init="false">
+					<value>show_content</value>
+					<name xml:lang="ko">내용 표시</name>
+					<name xml:lang="en">내용 표시</name>
+				</options>
+				<options default="false">
+					<value>show_browser_title</value>
+					<name xml:lang="ko">모듈 이름</name>
+					<name xml:lang="en">모듈 이름</name>
+				</options>
+				<options default="false">
+					<value>show_category</value>
+					<name xml:lang="ko">분류 표시</name>
+					<name xml:lang="en">분류 표시</name>
+				</options>
+				<options default="false">
+					<value>show_comment_count</value>
+					<name xml:lang="ko">댓글수</name>
+					<name xml:lang="en">댓글수</name>
+				</options>
+				<options default="false">
+					<value>show_nickname</value>
+					<name xml:lang="ko">글쓴이</name>
+					<name xml:lang="en">글쓴이</name>
+				</options>
+				<options default="false">
+					<value>show_regdate</value>
+					<name xml:lang="ko">등록일</name>
+					<name xml:lang="en">등록일</name>
+				</options>
+				<options default="false">
+					<value>show_icon</value>
+					<name xml:lang="ko">아이콘 표시</name>
+					<name xml:lang="en">아이콘 표시</name>
+				</options>
+			</var>
+			<var id="duration_new" type="text">
+				<name xml:lang="ko">2-8. new 표시 시간 (hours)</name>
+				<name xml:lang="en">2-8. new 표시 시간 (hours)</name>
+				<description xml:lang="ko">새로 등록된 게시물의 new 표시시간을 정할 수 있습니다. (시간 단위)</description>
+				<description xml:lang="en">새로 등록된 게시물의 new 표시시간을 정할 수 있습니다. (시간 단위)</description>
+			</var>
+			<var id="widget_title" type="text">
+				<name xml:lang="ko">2-9. 위젯 타이틀</name>
+				<name xml:lang="en">2-9. 위젯 타이틀</name>
+				<description xml:lang="ko">위젯 상단에 타이틀이 출력됩니다. 입력하지 않으면 출력되지 않습니다.</description>
+				<description xml:lang="en">위젯 상단에 타이틀이 출력됩니다. 입력하지 않으면 출력되지 않습니다.</description>
+			</var>
+		</group>
+
+		<group>
+			<title xml:lang="ko">3. 이미지 정렬</title>
+			<title xml:lang="en">3. 이미지 정렬</title>
+			<var id="order_target" type="select">
+				<name xml:lang="ko">3-1. 정렬 대상</name>
+				<name xml:lang="en">3-1. 정렬 대상</name>
+				<description xml:lang="ko">정렬 대상을 지정할 수 있습니다.</description>
+				<description xml:lang="en">정렬 대상을 지정할 수 있습니다.</description>
+				<options>
+					<value>list_order</value>
+					<name xml:lang="ko">최신 등록순위</name>
+					<name xml:lang="en">최신 등록순위</name>
+				</options>
+				<options>
+					<value>update_order</value>
+					<name xml:lang="ko">최근 변경순위</name>
+					<name xml:lang="en">최근 변경순위</name>
+				</options>
+				<options>
+					<value>voted_count</value>
+					<name xml:lang="ko">추천순위</name>
+					<name xml:lang="en">추천순위</name>
+				</options>
+				<options>
+					<value>readed_count</value>
+					<name xml:lang="ko">조회순위</name>
+					<name xml:lang="en">조회순위</name>
+				</options>
+				<options>
+					<value>comment_count</value>
+					<name xml:lang="ko">댓글순위</name>
+					<name xml:lang="en">댓글순위</name>
+				</options>
+				<options>
+					<value>trackback_count</value>
+					<name xml:lang="ko">엮인글순위</name>
+					<name xml:lang="en">엮인글순위</name>
+				</options>
+				<options>
+					<value>uploaded_count</value>
+					<name xml:lang="ko">업로드순위</name>
+					<name xml:lang="en">업로드순위</name>
+				</options>
+				<options>
+					<value>reward_point</value>
+					<name xml:lang="ko">포인트순위</name>
+					<name xml:lang="en">포인트순위</name>
+				</options>
+				<options>
+					<value>download_count</value>
+					<name xml:lang="ko">다운로드순위</name>
+					<name xml:lang="en">다운로드순위</name>
+				</options>
+			</var>
+			<var id="order_type" type="select">
+				<name xml:lang="ko">3-2. 정렬 방법</name>
+				<name xml:lang="en">3-2. 정렬 방법</name>
+				<description xml:lang="ko">정렬대상을 내림차순 또는 올림차순으로 정렬할 수 있습니다.</description>
+				<description xml:lang="en">정렬대상을 내림차순 또는 올림차순으로 정렬할 수 있습니다.</description>
+				<options>
+					<value>desc</value>
+					<name xml:lang="ko">내림차순</name>
+					<name xml:lang="en">내림차순</name>
+				</options>
+				<options>
+					<value>asc</value>
+					<name xml:lang="ko">올림차순</name>
+					<name xml:lang="en">올림차순</name>
+				</options>
+			</var>
+			<var id="items_shuffle" type="select">
+				<name xml:lang="ko">3-3. 이미지 순서 섞기</name>
+				<name xml:lang="en">3-3. 이미지 순서 섞기</name>
+				<options>
+					<value>N</value>
+					<name xml:lang="ko">아니요(기본)</name>
+					<name xml:lang="en">아니요(기본)</name>
+				</options>
+				<options>
+					<value>Y</value>
+					<name xml:lang="ko">예</name>
+					<name xml:lang="en">예</name>
+				</options>
+			</var>
+		</group>
+
+		<group>
+			<title xml:lang="ko">4. 큰이미지 세부 설정 - 입력하지 않으면 기본값이 적용됩니다.</title>
+			<title xml:lang="en">4. 큰이미지 세부 설정 - 입력하지 않으면 기본값이 적용됩니다.</title>
+			<var id="image_type" type="select">
+				<name xml:lang="ko">4-1. 큰이미지 생성 방법</name>
+				<name xml:lang="en">4-1. 큰이미지 생성 방법</name>
+				<description xml:lang="ko">큰이미지 생성 방법을 선택할 수 있습니다. (crop : 꽉 채우기, ratio : 비율 맞추기)</description>
+				<description xml:lang="en">큰이미지 생성 방법을 선택할 수 있습니다. (crop : 꽉 채우기, ratio : 비율 맞추기)</description>
+				<options>
+					<value>ratio</value>
+					<name xml:lang="ko">Ratio (비율 맞추기)</name>
+					<name xml:lang="en">Ratio (비율 맞추기)</name>
+				</options>
+				<options>
+					<value>crop</value>
+					<name xml:lang="ko">Crop (채우기)</name>
+					<name xml:lang="en">Crop (채우기)</name>
+				</options>
+			</var>
+			<var id="image_bgcolor" type="text">
+				<name xml:lang="ko">4-2. 큰이미지 배경색</name>
+				<name xml:lang="en">4-2. 큰이미지 배경색</name>
+				<description xml:lang="ko">큰이미지의 배경색를 직접 정의할 수 있습니다. (예: 'red' 또는 '#EEF0F5')</description>
+				<description xml:lang="en">큰이미지의 배경색를 직접 정의할 수 있습니다. (예: 'red' 또는 '#EEF0F5')</description>
+			</var>
+			<var id="image_bdsize" type="text">
+				<name xml:lang="ko">4-3. 큰이미지 테두리 두께</name>
+				<name xml:lang="en">4-3. 큰이미지 테두리 두께</name>
+				<description xml:lang="ko">큰이미지의 테두리 두께를 지정할 수 있습니다.</description>
+				<description xml:lang="en">큰이미지의 테두리 두께를 지정할 수 있습니다.</description>
+			</var>
+			<var id="image_bdcolor" type="text">
+				<name xml:lang="ko">4-4. 큰이미지 테두리 색</name>
+				<name xml:lang="en">4-4. 큰이미지 테두리 색</name>
+				<description xml:lang="ko">큰이미지의 테두리 색을 지정할 수 있습니다. (예: 'red' 또는 '#CED1DA')</description>
+				<description xml:lang="en">큰이미지의 테두리 색을 지정할 수 있습니다. (예: 'red' 또는 '#CED1DA')</description>
+			</var>
+			<var id="image_outer" type="text">
+				<name xml:lang="ko">4-5. 큰이미지 외부 여백</name>
+				<name xml:lang="en">4-5. 큰이미지 외부 여백</name>
+				<description xml:lang="ko">큰이미지의 외부 여백을 설정합니다. px와 같은 단위는 넣지 않습니다.</description>
+				<description xml:lang="en">큰이미지의 외부 여백을 설정합니다. px와 같은 단위는 넣지 않습니다.</description>
+			</var>
+			<var id="image_shadow" type="select">
+				<name xml:lang="ko">4-6. 큰이미지 그림자 효과</name>
+				<name xml:lang="en">4-6. 큰이미지 그림자 효과</name>
+				<options>
+					<value>Y</value>
+					<name xml:lang="ko">사용</name>
+					<name xml:lang="en">사용</name>
+				</options>
+				<options>
+					<value>N</value>
+					<name xml:lang="ko">아니오</name>
+					<name xml:lang="en">아니오</name>
+				</options>
+			</var>
+			<var id="image_round" type="select">
+				<name xml:lang="ko">4-7. 큰이미지 라운딩 효과</name>
+				<name xml:lang="en">4-7. 큰이미지 라운딩 효과</name>
+				<options>
+					<value>Y</value>
+					<name xml:lang="ko">사용</name>
+					<name xml:lang="en">사용</name>
+				</options>
+				<options>
+					<value>N</value>
+					<name xml:lang="ko">아니오</name>
+					<name xml:lang="en">아니오</name>
+				</options>
+			</var>
+			<var id="image_round_px" type="text">
+				<name xml:lang="ko">4-8. 큰이미지 라운딩 수치 입력</name>
+				<name xml:lang="en">4-8. 큰이미지 라운딩 수치 입력</name>
+				<description xml:lang="ko">각 모서리를 몇 픽셀 단위로 둥글게 처리할지 결정합니다. px와 같은 단위는 넣지 않습니다. 입력하지 않으면 기본값이 적용됩니다. 큰이미지 라운딩 효과를 사용하는 경우에만 적용됩니다.</description>
+				<description xml:lang="en">각 모서리를 몇 픽셀 단위로 둥글게 처리할지 결정합니다. px와 같은 단위는 넣지 않습니다. 입력하지 않으면 기본값이 적용됩니다. 큰이미지 라운딩 효과를 사용하는 경우에만 적용됩니다.</description>
+			</var>
+			<var id="image_event" type="select">
+				<name xml:lang="ko">4-9. 큰이미지 클릭 이벤트</name>
+				<name xml:lang="en">4-9. 큰이미지 클릭 이벤트</name>
+				<description xml:lang="ko">큰이미지 클릭 이벤트를 선택할 수 있습니다.</description>
+				<description xml:lang="en">큰이미지 클릭 이벤트를 선택할 수 있습니다.</description>
+				<options>
+					<value>N</value>
+					<name xml:lang="ko">사용안함</name>
+					<name xml:lang="en">사용안함</name>
+				</options>
+				<options>
+					<value>D</value>
+					<name xml:lang="ko">게시글로 이동</name>
+					<name xml:lang="en">게시글로 이동</name>
+				</options>
+				<options>
+					<value>X</value>
+					<name xml:lang="ko">확장변수로 이동</name>
+					<name xml:lang="en">확장변수로 이동</name>
+				</options>
+				<options>
+					<value>V</value>
+					<name xml:lang="ko">Viewer</name>
+					<name xml:lang="en">Viewer</name>
+				</options>
+			</var>
+            <var id="image_newtab" type="select">
+                <name xml:lang="ko">4-10. 큰이미지 링크</name>
+                <name xml:lang="en">4-10. 큰이미지 링크</name>
+				<options>
+					<value>N</value>
+					<name xml:lang="ko">현재창에서 열기</name>
+					<name xml:lang="en">현재창에서 열기</name>
+				</options>
+				<options>
+					<value>Y</value>
+					<name xml:lang="ko">새창에서 열기</name>
+					<name xml:lang="en">새창에서 열기</name>
+				</options>
+            </var>
+			<var id="watermark_url" type="text">
+				<name xml:lang="ko">4-11. 워터마크 경로</name>
+				<name xml:lang="en">4-11. 워터마크 경로</name>
+				<description xml:lang="ko">워터마크로 사용할 이미지 주소를 입력하세요. 워터마크 이미지는 XE 폴더내 위치해야합니다. 입력하지 않으면 워터마크가 적용되지 않습니다. 만약 잘못된 경로인 경우 출력 오류가 발생할 수 있습니다. 예) './widgets/xeslider/mangologo.png'</description>
+				<description xml:lang="en">워터마크로 사용할 이미지 주소를 입력하세요. 워터마크 이미지는 XE 폴더내 위치해야합니다. 입력하지 않으면 워터마크가 적용되지 않습니다. 만약 잘못된 경로인 경우 출력 오류가 발생할 수 있습니다. 예) './widgets/xeslider/mangologo.png'</description>
+			</var>
+			<var id="watermark_halign" type="select">
+				<name xml:lang="ko">4-12. 워터마크 가로위치</name>
+				<name xml:lang="en">4-12. 워터마크 가로위치</name>
+				<options>
+					<value>R</value>
+					<name xml:lang="ko">오른쪽</name>
+					<name xml:lang="en">오른쪽</name>
+				</options>
+				<options>
+					<value>C</value>
+					<name xml:lang="ko">가운데</name>
+					<name xml:lang="en">가운데</name>
+				</options>
+				<options>
+					<value>L</value>
+					<name xml:lang="ko">왼쪽</name>
+					<name xml:lang="en">왼쪽</name>
+				</options>
+			</var>
+			<var id="watermark_valign" type="select">
+				<name xml:lang="ko">4-13. 워터마크 세로위치</name>
+				<name xml:lang="en">4-13. 워터마크 세로위치</name>
+				<options>
+					<value>B</value>
+					<name xml:lang="ko">하단</name>
+					<name xml:lang="en">하단</name>
+				</options>
+				<options>
+					<value>M</value>
+					<name xml:lang="ko">중앙</name>
+					<name xml:lang="en">중앙</name>
+				</options>
+				<options>
+					<value>T</value>
+					<name xml:lang="ko">상단</name>
+					<name xml:lang="en">상단</name>
+				</options>
+			</var>
+		</group>
+
+		<group>
+			<title xml:lang="ko">5. 썸네일 세부 설정 - 입력하지 않으면 기본값이 적용됩니다.</title>
+			<title xml:lang="en">5. 썸네일 세부 설정 - 입력하지 않으면 기본값이 적용됩니다.</title>
+			<var id="thumbnail_type" type="select">
+				<name xml:lang="ko">5-1. 썸네일 생성 방법</name>
+				<name xml:lang="en">5-1. 썸네일 생성 방법</name>
+				<description xml:lang="ko">썸네일 생성 방법을 선택할 수 있습니다. (crop : 꽉 채우기, ratio : 비율 맞추기)</description>
+				<description xml:lang="en">썸네일 생성 방법을 선택할 수 있습니다. (crop : 꽉 채우기, ratio : 비율 맞추기)</description>
+				<options>
+					<value>crop</value>
+					<name xml:lang="ko">Crop (채우기)</name>
+					<name xml:lang="en">Crop (채우기)</name>
+				</options>
+				<options>
+					<value>ratio</value>
+					<name xml:lang="ko">Ratio (비율 맞추기)</name>
+					<name xml:lang="en">Ratio (비율 맞추기)</name>
+				</options>
+			</var>
+			<var id="thumb_bgcolor" type="text">
+				<name xml:lang="ko">5-2. 썸네일 배경색</name>
+				<name xml:lang="en">5-2. 썸네일 배경색</name>
+				<description xml:lang="ko">큰이미지의 배경색를 직접 정의할 수 있습니다. (예: 'red' 또는 '#EEF0F5')</description>
+				<description xml:lang="en">큰이미지의 배경색를 직접 정의할 수 있습니다. (예: 'red' 또는 '#EEF0F5')</description>
+			</var>
+			<var id="thumb_bdsize" type="text">
+				<name xml:lang="ko">5-3. 썸네일 테두리 두께</name>
+				<name xml:lang="en">5-3. 썸네일 테두리 두께</name>
+				<description xml:lang="ko">큰이미지의 테두리 두께를 지정할 수 있습니다.</description>
+				<description xml:lang="en">큰이미지의 테두리 두께를 지정할 수 있습니다.</description>
+			</var>
+			<var id="thumb_bdcolor" type="text">
+				<name xml:lang="ko">5-4. 썸네일 테두리 색</name>
+				<name xml:lang="en">5-4. 썸네일 테두리 색</name>
+				<description xml:lang="ko">큰이미지의 테두리 색을 지정할 수 있습니다. (예: 'red' 또는 '#CED1DA')</description>
+				<description xml:lang="en">큰이미지의 테두리 색을 지정할 수 있습니다. (예: 'red' 또는 '#CED1DA')</description>
+			</var>
+			<var id="thumb_outer" type="text">
+				<name xml:lang="ko">5-5. 썸네일 외부 여백</name>
+				<name xml:lang="en">5-5. 썸네일 외부 여백</name>
+				<description xml:lang="ko">각 썸네일 사이의 외부 여백을 설정합니다. px와 같은 단위는 넣지 않습니다.</description>
+				<description xml:lang="en">각 썸네일 사이의 외부 여백을 설정합니다. px와 같은 단위는 넣지 않습니다.</description>
+			</var>
+			<var id="thumb_shadow" type="select">
+				<name xml:lang="ko">5-6. 썸네일 그림자 효과</name>
+				<name xml:lang="en">5-6. 썸네일 그림자 효과</name>
+				<options>
+					<value>Y</value>
+					<name xml:lang="ko">사용</name>
+					<name xml:lang="en">사용</name>
+				</options>
+				<options>
+					<value>N</value>
+					<name xml:lang="ko">아니오</name>
+					<name xml:lang="en">아니오</name>
+				</options>
+			</var>
+			<var id="thumb_round" type="select">
+				<name xml:lang="ko">5-7. 썸네일 라운딩 효과</name>
+				<name xml:lang="en">5-7. 썸네일 라운딩 효과</name>
+				<options>
+					<value>Y</value>
+					<name xml:lang="ko">사용</name>
+					<name xml:lang="en">사용</name>
+				</options>
+				<options>
+					<value>N</value>
+					<name xml:lang="ko">아니오</name>
+					<name xml:lang="en">아니오</name>
+				</options>
+			</var>
+			<var id="thumb_round_px" type="text">
+				<name xml:lang="ko">5-8. 썸네일 라운딩 수치 입력</name>
+				<name xml:lang="en">5-8. 썸네일 라운딩 수치 입력</name>
+				<description xml:lang="ko">각 모서리를 몇 픽셀 단위로 둥글게 처리할지 결정합니다. px와 같은 단위는 넣지 않습니다. 입력하지 않으면 기본값이 적용됩니다. 썸네일 라운딩 효과를 사용하는 경우에만 적용됩니다.</description>
+				<description xml:lang="en">각 모서리를 몇 픽셀 단위로 둥글게 처리할지 결정합니다. px와 같은 단위는 넣지 않습니다. 입력하지 않으면 기본값이 적용됩니다. 썸네일 라운딩 효과를 사용하는 경우에만 적용됩니다.</description>
+			</var>
+			<var id="thumb_event" type="select">
+				<name xml:lang="ko">5-9. 썸네일 클릭 이벤트</name>
+				<name xml:lang="en">5-9. 썸네일 클릭 이벤트</name>
+				<description xml:lang="ko">썸네일 클릭 이벤트를 선택할 수 있습니다.</description>
+				<description xml:lang="en">썸네일 클릭 이벤트를 선택할 수 있습니다.</description>
+				<options>
+					<value>N</value>
+					<name xml:lang="ko">사용안함</name>
+					<name xml:lang="en">사용안함</name>
+				</options>
+				<options>
+					<value>D</value>
+					<name xml:lang="ko">게시글로 이동</name>
+					<name xml:lang="en">게시글로 이동</name>
+				</options>
+				<options>
+					<value>X</value>
+					<name xml:lang="ko">확장변수로 이동</name>
+					<name xml:lang="en">확장변수로 이동</name>
+				</options>
+				<options>
+					<value>V</value>
+					<name xml:lang="ko">Viewer</name>
+					<name xml:lang="en">Viewer</name>
+				</options>
+			</var>
+            <var id="thumb_newtab" type="select">
+                <name xml:lang="ko">5-10. 썸네일 링크</name>
+                <name xml:lang="en">5-10. 썸네일 링크</name>
+				<options>
+					<value>N</value>
+					<name xml:lang="ko">현재창에서 열기</name>
+					<name xml:lang="en">현재창에서 열기</name>
+				</options>
+				<options>
+					<value>Y</value>
+					<name xml:lang="ko">새창에서 열기</name>
+					<name xml:lang="en">새창에서 열기</name>
+				</options>
+            </var>
+		</group>
+
+		<group>
+			<title xml:lang="ko">6. 제목 설정 - 입력하지 않으면 기본값이 적용됩니다.</title>
+			<title xml:lang="en">6. 제목 설정 - 입력하지 않으면 기본값이 적용됩니다.</title>
+			<var id="subject_cut_size" type="text">
+				<name xml:lang="ko">6-1. 제목 글자수</name>
+				<name xml:lang="en">6-1. 제목 글자수</name>
+				<description xml:lang="ko">제목 글자수를 지정할 수 있습니다. (0또는 비워두시면 자르지 않습니다)</description>
+				<description xml:lang="en">제목 글자수를 지정할 수 있습니다. (0또는 비워두시면 자르지 않습니다)</description>
+			</var>
+			<var id="title_font_family" type="select">
+				<name xml:lang="ko">6-2. 제목 글씨체</name>
+				<name xml:lang="en">6-2. 제목 글씨체</name>
+				<description xml:lang="ko">제목 글씨체를 지정할 수 있습니다.</description>
+				<description xml:lang="en">제목 글씨체를 지정할 수 있습니다.</description>
+				<options>
+					<value>Default</value>
+					<name xml:lang="ko">기본값</name>
+					<name xml:lang="en">기본값</name>
+				</options>
+				<options>
+					<value>Dotum</value>
+					<name xml:lang="ko">돋움</name>
+					<name xml:lang="en">돋움</name>
+					</options>
+				<options>
+					<value>Gulim</value>
+					<name xml:lang="ko">굴림</name>
+					<name xml:lang="en">굴림</name>
+				</options>
+				<options>
+					<value>Batang</value>
+					<name xml:lang="ko">바탕</name>
+					<name xml:lang="en">바탕</name>
+				</options>
+				<options>
+					<value>Gungsuh</value>
+					<name xml:lang="ko">궁서</name>
+					<name xml:lang="en">궁서</name>
+				</options>
+				<options>
+					<value>Tahoma</value>
+					<name xml:lang="ko">Tahoma</name>
+					<name xml:lang="en">Tahoma</name>
+				</options>
+				<options>
+					<value>Verdana</value>
+					<name xml:lang="ko">Verdana</name>
+					<name xml:lang="en">Verdana</name>
+				</options>
+				<options>
+					<value>Helvetica</value>
+					<name xml:lang="ko">Helvetica</name>
+					<name xml:lang="en">Helvetica</name>
+				</options>
+				<options>
+					<value>Georgia</value>
+					<name xml:lang="ko">Georgia</name>
+					<name xml:lang="en">Georgia</name>
+				</options>
+				<options>
+					<value>Sans-serif</value>
+					<name xml:lang="ko">Sans-serif</name>
+					<name xml:lang="en">Sans-serif</name>
+				</options>
+				<options>
+					<value>webfont</value>
+					<name xml:lang="ko">웹폰트</name>
+					<name xml:lang="en">웹폰트</name>
+				</options>
+				<options>
+					<value>cufon</value>
+					<name xml:lang="ko">Cufon</name>
+					<name xml:lang="en">Cufon</name>
+				</options>
+			</var>
+			<var id="title_fonturl" type="text">
+				<name xml:lang="ko">6-3. 제목 폰트 경로</name>
+				<name xml:lang="en">6-3. 제목 폰트 경로</name>
+				<description xml:lang="ko">제목 글씨체에서 웹폰트 또는 Cufon을 선택하였다면, 이곳에 웹폰트 또는 Cufon 경로를 입력하세요. http 를 포함한 전체 경로. 예: http://www.cufonfonts.com/js/titilliumtext.cufonfonts.js</description>
+				<description xml:lang="en">제목 글씨체에서 웹폰트 또는 Cufon을 선택하였다면, 이곳에 웹폰트 또는 Cufon 경로를 입력하세요. http 를 포함한 전체 경로. 예: http://www.cufonfonts.com/js/titilliumtext.cufonfonts.js</description>
+			</var>
+			<var id="title_font_user" type="text">
+				<name xml:lang="ko">6-4. 제목 글꼴 직접 입력</name>
+				<name xml:lang="en">6-4. 제목 글꼴 직접 입력</name>
+				<description xml:lang="ko">제목 글씨체를 직접 정의할 수 있습니다.(예:'맑은 고딕','Malgun Gothic',Helvetica,Sans-serif)\n공백이나 (") 따옴표는 사용할 수 없습니다.</description>
+				<description xml:lang="en">제목 글씨체를 직접 정의할 수 있습니다.(예:'맑은 고딕','Malgun Gothic',Helvetica,Sans-serif)\n공백이나 (") 따옴표는 사용할 수 없습니다.</description>
+			</var>
+			<var id="title_font_size" type="text">
+				<name xml:lang="ko">6-5. 제목 문자 크기</name>
+				<name xml:lang="en">6-5. 제목 문자 크기</name>
+				<description xml:lang="ko">제목 글자 크기를 지정할 수 있습니다.</description>
+				<description xml:lang="en">제목 글자 크기를 지정할 수 있습니다.</description>
+			</var>
+			<var id="title_font_color" type="text">
+				<name xml:lang="ko">6-6. 제목 글자색</name>
+				<name xml:lang="en">6-6. 제목 글자색</name>
+				<description xml:lang="ko">제목 글자색를 직접 정의할 수 있습니다. (예: 'red' 또는 '#000')</description>
+				<description xml:lang="en">제목 글자색를 직접 정의할 수 있습니다. (예: 'red' 또는 '#000')</description>
+			</var>
+			<var id="title_bg_color" type="text">
+				<name xml:lang="ko">6-7. 제목 배경색</name>
+				<name xml:lang="en">6-7. 제목 배경색</name>
+				<description xml:lang="ko">제목의 배경색를 직접 정의할 수 있습니다. (예: 'red' 또는 '#000')</description>
+				<description xml:lang="en">제목의 배경색를 직접 정의할 수 있습니다. (예: 'red' 또는 '#000')</description>
+			</var>
+			<var id="title_height" type="text">
+				<name xml:lang="ko">6-8. 제목 높이</name>
+				<name xml:lang="en">6-8. 제목 높이</name>
+				<description xml:lang="ko">제목 높이 및 여백 조절이 필요할 경우 입력합니다.</description>
+				<description xml:lang="en">제목 높이 및 여백 조절이 필요할 경우 입력합니다.</description>
+			</var>
+		</group>
+
+		<group>
+			<title xml:lang="ko">7. 내용 설정 - 입력하지 않으면 기본값이 적용됩니다.</title>
+			<title xml:lang="en">7. 내용 설정 - 입력하지 않으면 기본값이 적용됩니다.</title>
+			<var id="content_cut_size" type="text">
+				<name xml:lang="ko">7-1. 내용 글자수</name>
+				<name xml:lang="en">7-1. 내용 글자수</name>
+				<description xml:lang="ko">내용 글자수를 지정할 수 있습니다. (기본: 200)</description>
+				<description xml:lang="en">내용 글자수를 지정할 수 있습니다. (기본: 200)</description>
+			</var>
+			<var id="content_font_family" type="select">
+				<name xml:lang="ko">7-2. 내용 글씨체</name>
+				<name xml:lang="en">7-2. 내용 글씨체</name>
+				<description xml:lang="ko">내용 글씨체를 지정할 수 있습니다.</description>
+				<description xml:lang="en">내용 글씨체를 지정할 수 있습니다.</description>
+				<options>
+					<value>Default</value>
+					<name xml:lang="ko">기본값</name>
+					<name xml:lang="en">기본값</name>
+				</options>
+				<options>
+					<value>Dotum</value>
+					<name xml:lang="ko">돋움</name>
+					<name xml:lang="en">돋움</name>
+				</options>
+				<options>
+					<value>Gulim</value>
+					<name xml:lang="ko">굴림</name>
+					<name xml:lang="en">굴림</name>
+				</options>
+				<options>
+					<value>Batang</value>
+					<name xml:lang="ko">바탕</name>
+					<name xml:lang="en">바탕</name>
+				</options>
+				<options>
+					<value>Gungsuh</value>
+					<name xml:lang="ko">궁서</name>
+					<name xml:lang="en">궁서</name>
+				</options>
+				<options>
+					<value>Tahoma</value>
+					<name xml:lang="ko">Tahoma</name>
+					<name xml:lang="en">Tahoma</name>
+				</options>
+				<options>
+					<value>Verdana</value>
+					<name xml:lang="ko">Verdana</name>
+					<name xml:lang="en">Verdana</name>
+				</options>
+				<options>
+					<value>Helvetica</value>
+					<name xml:lang="ko">Helvetica</name>
+					<name xml:lang="en">Helvetica</name>
+				</options>
+				<options>
+					<value>Georgia</value>
+					<name xml:lang="ko">Georgia</name>
+					<name xml:lang="en">Georgia</name>
+				</options>
+				<options>
+					<value>Sans-serif</value>
+					<name xml:lang="ko">Sans-serif</name>
+					<name xml:lang="en">Sans-serif</name>
+				</options>
+				<options>
+					<value>webfont</value>
+					<name xml:lang="ko">웹폰트</name>
+					<name xml:lang="en">웹폰트</name>
+				</options>
+				<options>
+					<value>cufon</value>
+					<name xml:lang="ko">Cufon</name>
+					<name xml:lang="en">Cufon</name>
+				</options>
+			</var>
+			<var id="content_fonturl" type="text">
+				<name xml:lang="ko">7-3. 내용 폰트 경로</name>
+				<name xml:lang="en">7-3. 내용 폰트 경로</name>
+				<description xml:lang="ko">내용 글씨체에서 웹폰트 또는 Cufon을 선택하였다면, 이곳에 웹폰트 또는 Cufon 경로를 입력하세요. http 를 포함한 전체 경로. 예: http://www.cufonfonts.com/js/titilliumtext.cufonfonts.js</description>
+				<description xml:lang="en">내용 글씨체에서 웹폰트 또는 Cufon을 선택하였다면, 이곳에 웹폰트 또는 Cufon 경로를 입력하세요. http 를 포함한 전체 경로. 예: http://www.cufonfonts.com/js/titilliumtext.cufonfonts.js</description>
+			</var>
+			<var id="content_font_user" type="text">
+				<name xml:lang="ko">7-4. 내용 글꼴 직접 입력</name>
+				<name xml:lang="en">7-4. 내용 글꼴 직접 입력</name>
+				<description xml:lang="ko">내용 글씨체를 직접 정의할 수 있습니다.(예:'맑은 고딕','Malgun Gothic',Helvetica,Sans-serif)\n공백이나 (") 따옴표는 사용할 수 없습니다.</description>
+				<description xml:lang="en">내용 글씨체를 직접 정의할 수 있습니다.(예:'맑은 고딕','Malgun Gothic',Helvetica,Sans-serif)\n공백이나 (") 따옴표는 사용할 수 없습니다.</description>
+			</var>
+			<var id="content_font_size" type="text">
+				<name xml:lang="ko">7-5. 내용 문자 크기</name>
+				<name xml:lang="en">7-5. 내용 문자 크기</name>
+				<description xml:lang="ko">내용 문자 크기를 지정할 수 있습니다.</description>
+				<description xml:lang="en">내용 문자 크기를 지정할 수 있습니다.</description>
+			</var>
+			<var id="content_font_color" type="text">
+				<name xml:lang="ko">7-6. 내용 글자색</name>
+				<name xml:lang="en">7-6. 내용 글자색</name>
+				<description xml:lang="ko">내용 글자색를 직접 정의할 수 있습니다. (예: 'red' 또는 '#000')</description>
+				<description xml:lang="en">내용 글자색를 직접 정의할 수 있습니다. (예: 'red' 또는 '#000')</description>
+			</var>
+			<var id="content_bg_color" type="text">
+				<name xml:lang="ko">7-7. 내용 배경색</name>
+				<name xml:lang="en">7-7. 내용 배경색</name>
+				<description xml:lang="ko">내용의 배경색를 직접 정의할 수 있습니다. (예: 'red' 또는 '#000')</description>
+				<description xml:lang="en">내용의 배경색를 직접 정의할 수 있습니다. (예: 'red' 또는 '#000')</description>
+			</var>
+			<var id="content_height" type="text">
+				<name xml:lang="ko">7-8. 내용 높이</name>
+				<name xml:lang="en">7-8. 내용 높이</name>
+				<description xml:lang="ko">내용 높이 및 여백 조절이 필요할 경우 입력합니다.</description>
+				<description xml:lang="en">내용 높이 및 여백 조절이 필요할 경우 입력합니다.</description>
+			</var>
+		</group>
+
+		<group>
+			<title xml:lang="ko">8. Plugin 설정</title>
+			<title xml:lang="en">8. Plugin 설정</title>
+			<var id="viewer_type" type="select">
+				<name xml:lang="ko">8-1. Viewer Type</name>
+				<name xml:lang="en">8-1. Viewer Type</name>
+				<description xml:lang="ko">이미지 클릭 이벤트가 'Viewer'인 경우, 'Viewer'창으로 사용되는 plugin 종류를 선택할 수 있습니다.</description>
+				<description xml:lang="en">이미지 클릭 이벤트가 'Viewer'인 경우, 'Viewer'창으로 사용되는 plugin 종류를 선택할 수 있습니다.</description>
+				<options>
+					<value>prettyPhoto</value>
+					<name xml:lang="ko">prettyPhoto</name>
+					<name xml:lang="en">prettyPhoto</name>
+				</options>
+				<options>
+					<value>fancybox</value>
+					<name xml:lang="ko">fancybox</name>
+					<name xml:lang="en">fancybox</name>
+				</options>
+			</var>
+			<var id="viewer_theme" type="select">
+				<name xml:lang="ko">8-2. prettyPhoto 테마</name>
+				<name xml:lang="en">8-2. prettyPhoto 테마</name>
+				<description xml:lang="ko">'Viewer Type'이 'prettyPhoto'인 경우, prettyPhoto 테마를 선택할 수 있습니다.</description>
+				<description xml:lang="en">'Viewer Type'이 'prettyPhoto'인 경우, prettyPhoto 테마를 선택할 수 있습니다.</description>
+				<options>
+					<value>pp_default</value>
+					<name xml:lang="ko">default</name>
+					<name xml:lang="en">default</name>
+				</options>
+				<options>
+					<value>light_rounded</value>
+					<name xml:lang="ko">light rounded</name>
+					<name xml:lang="en">light rounded</name>
+				</options>
+				<options>
+					<value>dark_rounded</value>
+					<name xml:lang="ko">dark rounded</name>
+					<name xml:lang="en">dark rounded</name>
+				</options>
+				<options>
+					<value>light_square</value>
+					<name xml:lang="ko">light square</name>
+					<name xml:lang="en">light square</name>
+				</options>
+				<options>
+					<value>dark_square</value>
+					<name xml:lang="ko">dark square</name>
+					<name xml:lang="en">dark square</name>
+				</options>
+				<options>
+					<value>facebook</value>
+					<name xml:lang="ko">facebook</name>
+					<name xml:lang="en">facebook</name>
+				</options>
+			</var>
+			<var id="viewer_style" type="select">
+				<name xml:lang="ko">8-3. Viewer Style</name>
+				<name xml:lang="en">8-3. Viewer Style</name>
+				<description xml:lang="ko">이미지 클릭 이벤트가 'Viewer'인 경우, 'Viewer'창에 슬라이드 사용 여부를 선택할 수 있습니다.</description>
+				<description xml:lang="en">이미지 클릭 이벤트가 'Viewer'인 경우, 'Viewer'창에 슬라이드 사용 여부를 선택할 수 있습니다.</description>
+				<options>
+					<value>slider</value>
+					<name xml:lang="ko">슬라이더</name>
+					<name xml:lang="en">슬라이더</name>
+				</options>
+				<options>
+					<value>single</value>
+					<name xml:lang="ko">싱글 이미지</name>
+					<name xml:lang="en">싱글 이미지</name>
+				</options>
+			</var>
+			<var id="viewer_social" type="select">
+				<name xml:lang="ko">8-4. Viewer 소셜버튼</name>
+				<name xml:lang="en">8-4. Viewer 소셜버튼</name>
+				<description xml:lang="ko">이미지 클릭 이벤트가 'Viewer'인 경우, 'Viewer'창에 소셜버튼 출력 유무를 선택할수 있습니다.</description>
+				<description xml:lang="en">이미지 클릭 이벤트가 'Viewer'인 경우, 'Viewer'창에 소셜버튼 출력 유무를 선택할수 있습니다.</description>
+				<options>
+					<value>false</value>
+					<name xml:lang="ko">출력안함</name>
+					<name xml:lang="en">출력안함</name>
+				</options>
+				<options>
+					<value>true</value>
+					<name xml:lang="ko">출력</name>
+					<name xml:lang="en">출력</name>
+				</options>
+			</var>
+			<var id="viewer_text" type="select">
+				<name xml:lang="ko">8-5. Viewer 컨텐츠</name>
+				<name xml:lang="en">8-5. Viewer 컨텐츠</name>
+				<description xml:lang="ko">이미지 클릭 이벤트가 'Viewer'인 경우, 'Viewer'창에 제목이 출력되도록 설정할 수 있습니다.</description>
+				<description xml:lang="en">이미지 클릭 이벤트가 'Viewer'인 경우, 'Viewer'창에 제목이 출력되도록 설정할 수 있습니다.</description>
+				<options>
+					<value>true</value>
+					<name xml:lang="ko">출력</name>
+					<name xml:lang="en">출력</name>
+				</options>
+				<options>
+					<value>false</value>
+					<name xml:lang="ko">출력안함</name>
+					<name xml:lang="en">출력안함</name>
+				</options>
+			</var>
+		</group>
+
+		<group>
+			<title xml:lang="ko">9. 슬라이드 설정</title>
+			<title xml:lang="en">9. 슬라이드 설정</title>
+			<var id="slide_auto" type="select">
+				<name xml:lang="ko">9-1. 자동 슬라이드</name>
+				<name xml:lang="en">9-1. 자동 슬라이드</name>
+				<options>
+					<value>true</value>
+					<name xml:lang="ko">자동(기본)</name>
+					<name xml:lang="en">자동(기본)</name>
+				</options>
+				<options>
+					<value>false</value>
+					<name xml:lang="ko">사용안함</name>
+					<name xml:lang="en">사용안함</name>
+				</options>
+			</var>
+			<var id="slide_delay" type="text">
+				<name xml:lang="ko">9-2. 슬라이드 속도</name>
+				<name xml:lang="en">9-2. 슬라이드 속도</name>
+				<description xml:lang="ko">슬라이드의 속도를 조절할 수 있습니다. 1초 : 1000 (기본값 : 5000)</description>
+				<description xml:lang="en">슬라이드의 속도를 조절할 수 있습니다. 1초 : 1000 (기본값 : 5000)</description>
+			</var>
+			<var id="slide_control" type="select">
+				<name xml:lang="ko">9-3. 다음/이전 버튼</name>
+				<name xml:lang="en">9-3. 다음/이전 버튼</name>
+				<options>
+					<value>true</value>
+					<name xml:lang="ko">출력</name>
+					<name xml:lang="en">출력</name>
+				</options>
+				<options>
+					<value>false</value>
+					<name xml:lang="ko">출력안함</name>
+					<name xml:lang="en">출력안함</name>
+				</options>
+			</var>
+			<var id="slide_down" type="select">
+				<name xml:lang="ko">9-4. 슬라이드 다운</name>
+				<name xml:lang="en">9-4. 슬라이드 다운</name>
+				<description xml:lang="ko">전체 이미지 목록에서 끝에 있는 이미지가 처음으로 슬라이드 다운됩니다.</description>
+				<description xml:lang="en">전체 이미지 목록에서 끝에 있는 이미지가 처음으로 슬라이드 다운됩니다.</description>
+				<options>
+					<value>false</value>
+					<name xml:lang="ko">사용안함</name>
+					<name xml:lang="en">사용안함</name>
+				</options>
+				<options>
+					<value>true</value>
+					<name xml:lang="ko">사용</name>
+					<name xml:lang="en">사용</name>
+				</options>
+			</var>
+		</group>
+
+		<group>
+			<title xml:lang="ko">10. 확장 변수와 적용 대상</title>
+			<title xml:lang="en">10. 확장 변수와 적용 대상</title>
+			<var id="target_ext1_var" type="select">
+				<name xml:lang="ko">10-1A. 이미지 확장변수</name>
+				<name xml:lang="en">10-1A. 이미지 확장변수</name>
+				<description xml:lang="ko">출력되는 이미지에 확장변수를 적용시킬것인지 여부를 선택해 주세요.</description>
+				<description xml:lang="en">출력되는 이미지에 확장변수를 적용시킬것인지 여부를 선택해 주세요.</description>
+				<options>
+					<value>N</value>
+					<name xml:lang="ko">사용안함</name>
+					<name xml:lang="en">사용안함</name>
+				</options>
+				<options>
+					<value>Y</value>
+					<name xml:lang="ko">사용함</name>
+					<name xml:lang="en">사용함</name>
+				</options>
+			</var>
+			<var id="ext1_var" type="text">
+				<name xml:lang="ko">10-1B. 이미지에 사용되는 확장변수 이름</name>
+				<name xml:lang="en">10-1B. 이미지에 사용되는 확장변수 이름</name>
+				<description xml:lang="ko">이미지에 출력시킬 확장변수의 이름을 입력해 주세요.</description>
+				<description xml:lang="en">이미지에 출력시킬 확장변수의 이름을 입력해 주세요.</description>
+			</var>
+			<var id="target_ext2_var" type="select">
+				<name xml:lang="ko">10-2A. 링크 확장변수</name>
+				<name xml:lang="en">10-2A. 링크 확장변수</name>
+				<description xml:lang="ko">컨텐츠 링크에 사용할 확장변수의 사용유무를 선택해 주세요. '클릭이벤트'가 Viewer인 경우 링크 확장변수를 사용해서 유투부와 같은 외부영상주소를 재생할 수 있습니다.</description>
+				<description xml:lang="en">컨텐츠 링크에 사용할 확장변수의 사용유무를 선택해 주세요. '클릭이벤트'가 Viewer인 경우 링크 확장변수를 사용해서 유투부와 같은 외부영상주소를 재생할 수 있습니다.</description>
+				<options>
+					<value>N</value>
+					<name xml:lang="ko">사용안함</name>
+					<name xml:lang="en">사용안함</name>
+				</options>
+				<options>
+					<value>Y</value>
+					<name xml:lang="ko">사용함</name>
+					<name xml:lang="en">사용함</name>
+				</options>
+			</var>
+			<var id="ext2_var" type="text">
+				<name xml:lang="ko">10-2B. 링크에 사용되는 확장변수 이름</name>
+				<name xml:lang="en">10-2B. 링크에 사용되는 확장변수 이름</name>
+				<description xml:lang="ko">컨텐츠 링크에 사용할 확장변수의 이름을 입력해 주세요.</description>
+				<description xml:lang="en">컨텐츠 링크에 사용할 확장변수의 이름을 입력해 주세요.</description>
+			</var>
+			<var id="target_ext3_var" type="select">
+				<name xml:lang="ko">10-3A. 글쓴이 확장변수</name>
+				<name xml:lang="en">10-3A. 글쓴이 확장변수</name>
+				<description xml:lang="ko">컨텐츠 글쓴이에 표시할 확장변수의 사용유무를 선택해 주세요.</description>
+				<description xml:lang="en">컨텐츠 글쓴이에 표시할 확장변수의 사용유무를 선택해 주세요.</description>
+				<options>
+					<value>N</value>
+					<name xml:lang="ko">사용안함</name>
+					<name xml:lang="en">사용안함</name>
+				</options>
+				<options>
+					<value>Y</value>
+					<name xml:lang="ko">사용함</name>
+					<name xml:lang="en">사용함</name>
+				</options>
+			</var>
+			<var id="ext3_var" type="text">
+				<name xml:lang="ko">10-3B. 글쓴이에 사용되는 확장변수 이름</name>
+				<name xml:lang="en">10-3B. 글쓴이에 사용되는 확장변수 이름</name>
+				<description xml:lang="ko">컨텐츠 글쓴이에 표시할 확장변수의 이름을 입력해 주세요.</description>
+				<description xml:lang="en">컨텐츠 글쓴이에 표시할 확장변수의 이름을 입력해 주세요.</description>
+			</var>
+			<var id="target_ext4_var" type="select">
+				<name xml:lang="ko">10-4A. 제목 확장변수</name>
+				<name xml:lang="en">10-4A. 제목 확장변수</name>
+				<description xml:lang="ko">컨텐츠 제목에 표시할 확장변수의 사용유무를 선택해 주세요.</description>
+				<description xml:lang="en">컨텐츠 제목에 표시할 확장변수의 사용유무를 선택해 주세요.</description>
+				<options>
+					<value>N</value>
+					<name xml:lang="ko">사용안함</name>
+					<name xml:lang="en">사용안함</name>
+				</options>
+				<options>
+					<value>Y</value>
+					<name xml:lang="ko">사용함</name>
+					<name xml:lang="en">사용함</name>
+				</options>
+			</var>
+			<var id="ext4_var" type="text">
+				<name xml:lang="ko">10-4B. 제목에 사용되는 확장변수 이름</name>
+				<name xml:lang="en">10-4B. 제목에 사용되는 확장변수 이름</name>
+				<description xml:lang="ko">컨텐츠 제목에 표시할 확장변수의 이름을 입력해 주세요.</description>
+				<description xml:lang="en">컨텐츠 제목에 표시할 확장변수의 이름을 입력해 주세요.</description>
+			</var>
+			<var id="target_ext5_var" type="select">
+				<name xml:lang="ko">10-5A. 부제목 확장변수</name>
+				<name xml:lang="en">10-5A. 부제목 확장변수</name>
+				<description xml:lang="ko">컨텐츠 부제목에 표시할 확장변수의 사용유무를 선택해 주세요.</description>
+				<description xml:lang="en">컨텐츠 부제목에 표시할 확장변수의 사용유무를 선택해 주세요.</description>
+				<options>
+					<value>N</value>
+					<name xml:lang="ko">사용안함</name>
+					<name xml:lang="en">사용안함</name>
+				</options>
+				<options>
+					<value>Y</value>
+					<name xml:lang="ko">사용함</name>
+					<name xml:lang="en">사용함</name>
+				</options>
+			</var>
+			<var id="ext5_var" type="text">
+				<name xml:lang="ko">10-5B. 부제목에 사용되는 확장변수 이름</name>
+				<name xml:lang="en">10-5B. 부제목에 사용되는 확장변수 이름</name>
+				<description xml:lang="ko">컨텐츠 부제목에 표시할 확장변수의 이름을 입력해 주세요.</description>
+				<description xml:lang="en">컨텐츠 부제목에 표시할 확장변수의 이름을 입력해 주세요.</description>
+			</var>
+			<var id="target_ext6_var" type="select">
+				<name xml:lang="ko">10-6A. 내용 확장변수</name>
+				<name xml:lang="en">10-6A. 내용 확장변수</name>
+				<description xml:lang="ko">컨텐츠 내용에 표시할 확장변수의 사용유무를 선택해 주세요.</description>
+				<description xml:lang="en">컨텐츠 내용에 표시할 확장변수의 사용유무를 선택해 주세요.</description>
+				<options>
+					<value>N</value>
+					<name xml:lang="ko">사용안함</name>
+					<name xml:lang="en">사용안함</name>
+				</options>
+				<options>
+					<value>Y</value>
+					<name xml:lang="ko">사용함</name>
+					<name xml:lang="en">사용함</name>
+				</options>
+			</var>
+			<var id="ext6_var" type="text">
+				<name xml:lang="ko">10-6B. 내용에 사용되는 확장변수 이름</name>
+				<name xml:lang="en">10-6B. 내용에 사용되는 확장변수 이름</name>
+				<description xml:lang="ko">컨텐츠 내용에 표시할 확장변수의 이름을 입력해 주세요.</description>
+				<description xml:lang="en">컨텐츠 내용에 표시할 확장변수의 이름을 입력해 주세요.</description>
+			</var>
+			<var id="target_ext7_var" type="select">
+				<name xml:lang="ko">10-7A. 날짜 확장변수</name>
+				<name xml:lang="en">10-7A. 날짜 확장변수</name>
+				<description xml:lang="ko">컨텐츠 날짜에 표시할 확장변수의 사용유무를 선택해 주세요.</description>
+				<description xml:lang="en">컨텐츠 날짜에 표시할 확장변수의 사용유무를 선택해 주세요.</description>
+				<options>
+					<value>N</value>
+					<name xml:lang="ko">사용안함</name>
+					<name xml:lang="en">사용안함</name>
+				</options>
+				<options>
+					<value>Y</value>
+					<name xml:lang="ko">사용함</name>
+					<name xml:lang="en">사용함</name>
+				</options>
+			</var>
+			<var id="ext7_var" type="text">
+				<name xml:lang="ko">10-7B. 날짜에 사용되는 확장변수 이름</name>
+				<name xml:lang="en">10-7B. 날짜에 사용되는 확장변수 이름</name>
+				<description xml:lang="ko">컨텐츠 날짜에 표시할 확장변수의 이름을 입력해 주세요.</description>
+				<description xml:lang="en">컨텐츠 날짜에 표시할 확장변수의 이름을 입력해 주세요.</description>
+			</var>
+		</group>
+    </extra_vars>
+</widget>

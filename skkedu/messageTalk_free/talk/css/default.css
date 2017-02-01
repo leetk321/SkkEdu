@@ -1,0 +1,81 @@
+@charset "utf-8";
+
+/*공통*/
+ html { overflow-y:scroll;}
+ body{padding: 0; margin: 0;font-size:12px;font-family:'나눔고딕',NanumGothic,ng; color:#999;}
+ textarea {overflow:hidden;overflow-y:auto;width:250px;margin:0;border:0 none;font:12px/19px dotum,AppleGothic;color:#2b2f31; margin-left: 10px; padding: 6px;} 
+ a{text-decoration:none;}
+ img{border:0;}
+ 
+ /*라운드*/
+  .r3_btn{ -webkit-border-radius: 5px;-moz-border-radius: 5px;border-radius: 5px; behavior: url(PIE.php);}
+ .r3_box{ -webkit-border-radius: 5px;-moz-border-radius: 5px;border-radius: 5px; behavior: url(PIE.php);padding: 8px 5px; background-color:#fff; }
+ /*상단탭*/
+ .message_btn{position: absolute; right:3px; top:48px; color: #777;}
+ .message_btn span{padding: 8px 10px; margin-right:3px;}
+ .message_btn a{ color:#999;}
+ .message_btn a:hover{ color:#999; text-decoration:underline;}
+ .message_btn_bold{font-weight:bold;}
+ 
+ /*쪽지 목록index.php*/
+ .sm_box{position:relative; width: 100%; margin:0 auto;}
+ .sm_top{position:relative;height:55px; width: 98%; padding:10px 1% 0; margin:0 auto;}
+ .sm_message_box{position:relative; margin:0 auto; width: 100%; background-color: #fff; border-bottom:1px solid #dbdbdb; padding-top: 5px;}
+ .sm_message_box ul{position:relative; padding: 0 4%; width: 92%; margin:0 auto;}
+ .sm_message_box li{position:relative; padding: 0; margin:0; list-style: none; padding: 5px 0;}
+ .sm_message_box li img{position:relative; top:0.3em;}
+ .sm_message_box li a{ color:#999; width: 300px;color:#999;display: inline-block; }
+ .sm_message_box li a:hover{ color:#999; text-decoration:underline;}
+ .sm_message_box li .del_checkbox{position:absolute; right:0px;}
+ .sm_message_box .bottom_time{position:relative; border:0px solid #dbdbdb;border-top:1px solid #dbdbdb; padding: 5px 0 10px;}
+ .sm_message_box .bottom_time .new_message{color:#ed1b2e; font-weight: bold; padding: 0 5px;}
+ .sm_message_box .bottom_time .message_counter{position:absolute; top:5px; right:0;}
+ .sm_bottom{position:relative;height:43px; width: 100%; margin:0 auto;}
+ .sm_bottom .btn_submit{position: absolute; right:10px; top:10px; background:url(../images/del.png) no-repeat; width: 46px; height: 21px; border:0; cursor:pointer; }
+ 
+ /*쪽지 상세보기detail.php*/
+ .sm_box_detail{position:relative; width: 100%; padding-bottom: 100px;}
+ .sm_top_detail{height:55px; width: 100%;  padding-top:10px; padding-left:10px;  margin:0 auto;}
+ .sm_top_detail span{position: absolute; top:15px; right:20px;}
+ .sm_name{position:relative; width:350px; height: 20px; padding: 5px 0 0; margin:0 auto; color:#fff;}
+ .sm_name img{position:relative; top:0.3em;}
+ .sm_name .new_message{color:#ed1b2e; font-weight: bold; padding: 0 5px;}
+ .sm_sendbox ul{position:relative; padding: 0; margin:0;width: 276px;}
+ .sm_sendbox li{position:relative; padding: 0; margin:0; list-style: none;color:#999;}
+ 
+ /*받은쪽지*/
+ .sm_message_you{position:relative; width:370px; margin:0 auto; margin-top: 15px;}
+ .sm_message_you:after{content:"";display:block;clear:both}
+ .sm_message_you ul{position:relative; padding: 0; margin:0;width:284px; float:right; display: block;margin-right: 10px;}
+ .sm_message_you li{position:relative; padding: 0; margin:0; list-style: none;color:#999;}
+ .sm_message_you .sm_message_time{float: right;background: url(../images/message_read_11.png) no-repeat; width:105px; height:18px; color: #fff; padding-top: 5px; padding-left:30px; font-size:11px;}
+ .sm_message_you .center_message{position:relative; background-color: #fff; border:1px solid #dbdbdb;padding: 10px 15px;width: 252px; line-height: 130%; word-break:break-all;}
+ .sm_message_you .center_message a{color:blue;}
+ .sm_message_you .center_message a:hover{ text-decoration:underline;}
+ 
+  /*보낸 쪽지*/
+ .sm_message_me{position:relative; width:370px; margin:0 auto; margin-top: 15px;}
+ .sm_message_me:after{content:"";display:block;clear:both}
+ .sm_message_me ul{position:relative; padding: 0; margin:0;width:284px; float:left; display: block;margin-left: 10px;}
+ .sm_message_me li{position:relative; padding: 0; margin:0; list-style: none;color:#999;}
+ .sm_message_me .sm_message_time{float: left;background: url(../images/message_read_11.png) no-repeat; width:105px; height:18px; color: #fff; padding-top: 5px; padding-left:30px; font-size:11px;}
+ .sm_message_me .center_message{position:relative; background-color: #edf1fc; border:1px solid #bfc3ce;padding: 10px 15px; line-height: 130%; width: 252px; word-break:break-all;}
+ .sm_message_me .center_message a{color:blue;}
+ .sm_message_me .center_message a:hover{ text-decoration:underline;}
+ 
+ /*하단 쪽지 보내기 textarea*/
+ .sm_sendbox_bg{position:fixed; bottom:0;width:100%;background:url(../images/message_read_41.png) repeat-x top; z-index: 1000;}
+ .sm_sendbox{position:relative; width: 356px; margin:0 auto;padding: 5px 7px;}
+ .sm_sendbox .btn_submit {background:url(../images/message_read_47.png); width:77px; height: 42px;border:0; cursor:pointer;position: absolute; right:5px; top:5px;}
+ .checkbox{position: absolute; vertical-align:middle; margin: 0; right:60px; top:15px;} 
+ 
+ /*친구찾기 friend_search.php*/
+ .sm_message_box .friend_li{padding: 10px 0;}
+ .friend_select{padding:4px 5px; border:1px solid #eee; color:#333;}
+ .friend_text{border:1px solid #eee; padding:5px 5px; color:#333; width: 175px;}
+ .search_btn{padding:7px 13px; color: #fff;margin-left: 3px; border: 0; font-size: 12px; cursor:pointer;}
+ 
+  /*칼라셋*/
+  body,.sm_box,.message_btn span{background-color:#eee;}
+ .sm_top,.sm_bottom,.sm_sendbox_bg,.search_btn,.sm_top_detail{background-color: #ed1b2e;}
+ .message_btn_bold{color:#ed1b2e;}

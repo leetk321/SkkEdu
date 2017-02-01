@@ -1,0 +1,96 @@
+<include target="header.html" />
+<load target="filter/search.xml" />
+<include cond="$oDocument->isExists()" target="view_document.html" />
+<div cond="!$oDocument->isExists()">
+<div cond="!$grant->write_document" style="margin:0 0 5px 0;padding:10px;text-align:center;border:10px solid #EEE">{$lang->cmd_write} {$lang->msg_not_permitted}</div>
+
+<include target="write_form.html" cond="$grant->write_document && $oDocument" />
+
+	<div class="sm_lf">
+	<table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tr>
+		<td align="left" >
+        <form cond="$grant->view && $module_info->display_search!='N'" action="{getUrl()}" method="get" onsubmit="return procFilter(this, search)" id="board_search" class="board_search">
+		<input type="hidden" name="vid" value="{$vid}" />
+		<input type="hidden" name="mid" value="{$mid}" />
+		<input type="hidden" name="category" value="{$category}" />
+        <select name="search_target" >
+            <option value="title" <!--@if($search_target==$key)-->selected="selected"<!--@end-->>{$search_option[title]}</option>    
+			<option value="comment" <!--@if($search_target==$key)-->selected="selected"<!--@end-->>{$search_option[comment]}</option>
+			<option value="nick_name" <!--@if($search_target==$key)-->selected="selected"<!--@end-->>{$search_option[nick_name]}</option>
+		</select>
+		<input type="text" name="search_keyword" value="{htmlspecialchars($search_keyword)}" title="{$lang->cmd_search}" class="iText" />
+		<span class="sm_btn15">
+        <a href="#" onclick="xGetElementById('board_search').submit();return false;">
+        {$lang->cmd_search}</a></span>
+        <span class="sm_btn15" cond="$last_division"><a href="{getUrl('page',1,'document_srl','','division',$last_division,'last_division','')}">{$lang->cmd_search_next}</a></span>
+		</form>
+    	</td>
+   		<td align="right">
+		<span cond="$grant->manager" class="sm_btn15">
+    	<a cond="$grant->manager" href="{getUrl('act','dispBoardAdminBoardInfo')}" title="{$lang->cmd_setup}" class="sm_btn25">{$lang->cmd_setup}</a></span>
+   
+		<span cond="$grant->manager" class="sm_btn15">
+        <a href="{getUrl('','module','document','act','dispDocumentManageDocument')}" onclick="popopen(this.href,'manageDocument'); return false;" class="sm_btn25">{$lang->cmd_manage_document}</a></span>
+		</td>
+   	</tr>
+	</table>     
+	</div>
+       
+ 	<table width="100%" border="0" cellspacing="0" summary="List of Articles" class="smVt" style=" border:1px solid #ababab;">
+	<tr>
+		<th scope="col" class="title" >
+		<span>{$lang->document_count} <strong style="color:#F00">{number_format($total_count)}</strong></span>
+        <!--@if($module_info->use_category == "Y")-->
+		<span class="jumpTo">
+		<select name="category" id="board_category" style="border:1px solid #ccc">
+			<option value="">{$lang->category}</option>
+			<!--@foreach($category_list as $val)-->
+			<option value="{$val->category_srl}" <!--@if($category==$val->category_srl)-->selected="selected"<!--@end-->>{str_repeat("&nbsp;&nbsp;",$val->depth)} {$val->title} <!--@if($val->document_count)-->({$val->document_count})<!--@end--></option>
+			<!--@end-->
+		</select>
+		<button type="button" name="go_button" id="go_button" onclick="doChangeCategory(); return false;" class="button">Go</button>
+		</span>
+		<!--@end-->
+        </th>
+		<th scope="col" cond="$grant->manager && !$oDocument->isExists()" class="check"><span><input type="checkbox" onclick="XE.checkboxToggleAll({ doClick:true });" class="iCheck" title="Check All" /></span></th>
+	</tr>
+	</table>
+
+<p cond="!$document_list && !$notice_list" style="margin:0px;padding:10px;text-align:center;border-top:1px solid #bbb; background:#eee; border-bottom:1px solid #ccc;" class="no_ducument">{$lang->no_documents}</p>
+
+        <!--@if($grant->list)-->
+        	<!--// 공지사항 -->
+        	<!--@if($notice_list)-->
+            <!--@foreach($notice_list as $no => $oDocument)-->
+            <!--#include("./view_document.html")--> 
+            <!--@end-->
+        <!--@end-->
+        	<!--// 일반글 -->
+        	<!--@foreach($document_list as $no => $oDocument)-->
+            <!--#include("./view_document.html")-->
+        	<!--@end-->
+    	<!--@end-->
+
+</div>
+        
+<div class="sm_ft" >
+    <div class="pa" cond="$document_list || $notice_list">
+    	<!--@if($page != 1)-->
+		<a href="{getUrl('page','','document_srl','','division',$division,'last_division',$last_division)}" >&lsaquo;&lsaquo;</a> 
+        <a href="{getUrl('page',$page - 10,'document_srl','','listStyle',$module_info->default_style)}" title="Back 10 Pages" cond="$page > 10">&lsaquo;</a>
+        <!--@end-->
+		<block loop="$page_no=$page_navigation->getNextPage()">
+			<strong cond="$page==$page_no">{$page_no}</strong> 
+			<a cond="$page!=$page_no" href="{getUrl('page',$page_no,'document_srl','','division',$division,'last_division',$last_division)}">{$page_no}</a>
+		</block>
+        <!--@if($page != $page_navigation->last_page)-->
+        <a href="{getUrl('page',$page + 10,'document_srl','','listStyle',$module_info->default_style)}" title="Skip 10 Pages" >&rsaquo;</a>
+		<a href="{getUrl('page',$page_navigation->last_page,'document_srl','','division',$division,'last_division',$last_division)}" >&rsaquo;&rsaquo;</a>
+        <!--@end-->
+	</div>
+    <div style="float:right" ><span class="sm_btn15"><a href="{getUrl('','mid',$mid,'page',$page,'document_srl','','listStyle',$listStyle)}" >{$lang->cmd_list}</a></span></div>
+    </div>
+
+
+<include target="footer.html" />

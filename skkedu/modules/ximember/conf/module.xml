@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<module>
+	<grants />
+	<permissions />
+	<actions>
+		<action name="dispXimemberAdminConfig"	type="view" menu_name="XiMemberConfig" admin_index="true" menu_index="true" />
+		<action name="dispXimemberAdminUseModule"	type="view" />
+		<action name="dispXimemberAdminAgree"		type="view" />
+		<action name="dispXimemberAdminEditAgree"	type="view" />
+		<action name="dispXimemberAdminLimit" 		type="view"	/>
+		<action name="dispXimemberAdminExtra"		type="view"	/>
+		<action name="dispXimemberAdminGroup" 		type="view"	/>
+		<action name="dispXimemberAdminKcb" 		type="view"	/>
+		
+		<action name="procXimemberAdminConfig"	type="controller" />
+		
+		<action name="procXimemberAdminUseModule"	type="controller" />
+		<action name="procXimemberAdminInsertAgree"	type="controller" />
+		<action name="procXimemberAdminEditAgree"	type="controller" />
+		<action name="procXimemberAdminDeleteAgree"	type="controller" />
+		<action name="procXimemberAdminAgreeConfig"	type="controller" />
+		
+		<action name="procXimemberAdminLimitConfig"	type="controller" />
+		
+		<action name="procXimemberAdminGroupAdd"	type="controller" />
+		<action name="procXimemberAdminGroupDelete"	type="controller" />
+		
+		<action name="procXimemberAdminExtra"	type="controller" />
+		<action name="procXimemberAdminKcb"	type="controller" /> 
+		
+		<action name="dispXimemberLoginForm" type="view" />
+		<action name="dispXimemberSignUpForm" type="view" />
+		<action name="dispXimemberModifyInfo" type="view" />
+		<action name="dispXimemberIpinResult" type="view" />
+		<action name="dispXimemberMobileResult" type="view" />
+		<action name="dispXimemberAuthPage" type="view" />
+		
+		<action name="procXimemberSetAgree" type="controller" />
+		<action name="procXimemberInsert" type="controller" />
+		<action name="procXimemberAuthUpdater"	type="controller" /> 
+	</actions>
+	<menus>
+		<menu name="XiMemberConfig">
+			<title xml:lang="ko">Xi회원 확장모듈</title>
+		</menu>
+	</menus>
+</module>

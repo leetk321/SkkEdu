@@ -1,0 +1,167 @@
+{@ Context::addJsFile("./common/js/jquery.js", true, '', -100000) }
+{@ Context::addJsFile("./common/js/js_app.js", true, '', -100000) }
+{@ Context::addJsFile("./common/js/x.js", true, '', -100000) }
+{@ Context::addJsFile("./common/js/common.js", true, '', -100000) }
+{@ Context::addJsFile("./common/js/xml_handler.js", true, '', -100000) }
+{@ Context::addJsFile("./common/js/xml_js_filter.js", true, '', -100000) }
+
+<block cond="!$module_info->duration_new = (int)$module_info->duration_new">{@ $module_info->duration_new = 12 }</block>
+<!--@if(!$module_info->mdisplay_depth = (int)$module_info->mdisplay_depth)-->{@ $module_info->mdisplay_depth = 0 }<!--@end-->
+
+{@ $cate_list = array(); $current_key = null; }
+<!--@foreach($category_list as $key=>$val)-->
+	<!--@if(!$val->depth)-->
+		{@
+			$cate_list[$key] = $val;
+			$cate_list[$key]->children = array();
+			$current_key = $key;
+		}
+	<!--@elseif($current_key)-->
+		{@ $cate_list[$current_key]->children[] = $val }
+	<!--@end-->
+<!--@end-->
+
+
+<load target="js/mboard.js" />
+<!--@if($module_info->list_more == 'Y')-->
+<load target="js/jquery.infinitescroll.js" />
+<load target="js/jquery.masonry.min.js" />
+
+<script type="text/javascript"> 
+jQuery(function($) {
+	var $container = $('.lulu-list');
+
+	$container.infinitescroll({
+      navSelector  : '.elise-pagination',    // selector for the paged navigation 
+      nextSelector : '.page-link',  // selector for the NEXT link (to page 2)
+      itemSelector : '.lulu-list .lulu-item',     // selector for all items you'll retrieve
+      loading: {
+          finishedMsg: 'Last page'
+        }
+      },
+      function( newElements ) {
+        var $newElems = $( newElements ).css({ opacity: 0 });
+        $newElems.imagesLoaded(function(){
+          $newElems.animate({ opacity: 1 });
+          $container.masonry( 'appended', $newElems, true ); 
+        });
+      }
+    );
+  
+
+});
+</script>
+
+<!--@end-->
+<load target="css/mboard.css" />
+<load target="filter/insert.xml" />
+<div class="bd" cond="$module_info->display_title != 'N'">
+	<h2><a href="{getUrl('','vid',$vid,'mid',$mid)}">{$module_info->browser_title}</a></h2>
+</div>
+
+<ul class="sm-tab" cond="$module_info->use_category=='Y'">
+	<li class="on"|cond="!$category">
+		<a href="{getUrl('category','','page','')}">{$lang->total}</a>
+	</li>
+	<block loop="$cate_list=>$key,$val">     
+		<!--@if($category==$val->category_srl)-->
+		<li class="on"|cond="$category==$val->category_srl">
+			<a href="#category" onclick="toggle_object('sm-category'); return false;"  >{$val->title}</a>
+		</li>
+		<!--@end-->
+	</block>
+	<li>
+		<a href="#category" onclick="toggle_object('sm-category'); return false;" cond="!$category==$val->category_srl">{$lang->category}</a>
+	</li>
+</ul>
+
+
+<div style="padding:10px 5px; height:30px; border-bottom:#ccc solid 1px;">
+	<span style="font-size:14px;" cond="$module_info->display_total != 'N'">
+		<block cond="!$category">{$lang->total}</block>
+		<block loop="$cate_list=>$key,$val">     
+			<block cond="$category==$val->category_srl">{$val->title}</block>
+		</block>
+		<b>{number_format($total_count)}</b>
+	</span>
+	<span style="float:right">
+		<a href="{getUrl('act','dispBoardWrite','document_srl','')}" cond="$grant->write_document" class="sm-btn">{$lang->cmd_write}</a>
+		<a href="#" onclick="toggle_object('sm-search'); return false;" class="sm-btn-de">{$lang->cmd_search}</a>
+	</span>
+</div>
+
+<div id="sm-category" style="display:none">
+	<ul class="gn">
+		<li loop="$cate_list=>$key,$val" class="on"|cond="$category==$val->category_srl">
+			<a href="{getUrl(category,$val->category_srl,'document_srl','', 'page', '')}">{$val->title} <em cond="$val->document_count">{$val->document_count}</em></a>
+		</li>
+	</ul>
+</div>
+
+<div id="sm-search" class="sm-search" cond="$module_info->display_search != 'N'" style="display:none" >
+	<form cond="$grant->view" action="{getUrl()}" method="get" onsubmit="return procFilter(this, search)" id="board_search" no-error-return-url="true"  >
+		<input type="hidden" name="vid" value="{$vid}" />
+		<input type="hidden" name="mid" value="{$mid}" />
+		<input type="hidden" name="category" value="{$category}" />
+		<select name="search_target" style="display:none" >
+			<option value="title" <!--@if($search_target==$key)-->selected="selected"<!--@end-->>{$search_option[title]}</option>
+		</select>
+		<input type="text" name="search_keyword" value="{htmlspecialchars($search_keyword)}" title="{$lang->cmd_search}" style="width:70%" />
+		<a href="#" onclick="xGetElementById('board_search').submit();return false;" class="sm-btn-a">{$lang->cmd_search}</a>
+		<a cond="$last_division" href="{getUrl('page',1,'document_srl','','division',$last_division,'last_division','')}" class="sm-btn-a">{$lang->cmd_search_next}</a>
+	</form>
+</div>
+        
+<!--@if($oDocument->isExists())-->
+<!--#include("read.html")-->
+
+<div style="padding:10px; text-align:center">
+	<span class="bn36"><a href="{getUrl('document_srl','')}" >{$lang->cmd_list}</a></span>
+</div>
+<!--@else-->
+
+<div id="write" style="display:none;">
+	<!--#include("write_form.html")-->
+</div>			
+
+<p cond="!$document_list && !$notice_list" style="margin:0px;padding:10px;text-align:center;border-top:1px solid #bbb; background:#eee; border-bottom:1px solid #ccc;" class="no_ducument">{$lang->no_documents}</p>
+<div id="list">
+	<!--// 공지사항 -->
+	<ul class="lulu-notice-list clarity-font" cond="$notice_list">
+		<li class="lulu-notice-item" loop="$notice_list=>$no,$document">
+			<a class="pix-lulu-notice" >{$document->getTitle()}<input style="float:right;" type="checkbox" name="cart" value="{$document->document_srl}" class="iCheck" title="Check This Article" onclick="doAddDocumentCart(this)" checked="checked"|cond="$document->isCarted()" /></a>
+		</li>
+	</ul><!-- .lulu-notice-list -->
+
+	<!--// 일반글 -->
+	<include target="read.html" />
+</div>
+
+<!--@end-->
+
+
+<!--@if($module_info->list_more == 'N')-->
+<div class="pn" cond="$document_list || $notice_list">
+
+<!--@if($page != 1)-->
+<a href="{getUrl('page',$page-1,'document_srl','','division',$division,'last_division',$last_division,'entry','')}" >{$lang->cmd_prev}</a> 
+<!--@endif-->
+<strong>{$page} / {$page_navigation->last_page}</strong>
+<!--@if($page != $page_navigation->last_page)-->
+<a href="{getUrl('page',$page+1,'document_srl','','division',$division,'last_division',$last_division,'entry','')}" >{$lang->cmd_next}</a>
+<!--@endif-->
+
+</div>
+<!--@end-->
+<!--@if($module_info->list_more == 'Y')-->
+    <div class="elise-pagination cfix" cond="$document_list || $notice_list" id="pagess" style="display:none;">
+        <a href="{getUrl('page','','document_srl','','division',$division,'last_division',$last_division)}" class="page-direction page-prev"><span class="arrow-prev">←</span>First Page</a> 
+        <div class="page-list">
+        	<block loop="$page_no=$page_navigation->getNextPage()">
+            	<span cond="$page==$page_no" class="page page-current"><span class="page-current-mark"></span>{$page_no}</span>
+                <a cond="$page!=$page_no" class="page page-link" href="{getUrl('page',$page_no,'document_srl','','division',$division,'last_division',$last_division)}">{$page_no}</a>
+			</block>
+        </div>
+        <a href="{getUrl('page',$page_navigation->last_page,'document_srl','','division',$division,'last_division',$last_division)}" class="page-direction page-next">Last Page<span class="arrow-next">→</span></a>
+    </div><!-- .elise-pagination -->
+<!--@end-->

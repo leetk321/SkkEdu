@@ -1,0 +1,90 @@
+ <table cellpadding="0" cellspacing="0" border="0" class="smVt">
+	<tr style="background:<!--@if($oDocument->isNotice())-->#f7f7f7<!--@else--><!--@end-->">
+		<td class="no" title="<!--@if(!$oDocument->isNotice())-->{$lang->no} {$no}<!--@end-->" >
+                <!--@if($oDocument->isNotice())-->
+                <img src="./css/notice.gif" alt="notice" />
+                <!--@else--> 
+                	<!--@if($module_info->display_no !='N')-->{$no}
+               		<!--@else-->
+                		<!--@if($oDocument->printExtraImages(60*60*$module_info->duration_new))-->
+                		{$oDocument->printExtraImages(60*60*$module_info->duration_new)}
+                		<!--@else-->
+                		<img src="css/list.gif" title="{$lang->no} {$no}" alt="{$no}" />
+                		<!--@end-->
+                	<!--@end-->
+				<!--@end-->
+		</td>
+        <td class="smVtt" >
+        	<table border="0" align="left" cellpadding="0" cellspacing="0" style="table-layout:fixed">
+            <tr>
+				<td class="smVtt" style="word-break:break-all; word-wrap:break-word">
+                 <!--@if(!$oDocument->isNotice())-->
+                 <!--@if($module_info->use_category == "Y" && $oDocument->get('category_srl'))--><a href="{getUrl('category',$oDocument->get('category_srl'), 'document_srl', '')}" class="category">{$category_list[$oDocument->get('category_srl')]->title}</a><!--@end-->                   
+				<span class="s_name"><block cond="!$oDocument->getMemberSrl() && !$oDocument->isExistsHomepage()">{$oDocument->getNickName()}</block><a cond="$oDocument->getMemberSrl()" href="#popup_menu_area" class="member_{$oDocument->get('member_srl')}" onclick="return false">{$oDocument->getNickName()}</a></span>
+
+				<span class="bar">:</span>
+				<!--@end-->
+				<span class="s_text">
+                <font class="xe_content">{$oDocument->getTitle()}</font>
+                </span>
+				<!--@if(!$oDocument->isNotice())-->
+				<span class="s_count" cond="$oDocument->getCommentcount()">[{$oDocument->getCommentcount()}]</span>
+                <!--@end-->
+                <!--@if($module_info->display_no !='N')-->
+                {$oDocument->printExtraImages(60*60*$module_info->duration_new)}
+                <!--@elseif($oDocument->isNotice())-->
+                {$oDocument->printExtraImages(60*60*$module_info->duration_new)}
+                <!--@end-->
+                <span class="s_time" cond="$module_info->display_time!='N' && !$oDocument->isNotice()">
+				<!--@if( ($cur_date = date('Y-m-d'))==($oDocument->getRegdate('Y-m-d')) )--><font color="#FF6666">{$oDocument->getRegdate('H:i:s')}</font>
+                <!--@else-->
+                {$oDocument->getRegdate('y.m.d')}	
+                <!--@end-->       
+                </span>
+                <!--@if(!$oDocument->isNotice() && $grant->write_comment)-->
+                <a href="#" onclick="toggle_object('comment_{$oDocument->document_srl}'); return false;" class="s_op"><span class="btn_reply">{$lang->cmd_comment_registration}</span></a>
+                <!--@end-->
+                <span class="s_op"><a cond="$oDocument->isEditable()" href="{getUrl('act','dispBoardWrite','document_srl',$oDocument->document_srl,'comment_srl','')}" title="{$lang->cmd_modify}"><img src="./css/modify.gif" border="0" alt="{$lang->cmd_modify}" /></a></span>
+                
+                <span class="s_op"><a cond="$oDocument->isEditable()" href="{getUrl('act','dispBoardDelete','document_srl',$oDocument->document_srl, 'comment_srl','')}" title="{$lang->cmd_delete}"><img src="./css/delete.gif"  border="0" alt="{$lang->cmd_delete}" /></a></span>
+             	</td></tr></table>
+			</td>
+            <td cond="$grant->manager" class="checkbox"><input type="checkbox" name="cart" value="{$oDocument->document_srl}" class="iCheck" title="Check This Article" onclick="doAddDocumentCart(this)" checked="checked"|cond="$oDocument->isCarted()" /></td>
+	</tr>
+</table>
+
+<!-- 댓글 -->
+<div id="comment_{$oDocument->document_srl}" style="display:none; border-bottom:1px solid #ccc; background-color:#f7f7f7;">
+<!-- 댓글 입력 폼 -->
+<!--@if($grant->write_comment)-->
+<load target="filter/insert_comment.xml" />
+<form action="./" method="post" onsubmit="return procFilter(this, insert_comment)" >
+    <input type="hidden" name="mid" value="{$mid}" />
+    <input type="hidden" name="document_srl" value="{$oDocument->document_srl}" />
+    <input type="hidden" name="comment_srl" value="" />
+	<table cellpadding="0" cellspacing="0" class="smVtc" >
+	<tr>
+		<td width="90%">
+    	<div class="sc_content"><input type="text" name="content" style="width:100%; background:#FFF" class="iText"  /></div>
+		</td>
+        <td class="submit" style="padding:0px 20px;">
+		<input type="image" src="./css/write.gif"  value="{$lang->cmd_comment_registration}"  class="submit" />
+        </td>
+	</tr>
+	</table>
+			<div class="smVtc_author" cond="!$is_logged" >
+			<span class="item" cond="!$is_logged">
+				<label for="userName" class="iLabel">{$lang->writer}</label>
+				<input type="text" name="nick_name" class="iText userName" title="{$lang->writer}"  style="width:120px;" />
+			</span>
+            
+			<span class="item" cond="!$is_logged">
+				<label for="userPw" class="iLabel">{$lang->password}</label>
+				<input type="password" name="password" value="" title="{$lang->password}"  class="iText userPw" style="width:120px;" />
+			</span>
+            </div>
+</form>
+<!--@end-->        
+</div>
+<!-- 댓글 파일 include -->  
+<!--@if(!$oDocument->isNotice())--><include target="./comment.html" /><!--@end-->

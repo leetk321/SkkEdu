@@ -1,0 +1,19 @@
+<!--%import("filter/delete_log.xml")-->
+<!--#include("header.html")-->
+<h4 class="xeAdmin">{$lang->cmd_delete_pointgift_log}</h4>
+{@
+	$oMemberModel = &getModel('member');
+	$log_info->sender = $oMemberModel->getMemberInfoByMemberSrl($log_info->sender_srl);
+	$log_info->receiver = $oMemberModel->getMemberInfoByMemberSrl($log_info->receiver_srl);
+}
+<form action="./" method="post" onsubmit="return procFilter(this, delete_log)">
+	<input type="hidden" name="log_srl" value="{$log_srl}" />
+	{$lang->about_delete_log}
+	<ul>
+		<li>{$lang->sender} : <span class="member_{$log_info->sender_srl}">{$log_info->sender->nick_name}</span></li>
+		<li>{$lang->receiver} : <span class="member_{$log_info->receiver_srl}">{$log_info->receiver->nick_name}</span></li>
+		<li>{$lang->content} : {htmlspecialchars($log_info->comment)}</li>
+		<li>{$lang->point} : {number_format($log_info->point)}</li>
+	</ul>
+	<span class="button black strong"><input type="submit" value="{$lang->cmd_continue}" /></span> <a href="{getUrl('act','dispPointsendAdminLogList','log_srl','')}" class="button"><span >{$lang->cmd_back}</span></a>
+</form>

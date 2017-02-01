@@ -1,0 +1,24 @@
+<load target="filter/delete_comment.xml" />
+
+<!--@if(!$comment->isGranted())-->
+	<form action="./" method="get" onsubmit="return procFilter(this, input_password)" class="write_author xe_centent">
+			<input type="hidden" name="mid" value="{$mid}" />
+			<input type="hidden" name="page" value="{$page}" />
+    		<input type="hidden" name="document_srl" value="{$oDocument->document_srl}" />
+    <input type="hidden" name="comment_srl" value="{$comment->comment_srl}" />
+		<div class="sm-input-body">
+        <input type="password" name="password" required placeholder="{$lang->password}" style="background:#FFF"   />
+        <input type="submit" value="{$lang->cmd_input}" class="sm-btn" />
+        <a href="#" onclick="toggle_object('delete_{$comment->comment_srl}'); toggle_object('list_{$comment->comment_srl}'); return false;" title="{$lang->cmd_cancel}" class="sm-btn-de">{$lang->cmd_cancel}</a></div>
+	</form>
+	<!--@else-->
+	<form action="./" method="get" onsubmit="return procFilter(this, delete_comment)" class="write_author  xe_centent" no-error-return-url="true">
+	<input type="hidden" name="mid" value="{$mid}" />
+	<input type="hidden" name="page" value="{$page}" />
+	<input type="hidden" name="document_srl" value="{$oDocument->document_srl}" />
+    <input type="hidden" name="comment_srl" value="{$comment->comment_srl}" />
+    <div class="sm-input-body">
+    <input type="text" value="{$lang->cmd_comment_do} {$lang->confirm_delete}" style="width:50%" placeholder="Disabled input here..." disabled />
+    <input type="submit" value="{$lang->cmd_delete}" class="sm-btn" />
+    <a href="#" onclick="toggle_object('delete_{$comment->comment_srl}'); toggle_object('list_{$comment->comment_srl}'); return false;" title="{$lang->cmd_cancel}" class="sm-btn-de">{$lang->cmd_cancel}</a></div>  
+</form><!--@end-->

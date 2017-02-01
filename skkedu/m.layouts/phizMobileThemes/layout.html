@@ -1,0 +1,77 @@
+{@
+Context::addHtmlHeader('<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">');
+Context::addHtmlHeader('<meta name="format-detection" content="telephone=no" />');
+Context::addHtmlHeader('<meta name="apple-mobile-web-app-capable" content="yes" />');
+}
+
+<!--// css -->
+<load target="fonts/font-awesome/css/font-awesome.min.css" />
+<load target="css/style.css" />
+<!--// js -->
+<load target="../../common/js/jquery.min.js" index="-100006" />
+<load target="../../common/js/x.min.js" index="-100000" />
+<load target="../../common/js/xe.min.js" index="-100000" />
+<load target="js/js.js" />
+<load target="js/custom.js" />
+<block cond="$layout_info->editor_tool == 'no'">
+<style>
+.xpress-editor .tool {display: none;}
+</style>
+</block>
+<div class="page">
+{@
+if (!$layout_info->header_bg) $header_bg = 'f-header-inverse';
+if ($layout_info->header_bg) $header_bg = 'f-header-'.$layout_info->header_bg;
+if (!$layout_info->brand_color) $brand_color = 'brand-color-danger';
+if ($layout_info->brand_color) $brand_color = 'brand-color-'.$layout_info->brand_color;
+}
+<div id="header" class="header {$header_bg}">
+	<a class="mmenu" href="#menu"></a>
+	<!--@if($layout_info->logo_image)--><a class="mlogo" href="{$layout_info->index_url}"><img src="{$layout_info->logo_image}" alt="{$layout_info->logo_text}"|cond="$layout_info->logo_text" alt="logo"|cond="!$layout_info->logo_text" /></a><!--@else--><a class="mlogo {$brand_color}" href="{$layout_info->index_url}">{$layout_info->logo_text}</a><!--@end-->
+	<a href="#menu-right" class="friends right"></a>
+</div>
+<include target="mainpage.html" cond="$layout_info->mainPage == 'yes'" />
+	<!--// 컨텐츠 시작 -->
+	<div class="content" id="content">
+	{$content}
+	</div>
+<include target="phiz_themes/footer/footer.html" cond="$layout_info->footer_copyright" />
+<include target="phiz_themes/footer/footerInfo.html" cond="$layout_info->footer_info" />
+
+<nav id="menu">
+	<ul>
+		<li loop="$main_menu->list=>$key1,$val1" class="active"|cond="$val1['selected']"><a href="{$val1['href']}" target="_blank"|cond="$val1['open_window']=='Y'">{$val1['link']}</a>
+			<ul cond="$val1['list']">
+				<li loop="$val1['list']=>$key2,$val2" class="active"|cond="$val2['selected']"><a href="{$val2['href']}" target="_blank"|cond="$val2['open_window']=='Y'">{$val2['link']}</a>
+					<ul cond="$val2['list']">
+						<li loop="$val2['list']=>$key3,$val3" class="active"|cond="$val3['selected']"><a href="{$val3['href']}" target="_blank"|cond="$val3['open_window']=='Y'">{$val3['link']}</a></li>
+					</ul>
+				</li>
+			</ul>
+		</li>
+		<li class="phiz-license"><a href="http://phiz.kr/" target="_blank">by phiz</a></li>
+	</ul>
+
+</nav>
+<nav id="menu-right">
+	<ul>
+		<li cond="!$is_logged"><a href="{getUrl('act','dispMemberLoginForm')}"><i class="fa fa-key"></i>&nbsp;{$lang->cmd_login}</a></li>
+		<li cond="!$is_logged"><a href="{getUrl('act','dispMemberSignUpForm')}"><i class="fa fa-sign-in"></i>&nbsp;{$lang->cmd_signup}</a></li>
+		<li cond="!$is_logged"><a href="{getUrl('act','dispMemberFindAccount')}"><i class="fa fa-question-circle"></i>&nbsp;{$lang->cmd_find_member_account}</a></li>
+		<block cond="$is_logged">
+		<li><a href="{getUrl('act','dispMemberInfo','member_srl','')}"><i class="fa fa-user"></i>&nbsp;{$logged_info->nick_name}님</a></li>
+		<li><a href="{getUrl('act','dispMemberLogout')}"><i class="fa fa-sign-out"></i>&nbsp;{$lang->cmd_logout}</a></li>
+		<!--@if($logged_info->is_admin=="Y" && !$site_module_info->site_srl)-->
+		<li><a href="{getUrl('','module','admin')}" onclick="window.open(this.href);return false;"><i class="fa fa-cog"></i>&nbsp;{$lang->cmd_management}</a></li>
+		<!--@end-->
+		<li><a href="{getUrl('act','dispMemberInfo','member_srl','')}"><i class="fa fa-info-circle"></i>&nbsp;{$lang->cmd_view_member_info}</a></li>
+		<li cond="$layout_info->message == 'yes'"><a href="{getUrl('act','dispCommunicationMessages','member_srl','')}"><i class="fa fa-check-square-o"></i>&nbsp;{$lang->cmd_view_message_box}</a></li>
+		</block>
+		<li><a href="{getUrl('m',0)}"><i class="fa fa-desktop"></i>&nbsp;PC화면으로 보기</a></li>
+		<li cond="count($lang_supported)>1"><a href="{getUrl('act','dispModuleChangeLang','oldact',$act)}">LANG</a></li>
+	</ul>
+</nav>
+	<p id="back-top">
+		<a href="#top"><span></span></a>
+	</p>
+</div>

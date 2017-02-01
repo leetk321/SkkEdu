@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<addon version="0.2">
+	<title xml:lang="ko">회원 포인트 선물</title>
+	<description xml:lang="ko">
+	회원 팝업 메뉴에 포인트 선물 기능을 추가하여 포인트를 선물할 수 있도록 합니다.
+	</description>
+	<version>0.2.1</version>
+	<date>2012-10-01</date>
+
+	<author email_address="admin@funnyxe.com" link="http://funnyxe.com/xeQnA">
+		<name xml:lang="ko">퍼니엑스이</name>
+	</author>
+</addon>

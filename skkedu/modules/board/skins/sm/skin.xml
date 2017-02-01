@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<skin version="0.2">
+    <title xml:lang="ko">SH메모 스킨</title>
+    <description xml:lang="ko">소시랑닷컴(sosirang.com)</description>
+    <version>1.9.7</version>
+    <date>2014-04-20</date>
+
+    <author email_address="master@sosirang.com" link="http://www.sosirang.com">
+        <name xml:lang="ko">소시랑닷컴</name>
+	</author>
+
+    <license>GPLv2</license>
+
+    <extra_vars>
+		<var name="default_style" type="select" default="list">
+            <title xml:lang="ko">기본 형태</title>
+            <options value="list">
+                <title xml:lang="ko">한줄프로필메모</title>
+            </options>
+            <options value="none">
+                <title xml:lang="ko">한줄메모</title>
+            </options>
+			<options value="pp">
+                <title xml:lang="ko">한줄프로필메모형식(프로필미지원)</title>
+            </options>
+        </var>
+		
+		<var name="comment_profile" type="select">
+            <title xml:lang="ko">댓글프로필이미지 표시</title>
+            <options value="Y">
+                <title xml:lang="ko">출력</title>
+            </options>
+            <options value="N">
+                <title xml:lang="ko">출력하지 않음</title>
+            </options>
+        </var>
+		
+        <var name="duration_new" type="text" default="24">
+            <title xml:lang="ko">new표시 시간 (hours)</title>
+            <description xml:lang="ko">새로 등록된 게시물의 new 표시시간을 정할 수 있습니다.</description>
+        </var>
+
+		<var name="profile_img" type="image">
+            <title xml:lang="ko">프로필없음(비회원)</title>
+            <description xml:lang="ko">기본 35x35 사이즈이며 사이즈 상관없이 고정됩니다.</description>
+        </var>
+		
+		<var name="profile_member" type="image">
+            <title xml:lang="ko">프로필없음(회원)</title>
+            <description xml:lang="ko">기본 35x35 사이즈이며 사이즈 상관없이 고정됩니다.</description>
+        </var>
+		
+		<var name="list_more" type="select">
+            <title xml:lang="ko">더보기</title>
+            <options value="Y">
+                <title xml:lang="ko">기본보기</title>
+            </options>
+            <options value="N">
+                <title xml:lang="ko">스크롤/버튼(베타)</title>
+            </options>
+			<description xml:lang="ko">더보기의 경우 베타이므로 권장하지 않습니다.</description>
+        </var>
+		
+		<var name="more_button" type="select">
+            <title xml:lang="ko">더보기옵션</title>
+            <options value="Y">
+                <title xml:lang="ko">버튼더보기</title>
+            </options>
+            <options value="N">
+                <title xml:lang="ko">스크롤더보기</title>
+            </options>
+			<description xml:lang="ko">버튼형식과 스크롤형식을 설정합니다.</description>
+        </var>
+		
+		<var name="notice_name" type="select">
+            <title xml:lang="ko">공지작성자 표시</title>
+            <options value="Y">
+                <title xml:lang="ko">작성자로 출력</title>
+            </options>
+            <options value="N">
+                <title xml:lang="ko">'공지'로 출력</title>
+            </options>
+			<options value="S">
+                <title xml:lang="ko">표시안함</title>
+            </options>
+        </var>
+		
+		<var name="notice_comment" type="select">
+            <title xml:lang="ko">공지댓글 표시</title>
+            <options value="Y">
+                <title xml:lang="ko">출력</title>
+            </options>
+            <options value="N">
+                <title xml:lang="ko">출력하지 않음</title>
+            </options>
+        </var>
+		
+		<var name="action" type="select">
+            <title xml:lang="ko">글/댓글 액션</title>
+            <options value="Y">
+                <title xml:lang="ko">마우스오버시 출력</title>
+            </options>
+            <options value="N">
+                <title xml:lang="ko">그냥 출력(비권장)</title>
+            </options>
+        </var>
+
+		<var name="display_time" type="select">
+            <title xml:lang="ko">작성시간 표시</title>
+            <options value="Y">
+                <title xml:lang="ko">출력</title>
+            </options>
+            <options value="N">
+                <title xml:lang="ko">출력하지 않음</title>
+            </options>
+        </var>
+		
+		<var name="display_total" type="select">
+            <title xml:lang="ko">전체글수 표시</title>
+            <options value="Y">
+                <title xml:lang="ko">출력</title>
+            </options>
+            <options value="N">
+                <title xml:lang="ko">출력하지 않음</title>
+            </options>
+        </var>
+		
+		<var name="display_title" type="select">
+            <title xml:lang="ko">타이틀 표시</title>
+            <options value="Y">
+                <title xml:lang="ko">출력</title>
+            </options>
+            <options value="N">
+                <title xml:lang="ko">출력하지 않음</title>
+            </options>
+        </var>
+
+		<var name="display_comment" type="select">
+            <title xml:lang="ko">댓글 표시</title>
+            <options value="Y">
+                <title xml:lang="ko">펼치기</title>
+            </options>
+            <options value="N">
+                <title xml:lang="ko">숨기기</title>
+            </options>
+			<description xml:lang="ko">숨기기 선택시 댓글작성시 작성위치로 이동이 되지 않으며 알림센터가 정상동작하지 않습니다.</description>
+        </var>
+		
+		<var name="display_checkbox" type="select">
+            <title xml:lang="ko">체크박스 표시</title>
+			<options value="Y">
+                <title xml:lang="ko">출력</title>
+            </options>
+            <options value="N">
+                <title xml:lang="ko">출력하지 않음</title>
+            </options>
+
+        </var>
+
+		<var name="display_search" type="select">
+            <title xml:lang="ko">검색 표시</title>
+            <options value="Y">
+                <title xml:lang="ko">출력</title>
+            </options>
+            <options value="N">
+                <title xml:lang="ko">출력하지 않음</title>
+            </options>
+
+        </var>
+		
+		<var name="display_parent" type="select">
+            <title xml:lang="ko">대댓글시 댓글대상자 표시</title>
+            <options value="Y">
+                <title xml:lang="ko">출력</title>
+            </options>
+            <options value="N">
+                <title xml:lang="ko">출력하지 않음</title>
+            </options>
+			<description xml:lang="ko">대댓글시 댓글대상자를 표시해줍니다.</description>
+        </var>
+		
+		<var name="display_depth" type="select">
+            <title xml:lang="ko">대댓글 수</title>
+			<options value="0">
+                <title xml:lang="ko">기본(없음)</title>
+            </options>
+            <options value="1">
+                <title xml:lang="ko">1단</title>
+            </options>
+			<options value="2">
+                <title xml:lang="ko">2단</title>
+            </options>
+			<options value="3">
+                <title xml:lang="ko">3단</title>
+            </options>
+			<options value="4">
+                <title xml:lang="ko">4단</title>
+            </options>
+			<options value="5">
+                <title xml:lang="ko">5단</title>
+            </options>
+			<options value="10">
+                <title xml:lang="ko">10단</title>
+            </options>
+            <description xml:lang="ko">대댓글 수를 제한합니다</description>
+        </var>
+
+    </extra_vars>
+</skin>

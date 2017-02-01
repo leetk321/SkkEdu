@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<addon version="0.2">
+	<title xml:lang="ko">Naver Analytics</title>
+    <title xml:lang="en">Naver Analytics</title>
+    <title xml:lang="jp">Naver Analytics</title>
+    <title xml:lang="zh-CN">Naver Analytics</title>
+    <title xml:lang="zh-TW">Naver Analytics</title>
+    <title xml:lang="vi">Naver Analytics</title>
+    <title xml:lang="es">Naver Analytics</title>
+    <title xml:lang="ru">Naver Analytics</title>
+    <title xml:lang="tr">Naver Analytics</title>
+    <description xml:lang="ko">Naver Analytics의 코드를 사이트에 쉽게 적용할 수 있습니다.</description>
+    <description xml:lang="en">This addon inserts Naver Analytics code to site.</description>
+    <description xml:lang="jp">Naver Analyticsのコードをサイトに挿入できます。</description>
+    <description xml:lang="zh-CN">This addon inserts Naver Analytics code to site.</description>
+    <description xml:lang="zh-TW">This addon inserts Naver Analytics code to site.</description>
+    <description xml:lang="vi">This addon inserts Naver Analytics code to site.</description>
+    <description xml:lang="es">This addon inserts Naver Analytics code to site.</description>
+    <description xml:lang="ru">This addon inserts Naver Analytics code to site.</description>
+    <description xml:lang="tr">This addon inserts Naver Analytics code to site.</description>
+    <version>1.2</version>
+    <date>2014-03-28</date>
+    <author email_address="beom@xdt.kr" link="http://www.xedesignteam.com" >
+        <name xml:lang="ko">범진혁</name>
+		<name xml:lang="en">Beom Jinhyeok</name>
+		<name xml:lang="jp">Beom Jinhyeok</name>
+        <name xml:lang="zh-CN">Beom Jinhyeok</name>
+		<name xml:lang="zh-TW">Beom Jinhyeok</name>
+        <name xml:lang="vi">Beom Jinhyeok</name>
+        <name xml:lang="es">Beom Jinhyeok</name>
+        <name xml:lang="ru">Beom Jinhyeok</name>
+		<name xml:lang="tr">Beom Jinhyeok</name>
+    </author>
+    <extra_vars>
+    <var name="n_id" type="text" >
+		<title xml:lang="ko">발급 ID 설정</title>
+        <title xml:lang="en">Issuing ID setting</title>
+        <title xml:lang="jp">Issuing ID setting</title>
+        <title xml:lang="zh-CN">Issuing ID setting</title>
+        <title xml:lang="zh-TW">Issuing ID setting</title>
+        <title xml:lang="vi">Issuing ID setting</title>
+        <title xml:lang="es">Issuing ID setting</title>
+        <title xml:lang="ru">Issuing ID setting</title>
+        <title xml:lang="tr">Issuing ID setting</title>
+        <description xml:lang="ko">Naver Analytics의 분석코드 발급 ID 값을 입력해주세요. ( http://analytics.naver.com ).</description>
+        <description xml:lang="en">Please input Issuing ID from Naver Analytics code.</description>
+        <description xml:lang="jp">Naver Analyticsコードの「Issuing ID」の値を入力してください。</description>
+        <description xml:lang="zh-CN">请输入Naver Analytics代码的Issuing ID值。</description>
+        <description xml:lang="zh-TW">Please input Issuing ID from Naver Analytics code.</description>
+        <description xml:lang="vi">Please input Issuing ID from Naver Analytics code.</description>
+        <description xml:lang="es">Por favor, de entrada Issuing ID código de Naver Analytics.</description>
+        <description xml:lang="ru">Please input Issuing ID from Naver Analytics code.</description>
+        <description xml:lang="tr">Please input Issuing ID from Naver Analytics code.</description>
+    </var>
+    </extra_vars>
+</addon>

@@ -1,0 +1,13 @@
+<include target="header.html" />
+
+<div class="me_typelist">
+	<table width="100%" cellpadding="0" cellspacing="0">
+		<!--@foreach($type_list as $key=>$val)-->
+		<tr>
+			<td align="left" class="me_desc"><h3>{$val->title}</h3><br /><span style="color:#666;">{$val->description}</span></td>
+			<td align="center" class="me_type"><span class="btn me_btn"><a href="{getUrl('','act','dispMemberSignUpForm',mid, $mid, 'member_type',$key)}" >가입하기</a></span></td>
+		</tr>
+		<!--@endforeach-->
+	</table>
+	
+</div>

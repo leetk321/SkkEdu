@@ -1,0 +1,63 @@
+
+<!--// 사용자 컬러셋 (폰트)-->
+<style type="text/css">
+<!--@if($layout_info->user_font_menu)-->
+.gnb li a{color:{$layout_info->user_font_menu}; }<!--@end-->
+<!--@if($layout_info->user_font_menu_hover)-->
+.gnb li a:hover{color:{$layout_info->user_font_menu_hover}; }
+.gnb .active_1{color:{$layout_info->user_font_menu_hover};}
+.gnb li:hover .hover_1{color:{$layout_info->user_font_menu_hover}; }<!--@end-->
+<!--@if($layout_info->user_font_menu2)-->
+.gnb li li{color:{$layout_info->user_font_menu2}; }
+.gnb li li a{color:inherit;}<!--@end-->
+<!--@if($layout_info->user_font_menu2_hover)-->
+.gnb li li a:hover{color:{$layout_info->user_font_menu2_hover}!important; }
+.gnb li li li a:hover{color:{$layout_info->user_font_menu2_hover}!important; }
+.gnb .active .active_a{color:{$layout_info->user_font_menu2_hover}; }
+.gnb .active_2 .active_2a{color:{$layout_info->user_font_menu2_hover}; }
+.gnb .active_3 .active_3a{color:{$layout_info->user_font_menu2_hover}; }
+.gnb li li:hover .view{border-left-color:{$layout_info->user_font_menu2_hover};}
+.gnb li li li:hover .view2{border-left-color:{$layout_info->user_font_menu2_hover};}
+.gnb .active .view{border-left-color:{$layout_info->user_font_menu2_hover};}
+.gnb .active_2 .view2{border-left-color:{$layout_info->user_font_menu2_hover};}<!--@end-->
+
+
+<!--@if($layout_info->user_font_submenu)-->
+.lnb li a{color:{$layout_info->user_font_submenu}; }
+.lnb .active li a{color:{$layout_info->user_font_submenu}; }<!--@end-->
+<!--@if($layout_info->user_font_submenu_hover)-->
+.lnb li a:hover{color:{$layout_info->user_font_submenu_hover}!important; }
+.lnb .active a{color:{$layout_info->user_font_submenu_hover}; }<!--@end-->
+
+<!--@if($layout_info->user_font_counter1)-->
+.qook_counter .first{color:{$layout_info->user_font_counter1}; }<!--@end-->
+<!--@if($layout_info->user_font_counter2)-->
+.qook_counter .second{color:{$layout_info->user_font_counter2}; }<!--@end-->
+<!--@if($layout_info->user_font_counter3)-->
+.qook_counter .number{color:{$layout_info->user_font_counter3}; }<!--@end-->
+<!--@if($layout_info->user_font_counter4)-->
+.qook_counter .number1{color:{$layout_info->user_font_counter4}; }<!--@end-->
+
+
+<!--@if($layout_info->user_font_bottom_menu)-->
+.menu_bottom .auto_float li a{color:{$layout_info->user_font_bottom_menu}; }<!--@end-->
+<!--@if($layout_info->user_font_bottom_menu_hover)-->
+.menu_bottom .auto_float li a:hover{color:{$layout_info->user_font_bottom_menu_hover}; }<!--@end-->
+
+
+<!--@if($layout_info->user_font_sitemap)-->
+.menu_bottom .site_map_btn{color:{$layout_info->user_font_sitemap}; }<!--@end-->
+<!--@if($layout_info->user_font_sitemap_hover)-->
+.menu_bottom .site_map_btn:hover{color:{$layout_info->user_font_sitemap_hover}; }<!--@end-->
+
+.menu_bottom .family_site_btn{background:{$layout_info->user_font_family_bg}; color:{$layout_info->user_font_family};}
+
+
+
+<!--@if($layout_info->user_font_simple_menu)-->
+.simple_menu li a{color:{$layout_info->user_font_simple_menu}; }<!--@end-->
+<!--@if($layout_info->user_font_info)-->
+.menu .login_btn a{color:{$layout_info->user_font_info};}<!--@end-->
+
+</style>
+

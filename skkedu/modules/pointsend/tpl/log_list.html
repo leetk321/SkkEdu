@@ -1,0 +1,108 @@
+<include target="header.html" />
+
+<h2>{$lang->cmd_pointsend_log_list}</h2>
+
+<ul class="x_nav x_nav-pills" cond="in_array($act, $logAct)">
+	<li class="x_active"|cond="$act == 'dispPointsendAdminLogList'">
+		<a href="{getUrl('', 'module', 'admin', 'act', 'dispPointsendAdminLogList')}">회원 포인트 선물</a>
+	</li>
+	<li class="x_active"|cond="$act == 'dispPointsendAdminBatchLogList'">
+		<a href="{getUrl('', 'module', 'admin', 'act', 'dispPointsendAdminBatchLogList')}">일괄 포인트 선물</a>
+	</li>
+</ul>
+
+<table class="x_table x_table-striped x_table-hover">
+	<caption>
+		{$lang->total}({$total_count})
+	</caption>
+	<thead>
+		<tr>
+			<th>{$lang->no}</th>
+			<th>{$lang->sender}</th>
+			<th>{$lang->receiver}</th>
+			<th>{$lang->point}</th>
+			<th>{$lang->ipaddress}</th>
+			<th>{$lang->date}</th>
+			<th>&nbsp;</th>
+		</tr>
+	</thead>
+	<tbody>
+		<!--@if(count($log_list))-->
+		{@ $oMemberModel = getModel('member')}
+		<!--@foreach($log_list as $no => $val)-->
+		{@
+			$sender = $oMemberModel->getMemberInfoByMemberSrl($val->sender_srl);
+			$receiver = $oMemberModel->getMemberInfoByMemberSrl($val->receiver_srl);
+		}
+		<tr>
+			<td>{$no}</td>
+			<td>
+				<div class="member_{$sender->member_srl}">{$sender->nick_name}</div>
+			</td>
+			<td>
+				<div class="member_{$receiver->member_srl}">{$receiver->nick_name}</div>
+			</td>
+			<td>{$val->point}</td>
+			<td>{$val->ipaddress}</td>
+			<td>{zdate($val->regdate)}</td>
+			<td class="center">
+				<a href="{getUrl('act','dispPointsendAdminRevert','log_srl',$val->log_srl)}" title="{$lang->cmd_revert_pointgift}"><span class="buttonSet buttonDisable"></span></a>&nbsp;&nbsp;
+				<a href="{getUrl('act','dispPointsendAdminDeleteLog','log_srl',$val->log_srl)}" title="{$lang->cmd_delete}">
+					<i class="x_icon-remove"></i> {$lang->cmd_delete}
+				</a>
+			</td>
+		</tr>
+		<tr cond="$val->comment">
+			<td colspan="7">{htmlspecialchars($val->comment)}</td>
+		</tr>
+		<!--@end-->
+		<!--@else-->
+		<tr>
+			<td style="text-align:center" colspan="7">{$lang->msg_not_exists_pointgift_log}</td>
+		</tr>
+		<!--@end-->
+	</tbody>
+</table>
+
+<div class="x_clearfix">
+	<form action="./" class="x_pagination x_pull-left">
+		<input type="hidden" name="module" value="admin">
+		<input type="hidden" name="act" value="dispPointsendAdminLogList">
+		<ul>
+			<li class="x_disabled"|cond="$page == $page_navigation->first_page">
+				<a href="{getUrl('page', $page_navigation->first_page)}">« {$lang->first_page}</a>
+			</li>
+			<li class="x_active"|cond="$page_no == $page" loop="$page_no = $page_navigation->getNextPage()">
+				<a href="{getUrl('page', $page_no)}">{$page_no}</a>
+			</li>
+			<li class="x_disabled"|cond="$page == $page_navigation->last_page">
+				<a href="{getUrl('page', $page_navigation->last_page)}" title="{$page_navigation->last_page}">{$lang->last_page} »</a>
+			</li>
+		</ul>
+	</form>
+
+	<div class="x_pull-right">
+		<!--// TODO -->
+	</div>
+</div>
+
+<form action="./" method="get" class="search center x_input-append x_clearfix">
+	<input type="hidden" name="module" value="admin">
+	<input type="hidden" name="act" value="dispPointsendAdminLogList">
+	<select name="search_target" title="{$lang->search_target}" style="margin-right:4px">
+		<option value="">{$lang->search_target}</option>
+		<option value="s_nick_name" selected="selected"|cond="$search_target == 's_nick_name'">{$lang->sender} ({$lang->nick_name})</option>
+		<option value="s_user_id" selected="selected"|cond="$search_target == 's_user_id'">{$lang->sender} ({$lang->user_id})</option>
+		<option value="r_nick_name" selected="selected"|cond="$search_target == 'r_nick_name'">{$lang->receiver} ({$lang->nick_name})</option>
+		<option value="r_user_id" selected="selected"|cond="$search_target == 'r_user_id'">{$lang->receiver} ({$lang->user_id})</option>
+		<option value="point_more" selected="selected"|cond="$search_target == 'point_more'">{$lang->point} (이상)</option>
+		<option value="point_less" selected="selected"|cond="$search_target == 'point_less'">{$lang->point} (이하)</option>
+		<option value="regdate_more" selected="selected"|cond="$search_target == 'regdate_more'">{$lang->date} (이상)</option>
+		<option value="regdate_less" selected="selected"|cond="$search_target == 'regdate_less'">{$lang->date} (이하)</option>
+		<option value="ipaddress" selected="selected"|cond="$search_target == 'ipaddress'">{$lang->ipaddress}</option>
+	</select>
+	<input type="text" name="search_keyword" value="" title="{$lang->cmd_search}">
+	<button type="submit" class="x_btn x_btn-inverse">{$lang->cmd_search}</button>
+	<a href="{getUrl('act', 'dispPointsendAdminLogList', 'search_target', '', 'search_keyword', '')}" class="x_btn">{$lang->cmd_cancel}</a>
+</form>
+

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module version="0.2">
+	<title xml:lang="ko">부 운영자 모듈</title>
+	<description xml:lang="ko">간단한 회원 관리를 할 수 있는 부운영자 모듈입니다. 
+	모든 게시판 관리자들이 접근 가능합니다. 원본 제작자 : 송동우 (http://www.xpressengine.com/tip/20496492)</description>
+	<version>0.2.0</version>
+	<date>2012-09-27</date>
+	<category>member</category>
+	<author email_address="showjean@naver.com" link="http://showjean.com/xe">
+		<name xml:lang="ko">showjean</name>
+	</author>
+</module>

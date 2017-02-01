@@ -1,0 +1,17 @@
+<filter name="insert_config" module="lottery" act="procLotteryAdminConfig" confirm_msg_code="confirm_update">
+    <form>
+        <node target="price" filter="number" />
+        <node target="today_max_count" filter="number" />
+        <node target="first_point" required="true" filter="number" />
+        <node target="first_per" required="true" filter="number" maxlength="3" />
+        <node target="two_point" required="true" filter="number" />
+        <node target="two_per" required="true" filter="number" maxlength="3" />
+        <node target="three_point" required="true" filter="number" />
+        <node target="three_per" required="true" filter="number" maxlength="3" />
+        <node target="four_point" required="true" filter="number" />
+        <node target="four_per" required="true" filter="number" maxlength="3" />
+        <node target="five_point" required="true" filter="number" />
+        <node target="five_per" required="true" filter="number" maxlength="3" />
+    </form>
+    <response />
+</filter>

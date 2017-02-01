@@ -1,0 +1,108 @@
+<include target="./common_header.html" />
+<load target="../../../member/skins/default/filter/openid_login.xml" />
+<div class="signin">
+	<div class="login-header">
+		<h1><i class="icon-user"></i> {$lang->cmd_login}</h1>
+	</div>
+	<div class="login-body">
+		<div cond="$XE_VALIDATOR_MESSAGE && $XE_VALIDATOR_ID == 'modules/member/skins'" class="message {$XE_VALIDATOR_MESSAGE_TYPE}">
+			<p>{$XE_VALIDATOR_MESSAGE}</p>
+		</div>
+		<form ruleset="@login" action="{getUrl('')}" method="post" id="fo_member_login">
+			<input type="hidden" name="success_return_url" value="{$referer_url}" />
+			<input type="hidden" name="act" value="procMemberLogin" />
+			<input type="hidden" name="xe_validator_id" value="modules/member/skins" />
+			<fieldset>
+				<div class="control-group">
+					<input type="text" cond="$identifier == 'user_id'" name="user_id" id="uid" required placeholder="{$lang->user_id}" title="{$lang->user_id}" />
+					<input type="email" cond="$identifier != 'user_id'" name="user_id" id="uid" required placeholder="{$lang->email_address}" title="{$lang->email_address}" />
+					<input type="password" name="password" id="upw" required placeholder="{$lang->password}" title="{$lang->password}" />
+				</div>
+				<div class="control-group">
+					<label for="keepid_opt">
+						<input type="checkbox" name="keep_signed" id="keepid_opt" value="Y" />
+						{$lang->keep_signed}
+					</label>
+					<div id="warning">
+						<p>{$lang->about_keep_warning}</p>
+					</div>
+					<input type="submit" value="{$lang->cmd_login}" class="submit btn btn-inverse" />
+				</div>
+			</fieldset>
+		</form>
+	</div>
+	<block cond="$config->limit['use_nomember'] == 'Y'">
+	<div class="login-header">
+		<h1><i class="icon-user"></i>비회원 임시 인증</h1>
+	</div>
+	<div class="login-footer">
+		<a href="#AuthArea" class="mobilebutton" title="휴대폰 안심본인인증" onClick="return checkAgree('jsSubmit');">휴대폰으로 본인인증</a>
+		|
+		<a href="#AuthArea" class="ipinbutton" title="아이핀 본인인증" onClick="return checkAgree('certKCBIpin');">아이핀(i-PIN)으로 인증</a>
+	</div>
+	</block>
+	<div class="login-footer">
+		<a href="{getUrl('act','dispMemberFindAccount')}">{$lang->cmd_find_member_account}</a>
+		|
+		<a href="{getUrl('act','dispMemberSignUpForm')}">{$lang->cmd_signup}</a>
+	</div>
+</div>
+<script>
+jQuery(function($){
+	var keep_msg = $('#warning');
+	keep_msg.hide();
+	$('#keepid_opt').change(function(){
+		if($(this).is(':checked')){
+			keep_msg.slideDown(200);
+		} else {
+			keep_msg.slideUp(200);
+		}
+	});
+});
+</script>
+<include target="./common_footer.html" />
+
+<form name="kcbInForm" method="post">
+  <input type="hidden" name="IDPCODE" value="{$idpCode}" />
+  <input type="hidden" name="IDPURL" value="{$idpUrl}" />
+  <input type="hidden" name="CPCODE" value="{$cpCode}" />
+  <input type="hidden" name="CPREQUESTNUM" value="{$curtime}" />
+  <input type="hidden" name="RETURNURL" value="{$returnUrl}" />
+  <input type="hidden" name="WEBPUBKEY" value="{$pubkey}" />
+  <input type="hidden" name="WEBSIGNATURE" value="{$sig}" />
+</form>
+<form name="auth_frm" method="post">
+<input type="hidden" name="tc" value="kcb.oknm.online.safehscert.popup.cmd.P901_CertChoiceCmd">
+<input type="hidden" name="rqst_data" id="rqst_data"	value="{$rqst_data}">
+<input type="hidden" name="target_id"	value="">
+</form>
+<form name="kcbResultForm" method="post" >
+	<input type="hidden" name="idcf_mbr_com_cd" 		value="" />
+	<input type="hidden" name="hs_cert_svc_tx_seqno" 	value=""	/>
+	<input type="hidden" name="hs_cert_msr_cd" 			value="" />
+	<input type="hidden" name="hs_cert_rqst_caus_cd" 	value="" />
+	<input type="hidden" name="result_cd" 				value="" 	/>
+	<input type="hidden" name="result_msg" 				value="" 	/>
+	<input type="hidden" name="act" value="" />
+	<input type="hidden" name="signupform" value="{$signup}" />
+	<input type="hidden" name="ss" value="nm" />
+</form>
+<form name="kcbOutForm" method="post">
+  <input type="hidden" name="encPsnlInfo" />
+  <input type="hidden" name="virtualno" />
+  <input type="hidden" name="dupinfo" />
+  <input type="hidden" name="realname" />
+  <input type="hidden" name="cprequestnumber" />
+  <input type="hidden" name="age" />
+  <input type="hidden" name="sex" />
+  <input type="hidden" name="nationalinfo" />
+  <input type="hidden" name="birthdate" />
+  <input type="hidden" name="coinfo1" />
+  <input type="hidden" name="coinfo2" />
+  <input type="hidden" name="ciupdate" />
+  <input type="hidden" name="cpcode" />
+  <input type="hidden" name="authinfo" />
+  <input type="hidden" name="act" value="" />
+  <input type="hidden" name="signupform" value="{$signup}" />
+  <input type="hidden" name="ss" value="nm" />
+</form>

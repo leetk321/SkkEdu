@@ -1,0 +1,35 @@
+<!--#include("common_header.html")-->
+<table cellpadding="0" cellspacing="0" class="rowTable">
+	<thead>
+	<tr>
+		<th class="title">{$lang->no}</th>
+		<th class="title">{$lang->sender}</th>
+		<th class="title">{$lang->receiver}</th>
+		<th class="title">{$lang->point}</th>
+		<th class="title">{$lang->content}</th>
+	</tr>
+	</thead>
+	<tbody>
+	<!--@if(count($log_list))-->
+	<!--@foreach($log_list as $no => $log)-->
+	{@
+		$oMemberModel = &getModel('member');
+		$sender_info = $oMemberModel->getMemberInfoByMemberSrl($log->sender_srl);
+		$receiver_info = $oMemberModel->getMemberInfoByMemberSrl($log->receiver_srl);
+	}
+	<tr>
+		<td>{$no}</td>
+		<td><div class="member_{$log->sender_srl}">{$sender_info->nick_name}</div></td>
+		<td><div class="member_{$log->receiver_srl}">{$receiver_info->nick_name}</div></td>
+		<td>{$log->point}</td>
+		<td><div>{htmlspecialchars($log->comment)}</div></td>
+	</tr>
+	<!--@end-->
+	<!--@else-->
+	<tr>
+		<td colspan="5"></td>
+	</tr>
+	<!--@end-->
+	</tbody>
+</table>
+<!--#include("common_footer.html")-->

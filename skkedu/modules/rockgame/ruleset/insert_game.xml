@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<ruleset version="1.5.0">     
+	<customrules>     
+	</customrules>     
+	<fields>         
+		<field name="game_point" required="true" rule="number" /> 
+	</fields> 
+</ruleset> 
+
+
+<!--
+
+customrules  사용자 정의 규칙을 정의할 수 있습니다. 
+ rule  사용자 정의 규칙 
+  name 사용자 정의 규칙의 이름 
+  type 사용자 정의 규칙의 유형. "regex", "enum", "expression" 중 하나를 사용할 수 있습니다.   "regex": 정규표현식을 작성할 때  "enum": 주어진 값 중 하나만 선택할 수 있을 때  "expression": 수식이 필요할 때 
+  test 사용자 정의 규칙의 테스트 코드 
+fields  유효성을 검사할 필드의 모임 
+ field  유효성을 검사할 필드 
+  name 폼 요소 이름 
+  rule 적용할 규칙 
+  required="true" 반드시 입력해야 합니다. 
+  length 길이 제한. "최소:최대"와 같이 작성할 수 있습니다. 
+  default 기본값. 
+  equalto equalto에 넣은 요소의 값이 현재 요소의 값과 같아야 함을 나타 냅니다(비밀번호, 비밀번호 확인 등). 
+  modifier 규칙을 사용하기 전에 입력값을 변경하거나 검사를 마친 후 결과 를 변경할 수 있는 기능. 
+
+-->

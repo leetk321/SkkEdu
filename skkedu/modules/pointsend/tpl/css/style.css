@@ -1,0 +1,9 @@
+#content .section label { vertical-align:middle; }
+#content .section .lblContent { padding:0 0 166px 0; vertical-align:top; }
+
+#content .inputTitle,
+#content .inputContent { width:50%; }
+
+#content .inputContent { height:166px; overflow:auto; }
+
+.table td strong.alert { color:red; }

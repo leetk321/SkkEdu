@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<addon version="0.2">
+    <title>Elkha - Simple Spam</title>
+    <description>
+		rpTPRRLEMF TlqTPRRLemf
+    </description>
+    <version>0.1</version>
+    <date>2013-10-05</date>
+
+    <author email_address="m@elkha.kr" link="http://elkha.kr/">
+        <name>Elkha</name>
+    </author>
+	<extra_vars>
+		<var name="email_address" type="text">
+			<title>관리자 메일주소</title>
+		</var>
+	</extra_vars>
+</addon>

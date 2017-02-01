@@ -1,0 +1,8 @@
+<filter name="init" module="loginlog" act="procLoginlogAdminInitLogs">
+	<form />
+	<parameter />
+	<response callback_func="completeInsertConfig">
+		<tag name="error" />
+		<tag name="message" />
+	</response>
+</filter>

@@ -1,0 +1,76 @@
+<!--%import("css/default.css")-->
+
+<div id="popHeader" class="wide">
+    <h3 class="xeAdmin">{$lottery_config->title}</h3>
+</div>
+
+<div id="popBody">
+
+    <h4 class="xeAdmin">이용방법</h4> 
+    <p class="summary">
+        1. 구입버튼을 클릭하여 복권을 구입합니다.<br />
+        2. 마우스로 복권을 긁으면 당첨여부에 따라 포인트가 지급됩니다.<br />
+    </p>
+    <h4 class="xeAdmin">복권정보</h4> 
+    <p class="summary">
+        ※ 1회참여시 {$lottery_config->price}포인트가 소모됩니다.<br />
+        <!--@if($lottery_config->today_max_count)-->※ 하루 {$lottery_config->today_max_count}회 참여 가능하며, 현재 {$my_today_count}회 참여 하셨습니다.<br /><!--@end-->
+        ※ 1등 당첨금 : {number_format($lottery_config->first_point)} / 2등 당첨금 : {number_format($lottery_config->two_point)} / 3등 당첨금 : {number_format($lottery_config->three_point)} / 4등 당첨금 : {number_format($lottery_config->four_point)} / 5등 당첨금 : {number_format($lottery_config->five_point)}
+    </p>
+    <table cellspacing="0" class="rowTable">
+    <tr>
+        <th scope="row"><div>포인트</div></th>
+        <td class="wide">{number_format($logged_info->point)}</td>
+    </tr>
+    <tr>
+        <th scope="row">
+            <p><span class="button black strong"><input type="button" value="구입" onclick="lotteryBuy();" /></span></p>
+            <p><span class="button red strong"><input type="button" value="수령" onclick="lotteryPointReceive();" /></span></p>
+        </th>
+        <td class="wide">
+            <div class="lottery">
+                <div class="title">{$lottery_config->title}</div>
+                <div id="number">구입 하세요.</div>
+                <div id="number_bg">
+                    <ul>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                    <ul>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                    <ul>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                    <ul>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                </div>
+            </div>
+        </td>
+    </tr>
+    </table>
+</div>
+
+<script type="text/javascript">
+var confirm_buy = "복권을 구입하시겠습니까?\n({$lottery_config->price}point가 차감됩니다.)";
+</script>

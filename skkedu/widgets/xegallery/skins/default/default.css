@@ -1,0 +1,12 @@
+@charset "utf-8";
+.xgDFdfBox ul {margin:0;padding:0;display: inline-block;list-style:none;}
+.xgDFdfBox ul:after {content: "";}
+.xgDFdfBox li {float:left;font-size:0;padding:0px;}
+.xgDFdfBox .xgDFdfCM {position:absolute;left:5px;top:5px;}
+.xgDFdfBox .xgDFdfCM .pluginCountButton {background:white;border:1px solid #C1C1C1;height:14px;line-height:14px;margin-left:6px;min-width:15px;padding:1px 2px;text-align:center;white-space:nowrap;}
+.xgDFdfBox .xgDFdfCM .pluginCountButton span {font-size:11px;}
+.xgDFdfBox .xgDFdfCM .pluginCountButtonNub {height:0;left:2px;position:relative;top:-14px;width:5px;z-index:2;}
+.xgDFdfBox .xgDFdfCM .pluginCountButtonNub s, .xgDFdfBox .pluginCountButtonNub i {border-color:transparent #D7D7D7 transparent;border-style:solid;border-width:4px 5px 4px 0;display:block;position:relative;top:1px;}
+.xgDFdfBox .xgDFdfCM .pluginCountButtonNub i {border-right-color:white;left:2px;top:-7px;}
+.xgDFdfBox .xgDFdfTxt {position:absolute;left:0;bottom:0;opacity:0.8;filter:alpha(opacity=80);width:100%;padding-top:7px;text-align:center;}
+.xgDFdfBox .xgDFdfFade {opacity:0.4;filter:alpha(opacity=40);}

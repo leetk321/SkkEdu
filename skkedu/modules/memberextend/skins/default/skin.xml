@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<skin version="0.2">
+    <title xml:lang="ko">회원관리 확장모듈 기본 스킨</title>
+    <title xml:lang="en">Default MemberExtend Skin</title>
+    <description xml:lang="ko">
+		회원관리 확장모듈 기본스킨
+        skullacy (skullacy@gmail.com)
+    </description>
+    <description xml:lang="en">
+        The default skin of the memberextend
+        skullacy (skullacy@gmail.com)
+    </description>
+    <version>0.1</version>
+    <date>2013-06-11</date>
+
+    <author email_address="skullacy@gmail.com" link="http://www.skullacy.com/">
+        <name xml:lang="ko">skullacy</name>
+        <name xml:lang="en">skullacy</name>
+    </author>
+</skin>

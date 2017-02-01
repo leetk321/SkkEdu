@@ -1,0 +1,31 @@
+@charset "utf-8";
+
+/*내용*/
+.sm_category { padding-right:5px; margin-right:5px;}
+
+
+/*프로필이미지*/
+.img-circle {border-radius: 50%;width:32px;height:32px;}
+.img-circle-back {border-radius: 50%;width:32px;height:32px;   
+border: 1px solid #ccc;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+     -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+		  padding:2px;}
+.img-circle_comment {border-radius: 50%;width:25px !important;height:25px !important;}
+.img-circle-comment-back {border-radius: 50%;width:25px;height:25px;   
+border: 1px solid #ccc;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+     -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+		  padding:2px;}
+.img-circle-back{ background: url(user.png) no-repeat center center;} 
+.img-circle-comment-back	 { background: url(user-co.png) no-repeat center center;  float:left; } 
+
+/*댓글*/
+.ppp {padding:0 0 0 15px;margin-left:15px; background:url(iconReply.gif) no-repeat 0px 5px; display:block; z-index:5;}
+
+/* view_Document.html */
+.smVt li{padding:7px 10px; line-height:18px; min-height:37px;}

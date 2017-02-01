@@ -1,0 +1,44 @@
+{@Context::set('layout','none');}
+<load target="../../admin/tpl/css/admin.min.css" />
+
+<div cond="$XE_VALIDATOR_MESSAGE" class="message {$XE_VALIDATOR_MESSAGE_TYPE}">
+	<p>{$XE_VALIDATOR_MESSAGE}</p>
+</div>
+<div class="x content">
+
+	<form id="form_admin_config" class="form" action="./" method="post" enctype="multipart/form-data">
+		<input type="hidden" name="act" value="procVicemanagerAdminInsertConfig" />
+		<input type="hidden" name="module" value="vicemanager" />
+
+		<h1 class="h2" style="margin-bottom:20px">{$lang->VM_title}</h2>
+		<ul>
+			<li>
+				<p class="q">{$lang->VM_grant_check}</p>
+				<p class="a">
+					<!--@foreach($lang->VM_grant_types as $key=>$val)-->
+						<input type="checkbox" name="grant_types[]" id="grant_types_{$key}" value="{$key}" <!--@if(in_array($key,$vicemanager_config->grant_types))-->checked="checked"<!--@end--> /> <label for="grant_types_{$key}">{$val}</label>&nbsp;&nbsp;
+					<!--@end--> 
+				</p>{$lang->VM_about_grant_check}
+			</li>
+			<li>
+				<p class="q">{$lang->VM_vicemanager_srls}</p>
+				<p class="a"><input type="text" id="vicemanager_srls" name="vicemanager_srls" value="{$vicemanager_config->vicemanager_srls}" /></p>				
+				{$lang->VM_vicemanager_srls_about}
+			</li>
+			<li>
+				<p class="q">{$lang->VM_permit_module_admin}</p>
+				<p class="a"><input type="checkbox" id="permit_module_admin" name="permit_module_admin" value="Y" <!--@if($vicemanager_config->permit_module_admin)-->checked="checked"<!--@end--> />
+				<label for="permit_module_admin" >{$lang->VM_permit_module_admin_about}</label></p>
+			</li>
+			<li>
+				<p class="q">{$lang->VM_use_menu}</p>
+				<p class="a"><input type="checkbox" id="use_menu" name="use_menu" value="Y" <!--@if($vicemanager_config->use_menu)-->checked="checked"<!--@end--> /><label for="use_menu" >				{$lang->VM_about_use_menu}</label></p>
+			</li>
+		</ul>
+		<div class="btnArea">
+			<span class="btn"><button type="submit">{$lang->cmd_apply}</button></span>		
+		</div>
+	</form>
+</div>
+
+

@@ -1,0 +1,15 @@
+<filter name="insert" module="board" act="procBoardInsertDocument" >
+	<form>
+    <node target="nick_name" required="true" />
+    <node target="password" required="true" />
+    <node target="title" required="true" minlength="1" />
+    <node target="content" required="false" />
+  </form>
+  <response callback_func="completeDocumentInserted">
+    <tag name="error" />
+    <tag name="message" />
+    <tag name="mid" />
+    <tag name="document_srl" />
+    <tag name="category_srl" />
+  </response>
+</filter>

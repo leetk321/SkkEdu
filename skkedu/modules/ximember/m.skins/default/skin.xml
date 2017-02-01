@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<skin version="0.2">
+    <title xml:lang="ko">기본스킨</title>
+    <description xml:lang="ko">Xi회원모듈 모바일용 기본스킨입니다.</description>
+    <version>0.1</version>
+    <date>2014-07-28</date>
+    <author email_address="xiso@xiso.co.kr" link="http://xiso.co.kr">
+        <name xml:lang="ko">Xiso</name>
+    </author>
+    <license>GPL</license>
+</skin>

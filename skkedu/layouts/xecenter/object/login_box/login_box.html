@@ -1,0 +1,70 @@
+<load target="css/default.css" />
+<load target="filter/login.xml" />
+
+
+{@$member_config=MemberModel::getMemberConfig();$identifierForm->name=$member_config->identifier;} <!--// 로그인 이메일 설정확인을 위해 입력 -->
+
+<div class="login_wrap" cond="!$is_logged">
+	<div class="login_bg" onclick="jQuery('.login_wrap').fadeOut('slow')"></div>
+	<div class="login_box">
+		<img src="img/close.png" class="close" alt="close_btn" onclick="jQuery('.login_wrap').fadeOut('slow')" /> <!--// 종료버튼-->
+		<div class="login_content">
+			<div class="login_normal"><!--//일반로그인-->
+				<p class="login_text">{$lang->qc_login_site}<!--//사이트 로그인--></p> 
+				
+				<!--// 에러메세지 출력-->
+				<div class="error" cond="$XE_VALIDATOR_MESSAGE">{$XE_VALIDATOR_MESSAGE}</div>
+				
+				<form method="post" action="./" ruleset="@login">
+					<input type="hidden" name="act" value="procMemberLogin" />
+					<input type="hidden" name="success_return_url" value="{getRequestUriByServerEnviroment()}" />
+					
+					<div class="id_pw_wrap"><!--// 아이디//비밀번호-->
+						<input name="user_id" type="text" id="user_id"  required placeholder="<!--@if($member_config->identifier != 'email_address')-->{$lang->user_id}<!--@else-->{$lang->email_address}<!--@end-->{$lang->qc_login_intro2}<!--//를 입력해주세요-->" />
+						<img src="img/user.png" alt="id_img" class="id_img" />
+						<input name="password" type="password" id="password" required placeholder="{$lang->qc_login_intro}<!--//패스워드를 입력해주세요-->" />
+						<img src="img/password.png" alt="pw_img" class="pw_img" />
+					</div>
+					
+					<div class="btn_wrap"> <!--//회원가입/비번찾기-->
+						<input name="keep_signed" id="keep_signed" type="checkbox" value="Y" onclick="if(this.checked) return confirm('{$lang->about_keep_signed}');" />
+						<label for="keep_signed" style="cursor:pointer;">{$lang->qc_keep_login}<!--//로그인유지--></label>
+						<input name="" type="submit" value="{$lang->qc_login}<!--//로그인-->" class="submit" />
+					</div>
+				</form>
+				
+				<div class="ect_wrap">
+					<a class="enter" href="{getUrl('act','dispMemberSignUpForm')}">{$lang->qc_signup}<!--//회원가입--></a>
+					<a class="find" href="{getUrl('act','dispMemberFindAccount')}">{$lang->qc_lost_id}<!--//아이디/비밀번호를 잃어 버리셨나요?--></a>
+				</div>
+			</div>
+			
+			<div class="login_social" cond="$layout_info->sns_login_use == 'yes'"><!--//소셜로그인-->
+				<p class="login_text">{$lang->qc_social_login}<!--//간편 소셜 로그인--></p> 
+				<div class="social_img">
+					<a class="facebook" href="{getSiteUrl($domain,'', 'mid', $mid, 'vid', $vid, 'act', 'dispSocialxeLogin', 'provider', facebook, 'mode', 'socialLogin')}" title="Facebook 계정으로 로그인합니다"><img src="img/face.png" alt="페이스북"/></a>
+					<a class="twitter" href="{getSiteUrl($domain,'', 'mid', $mid, 'vid', $vid, 'act', 'dispSocialxeLogin', 'provider', twitter, 'mode', 'socialLogin')}" title="Twitter 계정으로 로그인합니다"><img src="img/Twitter.png" alt="트위터" /></a>
+					<a class="me2day" href="{getSiteUrl($domain,'', 'mid', $mid, 'vid', $vid, 'act', 'dispSocialxeLogin', 'provider', me2day, 'mode', 'socialLogin')}" title="Me2day 계정으로 로그인합니다"><img src="img/me2day.png" alt="미투데이"/></a>
+				</div>
+				<p class="social_text">페이스북, 트위터, 미투데이 아이디로  <br/> 회원가입 없이 손쉽게 로그인 하세요</p>
+			</div>
+		</div>
+
+	</div>
+
+</div>
+
+<script type="text/javascript">
+jQuery(function($){
+
+	$('a.my_login_btn').click(function(){ //로그인 클릭시 id에 포커스 가져가기
+		$('#user_id').focus();
+	});
+
+});
+</script>
+
+
+
+
+

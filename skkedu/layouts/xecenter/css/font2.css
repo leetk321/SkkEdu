@@ -1,0 +1,4 @@
+@charset "utf-8";
+
+@font-face{font-family:NBG;src:url(../font/NanumBarunGothic.eot);src:local(※),url(../font/NanumBarunGothic.woff) format('woff')}
+*{font-family:나눔바른고딕, NBG, NanumBarunGothic;}

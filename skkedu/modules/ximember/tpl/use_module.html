@@ -1,0 +1,59 @@
+<include target="header.html" />
+<form action="./" class="x_form-horizontal" method="post">
+	<input type="hidden" name="module" value="ximember" />
+	<input type="hidden" name="act" value="procXimemberAdminUseModule" />
+	<input type="hidden" name="success_return_url" value="{getUrl('', 'module', 'admin', 'act', $act)}" />
+	<section class="section">
+		<block cond="$mid_list">
+			<h1>{$lang->target}</h1>
+			<div class="x_control-group">{$lang->about_module_mid}</div>
+			<div class="x_control-group">
+				<label class="x_control-label">{$lang->run_method}</label>
+				<div class="x_controls">
+					<select name="xe_run_method">
+						<option value="run_selected" selected="selected"|cond="$config->xe_run_method === 'run_selected'">{$lang->run_selected_module}</option>
+						<option value="no_run_selected" selected="selected"|cond="$config->xe_run_method === 'no_run_selected'">{$lang->no_run_selected_module}</option>
+					</select>
+				</div>
+			</div>
+
+			<div class="x_control-group">
+				<label class="x_control-label">{$lang->target}</label>
+				<div class="x_controls">
+					<label for="check_all"><input type="checkbox" id="check_all" /> Check all</label>
+					<block  loop="$mid_list => $module_category_srl, $modules">
+					<!--@if(count($mid_list) > 1)-->
+					<fieldset>
+						<legend><!--@if($modules->title)-->{$modules->title}<!--@else-->{$lang->none_category}<!--@end--></legend>
+					<!--@end-->
+						<label loop="$modules->list => $key, $val">
+							<input type="checkbox" value="{$key}" name="mid_list[]" id="chk_mid_list_{$key}" checked="checked"|cond="in_array($key, $config->mid_list)"/>
+							{$key} ({$val->browser_title})
+						</label>
+					<!--@if(count($mid_list) > 1)-->
+					</fieldset>
+					<!--@end-->
+					</block>
+				</div>
+			</div>
+		</block>
+	</block>
+	</section>
+	<div class="x_clearfix btnArea">
+		<div class="x_pull-right">
+			<button type="submit" class="x_btn x_btn-primary">{$lang->cmd_save}</button>
+		</div>
+	</div>
+</form>
+<script>
+(function($){
+	$('#check_all')
+		.bind('click', function(e){
+			if (this.checked){
+				$('input[name=mid_list\\[\\]]').attr('checked', 'checked');
+			}else{
+				$('input[name=mid_list\\[\\]]').removeAttr('checked');
+			}
+		});
+})(jQuery);
+</script>

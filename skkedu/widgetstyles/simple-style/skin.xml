@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widgetstyle>
+    <title xml:lang="ko">심플위젯스타일</title>
+    <title xml:lang="en">simple_style</title>
+    <description xml:lang="ko">위젯스타일</description>
+    <description xml:lang="en">simple_style</description>
+    <version>1.0</version>
+    <date>2014-01-07</date>
+    <preview>preview.jpg</preview>
+
+    <author email_address="kimluke1983@gmail.com" link="">
+        <name xml:lang="ko">kim's</name>
+        <name xml:lang="en">kim's</name>
+    </author>
+
+    <extra_vars>
+        <var name="ws_colorset" type="select">
+            <title xml:lang="ko">컬러셋</title>
+            <description xml:lang="ko">컬러셋을 지정해주세요(기본색 blue)</description>
+            <options>
+                <name xml:lang="ko">normal</name>
+                <value>normal</value>
+            </options>
+            <options>
+                <name xml:lang="ko">green</name>
+                <value>green</value>
+            </options>
+			<options>
+                <name xml:lang="ko">grey</name>
+                <value>grey</value>
+            </options>
+			<options>
+                <name xml:lang="ko">orange</name>
+                <value>orange</value>
+            </options>
+			<options>
+                <name xml:lang="ko">pink</name>
+                <value>pink</value>
+            </options>
+			<options>
+                <name xml:lang="ko">yellow</name>
+                <value>yellow</value>
+            </options>
+			<options>
+                <name xml:lang="ko">silver</name>
+                <value>silver</value>
+            </options>
+			<options>
+                <name xml:lang="ko">c_blue</name>
+                <value>c_blue</value>
+            </options>
+
+			<options>
+                <name xml:lang="ko">white</name>
+                <value>white</value>
+            </options>
+        </var>		
+
+        <var name="ws_title" type="text">
+            <name xml:lang="ko">제목</name>
+            <name xml:lang="en">Title</name>
+            <description xml:lang="ko">제목 텍스트</description>
+            <description xml:lang="en">Title text</description>
+        </var>
+        <var name="ws_more_url" type="text">
+            <name xml:lang="ko">더보기 URL</name>
+            <name xml:lang="en">more URL</name>
+            <description xml:lang="ko">http:// 포함한 URL를 등록합니다.</description>
+            <description xml:lang="en">Destination of a link 'more'. Register an URL including http://</description>
+        </var>
+        <var name="ws_more_text" type="text">
+            <name xml:lang="ko">더보기 텍스트</name>
+            <name xml:lang="en">more Text</name>
+            <description xml:lang="ko">더보기 텍스트</description>
+            <description xml:lang="en">Text for a link 'more'</description>
+       </var>
+    </extra_vars>
+</widgetstyle>

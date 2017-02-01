@@ -1,0 +1,141 @@
+<!--#include("./header.html")-->
+<!--%import("filter/insert_config.xml")-->
+{@
+    $fail_per = (int)(100 - ($lottery_config->first_per+$lottery_config->two_per+$lottery_config->three_per+$lottery_config->four_per+$lottery_config->five_per));
+    $sample_code_link = sprintf('<a href="%s" onclick="popopen(this.href); return false">%s</a>', getFullUrl('', 'module', 'lottery'), $lang->lottery);
+    $sample_code = htmlspecialchars($sample_code_link);
+}
+
+<h3 class="xeAdmin">{$lang->lottery_sample_code}</h3>
+<div class="infoText">{$lang->lottery_sample_code_about}</div>
+<table class="rowTable" cellspacing="0" cellpadding="0">
+    <tr>
+        <td>
+            <input class="inputTypeText fullWidth" value="{$sample_code}" onclick="this.select()" /> [{$sample_code_link}]
+        </td>
+    </tr>
+</table>
+
+<h3 class="xeAdmin">{$lang->cmd_module_config}</h3>
+<div class="infoText">{sprintf($lang->lottery_per_about,$fail_per."%")}</div>
+
+<form action="./" method="get" onsubmit="return procFilter(this, insert_config)">
+
+    <table cellspacing="0" class="rowTable">
+    <tr>
+        <th scope="row"><div>{$lang->skin}</div></th>
+        <td>
+            <select name="skin">
+                <!--@foreach($skin_list as $key=>$val)-->
+                <option value="{$key}" <!--@if($lottery_config->skin==$key ||(!$lottery_config->skin))-->selected="selected"<!--@end-->>{$val->title}</option>
+                <!--@end-->
+            </select>
+            <p>{$lang->about_skin}</p>
+        </td>
+    </tr>
+
+    <tr>
+        <th scope="row"><div>{$lang->browser_title}</div></th>
+        <td>
+            <input type="text" name="title" value="{$lottery_config->title}" class="inputTypeText w400" />
+        </td>
+    </tr>
+    <tr>
+        <th scope="row"><div>{$lang->lottery_message}</div></th>
+        <td>
+            <textarea name="message" class="inputTypeTextArea fullWidth">{htmlspecialchars($lottery_config->message)}</textarea>
+            <p>{$lang->lottery_message_about}</p>
+        </td>
+    </tr>
+    <tr>
+        <th scope="row"><div>{$lang->lottery_fail_message}</div></th>
+        <td>
+            <textarea name="fail_message" class="inputTypeTextArea fullWidth">{htmlspecialchars($lottery_config->fail_message)}</textarea>
+        </td>
+    </tr>
+    <tr>
+        <th scope="row"><div>{sprintf($lang->lottery_price)}</div></th>
+        <td>
+            <input type="text" name="price" value="{$lottery_config->price}" class="inputTypeText w60" /> P
+        </td>
+    </tr>
+    <tr>
+        <th scope="row"><div>{sprintf($lang->today_max_count)}</div></th>
+        <td>
+            <input type="text" name="today_max_count" value="{$lottery_config->today_max_count}" class="inputTypeText w60" />
+            <p>{$lang->today_max_count_about}</p>
+        </td>
+    </tr>
+    <tr>
+        <th scope="row"><div>{sprintf($lang->lottery_point,1)}</div></th>
+        <td>
+            <input type="text" name="first_point" value="{$lottery_config->first_point}" class="inputTypeText w60" /> P
+        </td>
+    </tr>
+    <tr>
+        <th scope="row"><div>{sprintf($lang->lottery_per,1)}</div></th>
+        <td>
+            <input type="text" name="first_per" value="{$lottery_config->first_per}" class="inputTypeText w60" />%
+        </td>
+    </tr>
+
+    <tr>
+        <th scope="row"><div>{sprintf($lang->lottery_point,2)}</div></th>
+        <td>
+            <input type="text" name="two_point" value="{$lottery_config->two_point}" class="inputTypeText w60" /> P
+        </td>
+    </tr>
+    <tr>
+        <th scope="row"><div>{sprintf($lang->lottery_per,2)}</div></th>
+        <td>
+            <input type="text" name="two_per" value="{$lottery_config->two_per}" class="inputTypeText w60" />%
+        </td>
+    </tr>
+
+    <tr>
+        <th scope="row"><div>{sprintf($lang->lottery_point,3)}</div></th>
+        <td>
+            <input type="text" name="three_point" value="{$lottery_config->three_point}" class="inputTypeText w60" /> P
+        </td>
+    </tr>
+    <tr>
+        <th scope="row"><div>{sprintf($lang->lottery_per,3)}</div></th>
+        <td>
+            <input type="text" name="three_per" value="{$lottery_config->three_per}" class="inputTypeText w60" />%
+        </td>
+    </tr>
+
+    <tr>
+        <th scope="row"><div>{sprintf($lang->lottery_point,4)}</div></th>
+        <td>
+            <input type="text" name="four_point" value="{$lottery_config->four_point}" class="inputTypeText w60" /> P
+        </td>
+    </tr>
+    <tr>
+        <th scope="row"><div>{sprintf($lang->lottery_per,4)}</div></th>
+        <td>
+            <input type="text" name="four_per" value="{$lottery_config->four_per}" class="inputTypeText w60" />%
+        </td>
+    </tr>
+
+    <tr>
+        <th scope="row"><div>{sprintf($lang->lottery_point,5)}</div></th>
+        <td>
+            <input type="text" name="five_point" value="{$lottery_config->five_point}" class="inputTypeText w60" /> P
+        </td>
+    </tr>
+    <tr>
+        <th scope="row"><div>{sprintf($lang->lottery_per,5)}</div></th>
+        <td>
+            <input type="text" name="five_per" value="{$lottery_config->five_per}" class="inputTypeText w60" />%
+        </td>
+    </tr>
+
+    <tr>
+        <th colspan="2" class="button">
+            <span class="button strong black"><input type="submit" value="{$lang->cmd_save}" /></span>
+        </th>
+    </tr>
+    </table>
+
+</form>

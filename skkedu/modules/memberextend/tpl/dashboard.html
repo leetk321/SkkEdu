@@ -1,0 +1,49 @@
+<include target="header.html" />
+<load target="./css/dashboard.css" />
+<h2 style="padding-left:10px;">Memberextend Dashboard</h2>
+<div id="dashboard_notice" style="width:100%; height:320px; border:1px solid #ccc; border-radius:10px;">
+	<form action="./" method="post" class="message info x_clearfix" cond="!$_memberextend_env_agreement">
+		<input type="hidden" name="module" value="memberextend" />
+		<input type="hidden" name="act" value="procMemberextendAdminGatheringAgreement" />
+		<h2>사용 환경 정보 제공 동의</h2>
+		<p>'MemberextendXE'는 사용자의 버그 보고, 의견 제출을 통해 점점 발전하고 있습니다.<br>'제공 동의 및 설치 완료'를 클릭하시면 아래와 같은 항목이 전송되며, 설치가 완료됩니다. 감사합니다.</p>
+		<ul>
+			<li>이 사이트의 도메인</li>
+			<li>MemberextendXE 의 버전</li>
+			<li>XE 버전</li>
+			<li>PHP 버전</li>
+		</ul>
+		<div class="x_pull-right" style="margin-bottom:10px">
+			<button type="submit" name="is_agree" value="Y" class="x_btn x_btn-small x_btn-primary">제공 동의 및 설치 완료</button>
+		</div>
+	</form>
+	<div class="notice_list" cond="$_memberextend_env_agreement == 'Y'">
+		
+		<table class="x_table x_table-striped x_table-hover">
+			<caption>
+				<span style="margin:0px; padding:0px 0px 0px 10px;">{$lang->item_current_version} : v{$current_version}</span>
+				<span style="margin:0px; padding:0px 0px 0px 10px; font-weight:bold;" >{$lang->item_released_version} : v{$released_version}</span>
+				<span style="float:right"><a href="{$more_link}" target="_blank">Go to Feedback Community</a></span>
+			</caption>
+			<thead>
+				<tr>
+					<th scope="col">No.</th>
+					<th scope="col">{$lang->title}</th>
+					<th scope="col">{$lang->regdate}</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr loop="$news => $key, $val">
+					<td>{$key + 1}</td>
+					<td><a href="{$val->url}" target="_blank">{$val->title}</a></td>
+					<td>{zDate($val->date, 'Y-m-d')}</td>
+				</tr>
+			</tbody>
+			<tfoot>
+				<tr>
+					<td colspan="3" style="text-align:right">에러제보, 건의사항과 같은 사항은 대시보드 우측 상단의 <a href="{$more_link}" target="_blank">Go to Feedback Community</a>를 클릭하셔서 남겨주시기 바랍니다</td>
+				</tr>
+			</tfoot>
+		</table>
+	</div>
+</div>

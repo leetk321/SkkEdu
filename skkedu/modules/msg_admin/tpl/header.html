@@ -1,0 +1,13 @@
+<!--%import("js/msg_admin.js")-->
+
+<h3 class="xeAdmin">{$lang->message} <span class="gray">{$lang->cmd_management}</span></h3>
+
+<div class="infoText">{nl2br($lang->about_message)}</div>
+<div class="header4">
+    <ul class="localNavigation">
+		<!--@foreach($lang->message_box as $key => $val)-->
+        <li <!--@if($act=='dispMsg_adminAdminList' && $message_type == $key)-->class="on"<!--@end-->><a href="{getUrl('act','dispMsg_adminAdminList','message_srl','','message_type', $key)}">{$val}</a></li>
+		<!--@end-->
+		<li <!--@if($act=='dispMsg_adminAdminInsert')-->class="on"<!--@end-->><a href="{getUrl('act','dispMsg_adminAdminInsert')}">{$lang->cmd_send_message}</a></li>
+    </ul>
+</div>

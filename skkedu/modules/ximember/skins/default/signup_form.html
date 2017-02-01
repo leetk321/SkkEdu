@@ -1,0 +1,87 @@
+<load target="../../../member/tpl/js/signup_check.js" />
+<!--%load_js_plugin("ui")-->
+<!--%load_js_plugin("ui.datepicker")-->
+<include target="./common_header.html" />
+<section>
+<h1>{$lang->cmd_signup}</h1>
+<div cond="$XE_VALIDATOR_MESSAGE" class="message {$XE_VALIDATOR_MESSAGE_TYPE}">
+	<p>{$XE_VALIDATOR_MESSAGE}</p>
+</div>
+<form ruleset="@insertMember" id="fo_insert_member" action="./" method="post" enctype="multipart/form-data" class="form-horizontal">
+	<input type="hidden" name="success_return_url" value="{getUrl('act','')}" />
+	<input type="hidden" name="act" value="procMemberInsert" />
+	<input type="hidden" name="accept_agreement" value="Y" />
+	<input type="hidden" loop="$config->extra_vars => $method,$extra_vars" cond="$extra_vars->use == 'Y' && (in_array($method, $disablemethod) || in_array($method, $blockmethod))" name="{$method}" value="{$auth_info[$extra_vars->target]}" />
+	
+	<div class="control-group">
+		<label for="{$identifierForm->name}" class="control-label"><em style="color:red">*</em> {$identifierForm->title}</label>
+		<div class="controls">
+			<input type="text"|cond="$identifierForm->name!='email_address'" type="email"|cond="$identifierForm->name=='email_address'" name="{$identifierForm->name}" id="{$identifierForm->name}" value="{$identifierForm->value}" required />
+		</div>
+	</div>
+	<div class="control-group">
+		<label for="password" class="control-label"><em style="color:red">*</em> {$lang->password}</label>
+		<div class="controls">
+			<input type="password" name="password" id="password" value="" required />
+			<p class="help-inline">{$lang->about_password}</p>
+		</div>
+	</div>
+	<div class="control-group">
+		<label for="password2" class="control-label"><em style="color:red">*</em> {$lang->password3}</label>
+		<div class="controls">
+			<input type="password" name="password2" id="password2" value="" required />
+		</div>
+	</div>
+	<div class="control-group" loop="$formTags=>$formTag" cond="!in_array($formTag->name,$blockmethod)">
+		<label for="{$formTag->name}" class="control-label">{$formTag->title}</label>
+		<div class="controls">{$formTag->inputTag}</div>
+	</div>
+	<div class="control-group" cond="$config->limit['use_voted'] == 'Y'" style="display:none;"|cond="$voted_id">
+		<label for="voted_id" class="control-label">추천인ID</label>
+		<div class="controls"><input type="text" name="voted_id" value="{$voted_id}" /></div>
+	</div>
+	<div class="control-group">
+		<div class="control-label">{$lang->allow_sms}</div>
+		<div class="controls" style="padding-top:5px">
+			<label for="smsYes"><input type="checkbox" name="allow_sms" id="smsYes" value="Y" checked="checked"|cond="$member_info->allow_sms != 'N' || !$member_info->allow_sms" /> 새 소식,이벤트 안내 등에대한 메시지를 수신합니다.</label>
+		</div>
+	</div>	
+	<div class="control-group">
+		<div class="control-label">{$lang->allow_mailing}</div>
+		<div class="controls" style="padding-top:5px">
+			<label for="mailingYes"><input type="radio" name="allow_mailing" id="mailingYes" value="Y" checked="checked"|cond="$member_info->allow_mailing != 'N'" /> {$lang->cmd_yes}</label>
+			<label for="mailingNo"><input type="radio" name="allow_mailing" id="mailingNo" value="N" checked="checked"|cond="$member_info->allow_mailing == 'N'" /> {$lang->cmd_no}</label>
+		</div>
+	</div>
+	<div class="control-group">
+		<div class="control-label">{$lang->allow_message}</div>
+		<div class="controls" style="padding-top:5px">
+			<label for="allow_{$key}" loop="$lang->allow_message_type=>$key,$val"><input type="radio" name="allow_message" value="{$key}" checked="checked"|cond="$member_info->allow_message == $key || (!$member_info && $key == 'Y')" id="allow_{$key}" /> {$val}</label>
+		</div>
+	</div>
+	<div class="btnArea" style="border-top:1px solid #ccc;padding-top:10px">
+		<input type="submit" value="{$lang->cmd_registration}" class="btn btn-inverse pull-right" />
+		<a href="{getUrl('act','','member_srl','')}" class="btn pull-left">{$lang->cmd_cancel}</a>
+	</div>
+</form>
+</section>
+<script type="text/javascript">
+	<!--@foreach($config->extra_vars as $method => $extra_vars)-->
+		<!--@if($extra_vars->use == "Y")-->
+			<!--@if($method == 'birthday')-->
+				document.getElementById("date_birthday").value = "{$auth_info[$extra_vars->target]}";
+				document.getElementById("{$method}").value = "{zdate($auth_info[$extra_vars->target],'Y-m-d')}";
+			<!--@else-->
+				document.getElementById("{$method}").value = "{$auth_info[$extra_vars->target]}";
+			<!--@end-->
+			
+			<!--@if(in_array($method, $disablemethod))-->
+				<!--@if($method == 'birthday')-->
+				jQuery(".dateRemover").remove();
+				<!--@end-->
+				document.getElementById("{$method}").disabled = true;
+			<!--@end-->
+		<!--@end-->
+	<!--@end-->
+</script>
+<include target="./common_footer.html" />

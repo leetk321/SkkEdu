@@ -1,0 +1,64 @@
+<table class="sk5_normal">
+	<thead>
+		{@$_idx=0}
+		<tr<!--@if($_idx >= $widget_info->list_count)--> style="display:none"<!--@end-->>
+		<!--@foreach($widget_info->option_view_arr as $k => $v)-->
+			<!--@if($v=='title')-->
+				<!--@if($widget_info->show_category=='Y')-->
+					<th class="hidden-phone">{$lang->category}</th>
+				<!--@end-->
+				<th>{$lang->title}</th>
+			<!--@else if($v=='regdate')-->
+				<th class="hidden-phone hidden-tablet">{$lang->regdate}</th>
+			<!--@else if($v=='nickname')-->
+				<th class="hidden-phone nick_name">{$lang->nick_name}</th>
+			<!--@end-->
+		<!--@end-->
+		</tr>
+	</thead>
+	<tbody>
+{@$_idx=0}
+<!--@foreach($widget_info->content_items as $key => $item)-->
+	<tr<!--@if($_idx >= $widget_info->list_count)--> style="display:none"<!--@end-->>
+<!--@foreach($widget_info->option_view_arr as $k => $v)-->
+<!--@if($v=='title')-->
+	<!--@if($widget_info->show_category=='Y' )-->
+		<td class="category hidden-phone">
+			<!--@if($widget_info->show_browser_title=='Y' && $item->getBrowserTitle())-->
+				<a href="<!--@if($item->contents_link)-->{$item->contents_link}<!--@else-->{getSiteUrl($item->domain, '', 'mid', $item->get('mid'))}<!--@end-->">{$item->getBrowserTitle()}</a><block cond="$item->get('category_srl')"> <i>&rsaquo;</i> </block>
+				<a href="{getSiteUrl($item->domain,'','mid',$item->get('mid'),'category',$item->get('category_srl'))}"><strong class="category" cond="$item->get('category_srl')">{$item->getCategory()}</strong></a>
+			<!--@end-->
+		</td>
+	<!--@end-->
+	<td class="title">
+		<a href="{$item->getLink()}">{$item->getTitle($widget_info->subject_cut_size)}</a>
+
+		<!--@if($widget_info->show_comment_count=='Y' && $item->getCommentCount())-->
+			<em class="replyNum" title="Replies"><a href="{$item->getLink()}#comment">[{$item->getCommentCount()}]</a></em>
+		<!--@end-->
+
+		<!--@if($widget_info->show_trackback_count=='Y' && $item->getTrackbackCount())-->
+			<em class="trackbackNum" title="Trackbacks"><a href="{$item->getLink()}#trackback">{$item->getTrackbackCount()}</a></em>
+		<!--@end-->
+
+		<!--@if($widget_info->show_icon=='Y')-->
+			<span class="icon"> {$item->printExtraImages()}</span>
+		<!--@end-->
+	</td>
+<!--@else if($v=='nickname')-->
+	<td class="hidden-phone"><a <!--@if($item->getMemberSrl())-->href="#" onclick="return false;" class="author member_{$item->getMemberSrl()}"<!--@elseif($item->getAuthorSite())-->href="{$item->getAuthorSite()}" onclick="window.open(this.href); return false;" class="author member"<!--@else-->href="#" onclick="return false;" class="author member hidden-phone"<!--@end--> >{$item->getNickName()}</a></td>
+<!--@else if($v=='regdate')-->
+	<td class="time hidden-phone hidden-tablet">{$item->getRegdate("Y-m-d")}<!--{$item->getRegdate("H:i")}--></td>
+<!--@end-->
+<!--@end-->
+	</tr>
+{@$_idx++}
+<!--@end-->
+	</tbody>
+</table>
+<!--@if($widget_info->page_count > 1 && $widget_info->list_count<$_idx)-->
+<div class="sk5_pg">
+	<button type="button" class="direction" title="{$lang->cmd_prev}" onclick="content_widget_prev(jQuery(this).parents('div.sk5_pg').prev('table.sk5_normal'),{$widget_info->list_count});return false;">&lsaquo; Prev</button>
+	<button type="button" class="direction" title="{$lang->cmd_next}" onclick="content_widget_next(jQuery(this).parents('div.sk5_pg').prev('table.sk5_normal'),{$widget_info->list_count});return false;">Next &rsaquo;</button>
+</div>
+<!--@end-->

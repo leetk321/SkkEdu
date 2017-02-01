@@ -1,0 +1,13 @@
+<query id="getLogCount" action="select">
+    <tables>
+        <table name="lottery_log" />
+    </tables>
+    <columns>
+        <column name="count(*)" alias="count" />
+    </columns>
+    <conditions>
+        <condition operation="equal" column="member_srl" var="member_srl" notnull="notnull" />
+        <condition operation="equal" column="category_srl" var="category_srl" notnull="notnull" pipe="and" />
+        <condition operation="equal" column="substr(regdate,1,8)" var="regdate" pipe="and" />
+    </conditions>
+</query>

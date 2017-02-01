@@ -1,0 +1,11 @@
+<query id="getXimember" action="select">
+    <tables>
+        <table name="ximember" />
+    </tables>
+    <columns>
+        <column name="*" alias="count" />
+    </columns>
+    <conditions>
+        <condition operation="equal" column="member_srl" var="member_srl" notnull="notnull" />
+    </conditions>
+</query>

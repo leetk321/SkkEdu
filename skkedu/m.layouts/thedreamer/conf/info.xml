@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout version="0.2">
+	<title xml:lang="ko">The Dreamer ver 1.5</title>
+	<description xml:lang="ko">the dreamer</description>
+	<version>1.5</version>
+	<date>2015-08-12</date>
+	
+	<author email_address="happybohm@gmail.com">
+		<name xml:lang="ko">inJin</name>
+	</author>
+	
+<extra_vars>		
+	<group>
+		<title xml:lang="ko">기본 설정</title>
+		
+			<var type="image" name="MlogoImg">
+				<title xml:lang="ko">로고 이미지</title>
+				<description xml:lang="ko">로고 이미지를 등록해주세요. 최대 크기 150 x 50 (폭 x 높이)  // 미등록 시 로고타이틀이 출력됩니다. </description>
+			</var>
+		
+			<var name="logoText" type="text">
+				<title xml:lang="ko">로고 타이틀</title>
+				<description xml:lang="ko">로고 타이틀을 입력해주세요. </description>
+			</var>
+		
+			<var name="logo_url" type="text">
+				<title xml:lang="ko">로그인시 이동할 페이지 URL</title>
+			</var>
+			
+		<var name="slide_max" type="text">
+				<title xml:lang="ko">2차메뉴 슬라이드 개수</title>
+				<description xml:lang="ko">상단의 메뉴에서 한 화면에 출력되는 최대 슬라이드 개수를 설정합니다 (숫자 입력)  예) 4 </description>
+			</var>
+			
+			<var name="white_mode" type="select">
+				<title xml:lang="ko">테마 설정</title>
+				<description xml:lang="ko">레이아웃 테마를 선택할 수 있습니다.</description>
+				<options value="y">
+					<title xml:lang="ko">화이트 테마</title>
+				</options>
+				<options value="n">
+					<title xml:lang="ko">일반 테마</title>
+				</options>
+			</var>			
+
+			<var type="image" name="gnb_img">
+				<title xml:lang="ko">GNB상단 배경이미지</title>
+				<description xml:lang="ko">너무 큰 용량의 이미지는 추천하지 않습니다.</description>
+			</var>	
+	</group>
+		 
+	<group>
+		<title xml:lang="ko">화이트테마 설정</title>		 
+			
+			<var name="wm_color" type="text">
+				<title xml:lang="ko">테마 색상</title>
+				<description xml:lang="ko">색상을 'RGB코드'로 지정해 주세요. 예) 132,206,196</description>
+			</var>
+	</group>
+	
+	<group>
+		<title xml:lang="ko">일반테마 설정</title>		 
+			<var name="nav_background" type="text">
+				<title xml:lang="ko">테마 색상</title>
+				<description xml:lang="ko">색상을 'RGB코드'로 지정해 주세요. 예) 132,206,196 </description>
+			</var>
+	</group>		
+					
+	<group>
+		<title xml:lang="ko">푸터영역 설정</title>
+		
+			<var name="ft_title" type="text">
+				<title xml:lang="ko">푸터영역의 타이틀</title>
+				<description xml:lang="ko">카피라이트 중간부분에 삽입됩니다. </description>	
+			</var>
+			
+			<var name="ft_icon1" type="text">
+				<title xml:lang="ko">첫번째 아이콘</title>
+				<description xml:lang="ko">링크에서 사용하고자 하는 아이콘을 정하여 그 코드를 입력해주세요. (예 : xi-facebook) (http://xpressengine.github.io/XEIcon/library_common.html) </description>	
+			</var>
+			<var name="ft_link1" type="text">
+				<title xml:lang="ko">첫번째 아이콘의 링크 주소</title>
+				<description xml:lang="ko">http://가 포함된 주소를 적어주세요</description>	
+			</var>
+			<var name="ft_icon2" type="text">
+				<title xml:lang="ko">두번째 아이콘</title>
+				<description xml:lang="ko">링크 주소를 입력합링크에서 사용하고자 하는 아이콘을 정하여 그 코드를 입력해주세요. (예 : xi-twitter) (http://xpressengine.github.io/XEIcon/library_common.html)</description>	
+			</var>
+			<var name="ft_link2" type="text">
+				<title xml:lang="ko">두번째 아이콘의 링크 주소</title>
+				<description xml:lang="ko">http://가 포함된 주소를 적어주세요</description>	
+			</var>
+			<var name="ft_icon3" type="text">
+				<title xml:lang="ko">세번째 아이콘</title>
+				<description xml:lang="ko">링크에서 사용하고자 하는 아이콘을 정하여 그 코드를 입력해주세요. (예 : xi-social-rssfeed) (http://xpressengine.github.io/XEIcon/library_common.html)</description>	
+			</var>
+			<var name="ft_link3" type="text">
+				<title xml:lang="ko">세번째 아이콘의 링크 주소</title>
+				<description xml:lang="ko">http://가 포함된 주소를 적어주세요</description>	
+			</var>
+	</group>
+</extra_vars>
+	 
+	 
+
+<menus>
+	<menu name="gnb" maxdepth="3" default="true">
+		<title xml:lang="ko">메인 메뉴</title>
+	</menu>
+
+	<menu name="ft_menu" maxdepth="3" default="true">
+		<title xml:lang="ko">푸터 메뉴</title>
+	</menu>
+</menus>
+
+</layout>

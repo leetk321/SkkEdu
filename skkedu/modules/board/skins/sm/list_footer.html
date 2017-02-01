@@ -1,0 +1,29 @@
+<div class="list_footer" >
+	<!--@if($module_info->list_more == 'Y' || $module_info->list_more != 'N')-->
+	<div class="pagination" cond="$document_list || $notice_list">
+		<a href="{getUrl('page','','document_srl','','division',$division,'last_division',$last_division)}" >&lt;</a> 
+		<block loop="$page_no=$page_navigation->getNextPage()">
+			<strong cond="$page==$page_no">{$page_no}</strong> 
+			<a cond="$page!=$page_no" href="{getUrl('page',$page_no,'document_srl','','division',$division,'last_division',$last_division)}">{$page_no}</a>
+		</block>
+		<a href="{getUrl('page',$page_navigation->last_page,'document_srl','','division',$division,'last_division',$last_division)}" >&gt;</a>
+	</div>
+    <!--@end-->
+
+
+	<div class="sm-search" cond="$module_info->display_search != 'N'" >
+	<form cond="$grant->view" action="{getUrl()}" method="get" onsubmit="return procFilter(this, search)" id="board_search" no-error-return-url="true"  >
+		<input type="hidden" name="vid" value="{$vid}" />
+		<input type="hidden" name="mid" value="{$mid}" />
+		<input type="hidden" name="category" value="{$category}" />
+        <select name="search_target" style="display:none" >
+            <option value="title" <!--@if($search_target==$key)-->selected="selected"<!--@end-->>{$search_option[title]}</option>
+		</select>
+        
+        <input type="text" name="search_keyword" value="{htmlspecialchars($search_keyword)}" title="{$lang->cmd_search}" style="width:100px" />
+        <a href="#" onclick="xGetElementById('board_search').submit();return false;" class="sm-btn-a">{$lang->cmd_search}</a>
+        <a cond="$last_division" href="{getUrl('page',1,'document_srl','','division',$last_division,'last_division','')}" class="sm-btn-a">{$lang->cmd_search_next}</a>
+
+		</form>
+        </div>
+        </div>

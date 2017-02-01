@@ -1,0 +1,29 @@
+<query id="getRankDownload" action="select">
+    <tables>
+        <table name="documents" />
+		<table name="files" />
+		<table name="modules" />
+    </tables>
+    <columns>
+        <column name="documents.*" />
+		<column name="files.*" />
+    </columns>
+    <conditions>
+		<condition operation="in" column="modules.module_srl" var="module_srl" pipe="and" />
+		<condition operation="equal" column="files.module_srl" default="modules.module_srl" pipe="and" />
+		<condition operation="equal" column="files.isvalid" default="Y" pipe="and" />
+		<condition operation="more" column="files.download_count" var="download_count" pipe="and" />
+		<condition operation="equal" column="files.direct_download" default="Y" pipe="and" />
+        <condition operation="in" column="documents.module_srl" var="module_srl" filter="number" notnull="notnull" pipe="and" />
+		<condition operation="in" column="documents.category_srl" var="category_srl" pipe="and" />
+		<condition operation="equal" column="documents.document_srl" default="files.upload_target_srl" pipe="and" />
+		<condition operation="more" column="documents.regdate" var="regdate" pipe="and" />
+    </conditions>
+    <groups>
+        <group column="documents.document_srl" />
+    </groups>
+	<navigation>
+        <index var="sort_index" default="files.download_count" order="order_type" />
+        <list_count var="list_count" default="20" />
+    </navigation>
+</query>

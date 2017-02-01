@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<addon version="1.1">
+	<title>포인트 팡팡!</title>
+	<description>
+		글이나 댓글을 쓸때 설정된 확률만큼 보너스 포인트를 주는 애드온입니다.
+	</description>
+	<version>1.1</version>
+	<date>2015.02.08</date>
+
+	<author email_address="maktist@naver.com" link="http://anizone.kr/">
+		<name>KrteamNET</name>
+	</author>
+	<license>GPL</license>
+	<link>http://anizone.kr/</link>
+
+	<extra_vars>
+	<var name="pang_srl" type="text" default="0">
+			<title>포인트 팡팡의 member_srl</title>
+			<description>
+			포인트 팡팡을 지급할 유저의 member_srl을 입력해주세요. 필요없다면 공란으로 두셔도 됩니다. 공란으로 둘 시, member_srl이 0인 가상의 유저를 만듭니다. (회원목록에 뜨지 않음)
+			포인트 팡팡을 지급할 유저를 따로 지정하면, 포인트 팡팡을 지급하는 댓글 등에서 프로필 이미지, 닉네임 등을 임의설정 가능합니다.
+			해당 회원(포인트 팡팡)의 프로필사진 등을 설정하시면 댓글이 달릴때 설정해둔 프로필 사진과 회원정보로 나옵니다.
+			</description>
+		</var>
+		<var name="pang_name" type="text">
+			<title>포인트 팡팡의 닉네임</title>
+			<description>
+			포인트 팡팡을 지급하는 봇의 이름을 지정합니다. (미입력시 댓글이 달리지 않음)
+			</description>
+		</var>
+		<var name="is_document" type="select">
+			<title>글 작성시</title>
+			<options value="N">
+				<title>사용안함</title>
+			</options>
+			<options value="Y">
+				<title>사용함</title>
+			</options>
+		</var>
+		<var name="set_document_point" type="text"  default="10,50,100">
+			<title>글 포인트</title>
+		</var>
+		<var name="set_document_probability" type="text"  default="10">
+			<title>글 확률(%)</title>
+			<description>
+			포인트: 글 작성시 받을 포인트 목록을 설정합니다. (ex: 10,50,100)
+			확률: 글 작성시 받을 확률을 설정합니다. (ex: 10)
+
+			지정된 확률에 의해 당첨되면 포인트 목록 중에서 랜덤하게 선택합니다.
+			</description>
+		</var>
+		<var name="is_comment" type="select">
+			<title>댓글 작성시</title>
+			<options value="N">
+				<title>사용안함</title>
+			</options>
+			<options value="Y">
+				<title>사용함</title>
+			</options>
+		</var>
+		<var name="set_comment_point" type="text"  default="10,50,100">
+			<title>댓글 포인트</title>
+		</var>
+		<var name="set_comment_probability" type="text"  default="10">
+			<title>댓글 확률(%)</title>
+			<description>
+			포인트: 글 작성시 받을 포인트 목록을 설정합니다. (ex: 10,50,100)
+			확률: 글 작성시 받을 확률을 설정합니다. (ex: 10)
+
+			지정된 확률에 의해 당첨되면 포인트 목록 중에서 랜덤하게 선택합니다.
+			</description>
+		</var>
+		<var name="is_admin" type="select">
+			<title>관리자 포함</title>
+			<options value="N">
+				<title>사용안함</title>
+			</options>
+			<options value="Y">
+				<title>사용함</title>
+			</options>
+			<description>최고 관리자도 포인트 팡팡에 당첨될 수 있게 허용합니다.</description>
+		</var>
+		<var name="is_keep_point" type="select">
+			<title>삭제시 포인트 유지</title>
+			<options value="N">
+				<title>사용안함</title>
+			</options>
+			<options value="Y">
+				<title>사용함</title>
+			</options>
+			<description>당첨자가 글을 삭제해도 당첨 포인트를 유지하게 합니다.</description>
+		</var>
+		<var name="alert_reply" type="select">
+			<title>댓글로 알림</title>
+			<options value="N">
+				<title>사용안함</title>
+			</options>
+			<options value="Y">
+				<title>사용함</title>
+			</options>
+			<description>포인트 팡팡에 당첨되면 댓글로 알려주는 기능입니다.</description>
+		</var>
+		<var name="send_message" type="select">
+			<title>쪽지 보내기</title>
+			<options value="N">
+				<title>사용안함</title>
+			</options>
+			<options value="Y">
+				<title>사용함</title>
+			</options>
+			<description>포인트 팡팡에 당첨되면 쪽지로 알려주는 기능입니다.
+			쪽지 보내기시에는 메세지는 출력하지 않습니다.</description>
+		</var>
+		<var name="message_title" type="text">
+			<title>당첨 제목</title>
+		</var>
+		<var name="message_pang" type="textarea">
+			<title>당첨 메세지</title>
+			<description>당첨되면 알릴 메세지를 입력합니다. (HTML 사용 가능)
+			제목과 메세지는 "쪽지 보내기", "댓글로 알림"의 내용으로도 사용합니다.
+
+			제목과 메세지의 치환자들:
+			%URL% = 문서 또는 댓글의 주소입니다.
+			%NAME% = 당첨자 닉네임 입니다.
+			%POINT% = 당첨된 포인트 값입니다.
+			%DOCUMENT% = 해당 문서의 번호입니다.
+			%COMMENT% = 해당 댓글의 번호입니다.
+
+			사용법: 축하합니다. %NAME%님은 %POINT%포인트에 당첨되셨습니다.</description>
+		</var>
+	</extra_vars>
+</addon>

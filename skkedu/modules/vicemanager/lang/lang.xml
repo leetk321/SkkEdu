@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<lang>
+	<item name="VM_title">
+		<value xml:lang="ko"><![CDATA[부운영자 모듈]]></value>
+	</item>
+	<item name="VM_grant_check">
+		<value xml:lang="ko"><![CDATA[부운영자 관리 권한]]></value>
+	</item>
+	<item name="VM_about_grant_check">
+		<value xml:lang="ko"><![CDATA[부운영자가 접근/관리 할 수 있는 항목을 체크하세요.]]></value>
+	</item> 
+	<item name="VM_grant_types" type="array">
+		<item name="group">
+			<value xml:lang="ko"><![CDATA[그룹 관리]]></value>
+		</item>
+		<item name="point">
+			<value xml:lang="ko"><![CDATA[포인트 관리]]></value>
+		</item>
+		<item name="denied">
+			<value xml:lang="ko"><![CDATA[접속 거부 관리]]></value>
+		</item>
+		<item name="limit_date">
+			<value xml:lang="ko"><![CDATA[접속 제한 날짜 관리]]></value>
+		</item>
+	</item>
+	<item name="VM_vicemanager_srls">
+		<value xml:lang="ko"><![CDATA[부운영자 지정]]></value>
+	</item>
+	<item name="VM_vicemanager_srls_about">
+		<value xml:lang="ko"><![CDATA[부운영자 권한을 부여할 회원의 member_srl을 입력합니다. 다수 입력은 ','로 구분합니다. 예>124,46,125244]]></value>
+	</item>
+	<item name="VM_permit_module_admin">
+		<value xml:lang="ko"><![CDATA[모듈 관리자 포함]]></value>
+	</item>
+	<item name="VM_permit_module_admin_about">
+		<value xml:lang="ko"><![CDATA[모든 모듈(게시판) 관리자에게 권한을 주려면 체크합니다.]]></value>
+	</item>
+	<item name="VM_use_menu">
+		<value xml:lang="ko"><![CDATA[메뉴 사용]]></value>
+	</item>
+	<item name="VM_about_use_menu">
+		<value xml:lang="ko"><![CDATA[사용자 정보에 메뉴를 표시하려면 체크합니다.]]></value>
+	</item> 
+	<item name="VM_menu_title">
+		<value xml:lang="ko"><![CDATA[부운영자]]></value>
+		<value xml:lang="en"><![CDATA[Vice Manager]]></value>
+	</item>
+</lang>

@@ -1,0 +1,41 @@
+/* 로그인 박스 배경 */
+.login_wrap{display:none; position:fixed; left:0; top:0; width:100%; height:100%; z-index:10000;}
+.login_bg{position:absolute; width:100%; height:100%; background:black; filter:alpha(opacity=60); opacity:0.6; -moz-opacity:0.6;}
+
+/*로그인 박스 전체*/
+.login_box{position:relative; top:15%; width:335px; background:white; margin:0 auto; border-radius:8px; background:white; border:1px solid #ccc; }
+.login_box .close{position:absolute; right:6px; top:6px; width:16px; height:16px; cursor:pointer;}
+.login_box .login_content{background:; width:260px; margin:35px; margin-top:20px; margin-bottom:25px;}
+
+/*일반 로그인*/
+.login_text{text-align:center; font-weight:bold; font-size:14px;}
+
+/*아이디 비밀번호*/
+.login_box .id_pw_wrap{position:relative;}
+.login_box .id_pw_wrap .id_img{position:absolute; top:9px; left:15px; filter:alpha(opacity=60); opacity:0.6; -moz-opacity:0.6;}
+.login_box .id_pw_wrap .pw_img{position:absolute; top:61px; left:15px; filter:alpha(opacity=60); opacity:0.6; -moz-opacity:0.6;}
+
+.login_box #user_id{-webkit-transition:0.2s; -moz-transition:0.2s; -o-transition:0.2s; transition:0.2s; width:100%; height:32px; box-shadow:0px 0px 2px #bbb; line-height:32px; border-radius:3px; border:1px solid #ccc; margin-top:15px; display:block; text-indent:50px; }
+.login_box #password{-webkit-transition:0.2s; -moz-transition:0.2s; -o-transition:0.2s; transition:0.2s; width:100%; height:32px; box-shadow:0px 0px 2px #bbb; line-height:32px; border-radius:3px; border:1px solid #ccc; margin-top:15px; display:block; text-indent:50px;}
+
+.login_box #user_id:focus{border:1px solid #5bc0de; outline:none; background:#ffe;}
+.login_box #password:focus{border:1px solid #5bc0de; outline:none; background:#ffe;}
+
+.login_box .btn_wrap{position:relative; margin:15px 0px; height:30px;}
+.login_box .submit{border:1px solid #aaa; box-shadow:0px 0px 1px #ccc; cursor:pointer; height:27px; width:80px; background:white; color:#555; font-weight:bold; border-radius:3px; float:right; font-size:11px;}
+
+.login_box .enter {font-weight:bold;}
+.login_box .find{color:#888; float:right}
+.login_box .find:hover{color:lightseagreen;}
+
+/*에러메세지*/
+.login_box .error{font-weight:bold; color:#CC472F; margin-top:12px; text-align:center;}
+
+/*소셜 로그인*/
+.login_box .login_social{border-top:solid 1px #999; margin-top:20px;}
+.login_box .login_social .facebook{margin-right:20px; margin-left:50px;}
+.login_box .login_social .twitter{margin-right:20px;}
+.login_box .login_social .facebook img{height:35px;}
+.login_box .login_social .twitter img{height:35px;}
+.login_box .login_social .me2day img{height:35px;}
+.login_box .login_social .social_text{text-align:center; line-height:18px;}

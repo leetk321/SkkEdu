@@ -1,0 +1,11 @@
+<filter name="insert_config" module="loginlog" act="procLoginlogAdminInsertConfig">
+	<form />
+	<parameter>
+		<param name="delete_logs" target="delete_logs" />
+		<param name="admin_user_log" target="admin_user_log" />
+	</parameter>
+	<response callback_func="completeInsertConfig">
+		<tag name="error" />
+		<tag name="message" />
+	</response>
+</filter>

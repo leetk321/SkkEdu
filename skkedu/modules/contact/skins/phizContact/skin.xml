@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<skin version="0.2">
+		<title xml:lang="ko">phiz.kr Contact Us Skin</title>
+	<title xml:lang="en">phiz.kr Contact Us Skin</title>
+		<description xml:lang="ko">
+			phiz.kr Contact Us Skin
+			phiz (phiz@phiz.kr)
+		</description>
+		<description xml:lang="en">
+			phiz.kr Contact Us Skin
+			phiz (phiz@phiz.kr)
+		</description>
+		<version>0.1</version>
+		<date>2013-12-29</date>
+		<author email_address="phiz@phiz.kr" link="http://phiz.kr/">
+			<name xml:lang="ko">phiz</name>
+		<name xml:lang="en">phiz</name>
+		</author>
+		<license>GPL</license>
+</skin>
+

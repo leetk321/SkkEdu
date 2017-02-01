@@ -1,0 +1,16 @@
+<block cond="!$colorset">{@ $colorset = 'default'}</block>
+<load target="./js/updatenews.js" />
+{@ $idx = 0}
+<block cond="$colorset == 'default'">
+  <load target="./css/default.css"/>
+  <include target="./default.html" />
+  {@ $idx++}
+</block>
+<block cond="$colorset == 'white'">
+  <load target="./css/white.css"/>
+  <include target="./white.html" />
+  {@ $idx++}
+</block>
+<block cond="$idx == 0">
+  해당 Colorset이 존재하지 않습니다.
+</block>

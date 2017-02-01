@@ -1,0 +1,42 @@
+<load target="./css/style.css" />
+
+<!--// Font-Awesome -->
+<load target="vendor/font-awesome/css/font-awesome.min.css" />
+
+{@ $logAct =  array('dispPointsendAdminLogList', 'dispPointsendAdminBatchLogList')}
+
+<div class="x_page-header">
+	<h1>{$lang->pointsend}</h1>
+</div>
+
+<ul class="x_nav x_nav-tabs">
+	<li class="x_active"|cond="$act == 'dispPointsendAdminIndex'">
+		<a href="{getUrl('','module','admin','act','dispPointsendAdminIndex')}">
+			<i class="fa fa-cog" aria-hidden="true"></i> {$lang->cmd_basic_setup}
+		</a>
+	</li>
+	<li class="x_active"|cond="$act == 'dispPointsendAdminAddons'">
+		<a href="{getUrl('', 'module', 'admin', 'act', 'dispPointsendAdminAddons')}">
+			<i class="fa fa-plus"></i> 추가 기능
+		</a>
+	</li>
+	<li class="x_active"|cond="$act == 'dispPointsendAdminGrantSetup'">
+		<a href="{getUrl('','module','admin','act','dispPointsendAdminGrantSetup')}">
+		<i class="fa fa-lock" aria-hidden="true"></i> {$lang->cmd_grant_setup}</a>
+	</li>
+	<li class="x_active"|cond="$act == 'dispPointsendAdminDesignSetup'">
+		<a href="{getUrl('','module','admin','act','dispPointsendAdminDesignSetup')}">
+			<i class="fa fa-leaf" aria-hidden="true"></i> {$lang->cmd_design_setup}
+		</a>
+	</li>
+	<li class="x_active"|cond="in_array($act, array('dispPointsendAdminSend', 'dispPointsendAdminSendToGroup'))">
+		<a href="{getUrl('','module','admin','act','dispPointsendAdminSend')}">
+			<i class="fa fa-gift" aria-hidden="true"></i> {$lang->cmd_pointsend}
+		</a>
+	</li>
+	<li class="x_active"|cond="in_array($act, $logAct)">
+		<a href="{getUrl('','module','admin','act','dispPointsendAdminLogList')}">
+			<i class="fa fa-history" aria-hidden="true"></i> {$lang->cmd_pointsend_log_list}
+		</a>
+	</li>
+</ul>

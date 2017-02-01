@@ -1,0 +1,30 @@
+<query id="getMsgrList" action="select">
+    <tables>
+        <table name="member_message" />
+    </tables>
+    <columns>
+        <column name="*" />
+    </columns>
+    <conditions>
+        <condition operation="equal" column="readed" var="is_readed" filter="alpha" />
+        <condition operation="equal" column="message_type" var="message_type" notnull="notnull" pipe="and" />
+        <group pipe="and">
+            <condition operation="equal" column="sender_srl" var="s_sender_srl" />
+            <condition operation="equal" column="receiver_srl" var="s_receiver_srl" pipe="or" />
+			<condition operation="like" column="title" var="s_title" pipe="or" />
+			<condition operation="like" column="content" var="s_content" pipe="or" />
+            <condition operation="like_prefix" column="regdate" var="s_regdate" pipe="or" />
+            <condition operation="more" column="member_message.regdate" var="s_regdate_more" pipe="or" />
+            <condition operation="less" column="member_message.regdate" var="s_regdate_less" pipe="or" />
+            <condition operation="like_prefix" column="readed_date" var="s_readed_date" pipe="or" />
+            <condition operation="more" column="member_message.readed_date" var="s_readed_date_more" pipe="or" />
+            <condition operation="less" column="member_message.readed_date" var="s_readed_date_less" pipe="or" />
+		</group>
+    </conditions>
+    <navigation>
+        <index var="sort_index" default="member_srl" order="sort_order" />
+        <list_count var="list_count" default="20" />
+        <page_count var="page_count" default="10" />
+        <page var="page" default="1" />
+    </navigation>
+</query>

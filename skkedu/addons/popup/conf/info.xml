@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<addon version="0.2">
+    <title xml:lang="ko">팝업 관리 애드온</title>
+    <description xml:lang="ko">
+        사이트 접속할 때 뜨는 레이어 팝업을 관리할 수 있는 애드온입니다.
+    </description>
+    <version>0.1</version>
+    <date>2009-09-22</date>
+
+    <author email_address="hhyoon@mooo.org" link="http://mooo.org">
+        <name xml:lang="ko">mooo</name>
+    </author>
+
+    <extra_vars>
+        <var name="popup_type" type="select">
+            <title xml:lang="ko">팝업 방식</title>
+            <description xml:lang="ko">팝업 방식을 설정합니다. 고정 레이어 방식은 일반적인 레이어 팝업 형식이며, 모달 레이어 방식은 팝업창 외에는 키보드나 마우스 입력이 되지 않는 형식입니다. 모달 레이어 방식은 IE6에서 오동작할 가능성이 있습니다.</description>
+            <options value="layer">
+                <title xml:lang="ko">고정 레이어</title>
+            </options>
+            <options value="modal">
+                <title xml:lang="ko">모달 레이어</title>
+            </options>
+        </var>
+        <var name="popup_position" type="select">
+            <title xml:lang="ko">레이어 팝업 위치</title>
+            <description xml:lang="ko">레이어 팝업을 화면의 어느 위치에 띄울 것인지 설정합니다.</description>
+            <options value="center">
+                <title xml:lang="ko">가운데</title>
+            </options>
+            <options value="left">
+                <title xml:lang="ko">화면 왼쪽</title>
+            </options>
+            <options value="right">
+                <title xml:lang="ko">화면 오른쪽</title>
+            </options>
+        </var>
+        <var name="pos_top">
+            <title xml:lang="ko">팝업창의 상단 좌표</title>
+            <description xml:lang="ko">팝업창이 표시될 상단 좌표를 설정합니다. 픽셀 단위로 설정하며 숫자만 입력하시기 바랍니다. (기본값: 100)</description>
+        </var>
+        <var name="pos_left">
+            <title xml:lang="ko">팝업창의 측면 좌표</title>
+            <description xml:lang="ko">팝업창이 표시될 측면 좌표를 설정합니다. 팝업창 위치를 왼쪽으로 설정한 경우에는 왼쪽면 좌표가 되며, 오른쪽으로 설정한 경우에는 오른쪽면 좌표가 됩니다. 가운데로 설정한 경우에는 무시됩니다. 픽셀 단위로 설정하며 숫자만 입력하시기 바랍니다. (기본값: 100)</description>
+        </var>
+        <var name="padding">
+            <title xml:lang="ko">팝업창의 내부 여백</title>
+            <description xml:lang="ko">팝업창의 내부 여백을 설정합니다. 픽셀 단위로 설정하며 숫자만 입력하시기 바랍니다. (기본값: 0)</description>
+        </var>
+        <var name="width_type" type="select">
+            <title xml:lang="ko">팝업창의 폭 조절 방식</title>
+            <description xml:lang="ko">팝업창의 폭의 설정을 어떻게 할 것인지 설정합니다. 자동으로 설정한 경우 팝업 내용의 형식이 이미지인 경우 자동으로 조절되며 HTML 파일인 경우에는 400 픽셀로 고정됩니다.</description>
+            <options value="auto">
+                <title xml:lang="ko">자동</title>
+            </options>
+            <options value="fixed">
+                <title xml:lang="ko">아래 지정한 값으로 고정</title>
+            </options>
+        </var>
+        <var name="width">
+            <title xml:lang="ko">팝업창의 폭(width)</title>
+            <description xml:lang="ko">팝업창의 폭을 고정한 경우 팝업창의 폭(width)을 설정합니다. 픽셀 단위로 설정하며 숫자만 입력하시기 바랍니다. (기본값: 400)</description>
+        </var>
+        <var name="title">
+            <title xml:lang="ko">팝업 제목</title>
+            <description xml:lang="ko">팝업의 제목을 설정합니다.</description>
+        </var>
+        <var name="content_type" type="select">
+            <title xml:lang="ko">팝업 내용의 형식</title>
+            <description xml:lang="ko">팝업에 표시될 내용의 형식을 설정합니다.</description>
+            <options value="image">
+                <title xml:lang="ko">이미지</title>
+            </options>
+            <options value="html">
+                <title xml:lang="ko">HTML 파일</title>
+            </options>
+        </var>
+        <var name="image_url">
+            <title xml:lang="ko">이미지 URL</title>
+            <description xml:lang="ko">팝업 내용의 형식이 이미지일 경우, 팝업에 들어갈 이미지 URL을 설정합니다.</description>
+        </var>
+        <var name="link_url">
+            <title xml:lang="ko">링크 URL</title>
+            <description xml:lang="ko">팝업 내용의 형식이 이미지일 경우, 이미지를 클릭할 때 넘어갈 URL을 설정합니다. 설정하지 않으면 링크는 생략됩니다. 링크 URL이 설정된 경우 클릭하면 새창으로 설정한 URL로 이동합니다.</description>
+        </var>
+        <var name="html_path">
+            <title xml:lang="ko">HTML 파일 경로</title>
+            <description xml:lang="ko">팝업 내용의 형식이 HTML 파일일 경우, 팝업에 들어갈 내용이 담긴 HTML 파일의 경로를 설정합니다. (기본값: ./addons/popup/popup.content.html)</description>
+        </var>
+        <var name="start_date">
+            <title xml:lang="ko">팝업 시작 일시</title>
+            <description xml:lang="ko">팝업을 띄울 시작 일시를 설정합니다. (년월일시분(YmdHi) 형식, 예: 200909231000)</description>
+        </var>
+        <var name="end_date">
+            <title xml:lang="ko">팝업 종료 일시</title>
+            <description xml:lang="ko">팝업을 띄울 종료 일시를 설정합니다. (년월일시분(YmdHi) 형식, 예: 200909301000)</description>
+        </var>
+    </extra_vars>
+</addon>

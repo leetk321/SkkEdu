@@ -1,0 +1,39 @@
+<!-- 검색된 글 목록이 있고 권한이 있을 경우 출력 -->
+    <!--@if($grant->list)-->
+
+        <!--@if($category || $search_keyword)-->
+
+            <!--@foreach($document_list as $no => $oDocument)-->
+			<!--@if(  !($oDocument->isSecret() && ($module_info->secret_list=="hide_all" || (($module_info->secret_list=="hide") && ($oDocument->getUserID()!=$logged_info->user_id)) )) || $grant->manager )-->
+
+            <include target="./view_document.html" />
+
+			<!--@end-->
+            <!--@end-->
+
+		<!--@else-->
+
+            <!--// 공지사항 -->
+            <!--@if($notice_list)-->
+				<!--@foreach($notice_list as $no => $oDocument)-->
+				<!--@if(  !($oDocument->isSecret() && ($module_info->secret_list=="hide_all" || (($module_info->secret_list=="hide") && ($oDocument->getUserID()!=$logged_info->user_id)) )) || $grant->manager )-->
+
+				<include target="./view_notice.html" />
+
+				<!--@end-->
+				<!--@end-->
+            <!--@end-->
+
+            <!--// 일반글 -->
+            <!--@foreach($document_list as $no => $oDocument)-->
+			<!--@if(  !($oDocument->isSecret() && ($module_info->secret_list=="hide_all" || (($module_info->secret_list=="hide") && ($oDocument->getUserID()!=$logged_info->user_id)) )) || $grant->manager )-->
+
+
+            <include target="./view_document.html" />
+
+            <!--@end-->
+            <!--@end-->
+
+        <!--@end-->
+
+    <!--@end-->

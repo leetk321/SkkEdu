@@ -1,0 +1,31 @@
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+{@$r_num = mt_rand()}
+<script>
+jQuery(document).ready(function(){
+
+$("#inline_{$r_num}").width($("#outline_{$r_num}").width()-16)
+})
+</script>
+
+<!--%import("style.css")-->
+{@$widgetstyle_extar_var->ws_more_url=trim($widgetstyle_extar_var->ws_more_url);}
+
+<div class="icon_style {$widgetstyle_extar_var->ws_colorset}" id="outline_{$r_num}">
+	<div class="bg_left"></div>
+	<div class="in_content" id="inline_{$r_num}">
+    <h2>{$widgetstyle_extar_var->ws_title}</h2>
+	
+        <!--@if($widgetstyle_extar_var->ws_more_url)-->
+            <!--@if(strtolower(substr($widgetstyle_extar_var->ws_more_url,0,4))=='http')-->
+                <a href="{$widgetstyle_extar_var->ws_more_url}" class="wss_more_link">
+            <!--@else-->
+                <a href="http://{$widgetstyle_extar_var->ws_more_url}" class="wss_more_link">
+            <!--@end-->
+            {$widgetstyle_extar_var->ws_more_text}</a>
+        <!--@end--> 
+	</div>
+	<div class="bg_right"></div>  
+  {$widget_content}
+
+</div>
+ 

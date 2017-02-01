@@ -1,0 +1,126 @@
+<!--// CSS -->
+<load target="./css/reset.css" />
+<load target="./css/layout.css" />
+<load target="./css/pushmenu.css" />
+<load target="./css/grey.css" />
+<load target="./css/swiper.min.css" />
+<load target="http://cdn.jsdelivr.net/xeicon/1.0.4/xeicon.min.css" />
+
+<!--// JS -->
+<load target="./js/modernizr.custom.js" />
+<load target="./js/icheck.min.js" />
+<load target="./js/classie.js" type="body" />
+<load target="https://cdnjs.cloudflare.com/ajax/libs/masonry/3.3.1/masonry.pkgd.min.js" />
+
+<script src="js/popup.a.js"></script>
+<script src="js/popup.b.js"></script>
+<script src="js/popup.c.js"></script>
+<script src="js/pushmenu.js"></script>
+<script src="js/scrollup.js"></script> <!-- Gem jQuery -->
+<script src="js/swiper.min.js"></script>
+<script>
+		var swipeIndex = jQuery(".swiper-slide .on").parent().index();
+		if(swipeIndex < {$layout_info->slide_max})
+		{
+		swipeIndex = 0;
+		}
+
+		var mySwiper = new Swiper('.swiper-container', {
+		slidesPerView: {$layout_info->slide_max},
+		nextButton: '.swiper-button-next',
+		prevButton: '.swiper-button-prev',
+		initialSlide: swipeIndex,
+	    onSwiperCreated: function(s)
+		{
+	    	if(swipeIndex == 0){
+	    	}else{
+	    	s.swipeTo(swipeIndex);
+	    	}
+	    }
+    });
+</script>
+
+<script>
+(function(jQuery){
+	jQuery(function(){	
+      // scroll is still position
+			var scroll = jQuery(document).scrollTop();
+			var headerHeight = jQuery('.page-header').outerHeight();
+			//console.log(headerHeight);
+			
+			jQuery(window).scroll(function() {
+				// scrolled is new position just obtained
+				var scrolled = jQuery(document).scrollTop();
+								
+				// optionally emulate non-fixed positioning behaviour
+			
+				if (scrolled > headerHeight){
+					jQuery('.page-header').addClass('off-canvas', 400);
+				} else {
+					jQuery('.page-header').removeClass('off-canvas', 400);
+				}
+
+			    if (scrolled > scroll){
+			         // scrolling down
+					 jQuery('.page-header').removeClass('fixed', 200);
+			      } else {
+					  //scrolling up
+					  jQuery('.page-header').addClass('fixed', 200);
+			    }				
+				 
+				scroll = jQuery(document).scrollTop();	
+			 });
+ 	});
+})(jQuery);   
+</script>
+
+<script>
+jQuery(document).ready(function(){
+  jQuery('.keep_login input').iCheck({
+    checkboxClass: 'icheckbox_square-grey',
+    increaseArea: '20%' // optional
+  });
+});
+</script>
+
+<script>
+jQuery('#mgrid').masonry({
+  // options
+  itemSelector: '.vnbox',
+  columnWidth: 0
+});
+</script>
+
+<style>
+<block cond="!$layout_info->gnb_img">{@ $layout_info->gnb_img = 'm.layouts/thedreamer/img/q.png'}</block>
+.gnbmenu li:first-child {background:url("{$layout_info->gnb_img}") no-repeat; background-size:100%;}
+.swiper-container, .page-header {background:rgba({$layout_info->nav_background},1)}
+.cd-popup-container-c {border:4px solid rgba({$layout_info->nav_background},1)}
+.searchfield input[type="search"] {background:rgba({$layout_info->nav_background},0)}
+.cd-buttons li:first-child a {background:rgba({$layout_info->nav_background},1) !important;}
+
+<block loop="$gnb->list=>$key1, $val1" cond="$val1['selected'] && $val1['list']">
+.content-fa {padding-top:110px; background:#f1f1f1}
+.page-header {height:70px}
+.page-header.off-canvas {top:-70px}
+.swiper-container {top:70px}
+</block>
+
+<block cond="$layout_info->white_mode == 'y'">
+.swiper-container, .page-header {background:#fff !important}
+#cd-menu-trigger .cd-menu-icon {background-color:#888 !important}
+.page-header > a {color:#888 !important}
+.menu-search > i, .menu-member > i {color:#888 !important}
+.swiper-container {background:rgba(255,255,255,0.95) !important; box-shadow:0 1px 1px rgba(0,0,0,0);}
+.swiper-slide a {color:#aaa; border-bottom:2px solid #f9f9f9}
+.swiper-slide a.on {color:rgba({$layout_info->wm_color},1); border-bottom:2px solid rgba({$layout_info->wm_color},1)}
+#cd-menu-trigger .cd-menu-icon::before, #cd-menu-trigger .cd-menu-icon:after {background-color:#888 !important}
+.cd-buttons li:first-child a {background:rgba({$layout_info->wm_color},1) !important}
+.cd-popup-container-c {border:4px solid rgba({$layout_info->wm_color},1)}
+</block>
+
+<!--@if($mid=='isx')-->
+.content-fa {min-height:calc(100vh - 65px); overflow-x:hidden}
+<!--@end-->
+
+</style>

@@ -1,0 +1,38 @@
+<div class="updatenews">
+  <div class="updatenews_obj">
+    <div class="updatenews_box">
+      {@$_idx=0}
+      <!--@foreach($widget_info->content_items as $key => $item)-->
+        <!--@if($_idx < $widget_info->list_count)-->
+          <div>
+            <!--@foreach($widget_info->option_view_arr as $k => $v)-->
+              <!--@if($v=='title')-->
+                <!--@if($widget_info->show_browser_title=='Y' && $item->getBrowserTitle())-->
+                  <a class="updatenews_board" href="<!--@if($item->contents_link)-->{$item->contents_link}<!--@else-->{getSiteUrl($item->domain, '', 'mid', $item->get('mid'))}<!--@end-->"><strong>{$item->getBrowserTitle()}</strong></a>
+                <!--@end-->
+                <!--@if($widget_info->show_category=='Y' && $item->get('category_srl') )-->
+                  <a class="updatenews_category" href="{getSiteUrl($item->domain,'','mid',$item->get('mid'),'category',$item->get('category_srl'))}"><strong>{$item->getCategory()}</strong></a>
+                <!--@end-->
+                <a class="updatenews_title" href="{$item->getLink()}">{$item->getTitle($widget_info->subject_cut_size)}</a>
+                <!--@if($widget_info->show_comment_count=='Y' && $item->getCommentCount())-->
+                  <a class="updatenews_comment" title="Comments" href="{$item->getLink()}#comment">[{$item->getCommentCount()}]</a>
+                <!--@end-->
+                <!--@if($widget_info->show_trackback_count=='Y' && $item->getTrackbackCount())-->
+                  <a class="updatenews_trackback" title="Trackbacks" href="{$item->getLink()}#trackback">[{$item->getTrackbackCount()}]</a>
+                <!--@end-->
+                <!--@if($widget_info->show_icon=='Y')-->
+                  <span class="updatenews_icon">{$item->printExtraImages()}</span>
+                <!--@end-->
+              <!--@else if($v=='nickname')-->
+                 <span class="updatenews_author"><a <!--@if($item->getMemberSrl())-->href="#" onclick="return false;" class="member_{$item->getMemberSrl()}"<!--@elseif($item->getAuthorSite())-->href="{$item->getAuthorSite()}" onclick="window.open(this.href); return false;" class="member"<!--@else-->href="#" onclick="return false;" class="member"<!--@end-->>[{$item->getNickName()}]</a></span>
+              <!--@else if($v=='regdate')-->
+                <span class="updatenews_date">{$item->getRegdate("Y-m-d")}</span>
+              <!--@end-->
+            <!--@end-->
+          </div>
+        <!--@end-->
+        {@$_idx++}
+      <!--@end-->
+    </div>
+  </div>
+</div>

@@ -1,0 +1,9 @@
+{@
+if (!$layout_info->footerInfo_bg) $footerInfo_bg = 'f-header-inverse';
+if ($layout_info->footerInfo_bg) $footerInfo_bg = 'f-header-'.$layout_info->footerInfo_bg;
+}
+<div class="footer-info {$footerInfo_bg}">
+	<div class="container">
+		{$layout_info->footer_info}
+	</div>
+</footer>

@@ -1,0 +1,61 @@
+
+
+<!--// 원터치 컬러셋 (배경)-->
+<style type="text/css" cond="$layout_info->user_common_colorset">
+.menu_bg{background:{$layout_info->user_common_colorset} url(./layouts/xecenter/img/pattern/{$layout_info->user_main_menu_pattern}) repeat;}
+.gnb li li:hover{background:{$layout_info->user_common_colorset} url(./layouts/xecenter/img/pattern/{$layout_info->user_menu_two_pattern}) repeat; color:<!--@if($layout_info->user_font_menu2_hover)-->{$layout_info->user_font_menu2_hover}<!--@else-->white<!--@end-->;}
+.gnb .active{background:{$layout_info->user_common_colorset} url(./layouts/xecenter/img/pattern/{$layout_info->user_menu_two_pattern}) repeat;}
+.gnb .active_2{background:{$layout_info->user_common_colorset} url(./layouts/xecenter/img/pattern/{$layout_info->user_menu_two_pattern}) repeat;}
+
+#body .content_top{background:{$layout_info->user_common_colorset} url(./layouts/xecenter/img/pattern/{$layout_info->user_pattern_content_top}) repeat; }
+#body .content_bottoms{background:{$layout_info->user_common_colorset} url(./layouts/xecenter/img/pattern/{$layout_info->user_pattern_content_bottom}) repeat; }
+
+.lnb li a:hover{background:{$layout_info->user_common_colorset} url(./layouts/xecenter/img/pattern/{$layout_info->user_pattern_sub_menu}) repeat!important;}
+.lnb .active a{background:{$layout_info->user_common_colorset} url(./layouts/xecenter/img/pattern/{$layout_info->user_pattern_sub_menu}) repeat;}
+
+.menu_bottom{background:{$layout_info->user_common_colorset} url(./layouts/xecenter/img/pattern/{$layout_info->user_bottom_menu_pattern}) repeat;}
+.menu_bottom .site_map_bg{border-top:3px solid {$layout_info->user_common_colorset};}
+
+.simple_menu li a{background:{$layout_info->user_common_colorset};}
+
+.move_target a:hover{background:{$layout_info->user_common_colorset};}
+.move_target .move_t span{border-bottom-color:{$layout_info->user_common_colorset};}
+.move_target .move_c span{border-color:{$layout_info->user_common_colorset};}
+.move_target .move_b span{border-top-color:{$layout_info->user_common_colorset};}
+
+.menu_bottom .family_site .family_wrap a:hover{background:{$layout_info->user_common_colorset};}
+
+</style>
+
+<!--// 세부조정 (배경)-->
+<style type="text/css">
+<!--@if($layout_info->user_color_menu)-->
+.menu_bg{background:{$layout_info->user_color_menu} url(./layouts/xecenter/img/pattern/{$layout_info->user_main_menu_pattern}) repeat;}<!--@end-->
+<!--@if($layout_info->user_color_menu_hover)-->
+.main_hover:hover{background:{$layout_info->user_color_menu_hover};}
+.main_active{background:{$layout_info->user_color_menu_hover};}<!--@end-->
+<!--@if($layout_info->user_color_menu_two)-->
+.gnb li li:hover{background:{$layout_info->user_color_menu_two} url(./layouts/xecenter/img/pattern/{$layout_info->user_menu_two_pattern}) repeat; color:<!--@if($layout_info->user_font_menu2_hover)-->{$layout_info->user_font_menu2_hover}<!--@else-->white<!--@end-->;}
+.gnb .active{background:{$layout_info->user_color_menu_two} url(./layouts/xecenter/img/pattern/{$layout_info->user_menu_two_pattern}) repeat;}
+.gnb .active_2{background:{$layout_info->user_color_menu_two} url(./layouts/xecenter/img/pattern/{$layout_info->user_menu_two_pattern}) repeat;}
+.gnb .active_3{background:{$layout_info->user_color_menu_two} url(./layouts/xecenter/img/pattern/{$layout_info->user_menu_two_pattern}) repeat;}<!--@end-->
+<!--@if($layout_info->user_color_content_top)-->
+#body .content_top{background:{$layout_info->user_color_content_top} url(./layouts/xecenter/img/pattern/{$layout_info->user_pattern_content_top}) repeat; }<!--@end-->
+<!--@if($layout_info->user_color_content_bottom)-->
+#body .content_bottoms{background:{$layout_info->user_color_content_bottom} url(./layouts/xecenter/img/pattern/{$layout_info->user_pattern_content_bottom}) repeat; }<!--@end-->
+<!--@if($layout_info->user_color_sub_menu)-->
+.lnb li a:hover{background:{$layout_info->user_color_sub_menu} url(./layouts/xecenter/img/pattern/{$layout_info->user_pattern_sub_menu}) repeat!important;}
+.lnb .active a{background:{$layout_info->user_color_sub_menu} url(./layouts/xecenter/img/pattern/{$layout_info->user_pattern_sub_menu}) repeat;}<!--@end-->
+<!--@if($layout_info->user_color_bottom_menu)-->
+.menu_bottom{background:{$layout_info->user_color_bottom_menu} url(./layouts/xecenter/img/pattern/{$layout_info->user_bottom_menu_pattern}) repeat;}<!--@end-->
+<!--@if($layout_info->user_color_line)-->
+.gnb ul ul{border-top:2px solid {$layout_info->user_color_line};}
+.gnb li a:hover{border-bottom:{$layout_info->user_color_line} 2px solid;}<!--@end-->
+<!--@if($layout_info->user_color_line_bottom && $layout_info->colorset == 'white')-->
+.menu_bottom{border-top:{$layout_info->user_color_line_bottom} 2px solid;}<!--@end-->
+<!--@if($layout_info->user_color_line_bottom && $layout_info->colorset != 'white')-->
+.menu_bottom{border-bottom:{$layout_info->user_color_line_bottom} 2px solid;}<!--@end-->
+<!--@if($layout_info->user_color_simple_menu)-->
+.simple_menu li a{background:{$layout_info->user_color_simple_menu};}<!--@end-->
+</style>
+

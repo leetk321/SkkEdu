@@ -1,0 +1,76 @@
+<include target="header.html" />
+
+<load target="../../tpl/js/pointsend.js" />
+<load target="../../tpl/js/autoresize.jquery.min.js" />
+
+<div class="x_modal-header">
+	<h1>{$lang->pointsend}</h1>
+</div>
+
+<div class="x_modal-body">
+	<form id="fo_gift" action="./" method="post" class="x_form-horizontal" onsubmit="return procFilter(this, pointsend)">
+		<input type="hidden" name="module" value="pointsend">
+		<input type="hidden" name="act" value="procPointsend">
+		<input type="hidden" name="sender_srl" value="{$logged_info->member_srl}">
+		<input type="hidden" name="receiver_srl" value="{$member_info->member_srl}">
+		<input type="hidden" name="is_subtraction" value="N">
+		<div class="x_control-group">
+			<div class="x_control-label">{$lang->receiver}</div>
+			<div class="x_controls">
+				<span class="member_{$member_info->member_srl}">{$member_info->nick_name}</span>
+				<!--@if($logged_info->is_admin == 'Y')--> ({$member_info->user_id})<!--@end-->
+			</div>
+		</div>
+		<div class="x_control-group">
+			<label for="input_send_point" class="x_control-label">{$lang->send_point}</label>
+			<div class="x_controls">
+				<button type="button" class="x_btn x_btn-success btnSign" cond="$logged_info->is_admin == 'Y'">+</button>
+				<input type="text" id="input_send_point" name="send_point" value="" class="inputTypeText" />
+			</div>
+		</div>
+		<div class="x_control-group">
+			<div class="x_control-label">{$lang->current_point}</div>
+			<div class="x_controls">
+				{number_format($current_point)}
+			</div>
+		</div>
+		<div class="x_control-group">
+			<div class="x_control-label">{$lang->after_point}</div>
+			<div class="x_controls" id="afterPoint">
+				{number_format($current_point)}
+			</div>
+		</div>
+		<div class="x_control-group">
+			<label for="gift_message" class="x_control-label">{$lang->gift_message}</label>
+			<div class="x_controls">
+				<textarea name="gift_message" id="gift_message" cols="400" rows="3"></textarea>
+				<p class="x_help-block">{$lang->about_gift_message}<p>
+			</div>
+		</div>
+		<div class="x_control-group" cond="$pointsend_config->use_fee == 'Y'">
+			<div class="x_control-label">{$lang->fee}</div>
+			<div class="x_controls" id="curFee">0</div>
+		</div>
+		<div class="btn-proc">
+			<input type="submit" value="{$lang->pointsend}" class="x_btn">
+		</div>
+	</div>
+
+	<script type="text/javascript">
+	var cf_useFee = '{$pointsend_config->use_fee}';
+	<!--@if($pointsend_config->use_fee == 'Y')-->
+	var cf_fee = {$pointsend_config->fee};
+	var cf_feePoint = {$pointsend_config->fee_apply_point};
+	<!--@end-->
+	var cf_curPoint = {$current_point};
+	</script>
+	<script type="text/javascript">
+	(function($){
+		$('textarea[name=gift_message]').autoResize({
+			animateDuration : 300,
+			extraSpace : 0,
+		});
+	})(jQuery);
+	</script>
+</form>
+<!--#include("footer.html")-->

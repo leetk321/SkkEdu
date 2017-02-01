@@ -1,0 +1,8 @@
+<query id="deleteMemberextendTrigger" action="delete">
+    <tables>
+        <table name="module_trigger" />
+    </tables>
+    <conditions>
+        <condition operation="equal" column="module" var="module" pipe="and" />
+    </conditions>
+</query>

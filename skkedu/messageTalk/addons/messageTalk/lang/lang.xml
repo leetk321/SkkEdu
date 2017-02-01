@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<lang>
+	<item name="cmd_messageTalk">
+		<value xml:lang="ko"><![CDATA[메시지톡]]></value>
+		<value xml:lang="en"><![CDATA[messageTalk]]></value>
+		<value xml:lang="jp"><![CDATA[メッセージ話]]></value>
+	</item>
+	<item name="msg_open_messageTalk">
+		<value xml:lang="ko"><![CDATA[ 팝업차단을 해제하시면 자동으로 메시지톡 팝업이 열립니다.]]></value>
+		<value xml:lang="en"><![CDATA[Disable the pop-up blocker automatically opens a pop-up message Talk.]]></value>
+		<value xml:lang="jp"><![CDATA[ポップアップを解除すると自動的にメッセージトークポップアップが開かれます。]]></value>
+	</item>
+	<item name="alert_new_messageTalk">
+		<value xml:lang="ko"><![CDATA[새로운 메시지가 도착하였습니다.]]></value>
+		<value xml:lang="en"><![CDATA[You have new message(s).]]></value>
+		<value xml:lang="jp"><![CDATA[件の新しいメッセージを受信しました。]]></value>
+	</item>
+</lang>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<table name="memberextend">
+	<column name="member_srl" type="number" size="11" notnull="notnull" auto_increment="auto_increment" primary_key="primary_key" />
+	<column name="type_srl" type="number" size="11" notnull="notnull" />
+    <column name="type_extra_vars" type="bigtext" />
+    <column name="regdate" type="date" />
+</table>

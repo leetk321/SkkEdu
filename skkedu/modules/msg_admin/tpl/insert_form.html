@@ -1,0 +1,68 @@
+<!--#include('header.html')-->
+<!--%import("filter/insert_msg.xml")-->
+<script type="text/javascript">
+    jQuery( function() { jQuery('.receiver_target').change( function(event) { dozone_receiver(this.value); } ); } );
+</script>
+
+<form id="fo_insert_form" action="./" method="get" onsubmit="return procFilter(this, insert_msg)">
+<input type="hidden" name="content" value="{$message->content}" />
+<input type="hidden" name="message_type" value="{$message_type}" />
+<input type="hidden" name="page" value="{Context::get('page')}" />
+<input type="hidden" name="receiver_value" value="" />
+	<h4 class="xeAdmin">{$lang->cmd_send_message}</h4>
+    <table cellspacing="0" class="rowTable">
+    <tr>
+        <th scope="row"><div>{$lang->receiver}</div></th>
+        <td>
+            <select name="receiver_target" class="receiver_target">
+                <option value="0">{$lang->grant_to_all}</option>
+                <option value="-1">{$lang->grant_to_member}</option>
+                <option value="-2">{$lang->grant_to_group}</option>
+            </select>
+
+            <div id="zone_receiver1" style="display:none;" class="zone_receiver">
+                <div>
+                    <select name="receiver_value_list" size="8" style="width:400px;height:80px;" id="receiver_value_list">
+                    </select>
+                </div>
+                <div class="gap1">
+                    <a href="#" onclick="doEditReceiver(this,'up');return false;" class="button"><span>{$lang->cmd_move_up}</span></a>
+                    <a href="#" onclick="doEditReceiver(this,'down');return false;" class="button"><span>{$lang->cmd_move_down}</span></a>
+                    <a href="#" onclick="doEditReceiver(this, 'delete');return false;" class="button black"><span>{$lang->cmd_delete}</span></a>
+                </div>
+                <div class="gap1">
+                    {$lang->user_id} : <input type="text" name="receiver_value_item" id="receiver_value_item" class="inputTypeText w400" />
+                    <a href="#" onclick="doEditReceiver(this, 'insert');return false;" class="button"><span>{$lang->cmd_insert}</span></a>
+                </div>
+            </div>
+			<div id="zone_receiver2" style="display:none" class="zone_receiver">
+                <!--@foreach($group_list as $group_srl => $group_item)-->
+                <input type="checkbox" class="checkbox" name="receiver_group" value="{$group_item->group_srl}" id="group_{$group_srl}" /> 
+                <label for="group_{$group_srl}">{$group_item->title}</label>
+                <!--@end-->
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <th scope="row"><div>{$lang->title}</div></th>
+        <td class="wide"><input type="text" name="title" id="message_title" value="" class="inputTypeText w400" /></td>
+    </tr>
+	<tr>
+        <th scope="row"><div>{$lang->content}</div></th>
+        <td>
+		    {$editor}
+        </td>
+    </tr>
+
+	<tr>
+        <th colspan="2" class="button">
+			<span class="button black strong"><input type="submit" value="{$lang->cmd_confirm}" /></span>
+            <a href="{getUrl('act','dispMsg_adminAdminList','message_srl','','message_type',$message_type)}" class="button"><span>{$lang->cmd_back}</span></a>
+        </th>
+    </tr>
+</table>
+</form>
+
+<script type="text/javascript">
+    xAddEventListener(window, 'load', function() { xGetElementById("message_title").focus(); });
+</script>

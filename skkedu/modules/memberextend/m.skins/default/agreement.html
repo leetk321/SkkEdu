@@ -1,0 +1,32 @@
+<include target="header.html" />
+<load target="./css/agreement.css" />
+
+{@$agreement_count = count($agreement_list)}
+<script>
+	var agreement_count = '{$agreement_count}';
+	var xe_memberextend_msg_need_agreement_check = '{$lang->msg_need_agreement_check}';
+</script>
+<script src="./js/agreement.js" type="text/javascript"></script>
+<form action="./" method="post" enctype="multipart/form-data" class="form-horizontal" id="agreement_form">
+	<input type="hidden" name="module" value="memberextend" />
+	<input type="hidden" name="act" value="procMemberextendAgreement" />
+	<input type="hidden" name="type_srl" value="{$member_type}" />
+	<input type="hidden" name="mid" value="{$mid}" />
+	<input type="hidden" name="agreement_count" value="{$agreement_count}"/>
+	<!--@foreach($agreement_list as $agreement)-->
+		<article class="Agreement">
+			<h1 class="Title">{$agreement->title}</h1>
+			<div class="Text">
+				{$agreement->content}
+			</div>
+			<div class="Confirm">
+				<input type="checkbox" id="accept_agreement[{$agreement->title}]" name="accept_agreement[]" value="Y" class="accept_agree" />
+				<label for="accept_agreement[{$agreement->title}]">{$lang->about_accept_agreement}</label>
+			</div>
+		</article >
+	<!--@endforeach-->
+	
+	<div class="btnArea" style="text-align:center; margin:20px; auto;">
+		<button type="submit" id="agreement_submit" disabled="disabled" >{$lang->cmd_next}</button>
+	</div>
+</form>

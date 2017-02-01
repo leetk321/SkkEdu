@@ -1,0 +1,29 @@
+@charset "utf-8";
+
+.me_typelist		{width:100%; margin:auto;}
+.me_typelist td		{border-bottom:1px solid #e1e1e1; margin:0px; padding:5px; height:50px;}
+
+.me_type			{width:30%;}
+
+.me_desc			{width:70%;}
+.me_desc h4			{font-size:20px; margin:10px 0px;}
+.me_desc span		{font-size:14px;}
+
+.me_btn				{width:50px; text-decoration:none !important;display:inline-block;*display:inline;*zoom:1;padding:0 12px !important;margin:0;line-height:24px !important;height:24px !important;font-family:inherit;font-size:12px;color:#333333;text-align:center;text-shadow:0 1px 1px rgba(255, 255, 255, 0.75);vertical-align:top;cursor:pointer;overflow:visible;background-color:#f5f5f5;*background-color:#e6e6e6;background-image:-moz-linear-gradient(top, #ffffff, #e6e6e6);background-image:-webkit-linear-gradient(top, #ffffff, #e6e6e6);background-image:-o-linear-gradient(top, #ffffff, #e6e6e6);background-image:linear-gradient(top, #ffffff, #e6e6e6);background-repeat:repeat-x;filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#e6e6e6', GradientType=0);filter:progid:DXImageTransform.Microsoft.gradient(enabled=false);border:1px solid #bbbbbb;border-color:#e6e6e6 #e6e6e6 #bfbfbf;border-color:rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);border-bottom-color:#a2a2a2;border-radius:2px;box-shadow:inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05)}
+.me_btn:hover,
+.me_btn:active,
+.me_btn[disabled]{color:#333333;background-color:#e6e6e6;*background-color:#d9d9d9}
+.me_btn>a,
+.me_btn>button,
+.me_btn>input,
+.me_btn>span{display:inline-block;*zoom:1;margin:0 -12px !important;padding:0 12px !important;text-decoration:none !important;width:auto;font-family:inherit;line-height:24px;height:24px;border:0;background:none;color:#333;font-size:12px;vertical-align:top;overflow:visible;cursor:pointer}
+
+
+.me_progress				{margin:auto}
+.me_progress td 	        {padding:5px; color:#333; width:auto; text-align:center; border-top:1px solid #999999; border-radius:10px; border-bottom:1px solid #999999; border-left:3px solid #999999; border-right:3px solid #999999;}
+.me_progress td.current		{padding:5px; color:#333; width:auto; text-align:center; border-top:1px solid #ffa1a1; border-radius:10px; border-bottom:1px solid #ffa1a1; border-left:3px solid #ffa1a1; border-right:3px solid #ffa1a1;}
+.me_progress > table tr > td > img	{vertical-align: middle; float:left}
+.me_progress > table tr > td > span {display:inline-block; margin-top:3px;}
+
+td.pointer img 				{vertical-align: middle; }
+td.pointer					{width:6px; border:0px;} 

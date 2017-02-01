@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module version="0.2">
+	<title xml:lang="ko">포인트 선물</title>
+	<description xml:lang="ko">회원끼리 포인트를 주고 받을 수 있는 기능을 제공합니다.</description>
+	<version>1.3.0alpha</version>
+	<date>2016-12-18</date>
+	<category>member</category>
+	<license>LGPLv2</license>
+
+	<author email_address="contact@funnyxe.com" link="https://funnyxe.com">
+		<name xml:lang="ko">SimpleCode</name>
+	</author>
+</module>

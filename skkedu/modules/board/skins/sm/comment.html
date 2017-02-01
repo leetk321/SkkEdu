@@ -1,0 +1,85 @@
+{@ $depth = $module_info->display_depth}
+<ul class="smVc" cond="$oDocument->getCommentCount()">
+	<li loop="$oDocument->getComments()=>$key,$comment" style="padding-left:{($comment->get('depth'))*35}px"|cond="$comment->get('depth')" id="comment_{$comment->comment_srl}">
+		<div class="ppp xe_content">
+        
+        <!--@if($module_info->default_style != 'pp' && $module_info->comment_profile != 'N' )-->
+			<div class="img-circle-comment-back">
+				<!--@if(!$comment->member_srl)-->
+					<img src="css/profile.gif" cond="!$comment->getProfileImage() && !$module_info->profile_img" class="img-circle_comment" />
+                    <img src="{$module_info->profile_img}" cond="!$comment->getProfileImage() && $module_info->profile_img" class="img-circle_comment" />
+				<!--@else-->
+                    <img src="css/profile.gif" cond="!$comment->getProfileImage() && !$module_info->profile_member" class="img-circle_comment" />
+                    <img src="{$module_info->profile_member}" cond="!$comment->getProfileImage() && $module_info->profile_member" class="img-circle_comment" />
+				<!--@end-->
+					<img cond="$comment->getProfileImage()" src="{$comment->getProfileImage()}" class="img-circle_comment" alt="Profile" />
+			</div>
+		<!--@end-->
+        
+        <div style="margin-left:38px"|cond="$module_info->default_style != 'pp' && $module_info->comment_profile != 'N'">
+        <div id="list_{$comment->comment_srl}" style="display:block; ">
+        	<div onmouseover="toggle_object('action_{$comment->comment_srl}'); return false;" onmouseout="toggle_object('action_{$comment->comment_srl}'); return false;">
+        		<span class="sm_name">
+                	<block cond="!$comment->member_srl && !$comment->homepage">{$comment->getNickName()}</block>
+                	<a cond="$comment->member_srl" href="#popup_menu_area" class="member_{$comment->member_srl}" onclick="return false">{$comment->getNickName()}</a>
+                </span>
+        
+        		<span class="sm_time" cond="$module_info->display_time!='N'">
+        		<!--@if( ($cur_date = date('Y-m-d'))==($comment->getRegdate('Y-m-d')) )-->
+            	<font color="#FF6666">{getTimeGap($comment->get('regdate'), "Y.m.d H:i")}</font>
+            	<!--@else-->
+        		{$comment->getRegdate('Y.m.d a H:i')}
+        		<!--@end-->
+        		</span>
+                
+        <div style="display:none"|cond="$module_info->action != 'N'" id="action_{$comment->comment_srl}"|cond="$module_info->action != 'N'" class="action">
+        <!--@if($comment->get('depth') < $module_info->display_depth)-->
+        <a href="#" onclick="toggle_object('reply_{$comment->comment_srl}'); return false;" cond="$grant->write_comment">&crarr;  {$lang->cmd_reply}</a><!--@end-->
+
+        <a href="#" onclick="toggle_object('insert_{$comment->comment_srl}'); toggle_object('list_{$comment->comment_srl}'); toggle('reply_{$comment->comment_srl}'); return false;" title="{$lang->cmd_modify}"  cond="$comment->isGranted()||!$comment->get('member_srl')" >{$lang->cmd_modify}</a>
+        		
+        <a href="#" onclick="toggle_object('list_{$comment->comment_srl}'); toggle_object('delete_{$comment->comment_srl}'); toggle('reply_{$comment->comment_srl}'); return false;" title="{$lang->cmd_delete}" cond="$comment->isGranted() || !$comment->get('member_srl')">{$lang->cmd_delete}</a>
+        </div>
+
+        
+        <div class="sm_text" >
+        <span class="comment<!--@if($comment->comment_srl)-->_{$comment->comment_srl}<!--@end--><!--@if($comment->member_srl)-->_{$comment->member_srl}<!--@end--> xe_content">
+        
+        <!--@if($comment->parent_srl && $module_info->display_parent != 'N')-->
+{@
+$oComment = &getModel('comment');
+$comment_parent = $oComment->getComment($comment->parent_srl);
+}
+<strong style="margin-right:5px;">#{$comment_parent->getNickName()}</strong>
+<!--@end-->
+
+        {$comment->getContentText(text)}</span>
+        </div>
+
+        <div id="reply_{$comment->comment_srl}" style="display:none;"><include target="comment_reply.html" /></div>  
+        
+ 		</div></div></div>
+ 
+        <div id="delete_{$comment->comment_srl}" style="display:none;"><include target="./delete_comment.html" /></div>
+        <div id="insert_{$comment->comment_srl}" style="display:none;"><include target="./insert_comment.html" /></div>
+        
+        </div>
+        </li>
+        </ul>     
+                
+{@ 
+$cpageStr = sprintf('%d_cpage', $oDocument->document_srl);
+$cpage = Context::get($cpageStr);         
+}    
+
+	
+	<div class="pagination pagination-comment" cond="$oDocument->comment_page_navigation">
+    
+    <a href="{getUrl($cpageStr,1)}#{$oDocument->document_srl}_comment" >&lt;</a> 
+		<block loop="$page_no = $oDocument->comment_page_navigation->getNextPage()">
+			<strong cond="$cpage == $page_no">{$page_no}</strong> 
+			<a cond="$cpage != $page_no" href="{getUrl($cpageStr,$page_no)}#{$oDocument->document_srl}_comment">{$page_no}</a>
+		</block>
+		<a href="{getUrl($cpageStr,$oDocument->comment_page_navigation->last_page)}#{$oDocument->document_srl}_comment" >&gt;</a>
+
+    </div>

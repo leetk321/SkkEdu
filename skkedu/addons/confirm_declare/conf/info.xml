@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<addon version="0.2">
+	<title xml:lang="ko">추천/비추천/신고시 확인 후 적용</title>
+    <version>1.1a</version>
+	<date>2015-01-20</date>
+	<license link="http://opensource.org/licenses/eclipse-1.0.php">Eclipse Public License(EPL)</license>
+	<author email_address="kisstoxe@nate.com" link="http://me2.do/G1RQaFzy">
+		<name xml:lang="ko">키스투엑스이</name>
+	</author>
+	<description xml:lang="ko">
+			추천, 비추천, 신고시에 예/아니오 버튼을 출력합니다.
+	</description>
+	<extra_vars>
+		<var name="msg">
+			<title xml:lang="ko">확인창에 보여질 메시지</title>
+			<description xml:lang="ko">확인창에 보여질 메시지를 입력해주세요.</description>
+		</var>
+	</extra_vars>
+</addon>

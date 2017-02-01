@@ -1,0 +1,35 @@
+
+<!--%import("style.css")-->
+<!--%import("script.js")-->
+<p></p>
+<div class="ePoint">
+	<table>
+		<thead>
+			<tr>
+				<th>{$lang->rank}</th>
+				<th>{$lang->nick_name}</th>
+				<!--<th>{$lang->level}</th>-->
+				<th class="point">{$lang->point}</th>
+				<!--<th>{$lang->cmd_site_signup} {$lang->date}</th>-->
+			</tr>
+		</thead>
+		<!--@if(count($widget_info->point_list))-->
+{@
+$rank = 1;
+}
+		<tbody>
+			<!--@foreach($widget_info->point_list as $val)-->
+			<tr>
+				<td>{$rank++}</td>
+				<td class="nick"><span class="member_{$val->member_srl}">{$val->nick_name}</span></td>
+				<!--<td>{$val->level}</td>-->
+				<td class="point"><span><em>{$val->point}</em></span></td>
+				<!--<td>{zdate($val->regdate,"Y-m-d")}</td>-->
+			</tr>
+			<!--@end-->
+		</tbody>
+		<!--@end-->
+	</table>
+	<address>Skin by <a href="http://elkha.kr">Elkha</a></address>
+</div>
+

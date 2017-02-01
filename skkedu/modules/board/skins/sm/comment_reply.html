@@ -1,0 +1,22 @@
+<!--@if($grant->write_comment)-->
+<load target="filter/insert_comment.xml" />
+<form action="./" method="post" onsubmit="return procFilter(this, insert_comment)" no-error-return-url="true" class="write_author" >
+    <input type="hidden" name="mid" value="{$mid}" />
+    <input type="hidden" name="document_srl" value="{$oDocument->document_srl}" />
+    <input type="hidden" name="comment_srl" value="" />
+	<input type="hidden" name="parent_srl" value="{$comment->comment_srl}" />
+    <div style="padding:10px 0;">
+	<div class="sm-input-body">
+    
+    <input type="text" name="content" style="width:70%;background:#FFF"  value=""  />
+    <button type="submit" title="{$lang->cmd_comment}" class="sm-btn">{$lang->cmd_registration}</button>
+    <a href="#" onclick="toggle_object('reply_{$comment->comment_srl}'); return false;" title="{$lang->cmd_cancel}" class="sm-btn-de">{$lang->cmd_cancel}</a>
+</div>
+			<div cond="!$is_logged" id="write_author"  >
+            
+            <input type="text" name="nick_name" id="userName" class="iText" style="width:120px" required placeholder="{$lang->writer}" title="{$lang->writer}" />
+			<input type="password" name="password" id="userPw"  required placeholder="{$lang->password}" class="iText" style="width:120px" cond="!$is_logged" />
+            
+            </div></div>
+</form>
+<!--@end-->        

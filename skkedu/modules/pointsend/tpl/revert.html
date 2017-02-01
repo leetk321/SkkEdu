@@ -1,0 +1,9 @@
+<include target="header.html" />
+
+<h2>{$lang->cmd_pointsend_revert}</h2>
+
+<form ruleset="pointsendRevert" action="./" method="post">
+	<input type="hidden" name="log_srl" value="{$log_srl}">
+	{$lang->about_pointsend_revert}
+	<input type="submit" value="{$lang->cmd_continue}" class="x_btn"></span> <a href="{getUrl('act','dispPointsendAdminLogList','log_srl','')}" class="x_btn">{$lang->cmd_back}</a>
+</form>

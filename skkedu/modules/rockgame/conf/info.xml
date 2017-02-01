@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module version="0.2">
+    <title xml:lang="ko">가위바위보 게임모듈</title>
+    <description xml:lang="ko">포인트를 걸어 가위바위보 게임을 하는 모듈입니다. </description>
+    <version>0.4</version>
+    <date>2014-01-02</date>
+    <category>service</category>
+	<author email_address="samswnlee@naver.com" link="http://www.xecenter.com/">
+        <name xml:lang="ko">쿡래빗</name>
+    </author>
+</module>
+
+<!--
+<caregory> 요소
+service : 서비스관리
+member : 회원관리
+content : 정보관리
+construction : 사이트설정
+utility : 기능설정
+accessory : 부가기능 설정
+system : 시스템 관리/설정
+package : cafeXE, textyle 등의 패키지 모듈
+-->

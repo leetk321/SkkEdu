@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module>
+    <grants />
+    <permissions />
+    <actions>
+		<action name="dispMsg_adminAdminList" type="view" standalone="true" admin_index="true" />
+		<action name="dispMsg_adminAdminInsert" type="view" standalone="true" />
+		<action name="procMsg_adminAdminInsert" type="controller" standalone="true" />
+		<action name="dispMsg_adminAdminModify" type="view" />
+		<action name="procMsg_adminAdminModify" type="controller" />
+		<action name="dispMsg_adminAdminDelete" type="view" />
+		<action name="procMsg_adminAdminDelete" type="controller" />
+		<action name="procMsg_adminAdminAllDelete" type="controller" />
+	</actions>
+</module>

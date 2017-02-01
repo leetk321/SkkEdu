@@ -1,0 +1,5 @@
+@charset "utf-8";
+.addon_insert_sticker { position:relative; border:1px solid #ccc; }
+.addon_insert_sticker .stickter_list { position:relative; max-height:150px; margin:5px 5px 10px 10px; overflow:auto; }
+.addon_insert_sticker .stickter_list li { margin:5px 5px 0px 0px; float:left; display:inline-block; }
+.addon_insert_sticker .stickter_list li img { height:25px; }

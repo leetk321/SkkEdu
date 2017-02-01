@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<addon version="0.2">
+    <title xml:lang="ko">글/댓글 작성중 창닫기시 경고</title>
+    <description xml:lang="ko">
+	이 페이지를 나가시겠습니까 확인창을 띄웁니다.
+    </description>
+    <version>1.7</version>
+    <date>2015-10-25</date>
+
+    <author>
+        <name xml:lang="ko">주파르탄</name>
+    </author>
+</addon>

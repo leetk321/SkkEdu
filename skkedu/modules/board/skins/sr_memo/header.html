@@ -1,0 +1,29 @@
+<load target="css/common.css" />
+<load target="js/board.js" />
+
+<!--@if(!$module_info->duration_new = (int)$module_info->duration_new)-->
+{@ $module_info->duration_new = 12 }<!--@end-->
+
+<!--@if(!$module_info->display_depth = (int)$module_info->display_depth)-->
+{@ $module_info->display_depth = 10 }<!--@end-->
+
+    {$module_info->header_text}
+ 
+<div class="sm"> 
+
+	
+    <div class="smHeader">
+
+    	<!--@if($module_info->title)-->
+		<div class="smHt">
+			<h2 class="smHtt"><a href="{getUrl('','mid',$mid,'listStyle',$listStyle)}">{$module_info->title}<!--@if($module_info->sub_title)--> : <em>{$module_info->sub_title}</em><!--@end--></a></h2>
+		</div>
+		<!--@end-->
+
+		<!--@if($module_info->comment)-->
+		<div class="smDescription">{$module_info->comment}</div>
+		<!--@end-->
+
+	</div>
+    
+    

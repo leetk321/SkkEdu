@@ -1,0 +1,12 @@
+<query id="chkDuplicate" action="select">
+    <tables>
+        <table name="ximember" />
+    </tables>
+    <columns>
+        <column name="count(*)" alias="count" />
+    </columns>
+    <conditions>
+        <condition operation="equal" column="ci" var="ci" notnull="notnull" pipe="and" />
+        <condition operation="equal" column="di" var="di" notnull="notnull" pipe="and" />
+    </conditions>
+</query>

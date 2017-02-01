@@ -1,0 +1,124 @@
+<!--@if($oDocument->isExists())-->
+<include target="header.html" />
+
+<h2>{$lang->document}</h2>
+
+<!--@end-->
+
+<load target="filter/insert.xml" />
+
+<form action="./" method="post" onsubmit="return procFilter(this, window.insert)" class="boardWrite">
+	<input type="hidden" name="mid" value="{$mid}" />
+	<input type="hidden" name="document_srl" value="{$document_srl}" />
+    
+
+<div class="smWrite" >
+<table border="0" cellspacing="0" cellpadding="0">
+
+		<tr>
+        <!--@if($module_info->use_category=="Y")-->
+        <td style="padding-left:0;">
+        
+		<select name="category_srl" class="category" style="height:25px; margin-right:5px; border:1px solid #ccc">
+			
+			<!--@foreach($category_list as $val)-->
+			<option <!--@if(!$val->grant)-->disabled="disabled"<!--@endif--> value="{$val->category_srl}" <!--@if($val->grant&&$val->selected||$val->category_srl==$oDocument->get('category_srl'))-->selected="selected"<!--@endif-->>
+				{str_repeat("&nbsp;&nbsp;",$val->depth)} {$val->title} ({$val->document_count})
+			</option>
+			<!--@endforeach-->
+		</select>
+		
+        </td>
+        <!--@endif-->
+        
+        <td class="wr">
+
+		<input cond="$oDocument->getTitleText()" maxlength="60" type="text" name="title" class="iText" title="{$lang->title}" style="width:100%; " value="{htmlspecialchars($oDocument->getTitleText())}" onclick="toggle_object('write_author'); return false;" />
+		<input cond="!$oDocument->getTitleText()" maxlength="60" type="text" name="title" class="iText" title="{$lang->title}" style="width:100%; " onclick="toggle_object('write_author'); return false;" />
+
+		</td>
+        
+        <td align="right">
+       	<button type="submit" title="{$lang->cmd_registration}"><img src="./css/write.gif" alt="submit" /></button>
+        </td>
+
+        </tr>
+        
+        </table>
+        
+        <div cond="!$is_logged" id="write_author" style="display:none">
+        <div class="write_author" cond="!$is_logged">
+            
+			<span class="item" cond="!$is_logged">
+				<label for="userName" class="iLabel">{$lang->writer}</label>
+				<input type="text" name="nick_name" id="userName" class="iText userName" style="width:120px" value="{htmlspecialchars($oDocument->get('nick_name'))}" />
+			</span>
+			<span class="item" cond="!$is_logged">
+				<label for="userPw" class="iLabel">{$lang->password}</label>
+				<input type="password" name="password" id="userPw" class="iText userPw" style="width:120px" />
+			</span>
+
+		</div> 
+        </div> 
+        
+        
+        <div class="smw_op" >            
+            {@ $_color = array('555555','222288','226622','2266EE','8866CC','88AA66','EE2222','EE6622','EEAA22','EEEE22') }
+			<span class="use_item"  cond="$grant->manager" >
+      		<select style="margin:0;" name="title_color" id="title_color" <!--@if($oDocument->get('title_color'))-->style="color:#{$oDocument->get('title_color')};"<!--@end--> onchange="this.style.color=this.options[this.selectedIndex].style.color;">
+
+                <option value="" style="color:#CCCCCC;">{$lang->title_color}</option>
+
+                <!--@foreach($_color as $_col)-->
+
+                <option value="{$_col}" style="color:#{$_col}" <!--@if($oDocument->get('title_color')==$_col)-->selected="selected"<!--@end-->>{$lang->title_color}</option>
+
+                <!--@endforeach-->
+
+            </select>
+            </span>
+ 
+            <span class="use_item" cond="$grant->manager">
+				<input type="checkbox" name="title_bold" id="title_bold" class="iCheck" value="Y" checked="checked"|cond="$oDocument->get('title_bold')=='Y'" />
+				<label for="title_bold">{$lang->title_bold}</label>
+             </span>
+        	
+            <span class="use_item" cond="$is_logged && $module_info->display_notify!='N'">
+				<input type="checkbox" name="notify_message" class="iCheck" value="Y" checked="checked"|cond="$oDocument->useNotify()" id="notify_message" />
+				<label for="notify_message">{$lang->notify}</label>
+            </span>
+            
+             <!--@if(!$oDocument->isExists())-->
+
+             <span class="use_item" style="display:none">
+             
+            <input type="checkbox"  name="allow_comment" class="iCheck" value="Y" <!--@if($oDocument->allowComment())-->checked="checked"<!--@end--> id="reAllow" />
+				<label for="reAllow" >{$lang->allow_comment}</label>
+                </span>
+
+            <!--@end-->
+            
+             <!--@if($oDocument->isExists())-->
+
+             <span class="use_item" >
+            <input type="checkbox"  name="allow_comment" class="iCheck" value="Y" <!--@if($oDocument->allowComment())-->checked="checked"<!--@end--> id="reAllow" />
+				<label for="reAllow" >{$lang->allow_comment}</label>
+                </span>
+
+            <!--@end--> 
+            
+             <span class="use_item" cond="$grant->manager">
+        	<input cond="$grant->manager" type="checkbox" name="is_notice" value="Y" class="iCheck" checked="checked"|cond="$oDocument->isNotice()" id="is_notice" />
+			<label cond="$grant->manager" for="is_notice">{$lang->notice}</label>
+            </span>
+
+       </div>
+        
+
+</div>	
+
+    </form>
+    
+<!--@if($oDocument->isExists())-->
+<include target="footer.html">
+<!--@end-->

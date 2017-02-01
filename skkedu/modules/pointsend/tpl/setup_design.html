@@ -1,0 +1,37 @@
+<include target="header.html" />
+
+<div class="message {$XE_VALIDATOR_MESSAGE_TYPE}" cond="$XE_VALIDATOR_MESSAGE && $XE_VALIDATOR_ID == '/modules/pointsend/tpl/setup_design/1'">
+	<p>{$XE_VALIDATOR_MESSAGE}</p>
+</div>
+
+<form action="{getUrl()}" method="post" class="x_form-horizontal">
+	<input type="hidden" name="module" value="pointsend">
+	<input type="hidden" name="act" value="procPointsendAdminDesignSetup">
+	<input type="hidden" name="xe_validator_id" value="/modules/pointsend/tpl/setup_design/1">
+
+	<section class="section">
+		<h1><i class="fa fa-desktop fa-fw"></i> {$lang->skin}</h1>
+		<div class="x_control-group">
+			<div class="x_control-label">{$lang->skin}</div>
+			<div class="x_controls">
+				<select name="skin">
+					<option value="{$key}" selected="selected"|cond="$config->skin==$key ||!$config->skin" loop="$skin_list => $key, $val">{$val->title} ({$key})</option>
+				</select>
+			</div>
+		</div>
+	</section>
+	<section class="section">
+		<h1><i class="fa fa-mobile fa-fw"></i> {$lang->mobile_skin}</h1>
+		<div class="x_control-group">
+			<div class="x_control-label">{$lang->mobile_skin}</div>
+			<div class="x_controls">
+				<select name="skin">
+					<option value="{$key}" selected="selected"|cond="$config->mskin==$key ||!$config->mskin" loop="$mskin_list => $key, $val">{$val->title} ({$key})</option>
+				</select>
+			</div>
+		</div>
+	</section>
+	<div class="btnArea">
+		<input type="submit" value="{$lang->cmd_save}" class="x_btn x_btn-primary">
+	</div>
+</form>

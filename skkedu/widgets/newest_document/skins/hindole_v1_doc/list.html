@@ -1,0 +1,44 @@
+<!--%import("js.js")-->
+<!--%import("normal/style.css")-->
+{@$skin_t = "je_".mt_rand()}
+{@$line_t = "line_".mt_rand()}
+{@$ham_t = "ham_".mt_rand()}
+
+<style type="text/css">
+.wss_new_v2 .{$line_t} { position:absolute; left:0; top:0; border:1px solid #3ab1dd; background:none!important; z-index:400;  }
+.v2_green .wss_new_v2 .{$line_t} { border:1px solid #a7bd5b;  }
+.v2_grey .wss_new_v2 .{$line_t} { border:1px solid #535353;  }
+.v2_orange .wss_new_v2 .{$line_t} { border:1px solid #ed9355;  }
+.v2_pink .wss_new_v2 .{$line_t} { border:1px solid #dc574e;  }
+.v2_yellow .wss_new_v2 .{$line_t} { border:1px solid #ffd700;  }
+.v2_silver .wss_new_v2 .{$line_t} { border:1px solid #e7dec0;  }
+.v2_c_blue .wss_new_v2 .{$line_t} { border:1px solid #8dc7b8;  }
+
+</style>
+
+<div class="v2_{$colorset}">
+	<ul class="wss_new_v2 {$skin_t}" >
+		<!--@foreach($widget_info->document_list as $oDocument)-->
+		<li onmouseover="aaa()">
+			<!--@if($widget_info->display_regdate == 'Y')-->
+			<span class="date">[{$oDocument->getRegdate("Y-m-d")}]&nbsp;</span>
+			<!--@end-->
+			<span class="title_wss"> <a href="{$oDocument->getPermanentUrl()}#{$oDocument->getCommentCount()}" class="honey">{$oDocument->getTitle($widget_info->subject_cut_size)}</a>
+			<!--@if($oDocument->getCommentCount())-->
+			<span class="comment"><a href="{$oDocument->getPermanentUrl()}#comment">[{$oDocument->getCommentCount()}]</a></span>
+			<!--@end-->
+			{$oDocument->printExtraImages($widget_info->duration_new)} </span> </li>
+		<!--@end-->
+		<li class='{$line_t} '>&nbsp;</li>
+	</ul>
+</div>
+<script type="text/javascript">
+jQuery(".{$line_t} ").width(jQuery(".{$skin_t}  li:first").width()-2);
+jQuery(".{$skin_t} li").mouseover(function(){
+jQuery(".{$line_t}").stop().animate({
+		top:jQuery(this).position().top					   
+},100)									   
+})
+</script> 
+
+

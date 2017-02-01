@@ -1,0 +1,9 @@
+@charset "utf-8";
+
+#addon-popup-layer { display: none; position: fixed; left: 0; top: 0; height: 100%; width: 100%; z-index: 1000; background-color: transparent; }
+#addon-popup-modal { display: block; position: fixed; left: 0; top: 0; height: 100%; width: 100%; background-color: #000; opacity: 0.2; filter: alpha(opacity=20); -ms-filter: "alpha(opacity=20)"; }
+#addon-popup-container { position: absolute; top: 100px; background-color: #fff; border: 5px solid #aaa; }
+#addon-popup-content { opacity: 1; overflow: hidden; }
+#addon-popup-image { display: block; margin: 0 auto; }
+#addon-popup-menu { background-color: #333; color: #fff; text-align: right; padding: 10px; }
+#addon-popup-button-close { cursor: pointer; margin-left: 24px; }

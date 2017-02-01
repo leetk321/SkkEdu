@@ -1,0 +1,68 @@
+<!--#include('header.html')-->
+<!--%import("filter/update_msg.xml")-->
+
+<form action="./" method="get" onsubmit="return procFilter(this, update_msg)">
+<input type="hidden" name="message_srl" value="{$message->message_srl}" />
+<input type="hidden" name="content" value="{$message->content}" />
+<input type="hidden" name="message_type" value="{$message_type}" />
+<input type="hidden" name="page" value="{Context::get('page')}" />
+	<h4 class="xeAdmin">{$lang->cmd_modify}</h4>
+    <table cellspacing="0" class="rowTable">
+    <tr>
+        <th scope="row"><div>{$lang->sender}</div></th>
+        <td>
+			{@$message->sender = $oMemberModel->getMemberInfoByMemberSrl($message->sender_srl);}
+		    <span class="member_{$message->sender->member_srl}">{$message->sender->nick_name}</span> ({$message->sender->user_id})
+		</td>
+    </tr>
+    <tr>
+        <th scope="row"><div>{$lang->receiver}</div></th>
+        <td>
+			{@$message->receiver = $oMemberModel->getMemberInfoByMemberSrl($message->receiver_srl);}
+		    <span class="member_{$message->receiver->member_srl}">{$message->receiver->nick_name}</span> ({$message->receiver->user_id})
+        </td>
+    </tr>
+    <tr>
+        <th scope="row"><div>{$lang->regdate}</div></th>
+        <td>{zdate($message->regdate,"Y-m-d H:i:s")}</td>
+    </tr>
+    <tr>
+        <th scope="row"><div>{$lang->title}</div></th>
+        <td class="wide"><input type="text" name="title" id="message_title" value="{$message->title}" class="inputTypeText w400" /></td>
+    </tr>
+	<tr>
+        <th scope="row"><div>{$lang->msg_readed}</div></th>
+        <td>
+            <select name="readed">
+                <!--@foreach($lang->readed_list as $key => $val)-->
+                <option value="{$key}" <!--@if($message->readed==$key)-->selected="selected"<!--@end-->>{$val}</option>
+                <!--@end-->
+    		</select>
+		 </td>
+    </tr>
+    <tr>
+        <th scope="row"><div>{$lang->readed_date}</div></th>
+        <td class="wide">
+		    <input type="text" name="readed_date" value="{$message->readed_date}" class="inputTypeText" />
+		    <p>{$lang->msg_readed_date_info}</p>
+		</td>
+    </tr>
+	<tr>
+        <th scope="row"><div>{$lang->content}</div></th>
+        <td>
+		    {$editor}
+        </td>
+    </tr>
+
+	<tr>
+        <th colspan="2" class="button">
+			<span class="button black strong"><input type="submit" value="{$lang->cmd_confirm}" /></span>
+            <a href="{getUrl('act','dispMsg_adminAdminList','message_srl','','message_type',$message_type)}" class="button"><span>{$lang->cmd_back}</span></a>
+        </th>
+    </tr>
+</table>
+</form>
+
+<script type="text/javascript">
+    xAddEventListener(window, 'load', function() { xGetElementById("message_title").focus(); });
+</script>

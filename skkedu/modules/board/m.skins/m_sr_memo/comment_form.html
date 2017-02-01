@@ -1,0 +1,40 @@
+{@ Context::addJsFile("./common/js/jquery.js", true, '', -100000) }
+{@ Context::addJsFile("./common/js/js_app.js", true, '', -100000) }
+{@ Context::addJsFile("./common/js/common.js", true, '', -100000) }
+{@ Context::addJsFile("./common/js/xml_handler.js", true, '', -100000) }
+{@ Context::addJsFile("./common/js/xml_js_filter.js", true, '', -100000) }
+<!--%import("js/mboard.js")-->
+<!--%import("css/mboard.css")-->
+<div class="bd rd">
+
+<!--@if($oSourceComment->isExists())-->
+<div class="origin">{$oSourceComment->getContent(false)}</div>
+<!--@end-->
+
+		<form action="./" method="POST" class="sn tgo open" onsubmit="return procFilter(this, insert_comment);">
+		<input type="hidden" name="mid" value="{$mid}" />
+		<input type="hidden" name="document_srl" value="{$oComment->get('document_srl')}" />
+		<input type="hidden" name="comment_srl" value="{$oComment->get('comment_srl')}" />
+		<input type="hidden" name="parent_srl" value="{$oComment->get('parent_srl')}" />
+		<ul>
+			<li>
+				<label for="rText" class="db fb">{$lang->comment}</label>
+                <input type="text" name="content" value="{htmlspecialchars($oComment->get('content'))}" cols="20" rows="5" id="rText" class="itxx" />
+			</li>
+			<!--@if(!$is_logged)-->
+			<li>
+				<label for="uName" class="db fb">{$lang->writer}</label>
+				<input name="nick_name" type="text" id="uName" class="itx" />
+			</li>
+			<li>
+				<label for="uPw" class="db fb">{$lang->password}</label>
+				<input name="password" type="password" id="uPw" class="itx" />
+			</li>
+			<!--@endif-->
+		</ul>
+		<div style=" text-align:center; padding:10px;">
+			<button type="submit" class="bn">{$lang->cmd_registration}</button>
+		</div>
+		</form>
+
+</div>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<addon version="0.2">
+    <title xml:lang="ko">대표아이콘 출력 애드온</title>
+    <description xml:lang="ko">
+        회원이 아이콘샵을 통해 설정한 대표아이콘을 출력하는 애드온입니다.
+    </description>
+    <version>0.3</version>
+    <date>2010-06-18</date>
+
+    <author email_address="admin@barch.kr" link="http://iconshop.xpressengine.net">
+        <name xml:lang="ko">러키군</name>
+    </author>
+</addon>

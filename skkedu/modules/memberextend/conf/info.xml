@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module version="0.2">
+    <title xml:lang="ko">회원관리 확장</title>
+    <title xml:lang="en">Member Extend</title>
+    <description xml:lang="ko">회원관리 확장모듈입니다.</description>
+    <description xml:lang="en">Member Extend</description>
+    <version>1.2</version>
+    <date>2013-04-14</date>
+    <category>member</category>
+
+    <author email_address="skullacy@gmail.com" link="http://www.skullacy.com">
+        <name xml:lang="ko">skullacy</name>
+        <name xml:lang="en">skullacy</name>
+    </author>
+</module>

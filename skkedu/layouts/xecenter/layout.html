@@ -1,0 +1,918 @@
+<!-- ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+- 쿡래빗 공식 레이아웃 : 1.3.7
+- 레이아웃개발 : 쿡래빗
+- 소개 : 심플하고 강력한 기능을 갖춘 쿡래빗 공식 레이아웃 입니다. 
+- 문의 : 문의는 http://xecenter.com 에서 해주시길 바랍니다.
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── -->
+
+<!--// js로드-->
+<load target="js/jquery.cookie.js" />
+<load target="js/default.js" />
+
+<!--// 다국어 로드-->
+<load target="lang/lang.xml" />
+
+<!--// 컬러셋 선택 -->
+<load target="css/black.css" cond="$layout_info->colorset == 'black'" />
+<load target="css/black2.css" cond="$layout_info->colorset == 'black2'" />
+<load target="css/red.css" cond="$layout_info->colorset == 'red'" />
+<load target="css/white.css" cond="$layout_info->colorset == 'white'" />
+<load target="css/blue.css" cond="$layout_info->colorset == 'blue'" />
+
+<!--// 로그인 박스 -->
+<include target="object/login_box/login_box.html" />
+
+<!--// 나눔고딕 폰트 사용시 폰트로드 -->
+<load target="css/font.css" cond="$layout_info->layout_font == '나눔고딕, NG'" />
+<!--// 나눔바른고딕 폰트 사용시 폰트로드 -->
+<load target="css/font2.css" cond="$layout_info->layout_font == '나눔바른고딕, NBG, NanumBarunGothic'" />
+
+<!--// admin bar 사용여부-->
+<block cond="$layout_info->admin_bar_use != 'yes' ">
+{@ Context::set("admin_bar","false"); }
+</block>
+
+<!--// 컬러셋 테스터 기능 -->
+<include target="xe_colorpicker.html" cond="$grant->manager && $layout_info->colorset_test_use != 'no'" />
+
+
+<!--// 에러 메세지 출력 --><!--@if($layout_info->error_msg_effect == 'yes')-->
+<div class="bg_error" cond="$XE_VALIDATOR_MESSAGE" onclick="jQuery('.bg_error').fadeOut('100')" >
+	<div class="bg_msg_error"></div>
+	<div class="msg_error"><img src="img/error_green.png" alt="error_msg"/>{$XE_VALIDATOR_MESSAGE} <br /><br />화면 클릭시 메세지가 사라집니다</div>
+</div><!--@end-->
+
+<!--// 로그인, 회원가입 유도기능 -->
+<div id="enjoy_site_bg" cond="!$is_logged && $layout_info->enjoy_site_use == 'yes'"></div>
+<div id="enjoy_site" cond="!$is_logged && $layout_info->enjoy_site_use == 'yes'">
+	<a class="enjoy_text" <!--@if($layout_info->enjoy_site_text_url)-->href="{$layout_info->enjoy_site_text_url}" onclick="popopen(this.href); return false"|cond="$layout_info->enjoy_site_text_url_type == 'popup'" onclick="window.open(this.href); return false"|cond="$layout_info->enjoy_site_text_url_type == 'winopen'"<!--@end-->><!--@if($layout_info->enjoy_site_text)-->{$layout_info->enjoy_site_text}<!--@else-->로그인, 회원가입후 더 많은 혜택을 누리세요<!--@end--></a><!--//안내문구-->
+	<a class="enjoy_btn enjoy_login_btn" onclick="jQuery('.login_wrap').fadeIn('slow');" cond="$layout_info->enjoy_site_login_use == 'yes'">{$lang->qc_login}</a><!--//로그인 버튼-->
+	<a class="enjoy_btn" href="{getUrl('act','dispMemberSignUpForm')}" cond="$layout_info->enjoy_site_signup_use == 'yes'">{$lang->qc_signup}</a><!--//회원가입 버튼-->
+	<a class="enjoy_btn enjoy_btn_red" cond="$layout_info->enjoy_site_close_use == 'yes'">닫기</a><!--//닫기버튼-->
+</div>
+
+<!--// 로그인 후 한줄공지 기능 -->
+<div id="login_site_bg" cond="$is_logged && $layout_info->login_site_use == 'yes'"></div>
+<div id="login_site" cond="$is_logged && $layout_info->login_site_use == 'yes'">
+	<a class="login_text" <!--@if($layout_info->login_site_text_url)-->href="{$layout_info->login_site_text_url}" onclick="popopen(this.href); return false"|cond="$layout_info->login_site_text_url_type == 'popup'" onclick="window.open(this.href); return false"|cond="$layout_info->login_site_text_url_type == 'winopen'"<!--@end-->><!--@if($layout_info->login_site_text)-->{$layout_info->login_site_text}<!--@else-->사이트 방문을 환영합니다.<!--@end--></a><!--//안내문구-->
+	<a class="login_btn" cond="$layout_info->login_site_btn1" href="{$layout_info->login_site_btn1_url}" onclick="popopen(this.href); return false"|cond="$layout_info->login_site_btn1_link == 'popup'" onclick="window.open(this.href); return false"|cond="$layout_info->login_site_btn1_link == 'winopen'">{$layout_info->login_site_btn1}</a><!--//사용자버튼1-->
+	<a class="login_btn" cond="$layout_info->login_site_btn2" href="{$layout_info->login_site_btn2_url}" onclick="popopen(this.href); return false"|cond="$layout_info->login_site_btn2_link == 'popup'" onclick="window.open(this.href); return false"|cond="$layout_info->login_site_btn2_link == 'winopen'">{$layout_info->login_site_btn2}</a><!--//사용자버튼2-->
+	<a class="login_btn" cond="$layout_info->login_site_btn3" href="{$layout_info->login_site_btn3_url}" onclick="popopen(this.href); return false"|cond="$layout_info->login_site_btn3_link == 'popup'" onclick="window.open(this.href); return false"|cond="$layout_info->login_site_btn3_link == 'winopen'">{$layout_info->login_site_btn3}</a><!--//사용자버튼3-->
+	<a class="login_btn login_btn_red" cond="$layout_info->login_site_close_use == 'yes'">닫기</a><!--//닫기버튼-->
+</div>
+
+<!--// 심플 메뉴 기능-->
+<include target="xe_simplemenu.html" cond="$layout_info->simple_menu_use_wrap != 'no'" />
+
+
+
+<!-- ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+												 사이트 시작 
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── -->
+
+<div class="site_pattern"><div class="site_pattern"><!-- 사이트패턴 -->
+	
+	<!--// 배경 리사이징 기능 -->
+	<div style="position:absolute; z-index:-1;" cond="$layout_info->site_image_autosize == 'yes'" class="auto_resize_wrap"><!-- 사용여부 조건문-->
+		<img cond="$layout_info->site_image" src="{$layout_info->site_image}" alt="site_background" class="bg_full"/>
+	</div> <!--// 배경 리사이징 기능 끝-->
+
+	<!-- 넓이고정 -->
+	<div class="fix_width">
+		
+		<!-- ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+																상단 
+	──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── -->
+		<div id="header">
+			<!-- 상단배너 -->
+			<div class="banner" cond="$layout_info->banner_use == 'yes'"> <!--조건문-->
+				<div class="banner_wrap"><!--//배너 이미지-->
+					<div class="t_banner1 banner_common" cond="$layout_info->banner_img1" style="background-image:url({$layout_info->banner_img1}); <!--@if($layout_info->banner_url1)-->cursor:pointer;<!--@end-->" <!--@if($layout_info->banner_url1)-->onclick="window.location.href='{$layout_info->banner_url1}'"<!--@end--> ></div>
+					<div class="t_banner2 banner_common" cond="$layout_info->banner_img2" style="background-image:url({$layout_info->banner_img2}); <!--@if($layout_info->banner_url2)-->cursor:pointer;<!--@end-->" <!--@if($layout_info->banner_url2)-->onclick="window.location.href='{$layout_info->banner_url2}'"<!--@end--> ></div>
+					<div class="t_banner3 banner_common" cond="$layout_info->banner_img3" style="background-image:url({$layout_info->banner_img3}); <!--@if($layout_info->banner_url3)-->cursor:pointer;<!--@end-->" <!--@if($layout_info->banner_url3)-->onclick="window.location.href='{$layout_info->banner_url3}'"<!--@end--> ></div>
+				</div>
+				<div class="fix_width">
+					<!--//배너 문구-->
+					<div class="banner_msg_warp fix_width" cond="$layout_info->banner_text_use == 'yes'" <!--@if($layout_info->banner_url1)-->style="cursor:pointer;" onclick="window.location.href='{$layout_info->banner_url1}'"<!--@end-->>
+						<p class="banner_msg1">{$layout_info->banner_text1}</p>
+						<p class="banner_msg2">{$layout_info->banner_text2}</p>
+						<p class="banner_msg3">{$layout_info->banner_text3}</p>
+					</div>
+					<!--//배너 전환버튼-->
+					<div class="btn_wrap">
+						<div class="left_btn"><i></i></div>
+						<div class="right_btn"><i></i></div>
+					</div>	
+				</div>
+			</div>	
+			<!-- 메뉴바 -->
+			<div class="menu_bg"></div><!--//배경색상-->
+			<div class="menu">
+				<div class="gnb fix_width">
+					<!--// 로고 -->
+					<div class ="logo" onclick="window.location.href='<!--@if($layout_info->logo_url == '')-->http://xecenter.com<!--@end-->{$layout_info->logo_url}';">
+						<a cond="!$layout_info->logo_img" >{$layout_info->logo_text1}</a>
+						<a cond="!$layout_info->logo_img" class="text_strong">{$layout_info->logo_text2}</a>
+						<a cond="!$layout_info->logo_img" >{$layout_info->logo_text3}</a>
+						<!--//로고 이미지 -->
+						<a cond="$layout_info->logo_img">
+							<img src="{$layout_info->logo_img}" alt="logo" />
+						</a>
+					</div>
+					
+					<!--// 메뉴 -->
+					<div class="fix_width">
+					<ul>
+						{@$index = 1}
+						<li loop="$main_menu->list=>$key1,$val1" class="main_hover <!--@if($val1['selected'])-->main_active<!--@end-->">
+							<!--@if($val1['text'] != "")--><!--//권한에 따른 조건문-->
+							<div class="pipe_wrap" cond="$layout_info->menu_pipe_use == 'yes'"><!--파이프 사용여부-->
+								<span class="pipe1"></span>
+								<span class="pipe2"></span>
+							</div><!--@end-->	
+							<a href="{$val1['href']}" target="_blank"|cond="$val1['open_window']=='Y'" class="hover_1 <!--@if($val1['selected'])-->active_1<!--@end-->">
+							<!-- 리스트 미니 이미지 -->
+							<!--//권한에 따른 조건문--><!--@if($val1['text'] != "")--><img src="img/li/li0.png" cond="$layout_info->menu_li_image_use != 'no'" alt="{$val1['list']}" class="li_img{$index} common" /><!--@end-->{$val1['link']}</a><!-- 조건문-->
+							<ul cond="$val1['list'] && $layout_info->menu2_list_use != 'no'"><!--//2차메뉴 사용여부 확인-->
+								<li loop="$val1['list']=>$key2,$val2" class="active"|cond="$val2['selected']">
+									<span class="view" cond="$val2['list']"></span><!-- 3차 메뉴 있을시 표식-->
+									<a href="{$val2['href']}" class="active_a" target="_blank"|cond="$val2['open_window']=='Y'">{$val2['link']}</a>
+									<ul cond="$val2['list']"><!-- 3차메뉴-->
+										<li loop="$val2['list']=>$key3,$val3" class="active_2"|cond="$val3['selected']">
+											<span class="view2" cond="$val3['list']"></span><!-- 4차 메뉴 있을시 표식-->
+											<a href="{$val3['href']}" class="active_2a" target="_blank"|cond="$val3['open_window']=='Y'">{$val3['link']}</a>
+											<ul cond="$val3['list']"><!-- 4차메뉴 -->
+												<li loop="$val3['list']=>$key4,$val4" class="active_3"|cond="$val4['selected']">
+													<a href="{$val4['href']}" class="active_3a" target="_blank"|cond="$val4['open_window']=='Y'">{$val4['link']}</a>
+												</li>
+											</ul>
+										</li>
+									</ul>
+								</li>
+							</ul>
+						{@$index ++}					
+						</li>
+					</ul>
+					</div>
+					<!-- 로그인 정보창 -->
+					<div class="info">
+						<div class="login_btn">
+							<a class="search" cond="$layout_info->search_use != 'no' " title="원하는 정보 검색하기!"><!--//통합검색 사용여부-->
+								<!--@if($layout_info->login_info_type != 'text')--><img src="img/search.png" alt="search" />{$lang->qc_search}<!--//검색--><!--@end-->
+								<!--@if($layout_info->login_info_type == 'text')--><img src="img/search_white.png" alt="search" />{$lang->qc_search}<!--//검색--><!--@end-->
+							</a>
+								<span class="pipe" cond="$layout_info->search_use != 'no' "></span><!--//통합검색 파이프-->
+							<a cond="!$is_logged" class="my_login_btn" onclick="jQuery('.login_wrap').fadeIn('slow');" title="로그인하기">{$lang->qc_login}<!--//로그인--></a>
+							<a cond="$is_logged" class="my_info_btn" title="내정보 자세히 보기">
+								<!--@if($layout_info->login_info_type != 'text')--><img src="img/user_black.png" alt="search" style="margin-top:-2px;"/>{$lang->qc_myinfo}<!--//내정보--><!--@end-->
+								<!--@if($layout_info->login_info_type == 'text')-->{$lang->qc_myinfo}<!--//내정보--><!--@end-->
+							</a>
+								<span class="pipe" cond="$layout_info->simple_bar_use == 'yes'"></span><!--//심플바 파이프-->
+							<a cond="$layout_info->simple_bar_use == 'yes'" class="simple_bar_btn" title="심플바 펼치기"><!--//심플바-->
+								<img src="img/simplebar/{$layout_info->simple_bar_img_select}" alt="simple_bar" style="margin-top:-2px;"/>
+							</a>
+								<span class="pipe" cond="$layout_info->chat_bar_use == 'yes'"></span><!--//채팅바 파이프-->
+							<a cond="$layout_info->chat_bar_use == 'yes'" class="chat_bar_btn" title="채팅하기"><!--//채팅바-->
+								<img src="img/chat/{$layout_info->chat_bar_img_select}" alt="chat_bar" style="margin-top:-2px;"/>
+							</a>
+								<span class="pipe" cond="$layout_info->signin_use !='no'"></span>
+							<a cond="!$is_logged && $layout_info->signin_use !='no' " href="{getUrl('act','dispMemberSignUpForm')}" title="지금 바로 회원가입하기!">{$lang->qc_signup}<!--//회원가입--></a>
+								<span class="pipe" cond="$is_logged && $layout_info->signin_use =='no'"></span>
+							<a cond="$is_logged" href="{getUrl('act','dispMemberLogout')}" title="로그아웃 하기">{$lang->qc_logout}<!--//로그아웃--></a>
+						
+							<!--// 언어선택 -->
+								<span class="pipe" cond="$layout_info->login_info_language_use == 'yes'"></span>
+							<a class="language" cond="$layout_info->login_info_language_use == 'yes'" onclick="jQuery('.language ul').toggle();">
+								<img cond="$lang_type == 'ko'" src="img/language/korea.png" alt="ko"/> 			<!--//한국어-->
+								<img cond="$lang_type == 'en'" src="img/language/usa.png" alt="en"/>  			<!--//영어-->
+								<img cond="$lang_type == 'jp'" src="img/language/japan.png" alt="jp"/> 			<!--//일본어-->
+								<img cond="$lang_type == 'zh-CN'" src="img/language/china.png" alt="zh-CN"/>  	<!--//중국어-->
+								<img cond="$lang_type == 'es'" src="img/language/spain.png" alt="es" /> 		<!--//스페인어-->
+								<img cond="$lang_type == 'zh-TW'" src="img/language/taiwan.png" alt="zh-TW" />  <!--//타이완어-->
+								<img cond="$lang_type == 'fr'" src="img/language/france.png" alt="fr" />  		<!--//프랑스어-->
+								<img cond="$lang_type == 'de'" src="img/language/germany.png" alt="de" /> 		<!--//독일어-->
+								<img cond="$lang_type == 'ru'" src="img/language/russian.png" alt="ru" /> 		<!--//러시아어-->
+								<img cond="$lang_type == 'tr'" src="img/language/turkey.png" alt="tr" /> 		<!--//터키어-->
+								<img cond="$lang_type == 'vi'" src="img/language/vietnam.png" alt="vi" /> 		<!--//베트남어-->
+								<img cond="$lang_type == 'mn'" src="img/language/mongolia.png" alt="mn" /> 		<!--//몽골어-->
+								<ul>
+									<li loop="$lang_supported=>$key,$val" cond="$key != $lang_type">
+										<!--@if($key == 'ko')--><img src="img/language/korea.png" alt="ko" onclick="doChangeLangType('{$key}');return false;" /><!--@end-->
+										<!--@if($key == 'en')--><img src="img/language/usa.png" alt="en" onclick="doChangeLangType('{$key}');return false;" /><!--@end-->
+										<!--@if($key == 'jp')--><img src="img/language/japan.png" alt="jp" onclick="doChangeLangType('{$key}');return false;" /><!--@end-->
+										<!--@if($key == 'zh-CN')--><img src="img/language/china.png" alt="zh-CN" onclick="doChangeLangType('{$key}');return false;" /><!--@end-->
+										<!--@if($key == 'es')--><img src="img/language/spain.png" alt="es" onclick="doChangeLangType('{$key}');return false;" /><!--@end-->
+										<!--@if($key == 'zh-TW')--><img src="img/language/taiwan.png" alt="zh-TW" onclick="doChangeLangType('{$key}');return false;" /><!--@end-->
+										<!--@if($key == 'fr')--><img src="img/language/france.png" alt="fr" onclick="doChangeLangType('{$key}');return false;" /><!--@end-->
+										<!--@if($key == 'de')--><img src="img/language/germany.png" alt="de" onclick="doChangeLangType('{$key}');return false;" /><!--@end-->
+										<!--@if($key == 'ru')--><img src="img/language/russian.png" alt="ru" onclick="doChangeLangType('{$key}');return false;" /><!--@end-->
+										<!--@if($key == 'tr')--><img src="img/language/turkey.png" alt="tr" onclick="doChangeLangType('{$key}');return false;" /><!--@end-->
+										<!--@if($key == 'vi')--><img src="img/language/vietnam.png" alt="vi" onclick="doChangeLangType('{$key}');return false;" /><!--@end-->
+										<!--@if($key == 'mn')--><img src="img/language/mongolia.png" alt="mn" onclick="doChangeLangType('{$key}');return false;" /><!--@end-->
+									</li>
+								</ul>
+							</a>
+							<!--// 관리자화면 -->
+								<span class="pipe" cond="$grant->manager"></span>
+							<!--@if($layout_info->login_info_type != 'text')-->
+							<a cond="$grant->manager" href="{getUrl('','module','admin')}" target="_blank" title="관리자 설정 화면으로 전환"><img src="img/admin_black.png" alt="admin_url" style="margin-top:-2px;"/></a><!--@end-->
+							<!--@if($layout_info->login_info_type == 'text')-->
+							<a cond="$grant->manager" href="{getUrl('','module','admin')}" target="_blank" title="관리자 설정 화면으로 전환"><img src="img/admin_white.png" alt="admin_url"/></a><!--@end-->
+						</div>
+					</div>
+					
+				</div>
+				
+				<!-- 정보박스 -->
+				<div class="bg_info" style="z-index:4;">
+					<!-- 검색창 -->
+					<div class="search_wrap">
+						<form action="{getUrl()}" method="post" class="search_bar">
+							<input type="hidden" name="vid" value="{$vid}" cond="$vid" /> 
+							<input type="hidden" name="mid" value="{$mid}" />
+							<input type="hidden" name="act" value="IS" />
+							<input type="hidden" name="search_target" value="title_content" />
+							<div class="search_box">
+								<input name="is_keyword" type="text" class="text" required placeholder="{$lang->qc_search_intro}<!--//검색어를 입력해주세요-->" />
+								<img class="search_img" src="./layouts/xecenter/img/search_white.png" alt="search" />
+								<input type="submit" value="{$lang->qc_search}<!--//검색-->" class="search_submit" />
+							</div>
+						</form>
+					</div>
+					<!-- 내정보창 -->
+					<div class="my_info_wrap fix_width" cond="$is_logged">
+						<div class="my_info">
+							<div class="common info1" title="사이즈 80 * 80 이하로 변경하세요">
+								<div class="label"><a href="{getUrl('act','dispMemberInfo')}">{$lang->qc_pic_change}<!--//사진변경--></a></div>
+								<!--@if(!$logged_info->profile_image->src)--><img src="img/profile.png" alt="profile" style="border:2px solid #333;" onclick="window.location.href='{getUrl('act','dispMemberModifyInfo')}'" /><!--@else-->
+								<img src="{$logged_info->profile_image->src}" alt="profile" onclick="window.location.href='{getUrl('act','dispMemberModifyInfo')}'" /><!--@end-->
+							</div>
+							<div class="common info2">
+							{@ $oPointModel = &getModel('point'); $point = $oPointModel->getPoint($logged_info->member_srl); $oModuleModel = &getModel('module');  $config = $oModuleModel->getModuleConfig('point'); $level = $oPointModel->getLevel($point, $config->level_step); }
+								<div class="info_wrap"> <a style="font-weight:bold;">{$logged_info->nick_name}</a> / <a style="color:#3064ff; font-weight:bold;">  <!--@foreach($logged_info->group_list as $key => $val)-->{Context::getLang($val)}<!--@end--></a></div>	
+								<div class="info_wrap"> <a style="font-weight:bold;">{$config->point_name}</a> : <a style="font-weight:bold; color:#3064ff;">{number_format($point)}</a></div>
+								<div class="info_wrap">	
+									{@ $nextpoint = $config->level_step[$level+1]; $prepoint = $config->level_step[$level];  if($nextpoint != 0) $percent = round(($point-$prepoint)/($nextpoint-$prepoint)*100, 2);}
+									<a style="font-weight:bold;">{$lang->qc_level}<!--//레벨--> : </a> <a style="font-weight:bold; color:#3064ff;">{$level} </a><!--@if($nextpoint!=0)--> ( <a style="color:#888;">{$percent}%</a> )<!--@endif-->
+									<img src="{sprintf('%smodules/point/icons/%s/%d.gif', Context::getRequestUri(), $config->level_icon, $level)}" alt="{$logged_info->nick_name}"/>
+									<div style="width:90%; height:3px; margin-top:4px; background:#FFA07A;" cond="$nextpoint != ''"><div style="width:{$percent}%; height:3px; background:#b0e94c;"></div></div>
+								</div>
+							</div>
+							<div class="common info3">{@ $firstTime = zDate($logged_info->regdate,'Ymd'); $thisTime = date('Ymd'); $someTime = strtotime($thisTime)-strtotime($firstTime);}
+								<div class="info_wrap"><a style="font-weight:bold;">{$lang->qc_register}<!--//가입일--></a> : <a>{zDate($logged_info->regdate, 'Y-m-d')}</a> <a style="color:#888;">({$someTime/60/60/24;}일 지남)</a> </div>
+								<div class="info_wrap"><a style="font-weight:bold;">{$lang->qc_lastlogin}<!--//최근로그인--></a> : <a style="color:#d31f1f;">{zDate($logged_info->last_login, 'Y-m-d H:i')}</a> </div>
+								<div class="info_wrap"><a class="change" href="{getUrl('act','dispMemberInfo')}">{$lang->qc_info_change}<!--//개인정보 관리 및 변경--></a> </div>
+							</div>
+							
+							<!--// 스크롤바1 플러그인 로드 (예비용) 
+							<load target="object/scrollbar/perfect-scrollbar.css" />
+							<script src="object/scrollbar/jquery.mousewheel.js"></script>
+							<script src="object/scrollbar/perfect-scrollbar.js"></script> -->
+							
+							<!--// 스크롤바2 플로그인 로드 (적용중)-->
+							<load target="object/scrollbar2/jquery.mCustomScrollbar.css" />
+							<script src="object/scrollbar2/jquery.mCustomScrollbar.concat.min.js"></script>
+														
+							<!--// DB가져오기 글,댓글,쪽지 -->
+							{@	$oDB = &DB::getInstance(); 
+								$query1 = $oDB->_query('select * from xe_documents where member_srl = '.$logged_info->member_srl.' ORDER BY  regdate DESC limit 0, 13'); 
+								$result1 = $oDB->_fetch($query1); 
+							}
+							{@	$oDB = &DB::getInstance(); 
+								$query2 = $oDB->_query('select * from xe_comments where member_srl = '.$logged_info->member_srl.' ORDER BY regdate DESC limit 0, 13');
+								$result2 = $oDB->_fetch($query2);
+							}
+							{@	$oDB = &DB::getInstance(); 
+								$query3 = $oDB->_query('select * from xe_member_message where receiver_srl = '.$logged_info->member_srl.' AND message_type = "R" ORDER BY regdate DESC limit 0, 13');
+								$result3 = $oDB->_fetch($query3);
+							}
+							<!--// 정보출력 -->
+							<div class="common info4"><!--//내글-->
+								<div class="info_wrap"><a href="{getUrl('act','dispMemberOwnDocument')}" style="font-weight:bold;">{$lang->qc_last_article}<!--//최근작성글--> <img src="img/site_map.png" alt="more" style="vertical-align:middle; margin-bottom:2px; margin-left:2px;" /></a> </div>
+								<div class="overflow" id="scrollbar1"><!--//스크롤바기능-->
+									<div class="text_wrap">
+										<block loop="$result1=>$key,$val">
+										{@ $title = strip_tags($val->title); $cut_title = cut_str($title,15); $count = $val->comment_count;}
+											<div class="text"><a href="{getURL('act','','document_srl',$val->document_srl)}">{$cut_title}</a><a style="color:red;" cond="$count > 0"> ({$count})</a></div>
+										</block>
+									</div>	
+								</div>
+							</div>
+							<div class="common info5"><!--//내댓글-->
+								<div class="info_wrap"><a href="{getUrl('act','dispMemberOwnComment')}" style="font-weight:bold;">{$lang->qc_last_comment}<!--//최근작성댓글--> <img src="img/site_map.png" alt="more" style="vertical-align:middle; margin-bottom:2px; margin-left:2px;" /></a> </div>
+								<div class="overflow" id="scrollbar2"><!--//스크롤바기능-->
+									<div class="text_wrap">
+										<block loop="$result2=>$key,$val">
+										{@ $title = strip_tags($val->content); $cut_title = cut_str($title,17); }
+											<div class="text"><a href="{getURL('act','','document_srl',$val->document_srl)}#comment_{$val->comment_srl}">{$cut_title}</a></div>
+										</block>
+									</div>	
+								</div>
+							</div>
+							<div class="common info6"><!--//내쪽지-->
+								<div class="info_wrap"><a href="{getUrl('act','dispCommunicationMessages')}" style="font-weight:bold;">{$lang->qc_last_message}<!--//최근쪽지--> <img src="img/site_map.png" alt="more" style="vertical-align:middle; margin-bottom:2px; margin-left:2px;" /></a> </div>
+								<div class="overflow" id="scrollbar3"><!--//스크롤바기능-->
+									<div class="text_wrap">
+										<block loop="$result3=>$key,$val">
+										{@ $title = strip_tags($val->title); $cut_title = cut_str($title,16);}
+											<div class="text"><a href="{getURL('act','dispCommunicationMessages','message_srl',$val->message_srl)}">{$cut_title}</a><a style="color:red;" cond="$val->readed == 'N' "> <img src="img/message.png" style="height:15px; margin-bottom:1px;"alt="message_img"/></a></div>
+										</block>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--// 심플바 공간-->
+				<include target="xe_simplebar.html" cond="$layout_info->simple_bar_use == 'yes'" />
+				<!--// 채팅바 공간-->
+				<div class="chat_bar_wrap" cond="$layout_info->chat_bar_use == 'yes'" style="z-index:3;">
+					<div class="chat_wrap fix_width">
+						<!--//채팅위젯코드 삽입-->
+						{$layout_info->chat_widget_code}
+						<!--//닫기버튼-->
+						<div class="chat_close" cond="$layout_info->chat_close_use == 'yes'">닫기</div>
+					</div>
+				</div>
+				
+				
+				<!-- 상단 전체메뉴 (사이트맵) -->
+				<div class="top_site_map_line_real" cond="$layout_info->top_site_map_use == 'yes'" style="z-index:2;"></div>
+				<div class="top_site_map_line" cond="$layout_info->top_site_map_use == 'yes'" style="z-index:5;">
+					<div class="fix_width" style="position:relative;"><!--//열기버튼-->
+						<div class="top_site_map_open_btn"><!--@if($layout_info->site_map_text)-->{$layout_info->site_map_text}<!--@else-->{$lang->qc_sitemap}<!--@end--></div>
+					</div>
+				</div>
+				<div class="top_site_map" cond="$layout_info->top_site_map_use == 'yes'" style="z-index:2;">
+					<div class="fix_width" style="position:relative;">
+						<div class="top_site_map_btn"><!--@if($layout_info->site_map_text)-->{$layout_info->site_map_text}<!--@else-->{$lang->qc_sitemap}<!--@end--></div><!--//닫기버튼-->
+						<ul>
+							<li loop="$top_site_map_menu->list=>$key1,$val1">
+							<a href="{$val1['href']}" target="_blank"|cond="$val1['open_window']=='Y'" class="strong <!--@if($val1['selected'])-->selected1<!--@end-->" >{$val1['link']}</a>
+								<ul cond="$val1['list']">
+									<li loop="$val1['list']=>$key2,$val2">
+									<a href="{$val2['href']}" target="_blank"|cond="$val2['open_window']=='Y'" class="selected2"|cond="$val2['selected']">{$val2['link']}</a>
+										<ul cond="$val2['list']">
+											<li loop="$val2['list']=>$key3,$val3">
+											<a href="{$val3['href']}" target="_blank"|cond="$val3['open_window']=='Y'" class="selected3"|cond="$val3['selected']">{$val3['link']}</a>
+											</li>
+										</ul>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</div>
+		
+		
+			</div><!-- 메뉴바 끝 -->	
+		</div><!-- 헤더종료-->
+
+		<!-- ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+																본문 
+	──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── -->
+		<div id="body">
+			<!--// 사이드 배너 (우측)-->
+			<div class="side_banner" cond="$layout_info->side_banner_use == 'yes'">
+				<ul>
+					<li class="banner1 side_banner_common">{$layout_info->side_banner1}</li>
+					<li class="banner2 side_banner_common">{$layout_info->side_banner2}</li>
+					<li class="banner3 side_banner_common">{$layout_info->side_banner3}</li>
+				</ul>
+			</div>
+			<!--// 사이드 배너 (좌측)-->
+			<div class="left_side_banner" cond="$layout_info->left_side_banner_use == 'yes'">
+				<ul>
+					<li class="left_banner1 side_banner_common">{$layout_info->left_side_banner1}</li>
+					<li class="left_banner2 side_banner_common">{$layout_info->left_side_banner2}</li>
+					<li class="left_banner3 side_banner_common">{$layout_info->left_side_banner3}</li>
+				</ul>
+			</div>
+			
+			<!--// 바로이동기능 --> 
+			<div class="move_target" cond="$layout_info->move_target_use != 'no'">
+				<a href="#header" class="move_t"><span></span>{$lang->qc_to_top}<!--//맨위로--></a>
+				<a href="#body" class="move_c"><span></span>{$lang->qc_to_content}<!--//컨텐츠--></a>
+				<a href="#bottom" class="move_b"><span></span>{$lang->qc_to_bottom}<!--//아래로--></a>
+			</div>
+			
+			<!--// 컨텐트 상단-->
+			<div class="content_top" cond="$layout_info->content_top_use != 'no' ">
+				<!--// 레이아웃 크기 변경 사용여부-->
+				<!--//넓이확장 기능-->
+				<block cond="$layout_info->screen_width_use != 'no' ">
+					<div class="width_change" title="레이아웃 넓이를 조정합니다">
+					<!--// 이부분은 js파일에서 로드함 (넓이부분)-->	</div>
+				</block>
+				<!--//높이확장 기능-->
+				<block cond="$layout_info->screen_height_use != 'no' ">
+					<div class="height_change" title="레이아웃 높이를 조정합니다" cond="!$layout_info->screen_height">
+					<!--// 이부분은 js파일에서 로드함 (넓이부분)-->	</div>
+				</block>
+				<!--//본문 확장 (서브바 토글기능)-->	
+					<!--@if($layout_info->layout_type == 'sub' && $layout_info->subbar_use == 'yes' && $layout_info->screen_content_use == 'yes')--> <!--//레이아웃이 서브형일경우 출력 시작-->
+						<div class="content_change" title="서브메뉴를 토글합니다"><!--// 이부분은 js파일에서 로드함 (본문확장)--></div>
+					<!--@end-->
+				
+				<!--// 컨텐츠 심플링크 -->
+				<div class="simple_link" cond="$layout_info->simple_link1">
+					<a href="{$layout_info->simple_link1_url}" onclick="popopen(this.href); return false"|cond="$layout_info->simple_link1_type == 'popup'" onclick="window.open(this.href); return false"|cond="$layout_info->simple_link1_type == 'winopen'">
+					<img src="<!--@if(!$layout_info->simple_link1_img)-->img/simple_link/{$layout_info->simple_link1_img_select}<!--@end-->{$layout_info->simple_link1_img}" alt="simple_link1" /> {$layout_info->simple_link1}</a>
+				</div>
+				<div class="simple_link" cond="$layout_info->simple_link2">
+					<a href="{$layout_info->simple_link2_url}" onclick="popopen(this.href); return false"|cond="$layout_info->simple_link2_type == 'popup'" onclick="window.open(this.href); return false"|cond="$layout_info->simple_link2_type == 'winopen'">
+					<img src="<!--@if(!$layout_info->simple_link2_img)-->img/simple_link/{$layout_info->simple_link2_img_select}<!--@end-->{$layout_info->simple_link2_img}" alt="simple_link2" /> {$layout_info->simple_link2}</a>
+				</div>
+				<div class="simple_link" cond="$layout_info->simple_link3">
+					<a href="{$layout_info->simple_link3_url}" onclick="popopen(this.href); return false"|cond="$layout_info->simple_link3_type == 'popup'" onclick="window.open(this.href); return false"|cond="$layout_info->simple_link3_type == 'winopen'">
+					<img src="<!--@if(!$layout_info->simple_link3_img)-->img/simple_link/{$layout_info->simple_link3_img_select}<!--@end-->{$layout_info->simple_link3_img}" alt="simple_link3" /> {$layout_info->simple_link3}</a>
+				</div>
+				<div class="simple_link" cond="$layout_info->simple_link4">
+					<a href="{$layout_info->simple_link4_url}" onclick="popopen(this.href); return false"|cond="$layout_info->simple_link4_type == 'popup'" onclick="window.open(this.href); return false"|cond="$layout_info->simple_link4_type == 'winopen'">
+					<img src="<!--@if(!$layout_info->simple_link4_img)-->img/simple_link/{$layout_info->simple_link4_img_select}<!--@end-->{$layout_info->simple_link4_img}" alt="simple_link4" /> {$layout_info->simple_link4}</a>
+				</div>
+				
+				<!--// 업데이트 위젯 스킨 삽입-->
+				<!--@if($layout_info->update_new_widget)-->
+				<img src="img/simple_link/{$layout_info->update_new_widget_img}" alt="news" style="float:left; margin:4px 8px 0px 15px;" />
+				{$layout_info->update_new_widget}
+				<!--@end-->
+			</div>
+			
+			
+			<div class="content_wrap"><!--// 컨텐트 + 서브바 + 위젯바 -->
+				
+				
+				<!--// 좌측 서브메뉴+위젯영역-->
+				<!--@if($layout_info->layout_type == 'sub')--> <!--//레이아웃이 서브형일경우 출력 시작-->
+					<div class="content_left_bar" cond="$layout_info->subbar_use == 'yes'"> 
+						<!--// 서브메뉴-->
+						<div class="lnb_widget widget">{$layout_info->sub_top_widget1}</div><!--//서브메뉴 상단위젯-->
+						<div class="lnb" loop="$main_menu->list=>$key1,$val1" cond="$val1['selected'] && $val1['list']"> <!--// 서브메뉴없을시 미출력 조건문 -->
+							<p cond="$layout_info->sub_menu_text_use == 'yes'">
+								<a href="{$val1['href']}" target="_blank"|cond="$val1['open_window']=='Y'">{$val1['link']}</a>
+							</p>
+							<ul loop="$main_menu->list=>$key1,$val1" cond="$val1['selected'] && $val1['list']">
+								<li loop="$val1['list']=>$key2,$val2" class="active"|cond="$val2['selected']">
+								<span class="view2" cond="$val2['list'] && $layout_info->sub_menu_type != 'normal'"></span><!-- 서브메뉴 타입 (아코디언,마우스오버)-->
+								<a href="{$val2['href']}" target="_blank"|cond="$val2['open_window']=='Y'">{$val2['link']}</a> 
+									<ul cond="$val2['list']">
+										<li loop="$val2['list']=>$key3,$val3" class="active_2"|cond="$val3['selected']">
+										<span class="view" cond="$val2['list']"></span><!-- 3차 메뉴 있을시 표식-->
+										<a href="{$val3['href']}" target="_blank"|cond="$val3['open_window']=='Y'" style="text-indent:7px;">{$val3['link']}</a> 
+										</li>
+									</ul>
+								</li>
+							</ul>
+							<!--//서브메뉴 바로이동-->	
+							<div class="sub_move_target" cond="$layout_info->sub_move_target_use == 'yes'" style="display:none;"|cond="$layout_info->sub_move_target_type == 'scroll'">
+								<a href="#header" class="move_t"><span></span>{$lang->qc_to_top}<!--//맨위로--></a>
+								<a href="#body" class="move_c"><span>| </span>{$lang->qc_to_content}<!--//컨텐츠--></a>
+								<a href="#bottom" class="move_b"><span>| </span>{$lang->qc_to_bottom}<!--//아래로--></a>
+							</div>
+						</div>
+						<!--// 좌측위젯영역-->
+						<div class="left_widget_wrap">
+							<div class="widget1 widget">{$layout_info->sub_widget1}</div>
+							<div class="widget2 widget">{$layout_info->sub_widget2}</div>
+							<div class="widget3 widget">{$layout_info->sub_widget3}</div>
+						</div>
+					</div>
+				
+				
+					<!--// 위젯바-->
+					<div class="content_widget_bar" cond="$layout_info->widget_bar_use == 'yes'">
+						<div class="widget_bar_wrap">
+							<div class="widget1 widget">{$layout_info->wbar_widget1}</div>
+							<div class="widget2 widget">{$layout_info->wbar_widget2}</div>
+							<div class="widget3 widget">{$layout_info->wbar_widget3}</div>
+							<div class="widget4 widget">{$layout_info->wbar_widget4}</div>
+						</div>
+					</div>
+				<!--@end--> <!--//레이아웃이 서브형일경우 출력 끝-->
+
+				<!--// 컨텐트 -->
+				<div class="contents">
+					{$content}
+				</div>
+				
+			</div><!--// 컨텐트 + 서브바 + 위젯바 끝-->
+			
+			<!--// 컨텐트 하단-->
+			<div class="content_bottoms" cond="$layout_info->content_bottom_use != 'no' ">
+				<!--// 카운터 스킨 삽입--><!--@if($layout_info->counter_use != 'no')-->
+				<img class="zbxe_widget_output" widget="counter_status" skin="xecenter_status" />
+				<!--@end-->
+			</div>
+		</div>
+		
+		<!--//하단 위젯바-->
+		<div class="bottom_widget"> <!--// 높이확장을 연동을 위한 클래스-->
+			<div class="bottom_widget_wrap" cond="$layout_info->bottom_widget_use == 'yes'">
+				<div class="bottom_widget1 widget" cond="$layout_info->bottom_widget1"> {$layout_info->bottom_widget1} </div>
+				<div class="bottom_widget2 widget" cond="$layout_info->bottom_widget2"> {$layout_info->bottom_widget2} </div>
+				<div class="bottom_widget3 widget" cond="$layout_info->bottom_widget3"> {$layout_info->bottom_widget3} </div>
+			</div>
+		</div>
+		
+		<!--// 하단 메뉴 전체-->
+		<div class="menu_bottom_wrap" cond="$layout_info->menu_bottom_bar_use != 'no'">
+			<div class="menu_bottom">
+				<!--// 하단메뉴-->
+				<div class="fix_width" style="position:relative;">
+					<ul class="auto_float" cond="$layout_info->menu_bottom_use == 'yes'">
+						<li loop="$bottom_menu->list=>$key1,$val1">
+							<div class="pipe"></div>
+							<a href="{$val1['href']}" target="_blank"|cond="$val1['open_window']=='Y'">{$val1['link']}</a>
+						</li>
+					</ul>
+					<!--// 사이트맵 버튼-->
+					<div class="site_map_btn" cond="$layout_info->site_map_use == 'yes'" title="전체메뉴를 펼칩니다"><img src="img/site_map.png" alt="site_map" style="margin-right:2px;"/><!--@if($layout_info->site_map_name_change)-->{$layout_info->site_map_name_change}<!--@else-->{$lang->qc_sitemap}<!--@end--><!--//전체메뉴--></div>
+					
+					<!--// 패밀리 사이트-->
+					<div class="family_site_btn" cond="$layout_info->family_site_use == 'yes'"><!--@if($layout_info->family_site_name_change)-->{$layout_info->family_site_name_change}<!--@else-->{$lang->qc_family_site}<!--@end--><!--//패밀리사이트--><img src="img/family_up.png" alt="family_site"/></div>
+					<div class="family_site">
+						<div class="family_wrap">
+							<a cond="$layout_info->family_site1_name" <!--@if($layout_info->family_site1_url)-->href="{$layout_info->family_site1_url}" target="_blank"<!--@end-->>{$layout_info->family_site1_name}
+								<img src="{$layout_info->family_site1_preview}" cond="$layout_info->family_site1_preview" alt="family_site1_preview"/> </a>
+							<a cond="$layout_info->family_site2_name" <!--@if($layout_info->family_site2_url)-->href="{$layout_info->family_site2_url}" target="_blank"<!--@end-->>{$layout_info->family_site2_name}
+								<img src="{$layout_info->family_site2_preview}" cond="$layout_info->family_site2_preview" alt="family_site2_preview"/>	</a>
+							<a cond="$layout_info->family_site3_name" <!--@if($layout_info->family_site3_url)-->href="{$layout_info->family_site3_url}" target="_blank"<!--@end-->>{$layout_info->family_site3_name}
+								<img src="{$layout_info->family_site3_preview}" cond="$layout_info->family_site3_preview" alt="family_site3_preview"/>	</a>
+							<a cond="$layout_info->family_site4_name" <!--@if($layout_info->family_site4_url)-->href="{$layout_info->family_site4_url}" target="_blank"<!--@end-->>{$layout_info->family_site4_name}
+								<img src="{$layout_info->family_site4_preview}" cond="$layout_info->family_site4_preview" alt="family_site4_preview"/>	</a>
+							<a cond="$layout_info->family_site5_name" <!--@if($layout_info->family_site5_url)-->href="{$layout_info->family_site5_url}" target="_blank"<!--@end-->>{$layout_info->family_site5_name}
+								<img src="{$layout_info->family_site5_preview}" cond="$layout_info->family_site5_preview" alt="family_site5_preview"/> </a>
+							<a cond="$layout_info->family_site6_name" <!--@if($layout_info->family_site6_url)-->href="{$layout_info->family_site6_url}" target="_blank"<!--@end-->>{$layout_info->family_site6_name}
+								<img src="{$layout_info->family_site6_preview}" cond="$layout_info->family_site6_preview" alt="family_site6_preview"/> </a>
+							<a cond="$layout_info->family_site7_name" <!--@if($layout_info->family_site7_url)-->href="{$layout_info->family_site7_url}" target="_blank"<!--@end-->>{$layout_info->family_site7_name}
+								<img src="{$layout_info->family_site7_preview}" cond="$layout_info->family_site7_preview" alt="family_site7_preview"/> </a>
+							<a cond="$layout_info->family_site8_name" <!--@if($layout_info->family_site8_url)-->href="{$layout_info->family_site8_url}" target="_blank"<!--@end-->>{$layout_info->family_site8_name}
+								<img src="{$layout_info->family_site8_preview}" cond="$layout_info->family_site8_preview" alt="family_site8_preview"/> </a>
+							<a cond="$layout_info->family_site9_name" <!--@if($layout_info->family_site9_url)-->href="{$layout_info->family_site9_url}" target="_blank"<!--@end-->>{$layout_info->family_site9_name}
+								<img src="{$layout_info->family_site9_preview}" cond="$layout_info->family_site9_preview" alt="family_site9_preview"/> </a>
+							<a cond="$layout_info->family_site10_name" <!--@if($layout_info->family_site10_url)-->href="{$layout_info->family_site10_url}" target="_blank"<!--@end-->>{$layout_info->family_site10_name}
+								<img src="{$layout_info->family_site10_preview}" cond="$layout_info->family_site10_preview" alt="family_site10_preview"/> </a>
+						</div>
+					</div>
+				</div>
+				<!--// 사이트맵 -->
+				<div class="site_map_bg" cond="$layout_info->site_map_use == 'yes'">
+					<div class="fix_width">
+						<ul class="sitemap_auto_float" style="position:relative;">
+							<li loop="$site_map_menu->list=>$key1,$val1">
+							<!-- 경계선-->
+							<div class="site_map_pipe">
+								<div class="pipe_l"></div>
+								<div class="pipe_r"></div>
+							</div>
+							<a href="{$val1['href']}">{$val1['link']}</a>
+								<ul cond="$val1['list']">
+									<li loop="$val1['list']=>$key2,$val2">
+										<a href="{$val2['href']}">{$val2['link']}</a>
+										<ul cond="$val2['list']">
+											<li loop="$val2['list']=>$key3,$val3">
+											<a href="{$val3['href']}">
+												<span class="view" cond="$val2['list']"></span><!-- 3차 메뉴 있을시 표식-->
+												{$val3['link']}
+											</a>
+											</li>
+										</ul>
+									</li>
+								</ul>
+							</li>
+							<!-- 마지막 경계선-->
+							<li class="site_map_pipe_final">
+								<div class="pipe_l"></div>
+								<div class="pipe_r"></div>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<!--// 사이트맵 끝-->
+			</div>
+		</div>
+		
+		<!-- ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+																하단 
+	──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── -->
+		<div id="bottom">
+			<div class="bg_bottom"></div>
+			<!--//카피라이트-->
+			<div class="fix_width" style="height:0px;">
+				<div class="copyright_float">
+					<a class="copyright" cond="$layout_info->copyright_text">{$layout_info->copyright_text}</a>
+					<a class="copyright" cond="$layout_info->copyright_text == ''">Copyright by Qookrabbit 2013 All rights reserved</a>
+				</div>	
+			</div>
+			<!--//로고-->
+			<div class="bottom_logo" onclick="window.location.href='<!--@if($layout_info->bottom_logo_url == '')-->http://xecenter.com<!--@end-->{$layout_info->bottom_logo_url}';">
+				<!--//텍스트-->
+				<a cond="!$layout_info->bottom_logo_img">{$layout_info->bottom_logo_text}</a>
+				<!--//로고 이미지 -->
+				<a cond="$layout_info->bottom_logo_img">
+					<img src="{$layout_info->bottom_logo_img}" alt="bottom_logo" />
+				</a>
+			</div>
+			<!--//약관,개인정보-->
+			<div class="site_term" cond="$layout_info->site_term_use != 'no'">
+				<a onclick="window.location.href='{$layout_info->site_term1_url}';"|cond="$layout_info->site_term1_url">이용약관</a>
+				<a onclick="window.location.href='{$layout_info->site_term2_url}';"|cond="$layout_info->site_term2_url">개인정보취급방침</a>
+			</div>
+		</div>
+	</div>
+	
+</div></div>
+<!-- ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+												사이트 끝
+ ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── -->
+
+
+
+<!--// 옵션 변수 -->
+<script type="text/javascript">
+<!--// 배경화면-->
+site_bg_url = '<!--@if($layout_info->site_image)-->{$layout_info->site_image}<!--@else-->noimage<!--@end-->'
+site_bg_url2 = '<!--@if($layout_info->site_image2)-->{$layout_info->site_image2}<!--@else-->noimage<!--@end-->'
+site_image_roll = '<!--@if($layout_info->site_image_roll)-->{$layout_info->site_image_roll}<!--@else-->4<!--@end-->' <!--//롤링간격-->
+site_image_autosize = '{$layout_info->site_image_autosize}'
+<!--// 로그인 유도기능 사용여부-->
+enjoy_site_use = '{$layout_info->enjoy_site_use}'
+<!--// 로그인 후 공지기능 사용여부-->
+login_site_use = '{$layout_info->login_site_use}'
+<!--// 상단배너 사용여부-->
+banner_use = '{$layout_info->banner_use}'
+<!--// 상단배너 마우스오버 롤링-->
+banner_stop_use = '{$layout_info->banner_stop_use}'
+<!--// 상단배너 롤링간격-->
+banner_image_roll = '<!--@if($layout_info->banner_image_roll)-->{$layout_info->banner_image_roll}<!--@else-->4<!--@end-->'
+<!--// 상단배너 좌우이동 화살표 사용여부-->
+banner_sign_use = '{$layout_info->banner_sign_use}'
+<!--// 높이여백변경-->
+screen_height_user_change = '<!--@if($layout_info->screen_height == '')-->n<!--@else-->y<!--@end-->'
+<!--// 화면크기변경-->
+screen_width1 = '<!--@if($layout_info->screen_width1 == '')-->980<!--@end-->{$layout_info->screen_width1}'
+screen_width2 = '<!--@if($layout_info->screen_width2 == '')-->1200<!--@end-->{$layout_info->screen_width2}'
+screen_width3 = '<!--@if($layout_info->screen_width3 == '')-->1300<!--@end-->{$layout_info->screen_width3}'
+<!--//바로이동기능 레이아웃 width값 변수로 받기(넓이확장기능 연동) -->
+<!--@if(!$layout_info->move_target_position)--><!--//바로이동 좌우위치조정 미사용시-->
+move_target_width = '<!--@if($layout_info->screen_width1 == '')-->1000<!--@else-->{$layout_info->screen_width1+20}<!--@end-->px'
+move_target_width2 = '<!--@if($layout_info->screen_width2 == '')-->1220<!--@else-->{$layout_info->screen_width2+20}<!--@end-->px'
+move_target_width3 = '<!--@if($layout_info->screen_width3 == '')-->1320<!--@else-->{$layout_info->screen_width3+20}<!--@end-->px'
+<!--@else-->
+move_target_width = '<!--@if($layout_info->screen_width1 == '')-->{1000 + $layout_info->move_target_position}<!--@else-->{$layout_info->screen_width1+$layout_info->move_target_position}<!--@end-->px'
+move_target_width2 = '<!--@if($layout_info->screen_width2 == '')-->{1220 + $layout_info->move_target_position}<!--@else-->{$layout_info->screen_width2+$layout_info->move_target_position}<!--@end-->px'
+move_target_width3 = '<!--@if($layout_info->screen_width3 == '')-->{1320 + $layout_info->move_target_position}<!--@else-->{$layout_info->screen_width3+$layout_info->move_target_position}<!--@end-->px'
+<!--@end-->
+<!--// 로고강조효과-->
+logo_size = '<!--@if($layout_info->logo_text_hover_size == '')-->23<!--@end-->{$layout_info->logo_text_hover_size}px'
+logo_color = '<!--@if($layout_info->logo_text_hover_color == '')-->#ffd800<!--@end-->{$layout_info->logo_text_hover_color}'
+logo_size_o = '<!--@if($layout_info->logo_text_size == '')-->23<!--@end-->{$layout_info->logo_text_size}px'
+logo_color_o = '<!--@if($layout_info->logo_text_color2 == '')-->#fff<!--@end-->{$layout_info->logo_text_color2}'
+<!--// 메뉴 최상단 고정기능-->
+menu_top_fixed = '{$layout_info->menu_top_fixed}'
+<!--// 서브메뉴고정-->
+sub_menu_fix = '{$layout_info->sub_menu_fix}'
+sub_menu_fix_effect = '{$layout_info->sub_menu_fix_effect}'
+<!--// 전체메뉴 최상단 고정기능-->
+site_map_top_fixed = '{$layout_info->site_map_top_fixed}'
+<!--// 채팅바 닫기 슬라이드 효과 강도-->
+chat_close_effect = '<!--@if($layout_info->chat_close_effect)-->{$layout_info->chat_close_effect}<!--@else-->0<!--@end-->'
+<!--// 전체메뉴 슬라이드 효과 강도 -->
+top_site_map_effect = '<!--@if($layout_info->top_site_map_effect)-->{$layout_info->top_site_map_effect}<!--@else-->7<!--@end-->'
+<!--// 메뉴슬라이드 효과 강도 -->
+menu_effect = '<!--@if($layout_info->menu_effect)-->{$layout_info->menu_effect}<!--@else-->2.5<!--@end-->'
+<!--// 서브메뉴 타입 (일반,아코디언,마우스오버)-->
+sub_menu_type = '{$layout_info->sub_menu_type}'
+<!--// 사이드배너고정 (우측, 좌측)-->
+side_banner_fix = '{$layout_info->side_banner_fix}'
+left_side_banner_fix = '{$layout_info->left_side_banner_fix}'
+<!--// 서브바,위젯바 선택효과 -->
+subbar_select = '{$layout_info->subbar_select}'
+<!--// 서브메뉴 바로이동 기능 작동조건 -->
+sub_move_target_type = '{$layout_info->sub_move_target_type}'
+<!--// 사이트맵(하단) 사용여부 -->
+site_map_use = '{$layout_info->site_map_use}'
+<!--// 로그인, 회원가입 유도기능 -->
+enjoy_site_start = '{$layout_info->enjoy_site_start}' 
+enjoy_site_start_time = '<!--@if($layout_info->enjoy_site_start_time)-->{$layout_info->enjoy_site_start_time}<!--@else-->2<!--@end-->'
+enjoy_site_auto = '{$layout_info->enjoy_site_auto}'
+enjoy_site_bg_height = '<!--@if($layout_info->enjoy_site_bg_height)-->{$layout_info->enjoy_site_bg_height}<!--@else-->50<!--@end-->'
+<!--// 로그인 후 한줄공지 기능 -->
+login_site_start = '{$layout_info->login_site_start}' 
+login_site_start_time = '<!--@if($layout_info->login_site_start_time)-->{$layout_info->login_site_start_time}<!--@else-->2<!--@end-->'
+login_site_auto = '{$layout_info->login_site_auto}'
+login_site_bg_height = '<!--@if($layout_info->login_site_bg_height)-->{$layout_info->login_site_bg_height}<!--@else-->50<!--@end-->'
+<!--// 툴팁 (말풍선 효과) 사용여부 -->
+tooltip_use = '{$layout_info->tooltip_use}'
+</script>
+
+<style type="text/css">
+<!--@if($layout_info->screen_width1)-->
+.fix_width{width:{$layout_info->screen_width1}px;}<!--@end-->
+<!--@if($layout_info->layout_font && $layout_info->layout_font != '나눔고딕, NG' && $layout_info->layout_font != '나눔바른고딕, NBG, NanumBarunGothic')-->
+*{font-family:{$layout_info->layout_font};}<!--@end-->
+<!--// 배경 (색상, 사용자 이미지)-->
+body{background:<!--@if($layout_info->site_image && $layout_info->site_image_autosize != 'yes' || $layout_info->site_bg)-->{$layout_info->site_bg} url({$layout_info->site_image}) {$layout_info->site_image_repeat} {$layout_info->site_image_start_A} {$layout_info->site_image_start_B}; background-attachment:{$layout_info->site_image_attachment};<!--@end-->}
+<!--// 패턴 -->
+<!--@if($layout_info->site_bg || $layout_info->site_image)-->
+.site_pattern{background:url(layouts/xecenter/img/pattern/{$layout_info->site_pattern}) repeat;}<!--@end-->
+<!--// 최상단 전체메뉴 (사이트맵) -->
+<!--@if($layout_info->top_site_map_open == 'open')-->
+#header .top_site_map{display:block;} 
+#header .top_site_map_open_btn{display:none;}<!--@end-->
+<!--@if($layout_info->site_map_top_text_align == 'right')-->#header .top_site_map ul li{float:right;}<!--@end-->
+<!--@if($layout_info->site_map_top_text_indent)-->#header .top_site_map ul li{text-indent:{$layout_info->site_map_top_text_indent}px;}<!--@end-->
+<!--@if($layout_info->site_map_min_width)-->#header .top_site_map ul li{min-width:{$layout_info->site_map_min_width}px;}<!--@end-->
+<!--@if($layout_info->site_map_max_width)-->#header .top_site_map ul li{max-width:{$layout_info->site_map_max_width}px;}<!--@end-->
+<!--@if($layout_info->site_map_line_bg)-->
+#header .top_site_map_line_real, #header .top_site_map{border-top:<!--@if($layout_info->site_map_line_weight)-->{$layout_info->site_map_line_weight}px<!--@else-->2px<!--@end--> solid {$layout_info->site_map_line_bg};}
+#header .top_site_map_btn, #header .top_site_map_open_btn{background:{$layout_info->site_map_line_bg};}<!--@end-->
+<!--@if($layout_info->site_map_line_font_color)-->#header .top_site_map_btn, #header .top_site_map_open_btn{color:{$layout_info->site_map_line_font_color}; }<!--@end-->
+<!--@if($layout_info->site_map_btn_position1)-->#header .top_site_map_line .top_site_map_open_btn{right:{$layout_info->site_map_btn_position1}px;}<!--@end-->
+<!--@if($layout_info->site_map_btn_position2)-->#header .top_site_map_line .top_site_map_open_btn{top:{$layout_info->site_map_btn_position2}px;}<!--@end-->
+<!--// 상단+배너--><!--@if($layout_info->banner_use == 'yes')-->
+#header{height:{$layout_info->header_height}px!important;}
+<!--@if($layout_info->banner_margin_top)-->#header .banner{top:{$layout_info->banner_margin_top}px;}<!--@end-->
+#header .banner{height:{$layout_info->banner_height}px; background:{$layout_info->banner_bg_color} url(./layouts/xecenter/img/pattern/{$layout_info->banner_pattern}); <!--@if($layout_info->banner_border_use == 'yes')-->border-top:2px solid {$layout_info->banner_border_color}; border-bottom:2px solid {$layout_info->banner_border_color};<!--@end--> }
+#header .banner .banner_common{height:{$layout_info->banner_height}px; background-position:{$layout_info->banner_position1} {$layout_info->banner_position2};}
+#header .btn_wrap{top:{$layout_info->banner_height - 30}px;}
+#header .left_btn{height:{$layout_info->banner_height}px; margin-top:-{$layout_info->banner_height - 30}px;}
+#header .right_btn{height:{$layout_info->banner_height}px; margin-top:-{$layout_info->banner_height - 30}px;}
+#header .right_btn i, #header .left_btn i{top:-{$layout_info->banner_height/2}px;}<!--@end-->
+<!--// 상단+배너 텍스트--><!--@if($layout_info->banner_text_use == 'yes')-->
+#header .banner .banner_msg_warp{text-align:{$layout_info->banner_text_position};}
+#header .banner .banner_msg_warp .banner_msg1{color:{$layout_info->banner_text1_color}; font-size:{$layout_info->banner_text1_size}px; font-weight:{$layout_info->banner_text1_bold}; margin-top:{$layout_info->banner_text1_margin_top}px; margin-left:{$layout_info->banner_text1_margin_left}px;  margin-right:{$layout_info->banner_text1_margin_left}px; <!--@if($layout_info->banner_text1_shadow)-->text-shadow:1px 1px 1px {$layout_info->banner_text1_shadow};<!--@end-->}
+#header .banner .banner_msg_warp .banner_msg2{color:{$layout_info->banner_text2_color}; font-size:{$layout_info->banner_text2_size}px; font-weight:{$layout_info->banner_text2_bold}; margin-top:{$layout_info->banner_text2_margin_top}px; margin-left:{$layout_info->banner_text2_margin_left}px;  margin-right:{$layout_info->banner_text2_margin_left}px; <!--@if($layout_info->banner_text2_shadow)-->text-shadow:1px 1px 1px {$layout_info->banner_text2_shadow};<!--@end-->}
+#header .banner .banner_msg_warp .banner_msg3{color:{$layout_info->banner_text3_color}; font-size:{$layout_info->banner_text3_size}px; font-weight:{$layout_info->banner_text3_bold}; margin-top:{$layout_info->banner_text3_margin_top}px; margin-left:{$layout_info->banner_text3_margin_left}px;  margin-right:{$layout_info->banner_text3_margin_left}px; <!--@if($layout_info->banner_text3_shadow)-->text-shadow:1px 1px 1px {$layout_info->banner_text3_shadow};<!--@end-->}<!--@end-->
+<!--// 사이드 배너 (우측, 좌측)) -->
+#body .side_banner{<!--@if($layout_info->side_banner_width)-->right:-{$layout_info->side_banner_width + 10}px;<!--@end--> width:{$layout_info->side_banner_width}px;}
+#body .side_banner .side_banner_common{margin-top:{$layout_info->side_banner_margin_tb}px; margin-bottom:{$layout_info->side_banner_margin_tb}px; background:{$layout_info->side_banner_bg};}
+#body .left_side_banner{<!--@if($layout_info->left_side_banner_width)-->left:-{$layout_info->left_side_banner_width + 10}px;<!--@end--> width:{$layout_info->left_side_banner_width}px;}
+#body .left_side_banner .side_banner_common{margin-top:{$layout_info->left_side_banner_margin_tb}px; margin-bottom:{$layout_info->left_side_banner_margin_tb}px; background:{$layout_info->left_side_banner_bg};}
+<!--// 로고 -->
+.logo{margin-right:{$layout_info->logo_margin}px;}
+.logo img{width:{$layout_info->logo_img_w}px; height:{$layout_info->logo_img_h}px; vertical-align:top; margin-top:{$layout_info->logo_img_margin}px;}
+.logo a{font-size:<!--@if($layout_info->logo_text_size == '')-->23<!--@end-->{$layout_info->logo_text_size}px; color:<!--@if($layout_info->logo_text_color == '')-->white<!--@end-->{$layout_info->logo_text_color};}
+.logo a.text_strong{color:<!--@if($layout_info->logo_text_color2 == '')-->yellow<!--@end-->{$layout_info->logo_text_color2};}
+<!--// 로그인 정보창 --><!--@if($layout_info->login_info_type == 'text')-->
+.menu .login_btn{background:none;}
+.menu .login_btn a{color:white; padding:3px 0;}
+.menu .login_btn a:hover{border-bottom:none; border-top:2px solid white; }
+.menu .info .pipe{border-left:1px solid white;}<!--@end-->
+<!--@if($layout_info->info_bg)-->
+.menu .login_btn{background:{$layout_info->info_bg};}<!--@end-->
+<!--// 사이트확장기능 폰트색상-->
+<!--@if($layout_info->change_function_color)-->#body .content_top .width_change{color:{$layout_info->change_function_color};}<!--@end-->
+<!--@if($layout_info->change_function_color_h)-->#body .content_top .height_change{color:{$layout_info->change_function_color_h};}<!--@end-->
+<!--@if($layout_info->change_function_color_c)-->#body .content_top .content_change{color:{$layout_info->change_function_color_c};}<!--@end-->
+<!--// 심플바 (심플바 링크)-->
+#header .simple_bar_wrap{top:{$layout_info->menu_height}px;}
+#header .simple_bar_bg{background:{$layout_info->simplebar_bg}; <!--@if($layout_info->simplebar_bg_opacity)-->filter:alpha(opacity={$layout_info->simplebar_bg_opacity}0); opacity:0.{$layout_info->simplebar_bg_opacity}; -moz-opacity:0.{$layout_info->simplebar_bg_opacity};<!--@end-->}
+#header .simplebar_link a{color:{$layout_info->simplebar_font_color};}
+<!--// 채팅바 색상 --><!--@if($layout_info->chat_bg_color)-->
+#header .chat_bar_wrap{background:{$layout_info->chat_bg_color};}<!--@end-->
+<!--// 메뉴 최상단고정기능 미사용시--><!--@if($layout_info->menu_top_fixed == 'no')-->
+.menu_bg, .menu{position:absolute;}<!--@end-->
+<!--// 메뉴 투명도--><!--@if($layout_info->menu_opacity)-->
+.menu_bg{filter:alpha(opacity={$layout_info->menu_opacity}0); opacity:0.{$layout_info->menu_opacity}; -moz-opacity:0.{$layout_info->menu_opacity};}<!--@end-->
+<!--// 메뉴 높이조절 관련(높이+상단여백) --><!--@if($layout_info->menu_height)-->
+.menu, .menu_bg, #header{height:{$layout_info->menu_height}px; background-image:none;}
+.bg_info, .top_site_map, .top_site_map_line_real, .top_site_map_line{top:{$layout_info->menu_height}px;}
+<!--@if($layout_info->banner_margin_top)-->#header .banner{top:{$layout_info->banner_margin_top}px;}<!--@else-->#header .banner{top:{$layout_info->menu_height}px;}<!--@end-->
+<!--@end-->
+<!--@if($layout_info->menu_top_margin)-->.gnb ul{margin-top:{$layout_info->menu_top_margin}px;}.gnb ul ul{margin:0px;}<!--@end-->
+<!--// 메뉴 폰트크기 --> <!--@if($layout_info->menu_font_size)-->
+.gnb li a{font-size:{$layout_info->menu_font_size}px;}
+.gnb li li a{font-size:12px;}<!--@end-->
+<!--// 2차,3차메뉴 폰트크기 --> <!--@if($layout_info->menu_font_size2)-->
+.gnb li li a{font-size:{$layout_info->menu_font_size2}px;}<!--@end-->
+<!--// 메뉴, 2차, 3차 폰트굵기-->
+<!--@if($layout_info->menu_font_weight == 'bold')-->.gnb li a{font-weight:bold;} .gnb li li a{font-weight:normal;}<!--@end-->
+<!--@if($layout_info->menu_font_weight2 == 'bold')-->.gnb li li a{font-weight:bold;}<!--@end-->
+<!--// 메뉴 (강조,이미지) -->
+.menu, .menu_bg{z-index:{$layout_info->menu_zindex}; <!--@if($layout_info->menu_bottom_strong != 'no')-->border-bottom:<!--@if($layout_info->menu_bottom_strong_height)-->{$layout_info->menu_bottom_strong_height}<!--@else-->2<!--@end-->px solid <!--@if($layout_info->menu_bottom_strong_color)-->{$layout_info->menu_bottom_strong_color}<!--@else-->#ddd<!--@end-->;<!--@end-->}
+<!--@if($layout_info->menu_li1_image)-->.gnb .li_img1{background:url({$layout_info->menu_li1_image}) right top no-repeat;}<!--@end-->
+<!--@if($layout_info->menu_li2_image)-->.gnb .li_img2{background:url({$layout_info->menu_li2_image}) right top no-repeat;}<!--@end-->
+<!--@if($layout_info->menu_li3_image)-->.gnb .li_img3{background:url({$layout_info->menu_li3_image}) right top no-repeat;}<!--@end-->
+<!--@if($layout_info->menu_li4_image)-->.gnb .li_img4{background:url({$layout_info->menu_li4_image}) right top no-repeat;}<!--@end-->
+<!--@if($layout_info->menu_li5_image)-->.gnb .li_img5{background:url({$layout_info->menu_li5_image}) right top no-repeat;}<!--@end-->
+<!--@if($layout_info->menu_li6_image)-->.gnb .li_img6{background:url({$layout_info->menu_li6_image}) right top no-repeat;}<!--@end-->
+<!--@if($layout_info->menu_li7_image)-->.gnb .li_img7{background:url({$layout_info->menu_li7_image}) right top no-repeat;}<!--@end-->
+<!--@if($layout_info->menu_li8_image)-->.gnb .li_img8{background:url({$layout_info->menu_li8_image}) right top no-repeat;}<!--@end-->
+<!--@if($layout_info->menu_li9_image)-->.gnb .li_img9{background:url({$layout_info->menu_li9_image}) right top no-repeat;}<!--@end-->
+<!--@if($layout_info->menu_li10_image)-->.gnb .li_img10{background:url({$layout_info->menu_li10_image}) right top no-repeat;}<!--@end-->
+<!--//메뉴 가변형 --> <!--@if($layout_info->menu_li_type == 'auto')-->
+.gnb li a{width:auto; padding:0 <!--@if($layout_info->menu_list_width_fix)-->{$layout_info->menu_list_width_fix}<!--@else-->15<!--@end-->px;}
+.gnb li li{float:none; width:110px; width:{$layout_info->menu_list_width}px;}
+.gnb ul ul ul{left:110px; left:{$layout_info->menu_list_width}px;}
+.gnb ul ul{left:{$layout_info->menu_list_width_change}px;}
+<!--@end-->
+<!--// 메뉴 리스트 넓이--> <!--@if($layout_info->menu_li_type != 'auto')-->
+.gnb li a{width:{$layout_info->menu_list_width}px;}
+.gnb ul ul ul{left:{$layout_info->menu_list_width}px;}<!--@end-->
+<!--// 2차메뉴,3차메뉴 -->
+<!--@if($layout_info->menu2_list_position == 'center')-->.gnb li li{text-align:center; text-indent:0px;}<!--@end-->
+.gnb li li a{line-height:{$layout_info->menu2_list_height}px;}
+.gnb .view{margin-top:{$layout_info->menu3_list_target}px;}
+<!--//2차메뉴 애니메이션-->
+<!--@if($layout_info->menu2_list_animation)-->.gnb li li:hover{ -webkit-transition:background .{$layout_info->menu2_list_animation}s linear; -moz-transition:background .{$layout_info->menu2_list_animation}s linear; -o-transition:background .{$layout_info->menu2_list_animation}s linear; transition:background .{$layout_info->menu2_list_animation}s linear;} <!--@end-->
+<!--// 메뉴 파이프--> <!--@if($layout_info->menu_pipe_use == 'yes')-->
+.gnb li .pipe1{background:{$layout_info->menu_pipe1_color}; <!--@if($layout_info->menu_pipe1_opacity)-->filter:alpha(opacity={$layout_info->menu_pipe1_opacity}0); opacity:0.{$layout_info->menu_pipe1_opacity}; -moz-opacity:0.{$layout_info->menu_pipe1_opacity};<!--@end-->}
+.gnb li .pipe2{background:{$layout_info->menu_pipe2_color}; <!--@if($layout_info->menu_pipe2_opacity)-->filter:alpha(opacity={$layout_info->menu_pipe2_opacity}0); opacity:0.{$layout_info->menu_pipe2_opacity}; -moz-opacity:0.{$layout_info->menu_pipe2_opacity};<!--@end-->}<!--@end-->
+<!--// 컨텐츠 부분 배경 및 테두리 제어-->
+<!--@if(!$layout_info->content_bg && !$layout_info->content_wrap_bg)-->#body{background:white;}<!--@end-->
+<!--@if($layout_info->content_wrap_bg)--> <!--//전체-->
+#body .content_wrap{background:{$layout_info->content_wrap_bg};}<!--@else-->#body .content_wrap{background:white;}<!--@end-->
+<!--@if($layout_info->content_bg)--> <!--//컨텐츠-->
+#body .contents{background:{$layout_info->content_bg} url(./layouts/xecenter/img/pattern/{$layout_info->user_pattern_content}) repeat;}<!--@end-->
+<!--@if($layout_info->content_border)--> <!--//테두리-->
+#body .content_wrap{border:1px solid {$layout_info->content_border};}
+#body .content_top{border-bottom:1px solid {$layout_info->content_border};}
+#body .content_bottoms{border-top:1px solid {$layout_info->content_border};}
+#body .contents{border:1px solid {$layout_info->content_border}; outline:1px solid {$layout_info->content_border};}
+.content_left_bar{border-right:1px solid {$layout_info->content_border};}
+.content_widget_bar{border-left:1px solid {$layout_info->content_border};}<!--@end-->
+<!--// 서브바, 위젯바 배경색상 -->
+<!--@if($layout_info->sub_menu_text_bg)-->
+.lnb p{background:{$layout_info->sub_menu_text_bg};}<!--@end--><!--//서브 대제목 배경-->
+<!--@if($layout_info->sub_menu_text_color)-->
+.lnb p a{color:{$layout_info->sub_menu_text_color}; text-shadow:none;}<!--@end--><!--//서브 대제목 폰트색상-->
+<!--@if($layout_info->subbar_bg)--><!--//서브바-->
+#body .lnb{background:{$layout_info->subbar_bg};}
+.content_left_bar{background:{$layout_info->subbar_bg};}<!--@end-->
+<!--@if($layout_info->widget_bar_bg)--><!--//위젯바-->
+.content_widget_bar{background:{$layout_info->widget_bar_bg};}<!--@end-->
+<!--// 서브바 위치 (우측) --> <!--@if($layout_info->subbar_position == 'right')-->
+.content_left_bar{float:right; border:none; border-left:1px solid #ddd; <!--@if($layout_info->content_border)-->border-left:1px solid {$layout_info->content_border};<!--@end-->}
+.content_widget_bar{float:left; border:none; border-right:1px solid #ddd; <!--@if($layout_info->content_border)-->border-right:1px solid {$layout_info->content_border}; <!--@end-->}
+<!--@end-->
+<!--// 서브메뉴 배경이미지 및 사이즈조절-->
+<!--@if($layout_info->sub_menu_img)-->#body .lnb{background:url({$layout_info->sub_menu_img});}<!--@end-->
+<!--@if($layout_info->sub_menu_img_width && $layout_info->sub_menu_img_height)-->#body .lnb{background-size:{$layout_info->sub_menu_img_width}px,{$layout_info->sub_menu_img_height}px; }<!--@end-->
+<!--// 컨텐츠 부분 -->
+<!--@if($layout_info->content_zindex)-->#body{z-index:{$layout_info->content_zindex};}<!--@end-->
+#body{margin-top:{$layout_info->screen_height}px!important; margin-bottom:{$layout_info->screen_height}px!important;}
+#body .contents{min-height:{$layout_info->content_min_height}px;}
+#body .content_top{border-top-left-radius:{$layout_info->content_bar_radius}px; border-top-right-radius:{$layout_info->content_bar_radius}px;}
+#body .content_bottoms{border-bottom-left-radius:{$layout_info->content_bar_radius}px; border-bottom-right-radius:{$layout_info->content_bar_radius}px;}
+<!--// 서브바(서브메뉴,위젯)-->
+.content_left_bar{min-width:{$layout_info->subbar_min_width}px; max-width:{$layout_info->subbar_max_width}px;}
+.content_left_bar .widget{margin-top:{$layout_info->sub_widget_margin_tb}px; margin-bottom:{$layout_info->sub_widget_margin_tb}px; margin-left:{$layout_info->sub_widget_margin_lr}px; margin-right:{$layout_info->sub_widget_margin_lr}px;}
+.lnb p{text-indent:{$layout_info->sub_menu_text}px; text-align:{$layout_info->sub_menu_text_type};}
+.lnb li a{line-height:{$layout_info->sub_menu_height}px; font-size:{$layout_info->sub_menu_font_size}px;}
+.lnb .view{margin-top:{$layout_info->sub_menu_target}px;}
+<!--//2차메뉴 애니메이션-->
+<!--@if($layout_info->sub_menu_list_animation)-->.lnb li a:hover{  -webkit-transition:background .{$layout_info->sub_menu_list_animation}s linear; -moz-transition:background .{$layout_info->sub_menu_list_animation}s linear; -o-transition:background .{$layout_info->sub_menu_list_animation}s linear; transition:background .{$layout_info->sub_menu_list_animation}s linear;}<!--@end-->
+<!--// 서브메뉴 아코디언,마우스오버 사용시--> <!--@if($layout_info->sub_menu_type != 'normal')-->
+.lnb ul ul{display:none;}
+.lnb .view2{height:{$layout_info->sub_menu_height}px;}
+<!--@end-->
+<!--// 서브 위젯바-->
+.content_widget_bar{min-width:{$layout_info->widgetbar_min_width}px; max-width:{$layout_info->widgetbar_max_width}px;}
+.content_widget_bar .widget{margin-top:{$layout_info->wbar_widget_margin_tb}px; margin-bottom:{$layout_info->wbar_widget_margin_tb}px; margin-left:{$layout_info->wbar_widget_margin_lr}px; margin-right:{$layout_info->wbar_widget_margin_lr}px;}
+<!--// 하단 위젯바-->
+.bottom_widget_wrap{margin-top:{$layout_info->bottom_widget_margin_top}px; margin-bottom:{$layout_info->bottom_widget_margin_bottom}px;}
+.bottom_widget_wrap .widget{background:{$layout_info->bottom_widget_background};}
+.bottom_widget_wrap .bottom_widget1{width:{$layout_info->bottom_widget1_width}; margin-left:{$layout_info->bottom_widget_margin_left}; margin-right:{$layout_info->bottom_widget_margin_lr}px;}
+.bottom_widget_wrap .bottom_widget2{width:{$layout_info->bottom_widget2_width}; margin-right:{$layout_info->bottom_widget_margin_lr}px;}
+.bottom_widget_wrap .bottom_widget3{width:{$layout_info->bottom_widget3_width};}
+<!--// 카운터 정렬-->
+.qook_counter .counter_float{text-align:{$layout_info->counter_position};}
+<!--// 하단부분-->
+#bottom, .bg_bottom, .site_term{height:{$layout_info->bottom_height}px;}
+<!--@if($layout_info->bottom_color)-->
+.bg_bottom{background:{$layout_info->bottom_color} url(./layouts/xecenter/img/pattern/{$layout_info->bottom_pattern}); <!--@if($layout_info->bottom_opacity)-->opacity:0.{$layout_info->bottom_opacity}; -moz-opacity:0.{$layout_info->bottom_opacity}; filter:alpha(opacity={$layout_info->bottom_opacity}0)<!--@end-->;}<!--@end-->
+<!--// 하단로고 -->
+#bottom .bottom_logo{float:{$layout_info->bottom_logo_position};}
+#bottom .bottom_logo a{color:{$layout_info->bottom_logo_text_color}; cursor:pointer; font-size:{$layout_info->bottom_logo_text_size}px; line-height:{$layout_info->bottom_height}px;}
+<!--// 카피라이터-->
+#bottom .copyright{color:{$layout_info->copyright_color}; font-size:{$layout_info->copyright_size}px; top:{$layout_info->copyright_top}px;}
+<!--//약관,개인정보-->
+<!--@if($layout_info->site_term_color)-->#bottom .site_term a{color:{$layout_info->site_term_color};}<!--@end-->
+<!--@if($layout_info->site_term_hover)-->#bottom .site_term a:hover{border-bottom:2px solid {$layout_info->site_term_hover};}<!--@end-->
+<!--@if($layout_info->site_term_top)-->#bottom .site_term{top:{$layout_info->site_term_top}px;}<!--@end-->
+<!--// 심플메뉴-->
+.simple_menu{z-index:{$layout_info->simple_menu_zindex};}
+<!--@if($layout_info->simple_menu_position)-->.simple_menu ul{top:{$layout_info->simple_menu_position}px;}<!--@end-->
+<!--// 로그인, 회원가입 유도기능 -->
+<!--@if($layout_info->enjoy_site_start == 'top')-->#enjoy_site_bg,#enjoy_site{top:0px; bottom:auto;}<!--@end-->
+<!--@if($layout_info->enjoy_site_bg_height)-->
+#enjoy_site_bg,#enjoy_site{height:{$layout_info->enjoy_site_bg_height}px;}
+#enjoy_site .enjoy_text{line-height:{$layout_info->enjoy_site_bg_height}px;}<!--@end-->
+<!--@if($layout_info->enjoy_site_bg)-->#enjoy_site_bg{background:{$layout_info->enjoy_site_bg}; box-shadow:0px 0px 5px {$layout_info->enjoy_site_bg};}<!--@end-->
+<!--@if($layout_info->enjoy_site_opacity)-->#enjoy_site_bg{opacity:0.{$layout_info->enjoy_site_opacity}; -moz-opacity:0.{$layout_info->enjoy_site_opacity}; filter:alpha(opacity={$layout_info->enjoy_site_opacity}0);}<!--@end-->
+<!--// 로그인후 한줄공지 기능 -->
+<!--@if($layout_info->login_site_start == 'top')-->#login_site_bg,#login_site{top:0px; bottom:auto;}<!--@end-->
+<!--@if($layout_info->login_site_bg_height)-->
+#login_site_bg,#login_site{height:{$layout_info->login_site_bg_height}px;}
+#login_site .login_text{line-height:{$layout_info->login_site_bg_height}px;}<!--@end-->
+<!--@if($layout_info->login_site_bg)-->#login_site_bg{background:{$layout_info->login_site_bg}; box-shadow:0px 0px 5px {$layout_info->login_site_bg};}<!--@end-->
+<!--@if($layout_info->login_site_opacity)-->#login_site_bg{opacity:0.{$layout_info->login_site_opacity}; -moz-opacity:0.{$layout_info->login_site_opacity}; filter:alpha(opacity={$layout_info->login_site_opacity}0);}<!--@end-->
+</style>
+
+
+<!--// 사용자 컬러셋 적용 (배경) -->
+<include target="user_color.html" cond="$layout_info->user_common_colorset_use == 'yes'" />
+<!--// 사용자 컬러셋 적용 (폰트) -->
+<include target="user_color_font.html" cond="$layout_info->user_common_colorset_font_use == 'yes'" />

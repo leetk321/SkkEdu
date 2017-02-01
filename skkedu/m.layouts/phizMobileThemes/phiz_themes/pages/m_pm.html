@@ -1,0 +1,56 @@
+{@
+$date = date("F j, Y");
+}
+<style>
+.main-m1{text-align:center;position: relative;
+padding: 0;
+<!--@if($layout_info->m_pm_titlecolor)-->
+color: {$layout_info->m_pm_titlecolor};
+<!--@else-->
+color: #fff;
+<!--@end-->
+
+<!--@if($layout_info->pm_bg_color)-->
+background-color: {$layout_info->pm_bg_color};
+<!--@else-->
+background-color: #486683;
+<!--@end-->
+
+<!--@if($layout_info->pm_bg_image)-->
+background-image:url({$layout_info->pm_bg_image});
+background-size:cover;
+<!--@end-->
+}
+.main-m1 h1 {font-size:1.5em; margin: 50px 0;}
+.main-m1 p.date {margin: 50px 0;}
+.m1-img {width:100%;}
+.m1-img-wrap{margin:0 auto;width:150px;height:150px}
+.pm-center {margin:0 auto}
+</style>
+
+<div class="main-m1">
+	<div class="container">
+	<div class="v-outer pm-center"><div class="v-middle"><div class="v-inner">
+		<h1 class="text-center">{$layout_info->m_pm_title}</h1>
+			<div class="m1-img-wrap">
+				<img class="m1-img img-circle" src="{$layout_info->m_pm_image}" />
+			</div>
+		<p class="date">{$date}</p>
+	</div>
+</div>
+</div></div></div>
+<script>
+//Initial load of page
+jQuery(document).ready(sizeContent);
+
+//Every resize of window
+jQuery(window).resize(sizeContent);
+
+//Dynamically assign height
+function sizeContent() {
+    var newHeight = jQuery('html').height() - jQuery('.header').height() - jQuery('.footer').height() + "px";
+    jQuery('.v-outer').css('height', newHeight);
+}
+</script>
+     
+

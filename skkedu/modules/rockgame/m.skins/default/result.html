@@ -1,0 +1,241 @@
+<load target="css/default.css" /><!--//css로드-->
+<div id="rockgame_module_view">
+<!--#include("_header.html")-->
+	
+	
+	<h2 style="padding:0px; margin:0px;"><a href="{getUrl('','mid','rockgame')}" class="b-btn b-btn-warning b-btn-xl">새로고침</a>
+		<a href="{getUrl('','module','admin','act','dispRockgameAdminStart')}" target="_blank" style="float:right; font-size:11px" cond="$grant->manager">
+			<b class="xecenter_btn_black xecenter_effect">+관리자모드</b>
+		</a>
+	</h2>
+	
+	<div class="xecenter_div_line" cond="$is_logged"></div> 
+	
+	<!--//오류 메세지-->
+	<div cond="$XE_VALIDATOR_MESSAGE" class="message {$XE_VALIDATOR_MESSAGE_TYPE}">
+		<p>{$XE_VALIDATOR_MESSAGE}</p>
+	</div>
+	<div cond="!$is_logged" class="message error">
+		<p>로그인이 필요한 서비스 입니다</p>
+	</div>
+		
+		
+	<!--//입력내용 controller로 전송 -->
+	<form id="insert_form" name="insert_form" action="./" method="post" ruleset="insert_game" onsubmit="return rockgame_submit_check()" onKeyDown="if(event.keyCode==13){return false;}"> 
+		<input type="hidden" name="act" value="procRockgameUserView" /> 
+		<input type="hidden" name="game_srl" value="" /> 
+		<!--// <input type="hidden" name="success_return_url" value="{getRequestUriByServerEnviroment()}" /> -->
+		
+		
+		<!--//상단-->
+		<div class="rockgame_top" cond="$is_logged"> <!--//로그인시 출력-->
+			{@ $oPointModel = &getModel('point'); $point = $oPointModel->getPoint($logged_info->member_srl); $oModuleModel = &getModel('module'); $config = $oModuleModel->getModuleConfig('point');}
+			<span style="width:50%;float:left;margin:3px 0;">보유 <input type="text" class="xecenter_form_box" style="width:50px; background:#eee;" value="{$point}" disabled="disabled" /> </span>
+			<span style="width:50%;float:right;margin:3px 0;">베팅 <input type="text" class="xecenter_form_box" style="width:35px;" id="game_point" name="game_point" value="" /><a class="b-btn b-btn-info" onclick="jQuery('#game_point').val('{$module_info->maxpoint}');">최대</a></span>
+			{@ $count = $module_info->maxgame - $game_count}
+			<span style="width:50%;float:left;margin:3px 0;">잔여 <input type="text" class="xecenter_form_box" style="width:23px; background:#eee;" value="{$count}" disabled="disabled" /></span>
+			<span style="width:50%;float:right;margin:3px 0;">승률 <input type="text" class="xecenter_form_box" style="width:35px; background:#eee;" value="{$game_rate}%"|cond="$game_rate" disabled="disabled" /></span>
+			<span style="width:100%;clear:both;margin:3px 0;">결과 <input type="text" class="xecenter_form_box" style="width:45px; background:#eee;" value="{$game_point_sum}p"|cond="$game_point_sum" disabled="disabled" /></span>
+		</div>
+		
+		
+		<!--//중간-->
+		<div class="rockgame_center">
+			<!--//게임공간-->
+			<div class="left_bar">
+				<div class="game_result">
+					<div class="com_select">
+						<div class="com_name"><p>인공지능</p></div> 
+						<div class="rps_box"><!--//컴터선택-->
+							<input class="rps_img" type="image" src="img/mini_{$game_result->com_select}.png" disabled="disabled" cond="$game_result->com_select" />
+						</div>
+					</div>	
+					<div class="fight"><img src="./img/versus.png" style="vertical-align:baseline; margin-bottom:35px;"/></div>
+					<div class="user_select"><!--//유저선택-->
+						<div class="user_name"><p>{$logged_info->nick_name}</p></div>
+						<div class="rps_box">
+							<input class="rps_img" type="image" src="img/mini_{$game_result->user_select}.png" disabled="disabled" cond="$game_result->user_select"/>
+						</div>
+					</div>	
+				</div>
+				
+				<!--//유저선택-->
+				<div class="game_select">
+					<input type="hidden" name="rsp_slect" value="" /> <!--//가위바위보 클릭시 value값을 넣음-->
+					<div class="rps_box"><!--//바위-->
+						<input class="rps_img" type="image" id="rps_rock" src="img/rock.jpg" onclick="this.form.rsp_slect.value='rock'" disabled="disabled"|cond="!$is_logged" /> <!--//로그인시 버튼활성화-->
+					</div>
+					<div class="rps_box"><!--//가위-->
+						<input class="rps_img" type="image" id="rps_scissors" src="img/scissors.jpg" onclick="this.form.rsp_slect.value='scissors'" disabled="disabled"|cond="!$is_logged" /> <!--//로그인시 버튼활성화-->
+					</div>
+					<div class="rps_box"><!--//보-->
+						<input class="rps_img" type="image" id="rps_paper" src="img/paper.jpg" onclick="this.form.rsp_slect.value='paper'"  disabled="disabled"|cond="!$is_logged" /> <!--//로그인시 버튼활성화-->
+					</div>
+				</div>
+			</div>
+			
+			<!--//랭킹공간-->
+			<div class="right_bar">
+				<div class="luck_rank">
+					<p>오늘의 점수 왕 Top5</p>
+					<table cellpadding='3' cellspacing="0" border='0' style="display:none">
+						{@ $rank = 0}
+						<!--@foreach($game_rank_desc as $no => $game_today_desc)-->
+							<tr cond="$game_today_desc->point_sum > 0"> {@ $rank++}	
+								<td><b>{$rank}위</b></td>
+								<td><a class="member_{$game_today_desc->member_srl}" href="#" onclick="return false">{$game_today_desc->nick_name}</a></td>
+								<td style="color:cornflowerblue;"><b>+{$game_today_desc->point_sum}p</b></td>
+							</tr> 
+						<!--@end-->
+					</table>
+				</div>
+				
+				<div class="bad_rank">
+					<p>오늘의 불행 왕 Top5</p>
+					<table cellpadding='3' cellspacing="0" border='0' style="display:none">
+						{@ $rank = 0}
+						<!--@foreach($game_rank_asc as $no => $game_today_asc)-->
+							<tr cond="$game_today_asc->point_sum < 0"> {@ $rank++}	
+								<td><b>{$rank}위</b></td>
+								<td><a class="member_{$game_today_asc->member_srl}" href="#" onclick="return false">{$game_today_asc->nick_name}</a></td>
+								<td style="color:tomato;"><b>{$game_today_asc->point_sum}p</b></td>
+							</tr> 
+						<!--@end-->
+					</table>
+				</div>
+			</div>
+		</div>
+		
+	</form> 
+	
+<div style="clear:both;"></div>
+<!--#include("_footer.html")-->
+
+</div>
+
+
+
+
+<script type="text/javascript">
+
+/*결과 메세지 출력
+window.onload = function(){
+	var result_mgs = '{$result_msg}';
+	if(result_mgs){
+		alert(result_mgs);
+		//history.go(-1); 
+	}
+}*/
+
+//결과 메세지 출력 jQuery로 변경
+jQuery(function($){
+	$(document).ready(function(){
+		var com_select = $('div.com_select .rps_box');
+		var result_mgs = '{$result_msg}';
+		
+		if(result_mgs){
+			//1
+			$(com_select).delay(100).html('<input class="rps_img" type="image" src="img/rock.jpg" disabled="disabled" />');
+			
+			//2
+			$(com_select).queue(function(){
+				$(com_select).html('<input class="rps_img" type="image" src="img/scissors.jpg" disabled="disabled" />');
+				$(this).dequeue();
+			});
+			
+			$(com_select).delay(120);
+			
+			//3
+			$(com_select).queue(function(){
+				$(com_select).html('<input class="rps_img" type="image" src="img/paper.jpg" disabled="disabled" />');
+				$(this).dequeue();
+			});
+			
+			$(com_select).delay(140);
+			
+			//4
+			$(com_select).queue(function(){
+				$(com_select).html('<input class="rps_img" type="image" src="img/rock.jpg" disabled="disabled" />');
+				$(this).dequeue();
+			});
+			
+			$(com_select).delay(160);
+			
+			//5
+			$(com_select).queue(function(){
+				$(com_select).html('<input class="rps_img" type="image" src="img/scissors.jpg" disabled="disabled" />');
+				$(this).dequeue();
+			});
+			
+			$(com_select).delay(180);
+			
+			//6
+			$(com_select).queue(function(){
+				$(com_select).html('<input class="rps_img" type="image" src="img/paper.jpg" disabled="disabled" />');
+				$(this).dequeue();
+			});
+			
+			$(com_select).delay(200);
+			
+			//7
+			$(com_select).queue(function(){
+				$(com_select).html('<input class="rps_img" type="image" src="img/rock.jpg" disabled="disabled" />');
+				$(this).dequeue();
+			});
+			
+			$(com_select).delay(230);
+			
+			//8
+			$(com_select).queue(function(){
+				$(com_select).html('<input class="rps_img" type="image" src="img/scissors.jpg" disabled="disabled" />');
+				$(this).dequeue();
+			});
+			
+			$(com_select).delay(260);
+			
+			//9
+			$(com_select).queue(function(){
+				$(com_select).html('<input class="rps_img" type="image" src="img/paper.jpg" disabled="disabled" />');
+				$(this).dequeue();
+			});
+			
+			$(com_select).delay(300);
+			
+			//결과
+			$(com_select).queue(function(){
+				$(com_select).html('<input class="rps_img" type="image" src="img/{$game_result->com_select}.jpg" disabled="disabled" />');
+				$(this).dequeue();
+			});
+			
+			$(com_select).delay(200);
+			
+			//메세지출력 및 결과 출력
+			$(com_select).queue(function(){
+				alert(result_mgs);
+				$(this).dequeue();
+				$('div.rockgame_top, div.right_bar table').slideDown();
+			});
+		}
+	});
+});
+
+//폼을 중복전송 방지위해 전송후 가위바위보 버튼을 막음 // 엔터로 전송못하게 함
+function rockgame_submit_check(){
+		
+	if(document.insert_form.game_point.value ==''){
+		alert('참가{$config->point_name}를 입력하세요');
+		return false;
+	}else{
+		document.getElementById('rps_rock').disabled=true;
+		document.getElementById('rps_paper').disabled=true;
+		document.getElementById('rps_scissors').disabled=true;
+		return true;
+	}
+}
+
+jQuery(function($){
+	$('#game_point').focus(); //포인트 입력창에 포커스주기
+	$('#game_point').val('{$game_point}'); // 결과 출력후 베팅포인트 재입력
+});
+
+</script>

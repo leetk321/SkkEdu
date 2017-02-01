@@ -1,0 +1,14 @@
+<query id="insertMemberType" action="insert">
+	<tables>
+		<table name="memberextend_type" />
+	</tables>
+	<columns>
+		<column name="type_srl" var="type_srl" notnull="notnull"/>
+		<column name="list_order" var="list_order" notnull="notnull" />
+		<column name="title" var="title" notnull="notnull" />
+		<column name="is_default" var="is_default" notnull="notnull" />
+		<column name="description" var="description"  default="" />
+		<column name="regdate" default="curdate()" />
+		<column name="is_active" var="is_active" notnull="notnull" default="N" />
+	</columns>
+</query>

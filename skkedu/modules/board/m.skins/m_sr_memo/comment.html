@@ -1,0 +1,83 @@
+{@ $depth = $module_info->display_depth}
+
+ <table cellspacing="0" border="0" cond="$oDocument->getCommentCount()" class="cmList" >
+ <tbody>
+    {@ $_comment_list = $oDocument->getComments() }
+    <!--@foreach($_comment_list as $key => $comment)-->
+	<tr>
+
+                <td class="title" <!--@if($comment->get('depth'))--> style="margin-left:{($comment->get('depth'))*15}px" <!--@end-->>
+
+                <div class="cm_c" <!--@if($comment->get('depth'))--> style="margin-left:{($comment->get('depth'))*15}px" <!--@end-->>
+ 
+                			
+				<span class="t_text">
+                
+                
+                 <!--@if($module_info->display_link !='N' && $grant->write_comment)-->
+                	<!--@if($module_info->display_link_op !='N')-->
+				
+                	<!--@if($comment->get('depth') < $depth)-->
+                	<a href="{getUrl('act','dispBoardReplyComment','comment_srl',$comment->comment_srl)}">
+					<!--@end-->	
+                	{$comment->getContentText(text)} 
+                	<!--@if($comment->get('depth') < $depth)--></a><!--@end-->
+                    
+	                <!--@else-->
+						
+                    <!--@if($comment->get('depth') < $depth)-->
+                    <a href="{getUrl('act','dispBoardReplyComment','comment_srl',$comment->comment_srl)}">
+                    <!--@end-->
+					{$comment->getContentText(text)} 
+                    <!--@if($comment->get('depth') < $depth)--></a><!--@end-->
+            	    
+                    <!--@end-->
+                
+                <!--@else-->
+                {$comment->getContentText(text)}
+                <!--@end--> 
+
+                </span>
+                
+				<div style="clear:both; position:relative;">
+                <span class="name">{$comment->getNickName()}</span>  
+                
+                <span class="date">
+				{$comment->getRegdate("y.m.d")}       
+                </span>
+					
+                    <span class="option">
+                    <!--@if($comment->get('depth') < $depth)-->
+                    <a href="{getUrl('act','dispBoardReplyComment','comment_srl',$comment->comment_srl)}" cond="$oDocument->allowComment() && !$oDocument->isLocked()"><img src="css/c_add.gif" /></a><!--@end-->
+					
+                    <!--@if($comment->isGranted() || !$comment->get('member_srl'))-->
+                
+				
+                <a href="{getUrl('act','dispBoardModifyComment','comment_srl',$comment->comment_srl)}"><img src="css/c_modify.gif" /></a>
+
+				<a href="{getUrl('act','dispBoardDeleteComment','comment_srl',$comment->comment_srl)}"><img src="css/c_delete.gif" /></a>
+
+				<!--@endif-->
+
+				
+                    </span>
+                    
+                    
+                    
+                    </div>
+                    </td>
+
+	</tr>
+    <!--@end-->
+     
+</tbody>
+</table>
+
+<div cond="$oDocument->comment_page_navigation" class="pn">
+        <a href="{getUrl('cpage',1)}#comment" >&lsaquo;&lsaquo;</a> 
+        <block loop="$page_no=$oDocument->comment_page_navigation->getNextPage()">
+			<strong cond="$cpage==$page_no">{$page_no}</strong> 
+			<a cond="$cpage!=$page_no" href="{getUrl('cpage',$page_no)}#comment">{$page_no}</a>
+        </block>
+        <a href="{getUrl('cpage',$oDocument->comment_page_navigation->last_page)}#comment" >&rsaquo;&rsaquo;</a>
+    </div>

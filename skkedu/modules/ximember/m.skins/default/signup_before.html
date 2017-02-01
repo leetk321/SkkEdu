@@ -1,0 +1,86 @@
+<load target="css/msignup.css" />
+<load target="js/ximember.js" />
+<div class="bd">
+	<div cond="$XE_VALIDATOR_MESSAGE" class="message {$XE_VALIDATOR_MESSAGE_TYPE}">
+	<p>{$XE_VALIDATOR_MESSAGE}</p>
+	</div>
+<section cond="$use_agreement">
+	<div class="hx h2">
+		<h2>{$lang->agreement}</h2>
+	</div>
+	
+	<div class="agreement" loop="$agreement_list => $agree_srl, $agreement">
+		<h4 class="agreement_title"><span style="color:red;" cond="$agreement->required == 'Y'">*</span> {$agreement->name}</h4>
+		<div class="text">
+			{$agreement->content}
+		</div>
+		<div class="confirm">
+			<input id="accept_agree{$agree_srl}" type="checkbox" class="agreements"|cond="$agreement->required == 'Y'" onclick="setAgree('{$agree_srl}',this)" />
+			<label for="accept_agree{$agree_srl}">{$lang->about_accept_agreement}</label>
+		</div>
+	</div>
+</section>
+<hr />
+<section cond="$config->limit['use_signup'] == 'Y'">
+	<div class="hx h2">
+		<h2>본인 인증</h2>
+	</div>
+	<h4><span style="color:red;" cond="$agreement->required == 'Y'">*</span> 회원가입시 반드시 본인인증을 진행해야합니다.</h4>	
+	<div class="bna">
+		<input class="xiButton" type="button" title="휴대폰 안심본인인증" onClick="return checkAgree('jsSubmit');" value="휴대폰 안심 본인인증" />
+		<input class="xiButton" type="button" title="아이핀 본인인증" onClick="return checkAgree('certKCBIpin');" 	value="아이핀 본인인증" />
+	</div>
+	<form name="kcbInForm" method="post">
+	  <input type="hidden" name="IDPCODE" value="{$idpCode}" />
+	  <input type="hidden" name="IDPURL" value="{$idpUrl}" />
+	  <input type="hidden" name="CPCODE" value="{$cpCode}" />
+	  <input type="hidden" name="CPREQUESTNUM" value="{$curtime}" />
+	  <input type="hidden" name="RETURNURL" value="{$returnUrl}" />
+	  <input type="hidden" name="WEBPUBKEY" value="{$pubkey}" />
+	  <input type="hidden" name="WEBSIGNATURE" value="{$sig}" />
+	</form>
+	<form name="auth_frm" method="post">
+	<input type="hidden" name="tc" value="kcb.oknm.online.safehscert.popup.cmd.P901_CertChoiceCmd">
+	<input type="hidden" name="rqst_data" id="rqst_data"	value="{$rqst_data}" />
+	<input type="hidden" name="target_id"	value="" />
+	</form>
+	<form name="kcbResultForm" method="post" >
+		<input type="hidden" name="idcf_mbr_com_cd" 		value="" />
+		<input type="hidden" name="hs_cert_svc_tx_seqno" 	value=""	/>
+		<input type="hidden" name="hs_cert_msr_cd" 			value="" />
+		<input type="hidden" name="hs_cert_rqst_caus_cd" 	value="" />
+		<input type="hidden" name="result_cd" 				value="" 	/>
+		<input type="hidden" name="result_msg" 				value="" 	/>
+	</form>
+	<form name="kcbOutForm" method="post">
+	  <input type="hidden" name="encPsnlInfo" />
+	  <input type="hidden" name="virtualno" />
+	  <input type="hidden" name="dupinfo" />
+	  <input type="hidden" name="realname" />
+	  <input type="hidden" name="cprequestnumber" />
+	  <input type="hidden" name="age" />
+	  <input type="hidden" name="sex" />
+	  <input type="hidden" name="nationalinfo" />
+	  <input type="hidden" name="birthdate" />
+	  <input type="hidden" name="coinfo1" />
+	  <input type="hidden" name="coinfo2" />
+	  <input type="hidden" name="ciupdate" />
+	  <input type="hidden" name="cpcode" />
+	  <input type="hidden" name="authinfo" />
+	</form>
+	<form name="nextact" id="nextact" method="get" action="./" style="text-align:center;">
+		<input type="hidden" name="error_return_url" value="" />
+		<input type="hidden" name="mid" value="{$mid}" />
+		<input type="hidden" name="act" value="dispXimemberSignUpForm" />
+	</form>
+</section>
+<section cond="$config->limit['use_signup'] != 'Y'">
+	<form name="nextact" id="nextact" method="get" action="./" style="text-align:center;">
+		<input type="hidden" name="mid" value="{$mid}" />
+		<input type="hidden" name="act" value="dispXimemberSignUpForm" />
+		<div class="bna">
+			<input type="submit" class="bn dark" value="약관에 동의하고 가입을 계속합니다." />
+		</div>
+	</form>
+</section>
+</div>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<module>
+    <!--
+	<grants>
+		<grant name="enter" default="member">
+            <title xml:lang="ko">게임참여 권한</title>
+        </grant>
+	</grants>
+	-->
+    <permissions>
+        <permission action="dispRockgameAdminStart" target="manager" /> <!--//모듈설정-->
+        <permission action="procRockgameAdminStart" target="manager" /> <!--//모듈설정-->
+        <permission action="dispRockgameAdminLog" target="manager" /> <!--//게임로그-->
+        <permission action="procRockgameAdminLogDelete" target="manager" /> <!--//선택로그삭제-->
+        <permission action="procRockgameAdminLogDeleteAll" target="manager" /> <!--//전체로그삭제-->
+    </permissions>
+	<actions>
+        <action name="dispRockgameUserView" type="view" index="true" /> <!--// 사용자 게임화면-->
+		<action name="procRockgameUserView" type="controller" /> <!--// 사용자 게임연산-->
+        <action name="dispRockgameUserResult" type="view" /> <!--// 사용자 게임결과-->
+		
+        <action name="dispRockgameAdminStart" type="view" admin_index="true" /> <!--// 모듈설정-->
+        <action name="procRockgameAdminStart" type="controller" /> <!--//모듈설정-->
+        <action name="dispRockgameAdminSkinInfo" type="view" /> <!--//스킨관리-->
+        <action name="dispRockgameAdminGrantSet" type="view" /> <!--//권한관리-->
+        <action name="dispRockgameAdminLog" type="view" /> <!--//게임로그-->
+        <action name="procRockgameAdminLogDelete" type="controller" /> <!--//선택로그삭제-->
+        <action name="procRockgameAdminLogDeleteAll" type="controller" /> <!--//전체로그삭제-->
+	</actions>
+	
+</module>
+
+
+<!--
+** name : 모듈 이름도 포함하는 액션 이름. 관리자 권한이 필요한 액션의 이름에는 "Admin"을 포함한다.
+
+** type : 액션이 어떤 타입이며 어떤 파일(뷰, 모델, 컨트롤러)에 저장돼야 하는지 정의. 
+이름에 "Admin"이 포함되어 있으면 관리자 뷰, 모델 또는 컨트롤러 PHP 파일에 있어야 한다.
+
+** index : 모듈의 기본 액션 설정. 한 액션에만 적용되어야 합니다.
+
+** admin_index : 모듈 백 엔드의 기본 액션. 한 액션에만 적용됩니다.
+
+** setup_index : 모듈 설정 페이지로 사용되며, 관리자 액션에만 설정할 수 있습니다.
+
+** menu_name : 해당 액션이 속한 메뉴의 이름
+
+** menu_index : 이 속성이 ""true""로 설정되면 이 액션이 현재 메뉴의 초기 액션이라는 의미입니다.
+
+** ruleset : 해당 액션에 적용할 룰셋 이름
+
+** action : 권한(permission)이 선언된 액션의 이름
+
+** target :지원되는 권한은 다음과 같습니다.
+   member: 회원
+   manager: 관리자
+-->

@@ -1,0 +1,346 @@
+<!--//슬라이더 기본요소 인클루드-->
+<include target="../../content.html" />
+<load target="default.css" />
+<load target="default.js" />
+
+<!--// 멀티스킨 사용을 위해 변수 또는 ID 랜덤 지정 -->
+{@
+	$xgDFdfid = "xgd_".mt_rand();
+	$photoidx = 0;
+	$photoviewer_checked = 'N';
+	$lastkey = count($xGalry_info->xegallery_items);
+	$cols_count = $xGalry_info->cols_list_count;
+	$row_count = ceil($lastkey / $cols_count);
+	// 큰이미지 외부여백
+	$image_outer = $xGalry_info->image_outer!='' ? $xGalry_info->image_outer : 2;
+	$imageWidth = $xGalry_info->image_width + ($xGalry_info->image_bdsize*2) + $image_outer;
+	// 썸네일 외부여백
+	$thumb_outer = $xGalry_info->thumb_outer!='' ? $xGalry_info->thumb_outer : 2;
+	$thumbWidth = $xGalry_info->thumb_width + ($xGalry_info->thumb_bdsize*2) + $thumb_outer;
+	if($xGalry_info->show_thumb!='Y') $thumbWidth = 0;
+	// 위젯넓이
+	$widgetWidth = $imageWidth + ($thumbWidth*$cols_count);
+	// 제목 글꼴 정의
+	$title_font_family = $xGalry_info->title_font_family=='Default' ? "돋움체,Arial,Helevtica,Verdana,san-serif" : $xGalry_info->title_font_family;
+	// 제목 폰트 크기
+	$title_font_size = $xGalry_info->title_font_size!='' ? $xGalry_info->title_font_size : 14;
+	// 제목 폰트 색
+	$title_font_color = $xGalry_info->title_font_color!='' ? $xGalry_info->title_font_color : '#fff';
+	// 제목 배경색
+	$title_bg_color = $xGalry_info->title_bg_color!='' ? $xGalry_info->title_bg_color : '#000';
+	// 제목 높이
+	$textT1_Height = $xGalry_info->title_height!='' ? $xGalry_info->title_height : 25;
+	$textT1_Height = $xGalry_info->show_title=='Y' ? $textT1_Height : 0;
+	// 내용 글꼴 정의
+	$content_font_family = $xGalry_info->content_font_family=='Default' ? "굴림,Arial,Helevtica,Verdana,san-serif" : $xGalry_info->content_font_family;
+	// 내용 폰트 크기
+	$content_font_size = $xGalry_info->content_font_size!='' ? $xGalry_info->content_font_size : 12;
+	// 내용 폰트 색
+	$content_font_color = $xGalry_info->content_font_color!='' ? $xGalry_info->content_font_color : '#000';
+	// 내용 높이
+	$textC1_Height = $xGalry_info->content_height!='' ? $xGalry_info->content_height : 50;
+	$textC1_Height = $xGalry_info->show_content=='Y' ? $textC1_Height : 0;
+	// 텍스트박스 높이
+	$xgDFdfTxt = $textT1_Height + $textC1_Height;
+	$viewer_theme = $xGalry_info->viewer_theme!='' ? $xGalry_info->viewer_theme : 'pp_default';
+}
+
+<style type="text/css">
+a.xgDFdfT1, a.xgDFdfT1:visited {
+	color:{$title_font_color};
+	font-family: {$title_font_family};
+	font-size: {$title_font_size}px;
+	text-decoration: none;
+	font-weight: bold;
+	text-align:center;
+	height: {$textT1_Height}px;
+	line-height:normal;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+a.xgDFdfT1:hover, a.xgDFdfT1:active, a.xgDFdfT1:focus {
+	text-decoration: underline;
+	color:white;
+}
+
+.xgDFdfC1, .xgDFdfC1 a, .xgDFdfC1 a:visited {
+	text-align:justify;
+	color:{$content_font_color};
+	font-family: {$content_font_family};
+	font-size: {$content_font_size}px;
+	text-decoration: none;
+	font-weight: normal;
+	width: 100%;
+	height: {$textC1_Height}px;
+	line-height: normal;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+.xgDFdfC1 a:hover, .xgDFdfC1 a:focus {
+	text-decoration: underline;
+}
+
+#{$xgDFdfid} .xgDFdfTxt {
+	color:{$title_font_color};
+	background-color:{$title_bg_color};
+	height:{$xgDFdfTxt}px;
+}
+#{$xgDFdfid} .xgDFdfTxt span {
+	color:{$title_font_color};
+	font-family: {$title_font_family};
+	font-size: {$title_font_size}px;
+	text-decoration: none;
+	font-weight: bold;
+	text-align:center;
+	margin-right:3px;
+}
+#{$xgDFdfid} .xgDFdfTxt p {
+	text-align: justify;
+	margin:5px;
+	padding:0;
+}
+#{$xgDFdfid} .xgDFdfTxt a,#{$xgDFdfid} .xgDFdfTxt a:visited{
+	color:inherit;
+}
+
+#{$xgDFdfid} {
+	width:{$widgetWidth}px;
+	margin: 0 auto;
+}
+
+#{$xgDFdfid} .photoviewer {
+	width:{$xGalry_info->image_width}px;
+	height:{$xGalry_info->image_height}px;
+	background-color:{$xGalry_info->image_bgcolor};
+}
+#{$xgDFdfid} .photoviewer img {
+	border-style: solid;
+	border-width: {$xGalry_info->image_bdsize}px;
+	border-color: {$xGalry_info->image_bdcolor};
+<!--@if($xGalry_info->image_shadow=='Y')-->
+	box-shadow: 0 0 {$xGalry_info->image_round_px}px 0 rgba(0, 0, 0, 0.1), 0 0 0 {$xGalry_info->image_round_px}px #F9F9F9 inset;
+	-moz-box-shadow: 0 0 {$xGalry_info->image_round_px}px 0 rgba(0, 0, 0, 0.1), 0 0 0 {$xGalry_info->image_round_px}px #F9F9F9 inset;
+	-webkit-box-shadow: 0 0 {$xGalry_info->image_round_px}px 0 rgba(0, 0, 0, 0.1), 0 0 0 {$xGalry_info->image_round_px}px #F9F9F9 inset;
+	filter: progid:DXImageTransform.Microsoft.Shadow(color=#F9F9F9,direction=135, strength={$xGalry_info->image_round_px});
+<!--@end-->
+<!--@if($xGalry_info->image_round=='Y')-->
+	-webkit-border-radius: {$xGalry_info->image_round_px}px {$xGalry_info->image_round_px}px {$xGalry_info->image_round_px}px {$xGalry_info->image_round_px}px;
+	-moz-border-radius: {$xGalry_info->image_round_px}px {$xGalry_info->image_round_px}px {$xGalry_info->image_round_px}px {$xGalry_info->image_round_px}px;
+	-khtml-border-radius: {$xGalry_info->image_round_px}px {$xGalry_info->image_round_px}px {$xGalry_info->image_round_px}px {$xGalry_info->image_round_px}px;
+	border-radius: {$xGalry_info->image_round_px}px {$xGalry_info->image_round_px}px {$xGalry_info->image_round_px}px {$xGalry_info->image_round_px}px;
+<!--@end-->
+}
+#{$xgDFdfid} .thumbviewer {
+	width:{$xGalry_info->thumb_width}px;
+	height:{$xGalry_info->thumb_height}px;
+	background-color:{$xGalry_info->thumb_bgcolor};
+}
+#{$xgDFdfid} .thumbviewer img {
+	border-style: solid;
+	border-width: {$xGalry_info->thumb_bdsize}px;
+	border-color: {$xGalry_info->thumb_bdcolor};
+<!--@if($xGalry_info->thumb_shadow=='Y')-->
+	box-shadow: 0 0 {$xGalry_info->thumb_outer}px 0 rgba(0, 0, 0, 0.1), 0 0 0 {$xGalry_info->thumb_outer}px #F9F9F9 inset;
+	-moz-box-shadow: 0 0 {$xGalry_info->thumb_outer}px 0 rgba(0, 0, 0, 0.1), 0 0 0 {$xGalry_info->thumb_outer}px #F9F9F9 inset;
+	-webkit-box-shadow: 0 0 {$xGalry_info->thumb_outer}px 0 rgba(0, 0, 0, 0.1), 0 0 0 {$xGalry_info->thumb_outer}px #F9F9F9 inset;
+	filter: progid:DXImageTransform.Microsoft.Shadow(color=#F9F9F9,direction=135, strength={$xGalry_info->thumb_outer});
+<!--@end-->
+<!--@if($xGalry_info->thumb_round=='Y')-->
+	-webkit-border-radius: {$xGalry_info->thumb_round_px}px {$xGalry_info->thumb_round_px}px {$xGalry_info->thumb_round_px}px {$xGalry_info->thumb_round_px}px;
+	-moz-border-radius: {$xGalry_info->thumb_round_px}px {$xGalry_info->thumb_round_px}px {$xGalry_info->thumb_round_px}px {$xGalry_info->thumb_round_px}px;
+	-khtml-border-radius: {$xGalry_info->thumb_round_px}px {$xGalry_info->thumb_round_px}px {$xGalry_info->thumb_round_px}px {$xGalry_info->thumb_round_px}px;
+	border-radius: {$xGalry_info->thumb_round_px}px {$xGalry_info->thumb_round_px}px {$xGalry_info->thumb_round_px}px {$xGalry_info->thumb_round_px}px;
+<!--@end-->
+
+}
+
+<!--@if($xGalry_info->viewer_social=='true')-->
+.fancybox-title iframe {
+    min-height: 24px;
+    vertical-align: middle;
+}
+<!--@end-->
+
+.xgDFdfBox ul {width:{$widgetWidth}px;}
+.xgDFdfBox li.photoviewer {margin:{$image_outer/2}px;}
+.xgDFdfBox li.thumbviewer {margin:{$thumb_outer/2}px;}
+
+#{$xgDFdfid} .xg-controls{
+	position: absolute;
+	top: 5px;
+	right: 5px;
+	width: 40px;
+	height: 18px;
+	overflow: hidden;
+	z-index: 999;
+	text-indent: -9999px;
+}
+
+#{$xgDFdfid} .xg-controls .prev, #{$xgDFdfid} .xg-controls .next {
+	float: left;
+	width: 20px;
+	height: 18px;
+}
+
+#{$xgDFdfid} .xg-controls .prev {
+	background: url('{$xgdpath}/common/images/prev.gif') no-repeat left top;
+}
+#{$xgDFdfid} .xg-controls .prev:hover{background-position:left -19px;}
+
+#{$xgDFdfid} .xg-controls .next {
+	background: url('{$xgdpath}/common/images/next.gif') no-repeat left top;
+}
+#{$xgDFdfid} .xg-controls .next:hover{background-position:left -19px;}
+
+</style>
+<!--@if($xGalry_info->widget_title!='')-->
+<script language="javascript">
+showTitle("{$xgdpath}/common/viewTitle/", "viewTitle.swf", {$widgetWidth}, 30, "{$xGalry_info->widget_title}", "[##_article_rep_link_##]", "center", "0x00000");
+</script>
+<!--@end-->
+<div id="{$xgDFdfid}" class="xgDFdfBox">
+	<ul>
+	<!--@foreach($xGalry_info->xegallery_items as $key => $item)-->
+		<!--@if($xGalry_info->show_image=='Y' && $item->get('image_list') && $photoviewer_checked=='N')-->
+			<li style="position:relative;width:{$xGalry_info->image_width}px" class="photoviewer">
+			<!--@if($xGalry_info->show_comment_count=='Y')-->
+			<div class="xgDFdfCM">
+				<div class="pluginCountButton"><span class="xgDFdfCMcnt">{$item->get('comment_count')}</span></div>
+				<div class="pluginCountButtonNub"><s></s><i></i></div>
+			</div>
+			<!--@end-->
+
+			<!--@if($xGalry_info->image_event!='N')--><a class="photolink fancybox<!--@if($xGalry_info->viewer_style=='slider')--> fancybox-button<!--@end-->" href=<!--@if($xGalry_info->image_event=='X'||$xGalry_info->image_event=='D')-->"{$item->get('link')}"<!--@elseif($xGalry_info->image_event=='V')-->"{$item->get('viewimage')}" rel="<!--@if($xGalry_info->viewer_type=='fancybox')--><!--@if($xGalry_info->viewer_style=='slider')-->fancybox-button<!--@end--><!--@else-->prettyPhoto<!--@if($xGalry_info->viewer_style=='slider')-->[mixed]<!--@end--><!--@end-->"<!--@end--><!--@if($xGalry_info->image_newtab == 'Y')--> target="_blank"<!--@end--><!--@if($xGalry_info->viewer_text=='true')--> title="{$item->get('title')}"<!--@end-->><!--@end-->
+				<img src="{$item->get('viewimage')}" name="xgDFdfView" width="{$xGalry_info->image_width}" height="{$xGalry_info->image_height}" idx="{$photoidx}" style="cursor: pointer; display: inline-block;">
+			<!--@if($xGalry_info->image_event!='N')--></a><!--@end-->
+				<!--@if($xGalry_info->show_title=='Y'||$xGalry_info->show_content=='Y')-->
+				<div class="xgDFdfTxt" name="xgDFdfTxt">
+					<!--@if($xGalry_info->show_browser_title=='Y'&&$item->get('browser_title')!='')--><span>[<a href="{getSiteUrl($item->get('domain'),'','mid',$item->get('mid'))}" class="midlink">{$item->get('browser_title')}</a>]</span><!--@end-->
+					<!--@if($xGalry_info->show_category=='Y'&&$item->get('category_title')!='')--><span><a href="{getSiteUrl($item->get('domain'),'','mid',$item->get('mid'),'category',$item->get('category_srl'))}" class="categorylink">{$item->get('category_title')}</a></span><!--@end-->
+					<!--@if($xGalry_info->show_title=='Y'&&$item->get('title')!='')--><span><a href="{$item->get('doclink')}" class="xgDFdfT1">{$item->get('title')}</a></span><!--@end-->
+					<!--@if($xGalry_info->show_content=='Y'&&$item->get('content')!='')--><p><a href="{$item->get('doclink')}" class="xgDFdfC1">{$item->get('content')}</a></p><!--@end-->
+				</div>
+				<!--@end-->
+			</li>
+		{@$photoviewer_checked = 'Y'}
+		<!--@end-->
+		<!--@if($xGalry_info->show_thumb=='Y' && $item->get('image_list'))-->
+<!--@if($xGalry_info->attached_list!='1')-->
+	<!--@foreach($item->get('image_list') as $idx => $image)-->
+		<li class="thumbviewer">
+		<!--@if($xGalry_info->thumb_event!='N')--><a class="fancybox<!--@if($xGalry_info->viewer_style=='slider')--> fancybox-button<!--@end-->" href=<!--@if($xGalry_info->thumb_event=='X'||$xGalry_info->thumb_event=='D')-->"{$item->get('link')}"<!--@elseif($xGalry_info->thumb_event=='V')-->"{$item->getView($idx)}" rel="<!--@if($xGalry_info->viewer_type=='fancybox')--><!--@if($xGalry_info->viewer_style=='slider')-->fancybox-button<!--@end--><!--@else-->prettyPhoto<!--@if($xGalry_info->viewer_style=='slider')-->[mixed]<!--@end--><!--@end-->"<!--@end--><!--@if($xGalry_info->thumb_newtab == 'Y')--> target="_blank"<!--@end--><!--@if($xGalry_info->viewer_text=='true')--> title="{$item->get('title')}"<!--@end-->><!--@end-->
+			<img src="{$item->getThumb($idx)}" viewer="{$item->getView($idx)}" hyperlink="{$item->get('link')}" doclink="{$item->get('doclink')}" media="{$item->get('media')}" onerror="this.style.display='none';" class="xgDFdfFade" width="{$xGalry_info->thumb_width}" height="{$xGalry_info->thumb_height}" alt="{$item->get('title')}" title="{$item->get('nick_name')}" subject="{htmlspecialchars($item->get('title'))}" article="{htmlspecialchars($item->get('content'))}" mid="{$item->get('mid')}" midtitle="{$item->get('browser_title')}" midlink="{getSiteUrl($item->get('domain'),'','mid',$item->get('mid'))}" category_srl="{$item->get('category_srl')}" category="{$item->get('category_title')}" categorylink="{getSiteUrl($item->get('domain'),'','mid',$item->get('mid'),'category',$item->get('category_srl'))}" comment_count="{$item->get('comment_count')}" author="{$item->get('nick_name')}" idx="{$photoidx++}" >
+		<!--@if($xGalry_info->thumb_event!='N')--></a><!--@end-->
+		</li>
+	<!--@end-->
+<!--@else-->
+		<li class="thumbviewer">
+		<!--@if($xGalry_info->thumb_event!='N')--><a class="fancybox<!--@if($xGalry_info->viewer_style=='slider')--> fancybox-button<!--@end-->" href=<!--@if($xGalry_info->thumb_event=='X'||$xGalry_info->thumb_event=='D')-->"{$item->get('link')}"<!--@elseif($xGalry_info->thumb_event=='V')-->"{$item->get('viewimage')}" rel="<!--@if($xGalry_info->viewer_type=='fancybox')--><!--@if($xGalry_info->viewer_style=='slider')-->fancybox-button<!--@end--><!--@else-->prettyPhoto<!--@if($xGalry_info->viewer_style=='slider')-->[mixed]<!--@end--><!--@end-->"<!--@end--><!--@if($xGalry_info->thumb_newtab == 'Y')--> target="_blank"<!--@end--><!--@if($xGalry_info->viewer_text=='true')--> title="{$item->get('title')}"<!--@end-->><!--@end-->
+			<img src="{$item->get('thumbnail')}" viewer="{$item->get('viewimage')}" hyperlink="{$item->get('link')}" doclink="{$item->get('doclink')}" media="{$item->get('media')}" onerror="this.style.display='none';" class="xgDFdfFade" width="{$xGalry_info->thumb_width}" height="{$xGalry_info->thumb_height}" alt="{$item->get('title')}" title="{$item->get('nick_name')}" subject="{htmlspecialchars($item->get('title'))}" content="{htmlspecialchars($item->get('content'))}" mid="{$item->get('mid')}" midtitle="{$item->get('browser_title')}" midlink="{getSiteUrl($item->get('domain'),'','mid',$item->get('mid'))}" category_srl="{$item->get('category_srl')}" category="{$item->get('category_title')}" categorylink="{getSiteUrl($item->get('domain'),'','mid',$item->get('mid'),'category',$item->get('category_srl'))}" comment_count="{$item->get('comment_count')}" author="{$item->get('nick_name')}" idx="{$photoidx++}" >
+		<!--@if($xGalry_info->thumb_event!='N')--></a><!--@end-->
+		</li>
+<!--@end-->
+		<!--@end-->
+	<!--@end-->
+	</ul>
+</div>
+<script type="text/javascript">
+jQuery(document).ready(function($) {
+	$("div#{$xgDFdfid}").xeGallery({
+		onID: '#{$xgDFdfid}',
+		onClass: '.photoviewer',
+		xgLI: 'li.thumbviewer',
+		showTitle: <!--@if($xGalry_info->show_title=='Y')-->true<!--@else-->false<!--@end-->,
+		showContent: <!--@if($xGalry_info->show_content=='Y')-->true<!--@else-->false<!--@end-->,
+		browserTitle: <!--@if($xGalry_info->show_browser_title=='Y')-->true<!--@else-->false<!--@end-->,
+		showCategory: <!--@if($xGalry_info->show_category=='Y')-->true<!--@else-->false<!--@end-->,
+		showCommand: <!--@if($xGalry_info->show_comment_count=='Y')-->true<!--@else-->false<!--@end-->,
+		showNickname: <!--@if($xGalry_info->show_nickname=='Y')-->true<!--@else-->false<!--@end-->,
+		image_event: '{$xGalry_info->image_event}',
+		thumb_event: '{$xGalry_info->thumb_event}',
+		controls: {$xGalry_info->slide_control},
+		slide_auto: {$xGalry_info->slide_auto},
+		slide_down: {$xGalry_info->slide_down},
+		slide_delay: {$xGalry_info->slide_delay}
+	});
+
+<!--@if($xGalry_info->image_event=='V')-->
+	<!--@if($xGalry_info->viewer_type=='fancybox')-->
+	$("#{$xgDFdfid} .photoviewer a.fancybox").fancybox({
+		prevEffect		: 'none',
+		nextEffect		: 'none',
+		closeBtn		: true,
+		<!--@if($xGalry_info->viewer_social=='true')-->
+		beforeShow: function ()
+		{
+			if (this.title)
+			{
+				// New line
+				this.title += '<br />';
+			}
+				// Add tweet button
+				this.title += '<a href="https://twitter.com/share" class="twitter-share-button" data-count="none" data-url="' + this.href + '">Tweet</a> ';
+				// Add FaceBook like button
+				this.title += '<iframe src="//www.facebook.com/plugins/like.php?href=' + this.href + '&amp;layout=button_count&amp;show_faces=true&amp;width=500&amp;action=like&amp;font&amp;colorscheme=light&amp;height=23" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:110px; height:23px;" allowTransparency="true"></iframe>';
+		},
+		afterShow: function()
+		{
+			// Render tweet button
+			twttr.widgets.load();
+		},
+		<!--@end-->
+		helpers		: {
+			<!--@if($xGalry_info->viewer_text=='true')-->
+			title	: { type : 'inside' },
+			<!--@end-->
+		<!--@if($xGalry_info->viewer_style=='slider')-->
+			buttons	: {}
+		<!--@end-->
+		}
+	});
+	<!--@else-->
+	$("#{$xgDFdfid} .photoviewer a[rel^='prettyPhoto']").prettyPhoto({ {$xGalry_info->viewer_tools} show_title: {$xGalry_info->viewer_text},deeplinking: false,theme:'{$viewer_theme}'});
+	<!--@end-->
+<!--@end-->
+
+<!--@if($xGalry_info->thumb_event=='V')-->
+	<!--@if($xGalry_info->viewer_type=='fancybox')-->
+	$("#{$xgDFdfid} .thumbviewer a.fancybox").fancybox({
+		prevEffect		: 'none',
+		nextEffect		: 'none',
+		closeBtn		: true,
+		<!--@if($xGalry_info->viewer_social=='true')-->
+		beforeShow: function ()
+		{
+			if (this.title)
+			{
+				// New line
+				this.title += '<br />';
+			}
+				// Add tweet button
+				this.title += '<a href="https://twitter.com/share" class="twitter-share-button" data-count="none" data-url="' + this.href + '">Tweet</a> ';
+				// Add FaceBook like button
+				this.title += '<iframe src="//www.facebook.com/plugins/like.php?href=' + this.href + '&amp;layout=button_count&amp;show_faces=true&amp;width=500&amp;action=like&amp;font&amp;colorscheme=light&amp;height=23" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:110px; height:23px;" allowTransparency="true"></iframe>';
+		},
+		afterShow: function()
+		{
+			// Render tweet button
+			twttr.widgets.load();
+		},
+		<!--@end-->
+		helpers		: {
+			<!--@if($xGalry_info->viewer_text=='true')-->
+			title	: { type : 'inside' },
+			<!--@end-->
+		<!--@if($xGalry_info->viewer_style=='slider')-->
+			buttons	: {}
+		<!--@end-->
+		}
+	});
+	<!--@else-->
+	$("#{$xgDFdfid} .thumbviewer a[rel^='prettyPhoto']").prettyPhoto({ {$xGalry_info->viewer_tools} show_title: {$xGalry_info->viewer_text},deeplinking: false,theme:'{$viewer_theme}'});
+	<!--@end-->
+<!--@end-->
+});
+</script>

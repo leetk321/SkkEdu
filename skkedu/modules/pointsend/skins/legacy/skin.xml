@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<skin version="0.2">
+	<title xml:lang="ko">포인트 선물 Classic 스킨</title>
+	<description xml:lang="ko">v1.3.0 이전까지 포함된 포인트 선물 모듈의 기본 스킨입니다.</description>
+	<version>1.0</version>
+	<date>2016-12-17</date>
+
+	<author email_address="contact@funnyxe.com" link="https://funnyxe.com">
+		<name xml:lang="ko">SimpleCode</name>
+	</author>
+
+	<license>MIT</license>
+	<colorset>
+		<color name="default">
+			<title xml:lang="ko">기본</title>
+		</color>
+	</colorset>
+</skin>

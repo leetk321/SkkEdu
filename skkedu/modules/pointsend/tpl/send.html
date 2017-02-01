@@ -1,0 +1,65 @@
+<include target="header.html" />
+
+<load target="./js/autoresize.jquery.min.js" />
+
+<div class="message {$XE_VALIDATOR_MESSAGE_TYPE}" cond="$XE_VALIDATOR_ID == '/modules/pointsend/tpl/send/1' && $XE_VALIDATOR_MESSAGE">
+	<p>{$XE_VALIDATOR_MESSAGE}</p>
+</div>
+
+<form ruleset="pointsendByUserId" action="./" method="post">
+	<input type="hidden" name="module" value="pointsend">
+	<input type="hidden" name="act" value="procPointsendAdminSendToMember">
+	<input type="hidden" name="xe_validator_id" value="/modules/pointsend/tpl/send/1">
+
+	<section class="section">
+		<h1><i class="fa fa-id-card-o" aria-hidden="true"></i> {$lang->pointsend_by_user_id}</h1>
+		<div class="x_form-horizontal">
+			<div class="x_control-group">
+				<label for="user_id" class="x_control-label">{$lang->user_id}</label>
+				<div class="x_controls">
+					<input type="text" id="user_id" name="user_id" value="">
+					<p class="x_help-block">{$lang->about_pointsend_by_user_id}</p>
+				</div>
+			</div>
+			<div class="x_control-group">
+				<label for="point" class="x_control-label">{$lang->point}</label>
+				<div class="x_controls">
+					<input type="number" id="point" name="point" value="">
+				</div>
+			</div>
+			<div class="x_control-group">
+				<label for="" class="x_control-label">{$lang->message_title}</label>
+				<div class="x_controls">
+					<input type="text" name="message_title" value="">
+				</div>
+			</div>
+
+			<div class="x_control-group">
+				<label for="" class="x_control-label">{$lang->message_body}</label>
+				<div class="x_controls">
+					<textarea name="message_body" cols="55" rows="10" class="inputContent"></textarea>
+					<p class="x_help-block">{$lang->about_notification_message2}</p>
+				</div>
+			</div>
+
+			<div class="btnArea">
+				<input type="submit" value="{$lang->cmd_pointsend}" class="x_btn">
+			</div>
+		</div>
+	</section>
+</form>
+
+<section class="section">
+	<h1><i class="fa fa-users"></i> {$lang->cmd_batch_pointsend}</h1>
+
+	<a href="{getUrl('act','dispPointsendAdminSendToGroup')}" class="x_btn">{$lang->cmd_group_pointsend}</a>
+</section>
+
+<script>
+(function($){
+	$('.inputContent').autoResize({
+		animateDuration : 300,
+		extraSpace : 0,
+	});
+})(jQuery);
+</script>

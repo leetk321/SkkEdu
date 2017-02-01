@@ -1,0 +1,10 @@
+@charset "utf-8";
+
+.qook_counter{list-style:none; line-height:25px;}
+.qook_counter .counter_float{margin:0 auto;}
+.qook_counter img{vertical-align:middle; margin-right:5px; width:16px;}
+.qook_counter .first{font-weight:bold; margin-right:7px; color:#ffd800;}
+.qook_counter .second{margin-right:0px; color:white;}
+.qook_counter .number{color:white; margin-right:3px;}
+.qook_counter .number1{color:#ffd800; margin-right:0px; font-weight:bold;}
+.qook_counter .margin{margin-right:15px;}	

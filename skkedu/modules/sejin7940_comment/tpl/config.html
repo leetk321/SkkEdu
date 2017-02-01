@@ -1,0 +1,141 @@
+<include target="common_header.html" />
+<load target="../../widget/tpl/js/widget_admin.js" />
+
+<div cond="$XE_VALIDATOR_MESSAGE" class="message {$XE_VALIDATOR_MESSAGE_TYPE}">
+	<p>{$XE_VALIDATOR_MESSAGE}</p>
+</div>
+
+<form action="./" method="post" class="x_form-horizontal" >
+	<input type="hidden" name="act" value="procSejin7940_commentAdminConfig">
+	<input type="hidden" name="error_return_url" value="" />
+	<input type="hidden" name="module" value="{$module}" />
+	<input type="hidden" name="success_return_url" value="{getRequestUriByServerEnviroment()}" />
+
+	<section class="section">
+		<h1>{$lang->subtitle_primary}</h1>
+		<div class="x_control-group">
+			<label class="x_control-label" for="comment_cut_size">댓글 글자수 제한</label>
+			<div class="x_controls">
+				<input type="text" id="comment_cut_size" name="comment_cut_size" value="{$config->comment_cut_size}" />
+				<a href="#comment_cut_size_help" class="x_icon-question-sign" data-toggle>{$lang->help}</a>
+				<p id="comment_cut_size_help" class="x_help-block" hidden>공백시 글자수 제한 없음</p>
+			</div>
+		</div>
+		<div class="x_control-group">
+			<label class="x_control-label" for="title_cut_size">제목 글자수 제한</label>
+			<div class="x_controls">
+				<input type="text" id="title_cut_size" name="title_cut_size" value="{$config->title_cut_size}" />
+				<a href="#title_cut_size_help" class="x_icon-question-sign" data-toggle>{$lang->help}</a>
+				<p id="title_cut_size_help" class="x_help-block" hidden>공백시 글자수 제한 없음</p>
+			</div>
+		</div>
+		<div class="x_control-group">
+			<label class="x_control-label" for="display_voted_member">댓글 추천인 목록 출력여부</label>
+			<div class="x_controls">
+				<input type="radio" name="display_voted_member" value="N" <!--@if($config->display_voted_member!='Y')-->checked<!--@end-->/>출력 안 함
+				<input type="radio" name="display_voted_member" value="Y" <!--@if($config->display_voted_member=='Y')-->checked<!--@end-->>출력
+				<a href="#display_voted_member_help" class="x_icon-question-sign" data-toggle>{$lang->help}</a>
+				<p id="display_voted_member_help" class="x_help-block" hidden>작성 댓글 보기에서, 댓글의 추천수를 클릭하면 댓글 추천인 목록이 나타남</p>
+			</div>
+		</div>
+		<div class="x_control-group">
+			<label class="x_control-label" for="display_blamed_member">댓글 추천인 목록 출력여부</label>
+			<div class="x_controls">
+				<input type="radio" name="display_blamed_member" value="N" <!--@if($config->display_blamed_member!='Y')-->checked<!--@end-->/>출력 안 함
+				<input type="radio" name="display_blamed_member" value="Y" <!--@if($config->display_blamed_member=='Y')-->checked<!--@end-->>출력
+				<a href="#display_blamed_member_help" class="x_icon-question-sign" data-toggle>{$lang->help}</a>
+				<p id="display_blamed_member_help" class="x_help-block" hidden>작성 댓글 보기에서, 댓글의 추천수를 클릭하면 댓글 추천인 목록이 나타남</p>
+			</div>
+		</div>
+		<!--@if($use=='Y')-->
+		<div class="x_control-group">
+			<label class="x_control-label" for="annoymous_use">익명댓글 출력여부</label>
+			<div class="x_controls">
+				 <input type="radio" name="annoymous_use" value="N" <!--@if($config->annoymous_use!='Y')-->checked<!--@end-->/>출력 안 함
+				<input type="radio" name="annoymous_use" value="Y" <!--@if($config->annoymous_use=='Y')-->checked<!--@end-->>출력
+			</div>
+		</div>
+		<!--@end-->
+		<div class="x_control-group">
+			<label class="x_control-label" for="layout_srl">{$lang->layout}</label>
+			<div class="x_controls">
+				<select name="layout_srl" id="layout_srl">
+					<option value="0">{$lang->notuse}</option>
+					<option loop="$layout_list => $key, $val" value="{$val->layout_srl}" selected="selected"|cond="$config->layout_srl== $val->layout_srl">{$val->title} ({$val->layout})</option>
+				</select>
+				<a href="#layout_help" class="x_icon-question-sign" data-toggle>{$lang->help}</a>
+				<p id="layout_help" class="x_help-block" hidden>{$lang->about_layout}</p>
+			</div>
+		</div>
+		<div class="x_control-group">
+			<label class="x_control-label" for="skin">{$lang->skin}</label>
+			<div class="x_controls">
+				<select name="skin" id="skin" style="width:auto">
+					<option loop="$skin_list=> $key, $val" value="{$key}" selected="selected"|cond="$config->skin== $key || (!$module_info->skin && $key=='default')">{$val->title}</option>
+				</select>
+			</div>
+		</div>
+		<div class="x_control-group">
+			<label class="x_control-label" for="skin">추출할 모듈 대상<!--{$lang->apply_module}--></label>
+	
+			<div class="x_controls">
+				<input type="hidden" name="apply_module" id="apply_module" value="{$apply_module}" />
+				<select name="_apply_module" id="_apply_module" size="8" style="display:block;margin:10px 0;"></select>
+
+				<a href="{getUrl('','module','module','act','dispModuleSelectList','id','apply_module')}" onclick="popopen(this.href, 'ModuleSelect');return false;" class="x_btn x_btn-primary"><span>{$lang->cmd_insert}</span></a>
+				<a href="#" onclick="midRemove('apply_module');return false;" class="x_btn"><span>{$lang->cmd_delete}</span></a>
+
+				<p id="layout_help" class="x_help-block" >공백시 전체 게시판의 작성 댓글이 대상이 됨</p>
+
+				<!--@if(substr(__XE_VERSION__,0,3) >= '1.7')-->
+				<script type="text/javascript">
+					jQuery( function() { getModuleSrlList('apply_module'); } );
+				</script>
+				<!--@end-->
+			</div>
+		</div>
+	</section>
+
+	<section class="section">
+		<h1>{$lang->mobile_settings}</h1>
+		<!--
+		<div class="x_control-group">
+			<label class="x_control-label">{$lang->mobile_view}</label>
+			<div class="x_controls">
+				<label class="x_inline" for="use_mobile"><input type="checkbox" name="use_mobile" id="use_mobile" value="Y" checked="checked"|cond="$module_info->use_mobile == 'Y'" /> {$lang->about_mobile_view}</label>
+			</div>
+		</div>
+		-->
+		<div class="x_control-group">
+			<label class="x_control-label" for="mlayout_srl">{$lang->mobile_layout}</label>
+			<div class="x_controls">
+				<select name="mlayout_srl" id="mlayout_srl">
+					<option value="0">{$lang->notuse}</option>
+					<option loop="$mlayout_list => $key, $val" value="{$val->layout_srl}" selected="selected"|cond="$config->mlayout_srl== $val->layout_srl">{$val->title} ({$val->layout})</option>
+				</select>
+				<a href="#mobile_layout_help" class="x_icon-question-sign" data-toggle>{$lang->help}</a>
+				<p id="mobile_layout_help" class="x_help-block" hidden>{$lang->about_layout}</p>
+			</div>
+		</div>
+		<div class="x_control-group">
+			<label class="x_control-label" for="mskin">{$lang->mobile_skin}</label>
+			<div class="x_controls">
+				<select name="mskin" id="mskin">
+					<option loop="$mskin_list=> $key, $val" value="{$key}" selected="selected"|cond="$config->mskin== $key || (!$module_info->skin && $key=='default')">{$val->title}</option>
+				</select>
+				<a href="#mobile_skin_help" class="x_icon-question-sign" data-toggle>{$lang->help}</a>
+				<p id="mobile_skin_help" class="x_help-block" hidden>{$lang->about_skin}</p>
+			</div>
+		</div>
+	</section>
+
+	<div class="x_clearfix btnArea">
+		<div class="x_pull-left">
+			<a href="{getUrl('act', 'dispBoardAdminContent')}" type="button" class="x_btn">{$lang->cmd_cancel}</a>
+		</div>
+		<div class="x_pull-right">
+			<button class="x_btn x_btn-primary" type="submit">{$lang->cmd_registration}</button>
+		</div>
+	</div>
+
+</form>

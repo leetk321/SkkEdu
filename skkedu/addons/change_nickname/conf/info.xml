@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<addon version="0.2">
+	<title>닉네임 변경 애드온</title>
+	<description>
+		회원정보에서 닉네임을 변경할시에 게시판에 작성한 모든 글, 댓글의 닉네임을 변경해주는 애드온입니다.
+	</description>
+	<version>2.0</version>
+	<date>2012-11-23</date>
+
+	<author email_address="jongmin0328@gmail.com" link="http://mapleclub.kr/">
+		<name>미남본능</name>
+	</author>
+	<license>GPL</license>
+	<link>http://mapleclub.kr/</link>
+</addon>

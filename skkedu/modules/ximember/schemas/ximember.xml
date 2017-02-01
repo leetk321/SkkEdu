@@ -1,0 +1,12 @@
+<table name="ximember">
+	<column name="member_srl" type="number" size="11" notnull="notnull" primary_key="primary_key" />
+	<column name="ci" type="varchar" size="88" index="idx_ci" />
+	<column name="di" type="varchar" size="64" index="idx_di" />
+	<column name="birth_ori" type="char" size="8" index="idx_birth_day" />
+	<column name="sex" type="char" size="1" default="M"/>
+	<column name="is_forigen" type="char" size="1" default="N"/>
+	<column name="auth_type" type="char" size="1" default="N"/>
+	<column name="mobile" type="varchar" size="13" default="0"/>
+	<column name="allow_sms" type="char" size="1" default="Y"/>
+	<column name="voted_member_srl" type="number" size="11" index="idx_voted_member_srl" />
+</table>

@@ -1,0 +1,67 @@
+<include target="header.html" />
+<section class="section">
+<h1>{$lang->xi_extra_vars}</h1>
+<form action="./" class="x_form-horizontal" ruleset="insertXimemberConfig" method="post" enctype="multipart/form-data">
+	<input type="hidden" name="module" value="ximember" />
+	<input type="hidden" name="act" value="procXimemberAdminExtra" />
+	<input type="hidden" name="success_return_url" value="{getUrl('', 'module', 'admin', 'act', $act)}" />
+	<table class="x_table x_table-striped x_table-hover">
+		<thead>
+			<tr>
+				<th scope="col" class="nowr" style="text-align:center">{$lang->use}</th>
+				<th scope="col" class="nowr" style="text-align:center">{$lang->target}</th>
+				<th scope="col" class="nowr" style="text-align:center">{$lang->xi_target}</th>
+				<th scope="col" class="nowr" style="text-align:center">{$lang->xi_variables}</th>
+				<th scope="col" class="nowr" style="text-align:center">{$lang->cmd_signup}</th>
+				<th scope="col" class="nowr" style="text-align:center">{$lang->member}{$lang->cmd_modify}</th>
+			</tr>
+		</thead>
+		<tr loop="$memberConfig->signupForm => $key,$item" cond="!$item->isDefaultForm && !$item->isIdentifier">
+			{@$extra_vars = $config->extra_vars[$item->name]}
+			<td style="text-align:center">
+				<input type="checkbox" name="use_extravars[]" value="{$item->name}" title="{$lang->use}" checked="checked"|cond="$extra_vars->use == 'Y'" /></td>
+			<th scope="row">{$item->title}</th>
+			<td style="text-align:center">
+				<select name="target_{$item->name}" style="width:120px;" onchange="changeTarget(this);" item_name="{$item->name}">
+					<option value="">{$lang->notuse}</option>
+					<option loop="$lang->xi_variables_list => $vk,$variable" value="{$vk}" selected="selected"|cond="$extra_vars->target == $vk">{$variable}</option>
+				</select>
+			</td>
+			<td class="nowr" style="min-width:360px;">
+				<div id="val_type_wrap_{$item->name}" style="display:none;"|cond="$extra_vars->target != 'sex' && $extra_vars->target != 'foreign' && $extra_vars->target != 'auth_type'">
+				<span id='typeA_{$item->name}'>{$lang->xi_variables_typeA[$extra_vars->target]}</span>
+				<input type="text" name="typeA_{$item->name}" value="{$extra_vars->typeA}" style="width:50px;" />
+				<span id='typeB_{$item->name}'>{$lang->xi_variables_typeB[$extra_vars->target]}</span>
+				<input type="text" name="typeB_{$item->name}" value="{$extra_vars->typeB}" style="width:50px;" />
+				</div>
+			</td>
+			<td class="nowr">
+				<select name="signup_{$item->name}" style="width:120px;" cond="!$item->requiredSignup">
+					<option value="">{$lang->notuse}</option>
+					<option loop="$lang->xi_modify_view => $vk,$variable" value="{$vk}" selected="selected"|cond="$extra_vars->signup == $vk">{$variable}</option>
+				</select>
+			</td>
+			<td class="nowr">
+				<select name="modify_{$item->name}" style="width:120px;" cond="!$item->requiredModify">
+					<option value="">{$lang->notuse}</option>
+					<option loop="$lang->xi_modify_view => $vk,$variable" value="{$vk}" selected="selected"|cond="$extra_vars->modify == $vk">{$variable}</option>
+				</select>
+			</td>
+		</tr>
+	</table>
+	<div class="x_clearfix btnArea">
+		<span class="x_pull-right"><input class="x_btn x_btn-primary" type="submit" value="{$lang->cmd_save}" /></span>
+	</div>
+</form>
+</section>
+
+<script type="text/javascript">
+	var xi_variables_typeA = new Array();
+	<!--@foreach($lang->xi_variables_typeA as $key => $val)-->
+		xi_variables_typeA['{$key}'] = '{$val}';
+	<!--@end-->
+	var xi_variables_typeB = new Array();
+	<!--@foreach($lang->xi_variables_typeB as $key => $val)-->
+		xi_variables_typeB['{$key}'] = '{$val}';
+	<!--@end-->
+</script>

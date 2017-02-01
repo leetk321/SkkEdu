@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ruleset version="1.5.0">
+	<customrules>
+	</customrules>
+	<fields>
+		<field name="cart" required="true" />
+		<field name="point" required="true" rule="number" />
+		<field name="message_title" required="true" maxlength="250" />
+		<field name="message_body" required="true" maxlength="250" />
+	</fields>
+</ruleset>

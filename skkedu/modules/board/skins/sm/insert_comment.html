@@ -1,0 +1,33 @@
+<!--@if($grant->write_comment)-->
+
+		<!--@if(!$comment->isGranted())-->
+		<form action="./" method="get" onsubmit="return procFilter(this, input_password)" class="write_author">
+			<input type="hidden" name="mid" value="{$mid}" />
+			<input type="hidden" name="page" value="{$page}" />
+    		<input type="hidden" name="document_srl" value="{$oDocument->document_srl}" />
+    <input type="hidden" name="comment_srl" value="{$comment->comment_srl}" />
+
+		<div class="sm-input-body">
+        <input type="password" name="password" required placeholder="{$lang->password}" style="background:#FFF"   />
+        <input type="submit" value="{$lang->cmd_input}" class="sm-btn" />
+        <a href="#" onclick="toggle_object('insert_{$comment->comment_srl}'); toggle_object('list_{$comment->comment_srl}'); return false;" title="{$lang->cmd_cancel}" class="sm-btn-de">{$lang->cmd_cancel}</a>
+        </div>
+		</form>
+		<!--@else-->
+        <load target="filter/insert_comment.xml" />
+		<form action="./" method="post" onsubmit="return procFilter(this, insert_comment)" class="write_author"no-error-return-url="true">
+    	<input type="hidden" name="mid" value="{$mid}" />
+    	<input type="hidden" name="document_srl" value="{$oDocument->document_srl}" />
+    	<input type="hidden" name="comment_srl" value="{$comment->comment_srl}" />
+		<div class="sm-input-body">
+        <input type="text" name="content" value="{htmlspecialchars($comment->get('content'))}"style="width:70%; background:#FFF" class="xe_content"  />
+        <button type="submit" title="{$lang->cmd_registration}" class="sm-btn">{$lang->cmd_registration}</button>
+        <a href="#" onclick="toggle_object('insert_{$comment->comment_srl}'); toggle_object('list_{$comment->comment_srl}'); return false;" class="sm-btn-de" title="{$lang->cmd_cancel}">{$lang->cmd_cancel}</a>
+			<div cond="!$is_logged" id="write_author">
+				<input type="text" name="nick_name" class="iText" title="{$lang->writer}" value="{htmlspecialchars($comment->nick_name)}" required placeholder="{$lang->writer}"   style="width:120px; margin-bottom:0;" />
+				<input type="password" name="password" value="" title="{$lang->password}" required placeholder="{$lang->password}"  class="iText" style="width:120px; margin-bottom:0;" />
+            </div></div>
+			</form>
+
+<!--@end-->
+<!--@end-->      

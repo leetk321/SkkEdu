@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<lang>
+	<item name="sejin7940_comment">
+		<value xml:lang="ko"><![CDATA[작성 댓글 보기 (sejin7940_comment)]]></value>
+		<value xml:lang="en"><![CDATA[sejin7940_comment (My Comment)]]></value>
+	</item>
+	<item name="cmd_my_comment">
+		<value xml:lang="ko"><![CDATA[작성 댓글 보기]]></value>
+		<value xml:lang="en"><![CDATA[Own Comment]]></value>
+	</item>
+	<item name="cmd_blame">
+		<value xml:lang="ko"><![CDATA[비추천]]></value>
+		<value xml:lang="en"><![CDATA[blamed]]></value>
+	</item>
+	<item name="comment_total">
+		<value xml:lang="ko"><![CDATA[총 댓글수]]></value>
+		<value xml:lang="en"><![CDATA[Comment Total]]></value>
+	</item>
+	<item name="about_voted_member">
+		<value xml:lang="ko"><![CDATA[]]></value>
+		<value xml:lang="en"><![CDATA[]]></value>
+	</item>
+	<item name="voted_member">
+		<value xml:lang="ko"><![CDATA[추천인]]></value>
+		<value xml:lang="en"><![CDATA[Voted Member]]></value>
+	</item>
+	<item name="blamed_member">
+		<value xml:lang="ko"><![CDATA[비추천인]]></value>
+		<value xml:lang="en"><![CDATA[Blamed Member]]></value>
+	</item>
+	<item name="cmd_setting">
+		<value xml:lang="ko"><![CDATA[설정]]></value>
+		<value xml:lang="en"><![CDATA[Setting]]></value>
+	</item>
+	<item name="comment_list">
+		<value xml:lang="ko"><![CDATA[댓글목록]]></value>
+		<value xml:lang="en"><![CDATA[Comment List]]></value>
+	</item>
+</lang>

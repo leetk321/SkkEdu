@@ -1,0 +1,28 @@
+<query id="getNewestDocuments" action="select">
+    <tables>
+        <table name="documents" />
+    </tables>
+    <columns>
+        <column name="*" />
+    </columns>
+    <conditions>
+		<condition operation="notin" column="documents.module_srl" var="notin_module_srl" filter="number"  pipe="and" />
+        <condition operation="in" column="documents.module_srl" var="module_srl" filter="number"  pipe="and" />
+		<condition operation="in" column="documents.is_notice" var="is_notice" pipe="and"/>
+		<group pipe="and">
+		<condition operation="more" column="documents.readed_count" var="readed_count" pipe="and" />
+		<condition operation="more" column="documents.readed_count" var="readed_count_or" pipe="or" />
+		<condition operation="more" column="documents.voted_count" var="voted_count" pipe="and"/>
+		<condition operation="more" column="documents.voted_count" var="voted_count_or" pipe="or"/>
+		<condition operation="more" column="documents.comment_count" var="comment_count" pipe="and"/>
+		<condition operation="more" column="documents.comment_count" var="comment_count_or" pipe="or"/>
+		</group>
+		<condition operation="more" column="documents.regdate" var="regdate" pipe="and"/>
+	</conditions>
+    <navigation>
+        <index var="sort_index" default="documents.list_order" order="order_type" />
+        <list_count var="list_count" default="50" />
+        <page_count var="page_count" default="10" />
+        <page var="page" default="1" />
+    </navigation>
+</query>

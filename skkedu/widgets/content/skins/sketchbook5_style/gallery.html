@@ -1,0 +1,29 @@
+<ul class="sk5_gallery"<!--// style="width:{$widget_info->cols_list_count*($widget_info->thumbnail_width+14)}px;" -->>
+{@$_idx=0}
+	<!--@foreach($widget_info->content_items as $key => $item)-->
+	<li<!--@if($_idx>0 && $_idx % $widget_info->cols_list_count==0)--> class="clearLeft"<!--@end--> style="<!--@if($_idx >= $widget_info->list_count)-->display:none;<!--@end-->width:{$widget_info->thumbnail_width}px;">
+		<!--@foreach($widget_info->option_view_arr as $k => $v)-->
+			<!--@if($v=='thumbnail')-->
+			<div class="tmb_wrp">
+				<a href="{$item->getLink()}" class="thumb" style="width:{$widget_info->thumbnail_width}px;height:{$widget_info->thumbnail_height}px">
+					<!--@if($item->getThumbnail())-->
+						<img src="{$item->getThumbnail()}" style="width:{$widget_info->thumbnail_width}px;height:{$widget_info->thumbnail_height}px" />
+					<!--@else-->
+						<div class="no_img" style="width:{$widget_info->thumbnail_width}px;height:{$widget_info->thumbnail_height}px;line-height:{$widget_info->thumbnail_height}px;"><!--{$lang->none_image}-->No Image</div>
+					<!--@end-->
+				</a>
+			</div>
+		 <!--@end-->
+	<!--@end-->
+	<p>{$item->getTitle($widget_info->subject_cut_size)}</p>
+	</li>
+	{@$_idx++}
+	<!--@end-->
+</ul>
+
+<!--@if($widget_info->page_count > 1 && $widget_info->list_count<$_idx)-->
+<div class="sk5_pg">
+	<button type="button" class="direction" title="{$lang->cmd_prev}" onclick="content_widget_prev(jQuery(this).parents('div.sk5_pg').prev('ul.sk5_gallery'),{$widget_info->list_count});return false;">&lsaquo; Prev</button>
+	<button type="button" class="direction" title="{$lang->cmd_next}" onclick="content_widget_next(jQuery(this).parents('div.sk5_pg').prev('ul.sk5_gallery'),{$widget_info->list_count});return false;">Next &rsaquo;</button>
+</div>
+<!--@end-->

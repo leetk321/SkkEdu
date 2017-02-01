@@ -1,0 +1,90 @@
+ <table cellspacing="0" cellpadding="0" border="0" class="boardList_ne">
+	<tr>
+                <td class="no">
+                <img src="./css/mic.png" alt="notice" />
+                </td>
+                <td class="title">
+	
+				<span class="titletext">
+                <font class="xe_content">{$oDocument->getTitle()}</font>
+
+                </span>                
+				<block cond="$module_info->display_commentcount!='N' && $oDocument->allowComment() && !$oDocument->isLocked()">
+                <!--@if($oDocument->getCommentcount() > 0)-->
+				<span class="replyNum">+{$oDocument->getCommentcount()}</span>
+                <!--@end-->  
+				</block>
+				
+                {$oDocument->printExtraImages(60*60*$module_info->duration_new)}		
+                                    
+                <span class="date" cond="$module_info->display_time!='N'">
+               <!--@if( ($cur_date = date('Y-m-d'))==($oDocument->getRegdate('Y-m-d')) )-->
+                        <strong>
+                        
+                        {$oDocument->getRegdate('H:i')}	
+						
+						</strong>
+                <!--@else-->
+                        {$oDocument->getRegdate('y/m/d')}	
+                <!--@end-->       
+                </span>
+                
+                <span class="option">
+                <block cond="$module_info->display_reply!='N'">
+                <input type="image" src="./css/add.gif" cond="$oDocument->allowComment() && !$oDocument->isLocked()" onclick="toggle_object('blog_comment_{$oDocument->document_srl}'); return false;" title="{$lang->comment}" alt="{$lang->comment}" />	
+                </block>		
+                <a cond="$oDocument->isEditable()" href="{getUrl('act','dispBoardWrite','document_srl',$oDocument->document_srl,'comment_srl','')}" title="{$lang->cmd_modify}" ><img src="./css/modify.gif"  border="0" alt="{$lang->cmd_modify}" /></a>
+					<a cond="$oDocument->isEditable()" href="{getUrl('act','dispBoardDelete','document_srl',$oDocument->document_srl, 'comment_srl','')}" title="{$lang->cmd_delete}"><img src="./css/delete.gif"  border="0" alt="{$lang->cmd_delete}" /></a>
+
+                    </span>
+             </td>
+             <td cond="$grant->manager" class="checkbox"><input type="checkbox" name="cart" value="{$oDocument->document_srl}" class="iCheck" title="Check This Article" onclick="doAddDocumentCart(this)" checked="checked"|cond="$oDocument->isCarted()" /></td>
+</tr>
+</table>
+
+
+
+<!-- 댓글 -->
+
+<div id="blog_comment_{$oDocument->document_srl}" style="display:none;border-bottom:1px solid #ccc;">
+<!-- 댓글 입력 폼 -->
+<!--@if($grant->write_comment && $oDocument->isEnableComment() )-->
+	<load target="filter/insert_comment.xml">
+    <form action="./" method="post" onsubmit="return procFilter(this, insert_comment)"  class="boardEditor">
+    <input type="hidden" name="mid" value="{$mid}" />
+    <input type="hidden" name="document_srl" value="{$oDocument->document_srl}" />
+    <input type="hidden" name="comment_srl" value="" />
+<table  cellpadding="0" cellspacing="0"  class="comment" >
+	<tr>
+	<td>
+    <div class="comment_content">
+    <input type="text" name="content" style="width:350px; background:#FFF" class="iText"  value=""  />
+    </div>
+</td>
+
+        <td class="submit">
+		<input type="image" src="./css/write.gif"  value="{$lang->cmd_comment_registration}"  class="submit" />
+        </td>
+        <td class="bin">
+        </td>
+	</tr>
+
+</table>
+			<div class="comment_author" cond="!$is_logged">
+			<span class="item" cond="!$is_logged">
+				<label for="userName" class="iLabel">{$lang->writer}</label>
+				<input type="text" name="nick_name"   class="iText userName"  onfocus="if(this.value==this.title)this.value='';return false;" style="width:120px;" />
+			</span>
+			<span class="item" cond="!$is_logged">
+				<label for="userPw" class="iLabel">{$lang->password}</label>
+				<input type="password" name="password"  class="iText userPw" onfocus="if(this.value==this.title)this.value='';return false;" style="width:120px;" />
+			</span>
+            </div>
+     </form>
+<!--@end-->           
+</div>
+
+<!-- 댓글 파일 include -->   
+   
+
+<include target="./comment.html" />

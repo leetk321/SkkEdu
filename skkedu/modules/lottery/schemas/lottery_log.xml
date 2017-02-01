@@ -1,0 +1,10 @@
+<table name="lottery_log">
+    <column name="data_srl" type="number" size="11" notnull="notnull" index="idx_data_srl" />
+    <column name="member_srl" type="number" size="11" notnull="notnull" index="idx_member_srl" />
+    <column name="category_srl" type="number" size="11" notnull="notnull" index="idx_category_srl" />
+    <column name="rank" type="number" size="1" index="idx_rank" />
+    <column name="point" type="number" size="11" default="0" index="idx_point" />
+    <column name="content" type="text" />
+    <column name="regdate" type="date" />
+    <column name="ipaddress" type="varchar" size="128" notnull="notnull" index="idx_ipaddress" />
+</table>

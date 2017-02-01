@@ -1,0 +1,105 @@
+<!-- 설명 -->
+<!--#include("header.html")-->
+<!--%import("js/lottery_admin.js")-->
+
+<h3 class="xeAdmin">{$lang->log_list}</h3>
+
+<!-- 검색 -->
+<form action="./" method="get" class="adminSearch">
+<input type="hidden" name="module" value="{$module}" />
+<input type="hidden" name="act" value="{$act}" />
+
+    <fieldset>
+        <span>
+            <input type="text" name="s_regdate_more" value="{$s_regdate_more}" readonly="readonly" class="inputDate inputTypeText" />
+            <span class="button"><input type="button" value="{$lang->cmd_delete}" class="dateRemover" /></span> ~
+        </span>
+        <span>
+            <input type="text" name="s_regdate_less" value="{$s_regdate_less}" readonly="readonly" class="inputDate inputTypeText" />
+        <span class="button"><input type="button" value="{$lang->cmd_delete}" class="dateRemover" /></span>
+        </span>
+        <select name="search_target">
+            <option value="">{$lang->search_target}</option>
+            <!--@foreach($lang->lottery_search_target as $key => $val)-->
+            <option value="{$key}" <!--@if($search_target==$key)-->selected="selected"<!--@end-->>{$val}</option>
+            <!--@end-->
+        </select>
+        <input type="text" name="search_keyword" value="{htmlspecialchars($search_keyword)}" class="inputTypeText" />
+        <span class="button black strong"><input type="submit" value="{$lang->cmd_search}" /></span>
+        <a href="#" onclick="location.href='{getUrl('','module',$module,'act',$act)}';return false;" class="button"><span>{$lang->cmd_cancel}</span></a>
+    </fieldset>
+</form>
+
+<!-- 목록 -->
+<form method="get" action="./" id="log_fo">
+    <table cellspacing="0" class="rowTable">
+    <caption>Total {number_format($total_count)}, Page {number_format($page)}/{number_format($total_page)}</caption>
+    <thead>
+        <tr>
+            <th scope="col"><div><input type="checkbox" onclick="XE.checkboxToggleAll(); return false;"/></div></th>
+            <th scope="col"><div>{$lang->data_srl}</div></th>
+            <th scope="col"><div>{$lang->rank}</div></th>
+            <th scope="col"><div>{$lang->point}</div></th>
+            <th scope="col"><div class="tCenter">{$lang->content}</div></th>
+            <th scope="col"><div>{$lang->regdate}</div></th>
+            <th scope="col"><div>{$lang->ipaddress}</div></th>
+        </tr>
+    </thead>
+    <tbody>
+        <!--@foreach($log_list as $no => $val)-->
+        <tr>
+            <td><input type="checkbox" name="cart" value="{$val->data_srl}"/></td>
+            <td>{$val->data_srl}</td>
+            <td>{$val->rank}</td>
+            <td>{number_format($val->point)}</td>
+            <td>{$val->content}</td>
+            <td>{zdate($val->regdate,'Y-m-d H:i:s')}</td>
+            <td>{$val->ipaddress}</td>
+        </tr>
+        <!--@end-->
+    </tbody>
+    </table>
+
+    <!-- 버튼 -->
+    <div class="clear">
+        <div class="fl">
+            <a href="#" onclick="doDeleteLogs(); return false;" class="button red"><span>{$lang->cmd_delete}</span></a>
+        </div>
+        <div class="fr">
+            <a href="#" onclick="doResetLogs(); return false;" class="button black"><span>{$lang->cmd_reset}</span></a>
+        </div>
+    </div>
+
+    <!-- 페이지 네비게이션 -->
+    <div class="pagination a1">
+        <a href="{getUrl('page','','module_srl','')}" class="prevEnd">{$lang->first_page}</a> 
+        <!--@while($page_no = $page_navigation->getNextPage())-->
+            <!--@if($page == $page_no)-->
+                <strong>{$page_no}</strong> 
+            <!--@else-->
+                <a href="{getUrl('page',$page_no,'module_srl','')}">{$page_no}</a> 
+            <!--@end-->
+        <!--@end-->
+        <a href="{getUrl('page',$page_navigation->last_page,'module_srl','')}" class="nextEnd">{$lang->last_page}</a>
+    </div>
+</form>
+
+<script type="text/javascript">
+(function($){
+    $(function(){
+        var option = { changeMonth: true, changeYear: true, gotoCurrent: false,yearRange:'-100:+10', onSelect:function(){
+
+            $(this).val(this.value.replace(/-/g,""))}
+        };
+        $.extend(option,$.datepicker.regional['{$lang_type}']);
+        $(".inputDate").datepicker(option);
+		$(".dateRemover").click(function() {
+			$(this).parent().prevAll('input').val('');
+			return false;});
+    });
+})(jQuery);
+
+var null_message = "{$lang->msg_cart_is_null}";
+var delete_message = "{$lang->confirm_delete}";
+var reset_message = "{$lang->confirm_reset}";
+</script>

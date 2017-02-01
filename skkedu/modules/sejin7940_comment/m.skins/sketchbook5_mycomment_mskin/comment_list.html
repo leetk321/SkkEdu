@@ -1,0 +1,101 @@
+<include target="./common_header.html" />
+<div class="border full-width">
+	<h1 class="h1">{$member_title = $lang->cmd_my_comment }</h1>
+	<div class="comment comment">
+		<table width="100%" cellspacing="0" id="commentListTable" class="table table-striped table-hover">
+			<caption>
+				{$lang->comment_total}  : {number_format($total_count)}
+				<span class="side" style="color:#999">{$lang->about_voted_member}</span>
+			</caption>
+			<colgroup>
+				<col width="50%"><col width="10%"><col width="40%">
+			</colgroup>
+			<thead>
+				<tr>
+					<th scope="col" class="text" style="text-align:center">{$lang->comment}</th>			
+					<th scope="col" class="text" style="text-align:center">{$lang->cmd_delete}</th>			
+					<th scope="col" class="nowr" style="text-align:center">{$lang->date}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{$lang->cmd_vote}/{$lang->cmd_blame}</th>
+				</tr>
+			</thead>
+			<tbody>
+				<!--@foreach($comment_list as $no => $val)-->
+				{@ $comment = cut_str(trim(strip_tags($val->content)), $module_config->comment_cut_size, '...');
+					$oDocumentModel = &getModel('document');
+					$document_original = $oDocumentModel->getDocument($val->document_srl);
+				}
+				<tr>
+					<td class="nowr" rowspan=2 style="word-break:break-all; word-wrap:break-word; white-space:pre-wrap; "><a href="{getUrl('','document_srl',$val->document_srl)}#comment_{$val->comment_srl}" target="_blank" style="word-break:break-all; word-wrap:break-word; "><!--@if($val->isSecret())-->[{$lang->secret}]<!--@end--> <!--@if(strlen($comment))-->{$comment}<!--@else--><em>{$lang->no_text_comment}</em><!--@end--></a></td>
+					<td class="nowr" rowspan=2 style="text-align:center">
+					<!--@if($grant->manager || abs($val->member_srl)==$logged_info->member_srl)-->
+						<a onclick="if(confirm('정말 삭제하시겠습니까?')) { doCallModuleAction('sejin7940_comment','procSejin7940_commentDeleteComment',{$val->comment_srl}) } " style="color:#c32222; cursor:pointer">[{$lang->cmd_delete}]</a>
+					<!--@else-->
+						&nbsp;
+					<!--@end-->
+					</td>
+					<td class="nowr"><a href="{getUrl('','document_srl',$val->document_srl)}" target="_blank">{$lang->document} : {$document_original->getTitle($module_config->title_cut_size)}</a></td></tr>
+				<tr>
+					<td class="nowr">{$lang->comment} : {(zdate($val->regdate,"Y-m-d"))} <span style="color:#999; font-size:12px;">{(zdate($val->regdate,"H:i:s"))}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<!--@if($module_config->display_voted_member=='Y')--><a onclick="jQuery('#voted_member_{$val->comment_srl}').slideToggle('fast');" <!--@if($val->get('voted_count'))-->style="cursor:pointer;"<!--@end-->>{$val->get('voted_count')?$val->get('voted_count'):0}</a><!--@else-->{$val->get('voted_count')?$val->get('voted_count'):0}<!--@end--> / <!--@if($module_config->display_blamed_member=='Y')--><a onclick="jQuery('#blamed_member_{$val->comment_srl}').slideToggle('fast');" <!--@if($val->get('blamed_count'))-->style="cursor:pointer;"<!--@end-->>{$val->get('blamed_count')?$val->get('blamed_count'):0}</a>)<!--@else-->{$val->get('blamed_count')?$val->get('blamed_count'):0}</a>)<!--@end--></td>
+				</tr>
+
+			<!--@if($module_config->display_voted_member=='Y')-->
+				{@
+					$args_voted_member->comment_srl = $val->comment_srl;
+					$args_voted_member->more_point=0;
+					$output_voted_member = executeQueryArray('comment.getVotedMemberList',$args_voted_member);
+					$voted_member_count=0;
+				}
+				<!--@if($output_voted_member->data)-->
+				<tr id="voted_member_{$val->comment_srl}" style="display:none"><td colspan=3 style="border:0px; padding:0px;">
+					<table style="border:0px;" ><tr><td style="vertical-align:top; background:#eee;">{$lang->voted_member} : </td>
+					<td style="width:100%; text-align:left;">
+					<block loop="$output_voted_member->data=>$key_voted_member,$val_voted_member">
+						{@$voted_member_count++}
+						<a href="#popup_menu_area" class="member_{$val_voted_member->member_srl}" onclick="return false">{$val_voted_member->nick_name}</a>
+						<!--@if($voted_member_count>1)--> , <!--@end-->
+					</block>
+					</td></tr>
+					</table>
+				</td></tr>
+				<!--@end-->
+			<!--@end-->
+
+			<!--@if($module_config->display_blamed_member=='Y')-->
+				{@
+					$args_blamed_member->document_srl = $val->comment_srl;
+					$args_blamed_member->below_point=0;
+					$output_blamed_member = executeQueryArray('comment.getVotedMemberList',$args_blamed_member);
+					$blamed_member_count=0;
+				}
+				<!--@if($output_blamed_member->data)-->
+				<tr id="blamed_member_{$val->comment_srl}" style="display:none" ><td colspan=3 style="border:0px; padding:0px;">
+					<table style="border:0px;"><tr><td style="vertical-align:top; background:#eee;">{$lang->blamed_member} : </td>
+					<td style="width:100%; text-align:left;">
+					<block loop="$output_blamed_member->data=>$key_blamed_member,$val_blamed_member">
+						{@$blamed_member_count++}
+						<a href="#popup_menu_area" class="member_{$val->comment_srl->member_srl}" onclick="return false">{$val_blamed_member->nick_name}</a>
+						<!--@if($blamed_member_count>1)--> , <!--@end-->
+					</block>
+					</td></tr>
+					</table>
+				</td></tr>
+				<!--@end-->
+			<!--@end-->
+
+				<!--@end-->
+			</tbody>
+		</table>
+	</div>
+
+<!--@if(is_object($page_navigation) && count($comment_list))-->
+	<div class="pagination pagination-centered">
+		<ul>
+			<li><a href="{getUrl('page','','module_srl','')}" class="direction">&laquo; {$lang->first_page}</a></li> 
+	    <!--@while($page_no = $page_navigation->getNextPage())-->
+			<li class="active"|cond="$page == $page_no"><a href="{getUrl('page',$page_no,'module_srl','')}">{$page_no}</a></li>
+		<!--@end-->
+			<li><a href="{getUrl('page',$page_navigation->last_page,'module_srl','')}" class="direction">{$lang->last_page} &raquo;</a></li>
+		</ul>
+	</div>
+<!--@end-->
+</div>
+<include target="./common_footer.html" />

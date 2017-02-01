@@ -1,0 +1,17 @@
+<!--%import("js/iconshop_admin.js")-->
+
+<!--@if($iconshop_info)-->
+<div class="header4">
+    <ul class="localNavigation">
+        <li <!--@if($act=='dispIconshopAdminConfig')-->class="on"<!--@end-->><a href="{getUrl('','module',$module,'act','dispIconshopAdminConfig')}">{$lang->cmd_module_config}</a></li>
+        <li <!--@if($act=='dispIconshopAdminAddConfig')-->class="on"<!--@end-->><a href="{getUrl('','module',$module,'act','dispIconshopAdminAddConfig')}">{$lang->cmd_addition_setup}</a></li>
+        <li <!--@if($act=='dispIconshopAdminAddConfig')-->class="on"<!--@end-->><a href="{getUrl('','module',$module,'act','dispIconshopAdminSkinConfig')}">{$lang->skin_config}</a></li>
+        <li <!--@if($act=='dispIconshopAdminIconList')-->class="on"<!--@end-->><a href="{getUrl('','module',$module,'act','dispIconshopAdminIconList')}">{$lang->iconList}</a></li>
+        <li <!--@if($act=='dispIconshopAdminIconInsert')-->class="on"<!--@end-->><a href="{getUrl('','module',$module,'act','dispIconshopAdminIconInsert')}">{$lang->iconInsert}</a></li>
+        <li <!--@if($act=='dispIconshopAdminMemberIconList')-->class="on"<!--@end-->><a href="{getUrl('','module',$module,'act','dispIconshopAdminMemberIconList')}">{$lang->memberIconList}</a></li>
+        <li <!--@if($act=='dispIconshopAdminMemberIconInsert')-->class="on"<!--@end-->><a href="{getUrl('','module',$module,'act','dispIconshopAdminMemberIconInsert')}">{$lang->memberIconInsert}</a></li>
+        <li <!--@if($act=='dispIconshopAdminLogList')-->class="on"<!--@end-->><a href="{getUrl('','module',$module,'act','dispIconshopAdminLogList')}">{$lang->iconshopLogList}</a></li>
+    </ul>
+</div>
+<!--@end-->
+

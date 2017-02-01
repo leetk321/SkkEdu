@@ -1,0 +1,108 @@
+<load target="../../admin/tpl/css/admin.min.css" />
+{@Context::set('layout','none');}
+<div cond="$XE_VALIDATOR_MESSAGE" class="message {$XE_VALIDATOR_MESSAGE_TYPE}">
+	<p>{$XE_VALIDATOR_MESSAGE}</p>
+</div>
+<div class="x content">
+<form ruleset="modifyMember" id="form_modifyMember" class="form" action="./" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="act" value="procVicemanagerMemberModify" />
+    <input type="hidden" name="module" value="vicemanager" />
+    <input type="hidden" name="member_srl" value="{$member_info['member_srl']}" />
+    <input type="hidden" name="page" value="{$page}" />
+    <input type="hidden" name="search_keyword" value="{$search_keyword}" />
+    <input type="hidden" name="search_target" value="{$search_target}" />
+	<!-- <input type="hidden" name="success_return_url" value="{getUrl('act', $act)}" /> -->
+
+	<h1 class="h1" style="margin-bottom:20px">{$lang->member} {$lang->cmd_management}</h1>
+	<ul>
+		<li>
+			<p class="q">{$lang->member} {$lang->no}</p>
+			<p class="a">{$member_info['member_srl']}</p>
+		</li>
+	<!--@foreach($member_config->signupForm as $no=>$formInfo)-->
+		<!--@if($formInfo->isUse && ($formInfo->name != 'password' && $formInfo->name != 'find_account_question'))-->
+			<!--@if($formInfo->isDefaultForm)-->
+				{@$title = $formInfo->title}
+				{@$value = $member_info[$formInfo->name]}
+				<!--@if($formInfo->name == 'profile_image' && $member_info['profile_image'])-->
+					{@$target = $member_info['profile_image']}
+					{@$value = '<img src="'.$target->src.'" />'}
+				<!--@elseif($formInfo->name == 'image_name' && $member_info['image_name'])-->
+					{@$target = $member_info['image_name']}
+					{@$value = '<img src="'.$target->src.'" />'}
+				<!--@elseif($formInfo->name == 'image_mark' && $member_info['image_mark'])-->
+					{@$target = $member_info['image_mark']}
+					{@$value = '<img src="'.$target->src.'" />'}
+				<!--@end-->
+			<!--@else-->
+				{@$title = $extend_form_list[$formInfo->member_join_form_srl]->column_title}
+				{@$orgValue = $extend_form_list[$formInfo->member_join_form_srl]->value}
+				<!--@if($formInfo->type=='tel')-->
+					{@$value = $orgValue[0]}
+						<!--@if($orgValue[1])-->-<!--@end-->
+					{@$value .= $orgValue[1]}
+						<!--@if($orgValue[2])-->-<!--@end-->
+					{@$value .= $orgValue[2]}
+				<!--@elseif($formInfo->type=='kr_zip')-->
+					{@$value = $orgValue[0]}<!--@if($orgValue[1]&&$orgValue[0])--><br /><!--@end-->{@$value .= $orgValue[1]}
+				<!--@elseif($formInfo->type=='checkbox' && is_array($orgValue))-->
+					{@$value = implode(", ",$orgValue)}
+				<!--@elseif($formInfo->type=='date')-->
+					{@$value = zdate($orgValue, "Y-m-d")}
+				<!--@else-->
+					{@$value = nl2br($orgValue)}
+				<!--@end-->
+			<!--@end-->
+			<li>
+				<p class="q">{$title} </p>
+				<p class="a">{$value}</p>
+			</li>
+		<!--@end-->
+	<!--@end-->
+		
+		<li>
+			<p class="q">{$lang->regdate}</p>
+			<p class="a">{zdate($member_info['regdate'], 'Y-m-d H:i:s')}</p>
+		</li>
+		<li>
+			<p class="q">{$lang->last_login}</p>
+			<p class="a">{zdate($member_info['last_login'], 'Y-m-d H:i:s')}</p>
+		</li>
+		<li>
+			<p class="q">{$lang->member_group}</p>
+			<p class="a" cond="$module_config->grant_group==true">
+				<!--@foreach($group_list as $key=>$val)-->
+					<input type="checkbox" name="group_srl_list[]" value="{$key}" id="group_{$key}" <!--@if($group_list[$key]->title==$member_info['group_list'][$key])-->checked="checked"<!--@end--> cond="$val->is_admin!='Y'" />
+					<label for="group_{$key}" cond="$val->is_admin!='Y'">{$val->title}</label>
+				<!--@end-->
+			</p>
+			<p class="a" cond="$module_config->grant_group==false">
+				<block loop="$member_info['group_list']=>$no,$group">{$group}&nbsp;</block>
+			</p>
+		</li>
+		<li>
+			<p class="q">{$lang->point}</p>
+			<p class="a" cond="$module_config->grant_point==true"><input type="text" name="point" value="{$point}" class="point" /></p>
+			<p class="a" cond="$module_config->grant_point==false">{$point}</p>
+		</li>
+		<li>
+			<p class="q">{$lang->level}</p>
+			<p class="a">{$level}{$lang->level}</p>
+		</li>
+		<li>
+			<p class="q">{$lang->denied}</p>
+			<p class="a" cond="$module_config->grant_denied==true"><input type="checkbox" name="denied" checked="checked"|cond="$member_info['denied']=='Y'" /></p>			
+			<p class="a" cond="$module_config->grant_denied==false">{@ $pdenied = $member_info['denied']=="Y" ? "Y" : "N"}{$pdenied}</p>
+		</li>
+		<li>
+			<p class="q">{$lang->limit_date} (YYYYMMDD)</p>
+			<p class="a" cond="$module_config->grant_limit_date==true"><input type="text" name="limit_date" value="{$member_info['limit_date']}" maxlength="8" /></p>
+			<p class="a" cond="$module_config->grant_limit_date==false">{$member_info['limit_date']}</p>
+		</li>
+	</ul>
+	<div class="btnArea">
+		<span class="btn"><button type="submit">{$lang->cmd_modify}</button></span>
+		<span onClick="location.href='{getUrl('', 'mid', $mid, 'page', $page, 'act', 'dispVicemanagerMemberList', 'search_keyword', $search_keyword, 'search_target', $search_target)}'" class='btn'><button type="button">{$lang->cmd_cancel}</button></span>
+	</div>
+</form>
+</div>

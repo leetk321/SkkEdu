@@ -1,0 +1,134 @@
+<load cond="$layout_info->theme_select=='no' && $layout_info->local_load=='no'" target="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
+<load cond="$layout_info->theme_select=='no' && $layout_info->local_load=='yes'" target="css/themes/default/jquery.mobile-1.2.0.min.css" />
+<load cond="$layout_info->theme_select=='custom'" target="css/themes/custom/custom.min.css"/>
+<load cond="$layout_info->theme_select=='custom' && $layout_info->local_load=='no'" target="http://code.jquery.com/mobile/1.2.0/jquery.mobile.structure-1.2.0.min.css" />
+<load cond="$layout_info->theme_select=='custom' && $layout_info->local_load=='yes'" target="css/themes/default/jquery.mobile.structure-1.2.0.min.css" />
+<load cond="$layout_info->local_load=='no'" target="http://code.jquery.com/jquery-1.8.2.min.js" index="-100006" />
+<load cond="$layout_info->local_load=='yes'" target="js/jquery-1.8.2.min.js" index="-100006" />
+<load cond="$layout_info->local_load=='no'" target="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js" index="-100006" />
+<load cond="$layout_info->local_load=='yes'" target="js/jquery.mobile-1.2.0.min.js" index="-100006" />
+<load cond="$layout_info->local_load=='yes'" target="js/jquery-setup.js" index="-99999" />
+
+<!--%import("./filter/login.xml")-->
+<!--%import("./filter/logout.xml")-->
+<!--%import("./filter/openid_login.xml")-->
+<!--%import("./js/login.js")-->
+<!--jQuery Mobile 의 오류로 import로 로딩하였습니다.-->
+<style>.ui-content {min-height:100%; position:relative;} .ui-footer {position:absolute; bottom:0; width:100%;}</style>
+<!--@if($XE_VALIDATOR_MESSAGE && !$is_logged)-->
+<script type="text/javascript">jQuery(document).ready(function() {var c = alert('{$XE_VALIDATOR_MESSAGE}');});</script>
+<!--@endif-->
+<!--@if($layout_info->ajax == 'yes')-->
+<script type="text/javascript">$.mobile.ajaxEnabled=false</script>
+<!--@endif-->
+
+<div data-role="page" id="home" data-theme="{$layout_info->color_set}"  class="pages">
+	<div data-role="header" data-position="fixed"|cond="$layout_info->hader_pos=='yes'">
+    	<!--@if($layout_info->logo_image)-->
+		<h3><img style="{$layout_info->title_style}" src="{$layout_info->logo_image}" alt="{$layout_info->index_title}" /></h3>
+		<!--@elseif($layout_info->index_title)-->
+		<h3 style="{$layout_info->title_style}">{$layout_info->index_title}</h3>
+		<!--@else-->
+		<h3>Xenon Layout</h3>
+		<!--@endif-->
+        <a href="#menu_page" data-icon="grid" data-transition="slide" class="ui-btn-right" id="menubutton">메뉴</a>
+    </div>
+    <div data-role="content">
+		{$content}
+	</div>
+    <br />
+    <br />
+    <div data-role="footer">
+        <a href="{getUrl('m',0)}" class="ui-btn-left" rel="external" cond="$layout_info->footer_pc=='yes'" data-icon="star">PC</a>
+    	<!--@if($layout_info->index_footer)-->
+        <h3 style="{$layout_info->title_style}">{$layout_info->index_footer}</h3>
+        <!--@else-->
+        <h3>Layout by</h3>
+        <!--@end-->
+        <a href="http://xenon.teamatde.co.kr/" class="ui-btn-right" target="_blank">Xenon™</a>
+    </div>
+</div>
+<div data-role="page" id="menu_page" data-theme="{$layout_info->color_set}" data-add-back-btn="true">
+	<div data-role="header">
+		<h1>메뉴</h1>
+	</div>
+    <div data-role="content">
+    	<ul data-role="listview">
+    		<li data-role="list-divider" role="heading" class="ui-li ui-li-divider ui-bar-b">회원메뉴</li>
+        </ul>
+        <br />
+    	<div class="ui-grid-a" cond="$is_logged">
+			<div class="ui-block-a"><a href="{getUrl('','act','dispMemberInfo')}" class="member_{$logged_info->member_srl}" data-mini="true" data-role="button">{$logged_info->nick_name}</a></div>
+			<div class="ui-block-b"><a href="{getUrl('act','dispMemberLogout')}" data-role="button" data-mini="true" rel="external">Log out</a></div>
+		</div>
+        <form action="{getUrl()}" method="post" class="search">
+ 	    	<input type="hidden" name="mid" value="{$mid}" />
+         	<input type="hidden" name="act" value="IS" />
+        	<input type="hidden" name="where" value="{$where}" />
+        	<input type="hidden" name="search_target" value="title_content" />
+        	<input name="is_keyword" type="text" class="inputText" value="{htmlspecialchars($is_keyword)}" data-mini="true" />
+         	<input type="submit" class="bn dark" value="통합검색" data-mini="true" data-icon="search"/>
+       	</form>
+        <br />
+		<ul data-role="listview">
+    		<!--@if(!$is_logged)-->
+    	   	<li><a href="#login_page" data-transition="slide">로그인</a></li>
+    	    <!--@else-->
+    	    <li class="fr"><a href="{getUrl('','act','dispMemberInfo')}">회원정보</a></li>
+    	    <!--@endif-->
+    	    <!--@if($logged_info->is_admin=='Y' && !$site_module_info->site_srl)-->
+    	    <li><a href="{getUrl('','module','admin')}" rel="external">{$lang->cmd_management}</a></li>
+    	    <!--@endif-->
+            <li cond="$layout_info->footer_pc=='no'"><a href="{getUrl('m',0)}" class="ui-btn-left" rel="external" data-icon="star">PC화면 보기</a></li>
+    	    <li data-role="list-divider" role="heading" class="ui-li ui-li-divider ui-bar-b">사이트맵</li>
+    	    <li cond=" $layout_info->index_url"><a href="{$layout_info->index_url}" rel="external">메인 페이지</a></li>
+    	    <li cond=" !$layout_info->index_url"><a href="{getUrl('','','')}" rel="external">메인 페이지</a></li>
+            
+    	    <li loop="$main_menu->list=>$key1,$val1" class="active"|cond="$val1['selected']" cond="$val1['link']"><a href="{$val1['href']}" target="_blank"|cond="$val1['open_window']=='Y'" rel="external">{$val1['link']}</a>
+				<li loop="$val1['list']=>$key2,$val2" class="active"|cond="$val2['selected']" cond="$val2['link']"><a href="{$val2['href']}" target="_blank"|cond="$val2['open_window']=='Y'" rel="external">　{$val2['link']}</a>
+    	           	<li loop="$val2['list']=>$key3,$val3" class="active"|cond="$val3['selected']" cond="$val3['link']"><a href="{$val3['href']}" target="_blank"|cond="$val3['open_window']=='Y'" rel="external">　　{$val3['link']}</a>
+                    	<li loop="$val3['list']=>$key4,$val4" class="active"|cond="$val4['selected']" cond="$val4['link']"><a href="{$val4['href']}" target="_blank"|cond="$val4['open_window']=='Y'" rel="external">　　{$val4['link']}</a></li>
+                    </li>
+    	        </li>
+			</li>
+    	</ul>
+    </div>
+</div>
+<div data-role="page" id="login_page" data-theme="{$layout_info->color_set}" data-add-back-btn="true">
+	<div data-role="header">
+    	<h1 cond=" !$is_logged">로그인</h1>
+	</div>
+	<div data-role="content">
+    	<div class="login_p" cond=" !$is_logged">
+			<form id="login" action="{getUrl('','act','procMemberLogin')}" method="post" ruleset="@login" class="login_{$colorset}" data-ajax="false">
+				<fieldset>
+					<input type="hidden" name="act" value="procMemberLogin" />
+					<input type="hidden" name="success_return_url" value="{htmlspecialchars(getRequestUriByServerEnviroment())}" />
+					<div class="idpwWrap">
+						<div class="idpw">
+							<input name="user_id" type="text" id="id" value="" placeholder="<!--@if($identifier == 'user_id')-->{$lang->user_id}<!--@else-->{$lang->email_address}<!--@end-->" />
+							<input name="password" type="password" id="pw" value="" placeholder="{$lang->password}" />
+							<p class="keep">
+								<input type="checkbox" name="keep_signed" id="keep_signed" value="Y" />
+								<label for="keep_signed">{$lang->keep_signed}</label>
+							</p>
+						</div>
+						<input type="submit" class="login" cond="!$colorset" value="{$lang->cmd_login}" data-ajax="false" />
+					</div>
+					<p cond="$ssl_mode" class="securitySignIn <!--@if($ssl_mode)-->SSL<!--@else-->noneSSL<!--@end-->">
+						<button type="button" class="text" onclick="toggleSecuritySignIn(); return false;">{$lang->security_sign_in}</button>
+					</p>
+    	   	     <br />
+					<ul data-role="listview">
+                    	<li><a href="{getUrl('act','dispMemberSignUpForm')}" rel="external">{$lang->cmd_signup}</a></li>
+						<li><a href="{getUrl('act','dispMemberFindAccount')}">{$lang->cmd_find_member_account}</a></li>
+						<li><a href="{getUrl('act','dispMemberResendAuthMail')}">{$lang->cmd_resend_auth_mail}</a></li>
+					</ul>
+				</fieldset>
+			</form>
+    	</div>
+	</div>
+</div>
+<!--@if($logged_info->is_admin=='Y')-->
+<script type="text/javascript" src="js/jquery.check.js"></script>
+<!--@end-->

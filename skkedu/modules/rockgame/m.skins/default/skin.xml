@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<skin version="0.2">
+    <title xml:lang="ko">모바일 기본스킨</title>
+    <description xml:lang="ko">
+        가위바위보 게임모듈 모바일 기본스킨입니다.
+    </description>
+    <version>0.1</version>
+    <date>2013-12-30</date>
+    <author email_address="" link="http://www.xecenter.com">
+        <name xml:lang="ko">쿡래빗</name>
+    </author>
+    <license>GPL</license>
+</skin>

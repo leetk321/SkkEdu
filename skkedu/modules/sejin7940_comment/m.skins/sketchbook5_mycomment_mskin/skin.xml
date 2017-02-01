@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<skin version="0.2">
+    <title xml:lang="ko">Sketchbook5 작성 댓글 보기 스킨</title>
+    <title xml:lang="en">Sketchbook5 My Own Comments Skin</title>
+    <description xml:lang="ko">
+        Sketchbook5 작성 댓글 보기 스킨
+        큰돌 (kndol@kndol.net)
+    </description>
+    <description xml:lang="en">
+        Sketchbook5 My Own Comments Skin
+        KnDol (kndol@kndol.net)
+    </description>
+    <version>1.0.4</version>
+    <date>2016-02-02</date>
+
+    <author email_address="kndol@kndol.net" link="http://www.kndol.net/">
+        <name xml:lang="ko">큰돌</name>
+        <name xml:lang="en">KnDol</name>
+    </author>
+
+    <colorset>
+        <color name="white">
+            <title xml:lang="ko">기본</title>
+            <title xml:lang="zh-CN">默认</title>
+            <title xml:lang="jp">デフォルト</title>
+            <title xml:lang="en">default</title>
+            <title xml:lang="vi">Mặc định</title>
+            <title xml:lang="es">Por defecto</title>
+            <title xml:lang="ru">умолчанию</title>
+            <title xml:lang="zh-TW">預設</title>
+            <title xml:lang="tr">varsayılan</title>
+        </color>
+        <color name="black">
+            <title xml:lang="ko">검은색</title>
+            <title xml:lang="zh-CN">黑色</title>
+            <title xml:lang="jp">黒</title>
+            <title xml:lang="en">Black</title>
+            <title xml:lang="vi">đen</title>
+            <title xml:lang="es">negro</title>
+            <title xml:lang="ru">черный</title>
+            <title xml:lang="zh-TW">黑色</title>
+            <title xml:lang="tr">Siyah</title>
+        </color>
+    </colorset>
+</skin>

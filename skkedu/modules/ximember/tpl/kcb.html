@@ -1,0 +1,61 @@
+<include target="header.html" />
+<form action="./" class="x_form-horizontal" ruleset="insertXimemberConfig" method="post" enctype="multipart/form-data">
+	<input type="hidden" name="module" value="ximember" />
+	<input type="hidden" name="act" value="procXimemberAdminKcb" />
+	<input type="hidden" name="success_return_url" value="{getUrl('', 'module', 'admin', 'act', $act)}" />
+	<section class="section">
+		<h1>{$lang->xi_kcb_settings}</h1>
+		
+		<div class="x_control-group">
+			<label class="x_control-label">{$lang->xi_domain}</label>
+			<div class="x_controls">
+				<input type="text" name="kcb_domain" value="{$config->kcb->kcb_domain}" placeholder="{$lang->xi_domain_example}" />
+				<p class="x_help-inline">{$lang->xi_domain_desc}</p>
+			</div>	
+		</div>
+		<div class="x_control-group">
+			<label class="x_control-label">{$lang->xi_shopid}</label>
+			<div class="x_controls">
+				<input type="text" name="kcb_shopid" value="{$config->kcb->kcb_shopid}" placeholder="{$lang->xi_shopid_example}" />
+				<p class="x_help-inline">{$lang->xi_shopid_desc}</p>
+			</div>	
+		</div>
+		<div class="x_control-group">
+			<label class="x_control-label">{$lang->xi_kcb_module}</label>
+			<div class="x_controls">
+				<div cond="$config->kcb->module_file">
+					{$config->kcb->module_file}
+					<label for="del_module">
+						<input type="checkbox" id="del_module" name="del_module" value="Y" />
+						{$lang->cmd_delete}
+					</label>
+				</div>
+				<input type="file" name="module_file" value="" />
+				<p class="x_help-inline">{$lang->xi_kcb_module_desc}</p>
+			</div>	
+		</div>
+		<div class="x_control-group">
+			<label class="x_control-label">{$lang->xi_oknames}</label>
+			<div class="x_controls">
+				<a href="http://xiso.co.kr/oknames" target="_blank">http://xiso.co.kr/oknames</a>
+			</div>	
+		</div>
+	</section>
+
+	<section class="section">
+		<h1>{$lang->xi_kcb_detail_settings}</h1>
+		<div class="x_control-group">
+			<label class="x_control-label">{$lang->xi_kcb_detail_use}</label>
+			<div class="x_controls">
+				<label loop="$lang->xi_kcb_detail_use_list => $key,$auth_text" for="use_{$key}">
+					<input type="checkbox" id="use_{$key}" name="use_auth[]" value="{$key}" checked="checked"|cond="$config->kcb->use_auth[$key]" /> {$auth_text}
+				</label>
+				<p class="x_help-inline">{$lang->xi_kcb_detail_use_desc}</p>
+			</div>	
+		</div>
+		
+		<div class="x_clearfix btnArea">
+			<span class="x_pull-right"><input class="x_btn x_btn-primary" type="submit" value="{$lang->cmd_save}" /></span>
+		</div>
+	</section>
+</form>

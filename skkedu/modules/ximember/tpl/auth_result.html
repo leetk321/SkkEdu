@@ -1,0 +1,32 @@
+<!--@if($is_signup_limit)-->
+	<script language="javascript" type="text/javascript" >
+	function fncOpenerSubmit() {
+		alert('죄송합니다. 가입 및 접근이 거부된 연령 또는 성별입니다.');
+		opener.document.location.href = opener.current_url.setQuery('act','');
+		self.close();
+	}	
+	//문서가 로드된다음 실행
+	jQuery(document).ready(function($){
+		fncOpenerSubmit();
+	});
+	</script>
+<!--@else-->
+	<script language="javascript" type="text/javascript" >
+	function fncOpenerSubmit() {
+		if(opener.document.getElementById('nextact')){
+			opener.document.nextact.submit();
+		}else{
+			opener.document.location.href = opener.current_url.setQuery('act','');
+		}
+		self.close(); 
+	}	
+	//문서가 로드된다음 실행
+	jQuery(document).ready(function($){
+		fncOpenerSubmit();
+	});
+	</script>
+
+	<div style="text-align:center; padding:30px; background:#EEE; border:1px solid #ccc;">
+		요청하신 페이지로 이동합니다.
+	</div>
+<!--@end-->

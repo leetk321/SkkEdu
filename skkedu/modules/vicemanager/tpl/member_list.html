@@ -1,0 +1,85 @@
+<load target="../../admin/tpl/css/admin.min.css" />
+{@Context::set('layout','none');}
+<div cond="$XE_VALIDATOR_MESSAGE" class="message {$XE_VALIDATOR_MESSAGE_TYPE}">
+	<p>{$XE_VALIDATOR_MESSAGE}</p>
+</div>
+<div class="x">	
+	<h1 class="h1" style="margin-bottom:20px">{$lang->member} {$lang->cmd_management}</h1>
+	<div class="table">
+        
+		<table>
+			<tr>
+				<th>{$lang->member} {$lang->no}</th>						
+				<th cond="$identifier == 'user_id'">{$lang->user_id}</th>			
+				<th cond="$identifier == 'email_address'">{$lang->user_id}</th>
+				<th>{$lang->nick_name}</th>
+				<th>{$lang->regdate}</th>
+				<th>{$lang->last_login}</th>
+				<th>{$lang->member_group}</th>
+				<th>{$lang->denied}</th>
+				<th>{$lang->limit_date}</th>
+				<th>{$lang->cmd_modify}</th>
+			</tr>
+			{@ 
+				$oMemberModel = &getModel('member');
+				$oVMModel = &getModel('vicemanager');
+			}
+			<tr loop="$member_list => $no,$member_info">
+				{@ 
+					$member_groups = $oMemberModel->getMemberGroups($member_info->member_srl);
+					$group_list = $oMemberModel->getGroups();
+				}
+				<td>{$member_info->member_srl}</td>					
+				<td cond="$identifier == 'user_id'">{$member_info->user_id}</td>			
+				<td cond="$identifier == 'email_address'">{$member_info->user_id}</td>	
+				<td><a href="#popup_menu_area" class="member_{$member_info->member_srl}">{$member_info->nick_name}</a></td>
+				<td>{zdate($member_info->regdate, 'Y-m-d')}</td>
+				<td>{zdate($member_info->last_login, 'Y-m-d')}</td>
+				<td>
+					<block loop="$member_groups=>$no,$group">{$group}&nbsp;</block>
+				</td>
+				<td>{$member_info->denied}</td>
+				<td>{zdate($member_info->limit_date, 'Y-m-d')}</td>
+				<td><a href="{getUrl('', 'act', 'dispVicemanagerMemberModify', 'mid', $mid, 'member_srl', $member_info->member_srl, 'page', $page, 'search_keyword', $search_keyword, 'search_target', $search_target)}" cond="(!$oVMModel->isVicemanager($member_info->member_srl)&&$member_info->is_admin!='Y') || $logged_info->is_admin=='Y'">{$lang->cmd_modify}</a></td>
+			</tr>
+		</table>
+	</div>
+
+	<!--// paging starts -->
+	<div class="pagination">
+		<a href="{getUrl('page', '')}" class="direction">&laquo; {$lang->first_page}</a>
+		<block cond="$page_navigation->first_page + $page_navigation->page_count > $page_navigation->last_page && $page_navigation->page_count != $page_navigation->total_page">
+			<a href="{getUrl('page', '')}">1</a>
+			<a href="#goTo" class="tgAnchor" title="{$lang->cmd_go_to_page}">...</a>
+		</block>
+
+		<!--@while($page_no = $page_navigation->getNextPage())-->
+			{@$last_page = $page_no}
+			<strong cond="$page_no == $page">{$page_no}</strong>
+			<a cond="$page_no != $page" href="{getUrl('page', $page_no)}">{$page_no}</a>
+		<!--@end-->
+
+		<block cond="$last_page != $page_navigation->last_page">
+			<a href="#goTo" class="tgAnchor" title="{$lang->cmd_go_to_page}">...</a>
+			<a href="{getUrl('page', $page_navigation->last_page)}">{$page_navigation->last_page}</a>
+		</block>
+
+		<a href="{getUrl('page', $page_navigation->last_page)}" class="direction">{$lang->last_page} &raquo;</a>
+	</div>
+	<!--// paging ends -->	
+
+	<!--search -->
+	<form action="" method="post">
+		<input type="hidden" name="module" value="{$module}" />
+		<input type="hidden" name="page" value="1" />
+		<select name="search_target">
+			<option value="">{$lang->search_target}</option>	
+			{@$lang->search_target_list = array_merge($lang->search_target_list, $usedIdentifiers)}
+			<option value="{$key}" loop="$lang->search_target_list=>$key,$val" selected="selected"|cond="$search_target==$key">{$val}</option>
+		</select>
+		<input type="text" name="search_keyword" value="{htmlspecialchars($search_keyword)}" />
+		<input type="submit" value="{$lang->cmd_search}" />
+		<a href="{getUrl('search_target', '', 'search_keyword', '')}">{$lang->cmd_cancel}</a>
+	</form>
+	<!--/search -->
+</div>

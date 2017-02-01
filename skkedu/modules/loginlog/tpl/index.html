@@ -1,0 +1,143 @@
+<include target="header.html" />
+
+<div cond="$XE_VALIDATOR_MESSAGE" class="message {$XE_VALIDATOR_MESSAGE_TYPE}">
+	<p>{$XE_VALIDATOR_MESSAGE}</p>
+</div>
+
+<load target="./filter/saveListSetting.xml" />
+<form action="" method="post" onsubmit="return procFilter(this, saveListSetting);">
+	<fieldset>
+		<legend>표시 항목</legend>
+		<label class="x_inline">
+			<input type="checkbox" name="listSetting[]" checked="checked"|cond="in_array('member.user_name', $loginlog_config->listSetting)" value="member.user_name" /> 이름
+		</label>
+		<label class="x_inline"><input type="checkbox" name="listSetting[]" checked="checked"|cond="in_array('member.nick_name', $loginlog_config->listSetting)" value="member.nick_name" /> 닉네임</label>
+		<label class="x_inline"><input type="checkbox" name="listSetting[]" checked="checked"|cond="in_array('member.user_id', $loginlog_config->listSetting)" value="member.user_id" /> 아이디</label>
+		<label class="x_inline"><input type="checkbox" name="listSetting[]" checked="checked"|cond="in_array('member.email_address', $loginlog_config->listSetting)" value="member.email_address" /> 이메일 주소</label>
+		<label class="x_inline"><input type="checkbox" name="listSetting[]" checked="checked"|cond="in_array('loginlog.ipaddress', $loginlog_config->listSetting)" value="loginlog.ipaddress" /> IP 주소</label>
+		<label for="" class="x_inline"><input type="checkbox" name="listSetting[]" checked="checked"|cond="in_array('loginlog.regdate', $loginlog_config->listSetting)" value="loginlog.regdate" /> 날짜</label>
+		<input type="submit" value="저장" class="x_btn x_btn-mini">
+	</fieldset>
+</form>
+<div class="search">
+	<form class="x_pull-right x_input-append" action="{Context::getRequestUri()}" method="get">
+		<input type="hidden" name="module" value="admin">
+		<input type="hidden" name="act" value="dispLoginlogAdminList">
+		<select name="search_target" style="margin-right:4px">
+			<option value="user_id" selected="selected"|cond="$search_target == 'user_id'">{$lang->user_id}</option>
+			<option value="user_name" selected="selected"|cond="$search_target == 'user_name'">{$lang->user_name}</option>
+			<option value="nick_name" selected="selected"|cond="$search_target == 'nick_name'">{$lang->nick_name}</option>
+			<option value="ipaddress" selected="selected"|cond="$search_target == 'ipaddress'">{$lang->ipaddress}</option>
+			<option value="member_srl" selected="selected"|cond="$search_target == 'member_srl'">{$lang->member_no}</option>
+			<option value="regdate" selected="selected"|cond="$search_target == 'regdate'">{$lang->date}</option>
+		</select>
+		<input type="text" name="search_keyword" value="{$search_keyword}">
+		<input type="submit" value="{$lang->cmd_search}" class="x_btn x_btn-inverse">
+		<a href="{getUrl('search_target', '', 'search_keyword', '')}" class="x_btn">{$lang->cmd_cancle}</a>
+	</form>
+</div>
+
+{@
+	$listSettingUserName = in_array('member.user_name', $loginlog_config->listSetting);
+	$listSettingNickName = in_array('member.nick_name', $loginlog_config->listSetting);
+	$listSettingUserId = in_array('member.user_id', $loginlog_config->listSetting);
+	$listSettingEmail = in_array('member.email_address', $loginlog_config->listSetting);
+	$listSettingIP = in_array('loginlog.ipaddress', $loginlog_config->listSetting);
+	$listSettingDate = in_array('loginlog.regdate', $loginlog_config->listSetting);
+}
+<!-- 목록 -->
+<form ruleset="deleteLogs" action="./" method="post" class="form">
+	<input type="hidden" name="module" value="loginlog">
+	<input type="hidden" name="act" value="procLoginlogAdminDeleteChecked">
+	<table width="100%" border="0" cellspacing="0" id="loginlogList" class="x_table x_table-striped x_table-hover">
+		<caption>
+			<a href="{getUrl('', 'module', 'admin', 'act', 'dispLoginlogAdminList')}" class="active"|cond="!$isSucceed">{$lang->total}<span cond="!$isSucceed">({number_format($total_count)})</span></a> 
+			<i class="vr">|</i> 
+			<a href="{getUrl('isSucceed', 'Y')}" class="active"|cond="$isSucceed == 'Y'">{$lang->is_succeed}<span cond="$isSucceed == 'Y'">({number_format($total_count)})</span></a> 
+			<i class="vr">|</i> 
+			<a href="{getUrl('isSucceed', 'N')}" class="active"|cond="$isSucceed == 'N'">{$lang->is_failed}<span cond="$isSucceed == 'N'">({number_format($total_count)})</span></a>
+			<div class="x_pull-right">
+				<input type="submit" value="{$lang->cmd_delete_checked}" class="x_btn">
+			</div>
+		</caption>
+		<thead>
+		<tr>
+			<th class="center" scope="col">{$lang->no}</th>
+			<th class="center" scope="col">{$lang->category}</th>
+			<th scope="col" cond="$listSettingUserName">{$lang->user_name}</th>
+			<th scope="col" cond="$listSettingNickName || $listSettingUserId">
+				<block cond="$listSettingNickName && $listSettingUserId">
+				{$lang->nick_name} ({$lang->user_id})
+				</block>
+				<block cond="$listSettingNickName && !$listSettingUserId">
+				{$lang->nick_name}
+				</block>
+				<block cond="!$listSettingNickName && $listSettingUserId">
+				{$lang->user_id}
+				</block>
+			</th>
+			<th scope="col" cond="$listSettingEmail">{$lang->email_address}</th>
+			<th scope="col" cond="$listSettingIP">{$lang->ipaddress}</th>
+			<th scope="col" cond="$listSettingDate">{$lang->date}</th>
+			<th scope="col">
+				<input type="checkbox" data-name="cart[]" title="Check All">
+			</th>
+	</tr>
+</thead>
+<tbody>
+	<!--@if(count($log_list))-->
+	<!--@foreach($log_list as $no => $log)-->
+	<tr>
+		<td class="number center">{$no}</td>
+		<td class="center">
+			<strong class="succeed" cond="$log->is_succeed == 'Y'">[{$lang->is_succeed}]</strong>
+			<strong class="failed" cond="$log->is_succeed == 'N'">[{$lang->is_failed}]</strong>
+		</td>
+		<td cond="$listSettingUserName">
+			<a href="{getUrl('search_target', 'member_srl', 'search_keyword', $log->member_srl)}">{$log->user_name}</a>
+		</td>
+		<td cond="$listSettingNickName || $listSettingUserId">
+			<block cond="$listSettingNickName && $listSettingUserId">
+				<a href="{getUrl('search_target', 'member_srl', 'search_keyword', $log->member_srl)}"><span class="member_{$log->member_srl}">{$log->nick_name}</span> </a>
+				<a href="{getUrl('search_target', 'member_srl', 'search_keyword', $log->member_srl)}">({$log->user_id})</a>
+			</block>
+			<block cond="$listSettingNickName && !$listSettingUserId">
+				<span class="member_{$log->member_srl}">{$log->nick_name}</span> 
+			</block>
+			<block cond="!$listSettingNickName && $listSettingUserId">
+				<a href="{getUrl('search_target', 'member_srl', 'search_keyword', $log->member_srl)}">{$log->user_id}</a>
+			</block>
+		</td>
+		<td cond="$listSettingEmail">
+			<a href="{getUrl('search_target', 'member_srl', 'search_keyword', $log->member_srl)}">{$log->email_address}</a>
+		</td>
+		<td cond="$listSettingIP"><a href="{getUrl('search_target', 'ipaddress', 'search_keyword', $log->ipaddress)}">{$log->ipaddress}</a></td>
+		<td class="date" cond="$listSettingDate">{zdate($log->regdate, 'Y-m-d H:i:s')}</td>
+		<td>
+			<input type="checkbox" name="cart[]" value="{$log->log_srl}" cond="$log->log_srl">
+			<block cond="!$log->log_srl">
+				-
+			</block>
+		</td>
+	</tr>
+	<!--@end-->
+	<!--@end-->
+</tbody>
+</table>
+<div class="x_pull-right">
+	<input type="submit" value="{$lang->cmd_delete_checked}" class="x_btn">
+</div>
+
+<div class="search">
+	<div class="pagination a1">
+		<a href="{getUrl('page','','module_srl',$module_srl)}" class="prevEnd direction">« FIRST</a> 
+		<!--@while($page_no = $page_navigation->getNextPage())-->
+			<!--@if($page == $page_no)-->
+				<strong>{$page_no}</strong> 
+			<!--@else-->
+				<a href="{getUrl('page',$page_no,'module_srl',$module_srl)}">{$page_no}</a> 
+			<!--@end-->
+		<!--@end-->
+		<a href="{getUrl('page',$page_navigation->last_page,'module_srl',$module_srl)}" class="nextEnd direction">LAST »</a>
+	</div>
+</div>

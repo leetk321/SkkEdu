@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout version="0.2">
+    <title xml:lang="ko">Sketchbook5 Mobile</title>
+    <description xml:lang="ko">
+        Sketchbook5 모바일 레이아웃입니다. 2단 메뉴까지 지원합니다.
+    </description>
+    <version>1.2.2.3</version>
+    <date>2010-11-16</date>
+    <link>http://code.google.com/p/xe-hika/</link>
+    <author email_address="hikaru100@nate.com" link="http://code.google.com/p/xe-hika/">
+        <name xml:lang="ko">hikaru100</name>
+    </author>
+    <extra_vars>
+		<group>
+			<title xml:lang="ko">상단 헤더 설정</title>
+			<var name="logo_text" type="text">
+				<title xml:lang="ko">로고 텍스트(*)</title>
+				<description xml:lang="ko">레이아웃 상단의 로고 텍스트입니다. 로고 이미지를 사용하는 경우 표시되지 않지만 로고 이미지의 대체 텍스트(alt) 역할을 하니 이 경우 반드시 적어주세요.</description>
+			</var>
+			<var name="logo_image" type="image">
+				<title xml:lang="ko">로고 이미지</title>
+				<description xml:lang="ko">상단 로고를 이미지로 사용합니다. 이 경우에는 텍스트가 표시되지 않지만 로고 텍스트는 대체 텍스트(alt) 역할을 합니다. 세로 20px 정도가 적당합니다.</description>
+			</var>
+		</group>
+		<group>
+			<title xml:lang="ko">푸터 설정</title>
+			<var name="address" type="textarea">
+				<title xml:lang="ko">하단 메뉴 밑 영역 내용 입력</title>
+				<description xml:lang="ko">하단 메뉴 밑에 저작권 등의 정보를 직접 입력할 수 있습니다. HTML입력도 가능합니다.</description>
+			</var>
+		</group>
+    </extra_vars>
+    <menus>
+        <menu name="main_menu" maxdepth="3" default="true">
+            <title xml:lang="ko">메인 메뉴</title>
+        </menu>
+        <menu name="bottom_menu" maxdepth="1" default="true">
+            <title xml:lang="ko">하단 메뉴</title>
+        </menu>
+    </menus>
+</layout>

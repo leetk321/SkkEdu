@@ -1,0 +1,119 @@
+[22-Jun-2015 23:48:00 Asia/Seoul] PHP Parse error:  syntax error, unexpected 'include' (T_INCLUDE) in /home2/leetk321/public_html/gradech/include.php on line 13
+[22-Jun-2015 23:48:15 Asia/Seoul] PHP Parse error:  syntax error, unexpected 'include' (T_INCLUDE) in /home2/leetk321/public_html/gradech/include.php on line 13
+[22-Jun-2015 23:48:30 Asia/Seoul] PHP Parse error:  syntax error, unexpected 'include' (T_INCLUDE) in /home2/leetk321/public_html/gradech/include.php on line 13
+[22-Jun-2015 23:48:58 Asia/Seoul] PHP Parse error:  syntax error, unexpected 'include' (T_INCLUDE) in /home2/leetk321/public_html/gradech/include.php on line 13
+[22-Jun-2015 23:49:06 Asia/Seoul] PHP Parse error:  syntax error, unexpected 'include' (T_INCLUDE) in /home2/leetk321/public_html/gradech/include.php on line 13
+[22-Jun-2015 23:49:06 Asia/Seoul] PHP Parse error:  syntax error, unexpected 'include' (T_INCLUDE) in /home2/leetk321/public_html/gradech/include.php on line 13
+[22-Jun-2015 23:49:32 Asia/Seoul] PHP Parse error:  syntax error, unexpected 'include' (T_INCLUDE) in /home2/leetk321/public_html/gradech/include.php on line 13
+[22-Jun-2015 23:49:40 Asia/Seoul] PHP Parse error:  syntax error, unexpected 'include' (T_INCLUDE) in /home2/leetk321/public_html/gradech/include.php on line 13
+[22-Jun-2015 23:49:40 Asia/Seoul] PHP Parse error:  syntax error, unexpected 'include' (T_INCLUDE) in /home2/leetk321/public_html/gradech/include.php on line 13
+[22-Jun-2015 23:50:01 Asia/Seoul] PHP Warning:  include(./php/changeBord.php): failed to open stream: No such file or directory in /home2/leetk321/public_html/gradech/include.php on line 13
+[22-Jun-2015 23:50:01 Asia/Seoul] PHP Warning:  include(./php/changeBord.php): failed to open stream: No such file or directory in /home2/leetk321/public_html/gradech/include.php on line 13
+[22-Jun-2015 23:50:01 Asia/Seoul] PHP Warning:  include(): Failed opening './php/changeBord.php' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home2/leetk321/public_html/gradech/include.php on line 13
+[22-Jun-2015 23:50:01 Asia/Seoul] PHP Warning:  include(./php/changeMember.php): failed to open stream: No such file or directory in /home2/leetk321/public_html/gradech/include.php on line 14
+[22-Jun-2015 23:50:01 Asia/Seoul] PHP Warning:  include(./php/changeMember.php): failed to open stream: No such file or directory in /home2/leetk321/public_html/gradech/include.php on line 14
+[22-Jun-2015 23:50:01 Asia/Seoul] PHP Warning:  include(): Failed opening './php/changeMember.php' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home2/leetk321/public_html/gradech/include.php on line 14
+[22-Jun-2015 23:50:31 Asia/Seoul] PHP Warning:  include(./php/changeBord.php): failed to open stream: No such file or directory in /home2/leetk321/public_html/gradech/include.php on line 13
+[22-Jun-2015 23:50:31 Asia/Seoul] PHP Warning:  include(./php/changeBord.php): failed to open stream: No such file or directory in /home2/leetk321/public_html/gradech/include.php on line 13
+[22-Jun-2015 23:50:31 Asia/Seoul] PHP Warning:  include(): Failed opening './php/changeBord.php' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home2/leetk321/public_html/gradech/include.php on line 13
+[22-Jun-2015 23:51:23 Asia/Seoul] PHP Warning:  include(./connect.php): failed to open stream: No such file or directory in /home2/leetk321/public_html/gradech/php/changeGrade.php on line 29
+[22-Jun-2015 23:51:23 Asia/Seoul] PHP Warning:  include(./connect.php): failed to open stream: No such file or directory in /home2/leetk321/public_html/gradech/php/changeGrade.php on line 29
+[22-Jun-2015 23:51:23 Asia/Seoul] PHP Warning:  include(): Failed opening './connect.php' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home2/leetk321/public_html/gradech/php/changeGrade.php on line 29
+[22-Jun-2015 23:51:23 Asia/Seoul] PHP Warning:  mysqli::mysqli(): (HY000/2005): Unknown MySQL server host 'DB_HOST' (2) in /home2/leetk321/public_html/gradech/php/changeGrade.php on line 31
+[22-Jun-2015 23:51:23 Asia/Seoul] PHP Warning:  mysqli::query(): Couldn't fetch mysqli in /home2/leetk321/public_html/gradech/php/changeGrade.php on line 37
+[22-Jun-2015 23:52:13 Asia/Seoul] PHP Warning:  include(./connect.php): failed to open stream: No such file or directory in /home2/leetk321/public_html/gradech/php/changeGrade.php on line 29
+[22-Jun-2015 23:52:13 Asia/Seoul] PHP Warning:  include(./connect.php): failed to open stream: No such file or directory in /home2/leetk321/public_html/gradech/php/changeGrade.php on line 29
+[22-Jun-2015 23:52:13 Asia/Seoul] PHP Warning:  include(): Failed opening './connect.php' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home2/leetk321/public_html/gradech/php/changeGrade.php on line 29
+[22-Jun-2015 23:52:13 Asia/Seoul] PHP Warning:  include(./connect.php): failed to open stream: No such file or directory in /home2/leetk321/public_html/gradech/php/changeGrade.php on line 29
+[22-Jun-2015 23:52:13 Asia/Seoul] PHP Warning:  include(./connect.php): failed to open stream: No such file or directory in /home2/leetk321/public_html/gradech/php/changeGrade.php on line 29
+[22-Jun-2015 23:52:13 Asia/Seoul] PHP Warning:  include(): Failed opening './connect.php' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home2/leetk321/public_html/gradech/php/changeGrade.php on line 29
+[22-Jun-2015 23:52:18 Asia/Seoul] PHP Warning:  include(./connect.php): failed to open stream: No such file or directory in /home2/leetk321/public_html/gradech/php/changeGrade.php on line 29
+[22-Jun-2015 23:52:18 Asia/Seoul] PHP Warning:  include(./connect.php): failed to open stream: No such file or directory in /home2/leetk321/public_html/gradech/php/changeGrade.php on line 29
+[22-Jun-2015 23:52:18 Asia/Seoul] PHP Warning:  include(): Failed opening './connect.php' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home2/leetk321/public_html/gradech/php/changeGrade.php on line 29
+[22-Jun-2015 23:52:18 Asia/Seoul] PHP Warning:  include(./connect.php): failed to open stream: No such file or directory in /home2/leetk321/public_html/gradech/php/changeGrade.php on line 29
+[22-Jun-2015 23:52:18 Asia/Seoul] PHP Warning:  include(./connect.php): failed to open stream: No such file or directory in /home2/leetk321/public_html/gradech/php/changeGrade.php on line 29
+[22-Jun-2015 23:52:18 Asia/Seoul] PHP Warning:  include(): Failed opening './connect.php' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home2/leetk321/public_html/gradech/php/changeGrade.php on line 29
+[22-Jun-2015 23:52:32 Asia/Seoul] PHP Warning:  include(./connect.php): failed to open stream: No such file or directory in /home2/leetk321/public_html/gradech/php/changeGrade.php on line 29
+[22-Jun-2015 23:52:32 Asia/Seoul] PHP Warning:  include(./connect.php): failed to open stream: No such file or directory in /home2/leetk321/public_html/gradech/php/changeGrade.php on line 29
+[22-Jun-2015 23:52:32 Asia/Seoul] PHP Warning:  include(): Failed opening './connect.php' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home2/leetk321/public_html/gradech/php/changeGrade.php on line 29
+[22-Jun-2015 23:52:32 Asia/Seoul] PHP Warning:  include(./connect.php): failed to open stream: No such file or directory in /home2/leetk321/public_html/gradech/php/changeGrade.php on line 29
+[22-Jun-2015 23:52:32 Asia/Seoul] PHP Warning:  include(./connect.php): failed to open stream: No such file or directory in /home2/leetk321/public_html/gradech/php/changeGrade.php on line 29
+[22-Jun-2015 23:52:32 Asia/Seoul] PHP Warning:  include(): Failed opening './connect.php' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home2/leetk321/public_html/gradech/php/changeGrade.php on line 29
+[22-Jun-2015 23:52:33 Asia/Seoul] PHP Warning:  include(./connect.php): failed to open stream: No such file or directory in /home2/leetk321/public_html/gradech/php/changeGrade.php on line 29
+[22-Jun-2015 23:52:33 Asia/Seoul] PHP Warning:  include(./connect.php): failed to open stream: No such file or directory in /home2/leetk321/public_html/gradech/php/changeGrade.php on line 29
+[22-Jun-2015 23:52:33 Asia/Seoul] PHP Warning:  include(): Failed opening './connect.php' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home2/leetk321/public_html/gradech/php/changeGrade.php on line 29
+[22-Jun-2015 23:52:33 Asia/Seoul] PHP Warning:  include(./connect.php): failed to open stream: No such file or directory in /home2/leetk321/public_html/gradech/php/changeGrade.php on line 29
+[22-Jun-2015 23:52:33 Asia/Seoul] PHP Warning:  include(./connect.php): failed to open stream: No such file or directory in /home2/leetk321/public_html/gradech/php/changeGrade.php on line 29
+[22-Jun-2015 23:52:33 Asia/Seoul] PHP Warning:  include(): Failed opening './connect.php' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home2/leetk321/public_html/gradech/php/changeGrade.php on line 29
+[22-Jun-2015 23:52:54 Asia/Seoul] PHP Warning:  include(./connect.php): failed to open stream: No such file or directory in /home2/leetk321/public_html/gradech/php/changeGrade.php on line 29
+[22-Jun-2015 23:52:54 Asia/Seoul] PHP Warning:  include(./connect.php): failed to open stream: No such file or directory in /home2/leetk321/public_html/gradech/php/changeGrade.php on line 29
+[22-Jun-2015 23:52:54 Asia/Seoul] PHP Warning:  include(): Failed opening './connect.php' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home2/leetk321/public_html/gradech/php/changeGrade.php on line 29
+[22-Jun-2015 23:52:54 Asia/Seoul] PHP Warning:  include(./connect.php): failed to open stream: No such file or directory in /home2/leetk321/public_html/gradech/php/changeGrade.php on line 29
+[22-Jun-2015 23:52:54 Asia/Seoul] PHP Warning:  include(./connect.php): failed to open stream: No such file or directory in /home2/leetk321/public_html/gradech/php/changeGrade.php on line 29
+[22-Jun-2015 23:52:54 Asia/Seoul] PHP Warning:  include(): Failed opening './connect.php' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home2/leetk321/public_html/gradech/php/changeGrade.php on line 29
+[22-Jun-2015 23:52:55 Asia/Seoul] PHP Warning:  include(./connect.php): failed to open stream: No such file or directory in /home2/leetk321/public_html/gradech/php/changeGrade.php on line 29
+[22-Jun-2015 23:52:55 Asia/Seoul] PHP Warning:  include(./connect.php): failed to open stream: No such file or directory in /home2/leetk321/public_html/gradech/php/changeGrade.php on line 29
+[22-Jun-2015 23:52:55 Asia/Seoul] PHP Warning:  include(): Failed opening './connect.php' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home2/leetk321/public_html/gradech/php/changeGrade.php on line 29
+[22-Jun-2015 23:52:55 Asia/Seoul] PHP Warning:  include(./connect.php): failed to open stream: No such file or directory in /home2/leetk321/public_html/gradech/php/changeGrade.php on line 29
+[22-Jun-2015 23:52:55 Asia/Seoul] PHP Warning:  include(./connect.php): failed to open stream: No such file or directory in /home2/leetk321/public_html/gradech/php/changeGrade.php on line 29
+[22-Jun-2015 23:52:55 Asia/Seoul] PHP Warning:  include(): Failed opening './connect.php' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home2/leetk321/public_html/gradech/php/changeGrade.php on line 29
+[22-Jun-2015 23:53:27 Asia/Seoul] PHP Warning:  include(./connect.php): failed to open stream: No such file or directory in /home2/leetk321/public_html/gradech/php/changeGrade.php on line 29
+[22-Jun-2015 23:53:27 Asia/Seoul] PHP Warning:  include(./connect.php): failed to open stream: No such file or directory in /home2/leetk321/public_html/gradech/php/changeGrade.php on line 29
+[22-Jun-2015 23:53:27 Asia/Seoul] PHP Warning:  include(): Failed opening './connect.php' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home2/leetk321/public_html/gradech/php/changeGrade.php on line 29
+[22-Jun-2015 23:53:27 Asia/Seoul] PHP Warning:  include(./connect.php): failed to open stream: No such file or directory in /home2/leetk321/public_html/gradech/php/changeGrade.php on line 29
+[22-Jun-2015 23:53:27 Asia/Seoul] PHP Warning:  include(./connect.php): failed to open stream: No such file or directory in /home2/leetk321/public_html/gradech/php/changeGrade.php on line 29
+[22-Jun-2015 23:53:27 Asia/Seoul] PHP Warning:  include(): Failed opening './connect.php' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home2/leetk321/public_html/gradech/php/changeGrade.php on line 29
+[22-Jun-2015 23:53:27 Asia/Seoul] PHP Warning:  include(./connect.php): failed to open stream: No such file or directory in /home2/leetk321/public_html/gradech/php/changeGrade.php on line 29
+[22-Jun-2015 23:53:27 Asia/Seoul] PHP Warning:  include(./connect.php): failed to open stream: No such file or directory in /home2/leetk321/public_html/gradech/php/changeGrade.php on line 29
+[22-Jun-2015 23:53:27 Asia/Seoul] PHP Warning:  include(): Failed opening './connect.php' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home2/leetk321/public_html/gradech/php/changeGrade.php on line 29
+[22-Jun-2015 23:53:27 Asia/Seoul] PHP Warning:  include(./connect.php): failed to open stream: No such file or directory in /home2/leetk321/public_html/gradech/php/changeGrade.php on line 29
+[22-Jun-2015 23:53:27 Asia/Seoul] PHP Warning:  include(./connect.php): failed to open stream: No such file or directory in /home2/leetk321/public_html/gradech/php/changeGrade.php on line 29
+[22-Jun-2015 23:53:27 Asia/Seoul] PHP Warning:  include(): Failed opening './connect.php' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home2/leetk321/public_html/gradech/php/changeGrade.php on line 29
+[22-Jun-2015 23:53:28 Asia/Seoul] PHP Warning:  include(./connect.php): failed to open stream: No such file or directory in /home2/leetk321/public_html/gradech/php/changeGrade.php on line 29
+[22-Jun-2015 23:53:28 Asia/Seoul] PHP Warning:  include(./connect.php): failed to open stream: No such file or directory in /home2/leetk321/public_html/gradech/php/changeGrade.php on line 29
+[22-Jun-2015 23:53:28 Asia/Seoul] PHP Warning:  include(): Failed opening './connect.php' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home2/leetk321/public_html/gradech/php/changeGrade.php on line 29
+[22-Jun-2015 23:53:28 Asia/Seoul] PHP Warning:  include(./connect.php): failed to open stream: No such file or directory in /home2/leetk321/public_html/gradech/php/changeGrade.php on line 29
+[22-Jun-2015 23:53:28 Asia/Seoul] PHP Warning:  include(./connect.php): failed to open stream: No such file or directory in /home2/leetk321/public_html/gradech/php/changeGrade.php on line 29
+[22-Jun-2015 23:53:28 Asia/Seoul] PHP Warning:  include(): Failed opening './connect.php' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home2/leetk321/public_html/gradech/php/changeGrade.php on line 29
+[22-Jun-2015 23:53:39 Asia/Seoul] PHP Warning:  include(./connect.php): failed to open stream: No such file or directory in /home2/leetk321/public_html/gradech/php/changeGrade.php on line 29
+[22-Jun-2015 23:53:39 Asia/Seoul] PHP Warning:  include(./connect.php): failed to open stream: No such file or directory in /home2/leetk321/public_html/gradech/php/changeGrade.php on line 29
+[22-Jun-2015 23:53:39 Asia/Seoul] PHP Warning:  include(): Failed opening './connect.php' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home2/leetk321/public_html/gradech/php/changeGrade.php on line 29
+[22-Jun-2015 23:53:39 Asia/Seoul] PHP Warning:  include(./connect.php): failed to open stream: No such file or directory in /home2/leetk321/public_html/gradech/php/changeGrade.php on line 29
+[22-Jun-2015 23:53:39 Asia/Seoul] PHP Warning:  include(./connect.php): failed to open stream: No such file or directory in /home2/leetk321/public_html/gradech/php/changeGrade.php on line 29
+[22-Jun-2015 23:53:39 Asia/Seoul] PHP Warning:  include(): Failed opening './connect.php' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home2/leetk321/public_html/gradech/php/changeGrade.php on line 29
+[22-Jun-2015 23:53:50 Asia/Seoul] PHP Warning:  include(./connect.php): failed to open stream: No such file or directory in /home2/leetk321/public_html/gradech/php/changeGrade.php on line 29
+[22-Jun-2015 23:53:50 Asia/Seoul] PHP Warning:  include(./connect.php): failed to open stream: No such file or directory in /home2/leetk321/public_html/gradech/php/changeGrade.php on line 29
+[22-Jun-2015 23:53:50 Asia/Seoul] PHP Warning:  include(): Failed opening './connect.php' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home2/leetk321/public_html/gradech/php/changeGrade.php on line 29
+[22-Jun-2015 23:53:50 Asia/Seoul] PHP Warning:  include(./connect.php): failed to open stream: No such file or directory in /home2/leetk321/public_html/gradech/php/changeGrade.php on line 29
+[22-Jun-2015 23:53:50 Asia/Seoul] PHP Warning:  include(./connect.php): failed to open stream: No such file or directory in /home2/leetk321/public_html/gradech/php/changeGrade.php on line 29
+[22-Jun-2015 23:53:50 Asia/Seoul] PHP Warning:  include(): Failed opening './connect.php' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home2/leetk321/public_html/gradech/php/changeGrade.php on line 29
+[22-Jun-2015 23:53:52 Asia/Seoul] PHP Warning:  include(./connect.php): failed to open stream: No such file or directory in /home2/leetk321/public_html/gradech/php/changeGrade.php on line 29
+[22-Jun-2015 23:53:52 Asia/Seoul] PHP Warning:  include(./connect.php): failed to open stream: No such file or directory in /home2/leetk321/public_html/gradech/php/changeGrade.php on line 29
+[22-Jun-2015 23:53:52 Asia/Seoul] PHP Warning:  include(): Failed opening './connect.php' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home2/leetk321/public_html/gradech/php/changeGrade.php on line 29
+[22-Jun-2015 23:53:52 Asia/Seoul] PHP Warning:  include(./connect.php): failed to open stream: No such file or directory in /home2/leetk321/public_html/gradech/php/changeGrade.php on line 29
+[22-Jun-2015 23:53:52 Asia/Seoul] PHP Warning:  include(./connect.php): failed to open stream: No such file or directory in /home2/leetk321/public_html/gradech/php/changeGrade.php on line 29
+[22-Jun-2015 23:53:52 Asia/Seoul] PHP Warning:  include(): Failed opening './connect.php' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home2/leetk321/public_html/gradech/php/changeGrade.php on line 29
+[22-Jun-2015 23:53:54 Asia/Seoul] PHP Warning:  include(./connect.php): failed to open stream: No such file or directory in /home2/leetk321/public_html/gradech/php/changeGrade.php on line 29
+[22-Jun-2015 23:53:54 Asia/Seoul] PHP Warning:  include(./connect.php): failed to open stream: No such file or directory in /home2/leetk321/public_html/gradech/php/changeGrade.php on line 29
+[22-Jun-2015 23:53:54 Asia/Seoul] PHP Warning:  include(): Failed opening './connect.php' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home2/leetk321/public_html/gradech/php/changeGrade.php on line 29
+[22-Jun-2015 23:53:54 Asia/Seoul] PHP Warning:  include(./connect.php): failed to open stream: No such file or directory in /home2/leetk321/public_html/gradech/php/changeGrade.php on line 29
+[22-Jun-2015 23:53:54 Asia/Seoul] PHP Warning:  include(./connect.php): failed to open stream: No such file or directory in /home2/leetk321/public_html/gradech/php/changeGrade.php on line 29
+[22-Jun-2015 23:53:54 Asia/Seoul] PHP Warning:  include(): Failed opening './connect.php' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home2/leetk321/public_html/gradech/php/changeGrade.php on line 29
+[22-Jun-2015 23:53:56 Asia/Seoul] PHP Warning:  include(./connect.php): failed to open stream: No such file or directory in /home2/leetk321/public_html/gradech/php/changeGrade.php on line 29
+[22-Jun-2015 23:53:56 Asia/Seoul] PHP Warning:  include(./connect.php): failed to open stream: No such file or directory in /home2/leetk321/public_html/gradech/php/changeGrade.php on line 29
+[22-Jun-2015 23:53:56 Asia/Seoul] PHP Warning:  include(): Failed opening './connect.php' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home2/leetk321/public_html/gradech/php/changeGrade.php on line 29
+[22-Jun-2015 23:53:56 Asia/Seoul] PHP Warning:  include(./connect.php): failed to open stream: No such file or directory in /home2/leetk321/public_html/gradech/php/changeGrade.php on line 29
+[22-Jun-2015 23:53:56 Asia/Seoul] PHP Warning:  include(./connect.php): failed to open stream: No such file or directory in /home2/leetk321/public_html/gradech/php/changeGrade.php on line 29
+[22-Jun-2015 23:53:56 Asia/Seoul] PHP Warning:  include(): Failed opening './connect.php' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home2/leetk321/public_html/gradech/php/changeGrade.php on line 29
+[22-Jun-2015 23:53:58 Asia/Seoul] PHP Warning:  include(./connect.php): failed to open stream: No such file or directory in /home2/leetk321/public_html/gradech/php/changeGrade.php on line 29
+[22-Jun-2015 23:53:58 Asia/Seoul] PHP Warning:  include(./connect.php): failed to open stream: No such file or directory in /home2/leetk321/public_html/gradech/php/changeGrade.php on line 29
+[22-Jun-2015 23:53:58 Asia/Seoul] PHP Warning:  include(): Failed opening './connect.php' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home2/leetk321/public_html/gradech/php/changeGrade.php on line 29
+[22-Jun-2015 23:53:58 Asia/Seoul] PHP Warning:  include(./connect.php): failed to open stream: No such file or directory in /home2/leetk321/public_html/gradech/php/changeGrade.php on line 29
+[22-Jun-2015 23:53:58 Asia/Seoul] PHP Warning:  include(./connect.php): failed to open stream: No such file or directory in /home2/leetk321/public_html/gradech/php/changeGrade.php on line 29
+[22-Jun-2015 23:53:58 Asia/Seoul] PHP Warning:  include(): Failed opening './connect.php' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home2/leetk321/public_html/gradech/php/changeGrade.php on line 29
+[24-Jun-2015 13:43:14 Asia/Seoul] PHP Fatal error:  Call to undefined method Grade::deleteGrade() in /home2/leetk321/public_html/gradech/include.php on line 45
+[24-Jun-2015 13:44:13 Asia/Seoul] PHP Fatal error:  Call to undefined method Grade::deleteGrade() in /home2/leetk321/public_html/gradech/include.php on line 45
+[24-Jun-2015 13:44:15 Asia/Seoul] PHP Fatal error:  Call to undefined method Grade::deleteGrade() in /home2/leetk321/public_html/gradech/include.php on line 45
+[24-Jun-2015 13:44:42 Asia/Seoul] PHP Fatal error:  Call to undefined method Grade::deleteGrade() in /home2/leetk321/public_html/gradech/include.php on line 45
+[24-Jun-2015 14:17:42 Asia/Seoul] PHP Fatal error:  Call to undefined function password_hash() in /home2/leetk321/public_html/gradech/include.php on line 7
+[24-Jun-2015 14:17:57 Asia/Seoul] PHP Fatal error:  Call to undefined function php_info() in /home2/leetk321/public_html/gradech/include.php on line 7

@@ -1,0 +1,73 @@
+#rockgame_module_view{width:100%; overflow:auto;}
+#rockgame_module_view a{text-decoration:none; color:#000;}
+
+#rockgame_module_view .rockgame_top{min-width:700px; background:antiquewhite; padding:15px; border-radius:10px 10px 0 0;}
+
+#rockgame_module_view .rockgame_center{min-width:720px; position:relative; height:350px; background:#eee;}
+.rockgame_center .left_bar{display:inline-block;  width:480px; }
+.rps_box{display:inline-block; height:130px; width:130px; background:white; border-radius:10px; margin:10px;}
+.rps_img{margin-top:10px; margin-left:8px;}
+.fight{display:inline-block; margin:5px;}
+.game_result{position:absolute; left:50px; top:20px;}
+.game_select{position:absolute; bottom:10px; left:15px;}
+.com_select{display:inline-block;}
+.user_select{display:inline-block;}
+.com_name{text-align:center;}
+.com_name p{font-weight:bold; margin:0px; padding:0px; font-size:13px;}
+.user_name{text-align:center;}
+.user_name p{font-weight:bold; margin:0px; padding:0px; font-size:13px;}
+
+.rockgame_center .right_bar{display:inline-block;  width:200px; }
+.luck_rank{position:absolute; top:20px; margin-left:25px; min-width:150px; background:white; border-radius:5px;}
+.luck_rank p{text-align:center; font-weight:bold; margin:0px; padding:5px; background:gold; border-radius:5px 5px 0px 0px;}
+.bad_rank{position:absolute; top:185px; margin-left:25px; min-width:150px; background:white; border-radius:5px;}
+.bad_rank p{text-align:center; font-weight:bold; margin:0px; padding:5px; background:gold; border-radius:5px 5px 0px 0px}
+
+#rockgame_module_view .rockgame_bottom{min-width:700px; background:antiquewhite; padding:12px; border-radius:0 0 10px 10px;}
+.rockgame_bottom p{margin:3px; padding:0px; font-size:14px;}
+
+
+/*************************************** xecenter 프로그램 css공통 *************************************************/
+/*************************************** xecenter 프로그램 css공통 *************************************************/
+/*************************************** xecenter 프로그램 css공통 *************************************************/
+
+
+/** 테이블 **/
+.xecenter_table{width:100%;}
+.xecenter_table a, .xecenter_page_navi a{text-decoration:none; color:black;}
+.text_center{text-align:center;}
+
+
+/** 폼박스 **/
+.xecenter_form_box{margin:0 5px; padding:7px; border-radius:4px; background:#fff; border:1px solid #aaa; outline:none; box-shadow:0 0 1px #aaa;}
+.xecenter_form_box:hover{border:1px solid #5bc0de; background:#ffe;}
+.xecenter_form_box:focus{border:1px solid #5bc0de; background:#ffe;}
+
+
+/** 경계선 **/
+.xecenter_div_line{margin:10px 0px; width:100%; height:1px; background:#ddd; clear:both;} 
+
+
+/** 버튼정의 **/
+.xecenter_btn_blue{margin:3px; padding:10px; border-radius:5px; background:#428bca; color:white; border:none; outline:none; float:left;}
+.xecenter_btn_red{margin:3px; padding:10px; border-radius:5px; background:#D44B4B; color:white; border:none; outline:none; float:left;}
+.xecenter_btn_green{margin:3px; padding:10px; border-radius:5px; background:lightseagreen; color:white; border:none; outline:none; float:left;}
+.xecenter_btn_black{margin:3px; padding:10px; border-radius:5px; background:#555; color:white; border:none; outline:none; float:left;}
+.xecenter_btn_blue:hover{cursor:pointer; background:#207BCA;}
+.xecenter_btn_red:hover{cursor:pointer; background:#D52E2E;}
+.xecenter_btn_green:hover{cursor:pointer; background:#0FACC2;}
+.xecenter_btn_black:hover{cursor:pointer; background:#000;}
+
+
+/** 애니메이션 효과 **/
+.xecenter_effect{-webkit-transition:.3s linear; -moz-transition:.3s linear; -o-transition:.3s linear; transition:.3s linear;}
+
+/** 페이지 네비 **/
+.xecenter_page_navi{text-align:center;}
+.xecenter_page_navi .pg_select{border:1px solid #ddd; background:#eee; color:black;}
+.xecenter_page_navi a{font-weight:bold; color:#555; padding:5px 9px; display:inline-block; border-radius:3px; border:1px solid #fff;}
+.xecenter_page_navi a:hover{border:1px solid #ddd; background:#eee; }
+
+/** 텍스트효과 **/
+.xecenter_text{border:1px solid #fff; padding:4px; border-radius:5px;}
+.xecenter_text:hover{border:1px solid #ddd; background:#eee;}

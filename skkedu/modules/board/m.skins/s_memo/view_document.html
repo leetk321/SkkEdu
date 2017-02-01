@@ -1,0 +1,22 @@
+<!-- 글 내용 보여주기 -->
+<!--@if(($document_srl || $rnd)&&count($document_list)==1)-->
+{@ $block_class = "blog_not_fold"; }
+{@ $display_style = "block"; }
+<!--@else-->
+{@ $block_class = "blog_auto_fold"; }
+{@ $display_style = "none"; }
+<!--@end-->
+
+<div class="replyBox">
+<div class="FeeItem">
+	<span class="newicon">
+    <!--@if($oDocument->printExtraImages(60*60*$module_info->duration_new))--><img src="images/common/new_head.gif" border="0" /><!--@else--><img src="images/common/old_head.gif" border="0" /><!--@end-->
+	</span>
+	<span class="author">						
+	<span class="member_{$oDocument->get('member_srl')}">{$oDocument->getNickName()} : </span>
+	</span>
+	<span>{$oDocument->getTitleText($module_info->subject_cut_size)}</span>
+	<!--@if($logged_info->is_admin=="Y")-->
+	<a href="{getUrl('act','dispBoardDelete','document_srl',$oDocument->document_srl, 'comment_srl','')}"><img src="./images/common/buttonDeleteX.gif" alt="{$lang->cmd_delete}" width="12" height="13" /></a><!--@end-->
+</div>
+</div>

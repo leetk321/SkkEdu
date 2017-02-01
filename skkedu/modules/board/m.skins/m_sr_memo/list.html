@@ -1,0 +1,82 @@
+{@ Context::addJsFile("./common/js/jquery.js", true, '', -100000) }
+{@ Context::addJsFile("./common/js/js_app.js", true, '', -100000) }
+{@ Context::addJsFile("./common/js/x.js", true, '', -100000) }
+{@ Context::addJsFile("./common/js/common.js", true, '', -100000) }
+{@ Context::addJsFile("./common/js/xml_handler.js", true, '', -100000) }
+{@ Context::addJsFile("./common/js/xml_js_filter.js", true, '', -100000) }
+<!--%import("js/mboard.js")-->
+<!--%import("css/mboard.css")-->
+<!--%import("filter/insert.xml")-->
+
+<block cond="!$module_info->display_depth = (int)$module_info->display_depth">{@ $module_info->display_depth = 20 }</block>
+
+<div class="bd">
+<h2 class="h2"><a href="{getUrl('','vid',$vid,'mid',$mid)}">{$module_info->browser_title}</a> <em>{number_format($total_count)}</em><!--@if($module_info->use_category == "Y")--> <em><a href="{getUrl('page','','act','dispBoardCategory','')}" >&rsaquo; {$lang->category}</a></em><!--@endif--> <a href="{getUrl('act','dispBoardWrite','document_srl','')}" onclick="toggle_object('write'); return false;" cond="$grant->write_document" class="bn">{$lang->cmd_write}</a></h2>
+
+<!--@if($oDocument->isExists())-->
+<!--#include("read.html")-->
+
+<ul class="cm">
+		<li class="fr"><a href="{getUrl('document_srl','')}" class="bn">{$lang->cmd_list}</a></li>
+	</ul>
+
+<!--@else-->
+
+<div id="write" style="display:none;">
+<!--#include("write_form.html")-->
+</div>			
+
+<p cond="!$document_list && !$notice_list" style="margin:0px;padding:10px;text-align:center;border-top:1px solid #bbb; background:#eee; border-bottom:1px solid #ccc;" class="no_ducument">{$lang->no_documents}</p>
+
+		<!--@if($grant->list)-->
+        <!--// 공지사항 -->
+        <!--@if($notice_list)-->
+            <!--@foreach($notice_list as $no => $oDocument)-->
+                <div class="viewDocument">
+                <!--#include("./read.html")-->
+                </div>
+            <!--@end-->
+        <!--@end-->
+
+        <!--// 일반글 -->
+        <!--@foreach($document_list as $no => $oDocument)-->
+            <div class="viewDocument">
+            <!--#include("./read.html")-->
+            </div>
+        <!--@end-->
+    	<!--@end-->
+
+		<!--@end-->
+
+	<div class="pn" cond="$document_list && $notice_list">
+    
+    <a href="{getUrl('page','','document_srl','','division',$division,'last_division',$last_division)}" >&lsaquo;&lsaquo;</a>
+    
+        <!--@if($page != 1)-->
+		<a href="{getUrl('page',$page-1,'document_srl','','division',$division,'last_division',$last_division,'entry','')}">&lsaquo;</a> 
+        <!--@endif-->
+        <strong>{$page} / {$page_navigation->last_page}</strong>
+        <!--@if($page != $page_navigation->last_page)-->
+		<a href="{getUrl('page',$page+1,'document_srl','','division',$division,'last_division',$last_division,'entry','')}">&rsaquo;</a>
+        <!--@endif-->
+        
+        <a href="{getUrl('page',$page_navigation->last_page,'document_srl','','division',$division,'last_division',$last_division)}" >&rsaquo;&rsaquo;</a>
+        
+	</div>
+</div>
+<!--@if($module_info->display_search!='N')-->
+<div class="sh">
+	<form action="{getUrl()}" method="get">
+		<input type="hidden" name="vid" value="{$vid}" />
+		<input type="hidden" name="mid" value="{$mid}" />
+		<input type="hidden" name="category" value="{$category}" />
+		<select name="search_target" style="height:30px; line-height:30px;">
+            <option value="title" <!--@if($search_target==$key)-->selected="selected"<!--@end-->>{$search_option[title]}</option>    
+			<option value="comment" <!--@if($search_target==$key)-->selected="selected"<!--@end-->>{$search_option[comment]}</option>
+			<option value="nick_name" <!--@if($search_target==$key)-->selected="selected"<!--@end-->>{$search_option[nick_name]}</option>
+		</select>
+		<input type="text" name="search_keyword" value="{htmlspecialchars($search_keyword)}" accesskey="S" title="{$lang->cmd_search}" />
+		<button type="submit" class="shbn" title="{$lang->cmd_search}"></button>
+	</form>
+</div>
+<!--@end-->

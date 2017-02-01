@@ -1,0 +1,28 @@
+<query id="getBatchLogListWithinMember" action="select">
+	<tables>
+		<table name="pointsend_batch_log" alias="log" />
+		<table name="member" alias="member" />
+	</tables>
+	<columns>
+		<column name="*" />
+	</columns>
+	<conditions>
+		<condition operation="equal" column="log.sender_srl" var="sender_srl" filter="number" />
+		<group pipe="or">
+			<condition operation="equal" column="member.member_srl" default="log.receiver_srl" pipe="and" />
+			<condition operation="like" column="member.nick_name" var="s_nick_name" pipe="and" />
+			<condition operation="like" column="member.user_id" var="s_user_id" pipe="and" />
+		</group>
+		<condition operation="more" column="log.point" var="s_point_more" pipe="or" />
+		<condition operation="less" column="log.point" var="s_point_less" pipe="or" />
+		<condition operation="more" column="log.regdate" var="s_regdate_more" pipe="or" />
+		<condition operation="less" column="log.regdate" var="s_regdate_less" pipe="or" />
+		<condition operation="like" column="log.ipaddress" var="s_ipaddress" pipe="or" />
+	</conditions>
+	<navigation>
+		<index var="sort_index" default="log.regdate" order="order_type" />
+		<list_count var="list_count" default="20" />
+		<page_count var="page_count" default="10" />
+		<page var="page" default="1" />
+	</navigation>
+</query>

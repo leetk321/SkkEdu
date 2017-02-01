@@ -1,0 +1,151 @@
+<script cond="$document_srl">location.href="{getUrl('','mid',$mid,'page',$page)}"</script>
+
+
+<ul class="lulu-list cfixsosi clarity-font" id="lulu">
+
+	<li class="lulu-item cfixsosi" loop="$document_list=>$no,$oDocument">
+		<div class="lulu-block cfixsosi" id="wiget_{$oDocument->document_srl}">
+			<div class="caret-block">
+				<span class="caret-outer"></span>
+				<span class="caret-inner"></span>
+			</div>
+
+			<div class="lulu-main cfixsosi">
+				<div class="lulu-content">
+					<div class="lulu-content-title" >
+						<div class="lulu-content-info pix-lulu<!--@if(!$oDocument->getThumbnail())-->-help<!--@end-->">
+							<a class="lulu-title-item category" href="{getUrl('category',$oDocument->get('category_srl'), 'document_srl', '')}" cond="$module_info->use_category == 'Y' && $oDocument->get('category_srl')">
+								<span style="color:{$category_list[$oDocument->get('category_srl')]->color};"|cond="$category_list[$oDocument->get('category_srl')]->color != transparent" style="color:#000;"|cond="$category_list[$oDocument->get('category_srl')]->color == 'transparent'">{$category_list[$oDocument->get('category_srl')]->title}</span>
+							</a>
+							
+							<a id="list_{$oDocument->document_srl}" href="#" onclick="toggle_object('sosireply_{$oDocument->document_srl}'); return false;"|cond="!$oDocument->isNotice() && $grant->write_comment" class="lulu-title-link <!--@if($module_info->use_category == 'Y' && $oDocument->get('category_srl'))-->massege<!--@end-->"></a>
+
+							<!--//{$oDocument->getTitle($module_info->title_cut_size)}-->
+							<span class="document<!--@if($oDocument->document_srl)-->_{$oDocument->document_srl}<!--@end--><!--@if($oDocument->getMemberSrl())-->_{$oDocument->getMemberSrl()}<!--@end--> xe_content lulu-title-link">{$oDocument->getTitle(text)}</span>
+							{$oDocument->printExtraImages(60*60*$module_info->duration_new)}
+							<span class="lulu-title-item bullet">•</span> 
+							<span class="lulu-title-link time-data">{getTimeGap($oDocument->get('regdate'), "Y.m.d")}</span>
+
+
+						</div>
+
+					</div>
+				</div>
+
+				<ul class="lulu-info cfixsosi">
+
+					<li class="lulu-info-item nickname clarity-font left">
+						<a href="#popup_menu_area" class="lulu-info-link member_{$oDocument->get('member_srl')}" onclick="return false">{$oDocument->getNickName()}</a>
+					</li>
+
+					<li class="lulu-info-item buttonbar cla-comments right">
+						<a href="#" onclick="toggle_object('sosireply_{$oDocument->document_srl}'); return false;"|cond="!$oDocument->isNotice() && $grant->write_comment">댓글 <span class="stats red">{$oDocument->getCommentCount()}</span></a>
+					</li>
+					<li class="lulu-info-item buttonbar clarity-font right">
+						<a cond="$oDocument->isEditable()" href="{getUrl('act','dispBoardWrite','document_srl',$oDocument->document_srl,'comment_srl','')}" title="{$lang->cmd_modify}"  >{$lang->cmd_modify}</a>
+					</li>
+					<li class="lulu-info-item buttonbar clarity-font right">
+						<a cond="$oDocument->isEditable()" href="{getUrl('act','dispBoardDelete','document_srl',$oDocument->document_srl, 'comment_srl','')}" title="{$lang->cmd_delete}"  >{$lang->cmd_delete}</a>
+					</li>
+				</ul>
+
+			</div>
+
+			<!-- 댓글 입력 폼 -->
+			<div class="bd" id="sosireply_{$oDocument->document_srl}" style="display:none;">
+				<!--@if($grant->write_comment)-->
+				<load target="filter/insert_comment.xml" />
+				<form action="./" method="post" onsubmit="return procFilter(this, insert_comment)">
+				<input type="hidden" name="mid" value="{$mid}" />
+				<input type="hidden" name="document_srl" value="{$oDocument->document_srl}" />
+				<input type="hidden" name="comment_srl" value="" />
+
+							<h2>{$lang->comment}</h2>
+							<textarea name="content" title="{$lang->title}" class="itx" rows="2" style=" height:100px"></textarea>
+
+						<!--@if(!$is_logged)-->
+
+							<h2>{$lang->writer}</h2>
+							<input name="nick_name" type="text" id="uName" class="itx" />
+
+							<h2>{$lang->password}</h2>
+							<input name="password" type="password" id="uPw" class="itx" />
+
+						<!--@endif-->
+
+					<div style=" text-align:center; margin-bottom:10px;">
+						<button type="submit" class="sm-btn">{$lang->cmd_comment_registration}</button>
+						<a href="#" onclick="toggle_object('reply_{$oDocument->document_srl}'); return false;" title="{$lang->cmd_cancel}" class="sm-btn-de">{$lang->cmd_cancel}</a>
+					</div>
+				</form>
+				<!--@end-->                
+			</div>
+
+			 <ul class="lulu-comment" cond="$oDocument->getCommentCount()">{@$lulu=1}
+
+				<block loop="$oDocument->getComments()=>$key,$comment">
+					<li id="comment_{$comment->comment_srl}" class="lulu-comment-block cfixsosi" <!--@if($comment->get('depth'))--> style="margin-left:{($comment->get('depth'))*5}px" <!--@end-->  >
+					
+						<a  class="lulu-comment-thumb-link clarity-thumb avatar-radius" href="{getUrl('document_srl', $oDocument->document_srl)}#comment">
+							<img class="lulu-comment-thumb-img avatar-icons" src="{$comment->getProfileImage()}" cond="$comment->getProfileImage()" />
+							<img class="lulu-comment-thumb-img avatar-icons" src="{$module_info->no_profile}" cond="!$comment->getProfileImage() && $module_info->no_profile" />
+							<img class="lulu-comment-thumb-img avatar-icons" src="./css/profile.gif" cond="!$comment->getProfileImage() && !$module_info->no_profile" />
+						</a>
+                        
+						<div class="lulu-comment-info pix-lulu-comment">
+							<div class="comment-info-top cfixsosi">
+								<div class="lulu-comment-nick left">
+								<a href="#popup_menu_area" class="lulu-info-link member_{$comment->get('member_srl')}" onclick="return false">{$comment->getNickName()}</a>
+								</div>
+
+								<!--@if(!$oDocument->isNotice() && $grant->write_comment)-->
+								<a href="#" onclick="toggle_object('1reply_{$comment->comment_srl}'); return false;" title="{$lang->cmd_reply}" cond="$grant->write_comment" class="clarity-white btn_reply mr-f4" style="float:right" ><span>{$lang->cmd_reply}</span></a>			
+
+								<!--@end-->
+								<a href="{getUrl('act','dispBoardDeleteComment','comment_srl',$comment->comment_srl)}" class="clarity-white mr-f4 right" cond="$comment->isGranted()||!$comment->get('member_srl')"><span>{$lang->cmd_delete}</span></a>
+								<a href="{getUrl('act','dispBoardModifyComment','comment_srl',$comment->comment_srl)}" class="clarity-white mr-f4 mr-f2 right" cond="$comment->isGranted()||!$comment->get('member_srl')" ><span>{$lang->cmd_modify}</span></a>
+							</div>
+                            
+							<div id="clist_{$comment->comment_srl}" class="lulu-comment-content cfixsosi">
+								<span style="margin-right:5px;" class="comment<!--@if($comment->comment_srl)-->_{$comment->comment_srl}<!--@end--><!--@if($comment->member_srl)-->_{$comment->member_srl}<!--@end--> xe_content">
+									<!--@if($comment->parent_srl)-->
+									{@
+										$oComment = &getModel('comment');
+										$comment_parent = $oComment->getComment($comment->parent_srl);
+									}
+									<strong style="color:#000">@{$comment_parent->getNickName()}</strong>
+									<!--@end-->
+									{$comment->getContentText(text)}
+								</span>
+								<span class="bullet">•</span>
+								<span class="lulu-comment-time">{getTimeGap($comment->get('regdate'), "Y.m.d H:i")}</span>
+
+							</div>
+							<div id="cinsert_{$comment->comment_srl}" style="display:none;"><include target="insert_comment.html" /></div>
+							
+							<div id="1reply_{$comment->comment_srl}" style="display:none;"><include target="comment_reply.html" /></div>
+						</div>
+                        
+                    </li>{@$lulu++}
+				</block>
+  
+
+			</ul><!-- .lulu-comment -->
+
+		</div><!--// .lulu-block -->
+
+
+		<div class="lulu-users">
+			<a href="{getUrl('document_srl',$oDocument->document_srl, 'listStyle', $listStyle, 'cpage','')}" class="lulu-thumb-link clarity-thumb avatar-radius">
+				<img class="lulu-thumb-img avatar-icons" src="{$oDocument->getProfileImage()}" cond="$oDocument->getProfileImage()" />
+				<img class="lulu-thumb-img avatar-icons" src="{$module_info->no_profile}" cond="!$oDocument->getProfileImage() && $module_info->no_profile" />
+				<img class="lulu-thumb-img avatar-icons" src="./css/profile.gif" cond="!$oDocument->getProfileImage() && !$module_info->no_profile" />
+			</a>
+		</div>
+
+
+	</li><!--// .lulu-item -->
+
+</ul>
+
+

@@ -1,0 +1,18 @@
+<load target="./js/ximember_admin.js" />
+<div class="x_page-header">
+	<h1>{$lang->ximember} {$lang->cmd_setup}</h1>
+</div>
+<div cond="$XE_VALIDATOR_MESSAGE" class="message {$XE_VALIDATOR_MESSAGE_TYPE}">
+	<p>{$XE_VALIDATOR_MESSAGE}</p>
+</div>
+<ul class="x_nav x_nav-tabs">
+	<!--@if($act == 'dispXimemberAdminEditAgree')-->
+		<li loop="$lang->ximember_config_list => $act_key,$menu_name" class="x_active"|cond="$act == $act_key">
+			<a href="{getUrl('', 'module', 'admin', 'act', $act_key)}" onclick="return false"|cond="$act_key == 'dispXimemberAdminEditAgree'">{$menu_name}</a>
+		</li>
+	<!--@else-->
+		<li loop="$lang->ximember_config_list => $act_key,$menu_name" class="x_active"|cond="$act == $act_key" cond="$act_key != 'dispXimemberAdminEditAgree'">
+			<a href="{getUrl('', 'module', 'admin', 'act', $act_key)}">{$menu_name}</a>
+		</li>
+	<!--@end-->
+</ul>

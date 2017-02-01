@@ -1,0 +1,405 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<lang>
+	<item name="ximember">
+		<value xml:lang="ko"><![CDATA[Xi회원]]></value>
+	</item>
+	<item name="ximember_config_list" type="array">
+		<item name="dispXimemberAdminConfig">
+			<value xml:lang="ko"><![CDATA[기본 설정]]></value>
+		</item>
+		<item name="dispXimemberAdminUseModule">
+			<value xml:lang="ko"><![CDATA[사용할 모듈 설정]]></value>
+		</item>
+		<item name="dispXimemberAdminAgree">
+			<value xml:lang="ko"><![CDATA[약관 설정]]></value>
+		</item>
+		<item name="dispXimemberAdminEditAgree">
+			<value xml:lang="ko"><![CDATA[약관 내용 편집]]></value>
+		</item>
+		<item name="dispXimemberAdminLimit">
+			<value xml:lang="ko"><![CDATA[기능/제한설정]]></value>
+		</item>
+		<item name="dispXimemberAdminGroup">
+			<value xml:lang="ko"><![CDATA[그룹 연동설정]]></value>
+		</item>
+		<item name="dispXimemberAdminExtra">
+			<value xml:lang="ko"><![CDATA[확장변수 설정]]></value>
+		</item>
+		<item name="dispXimemberAdminKcb">
+			<value xml:lang="ko"><![CDATA[KCB 설정]]></value>
+		</item>
+	</item>
+	
+	<item name="use_ximember">
+		<value xml:lang="ko"><![CDATA[Xi회원모듈 사용]]></value>
+	</item>
+	<item name="use_ximember_desc">
+		<value xml:lang="ko"><![CDATA[Xi회원모듈 사용여부를 선택합니다.]]></value>
+	</item>
+	<item name="xi_change_pages">
+		<value xml:lang="ko"><![CDATA[대체할 페이지 선택]]></value>
+	</item>
+	<item name="xi_change_pages_desc">
+		<value xml:lang="ko"><![CDATA[회원모듈을 대체할 페이지를 선택합니다. 페이지를 대체하게되면 기존 member모듈의 대체되는 페이지의 스킨은 사용할 수 없게됩니다.]]></value>
+	</item>
+	
+	<item name="xi_change_pages_list" type="array">
+		<item name="dispMemberLoginForm">
+			<value xml:lang="ko"><![CDATA[로그인 페이지]]></value>
+		</item>
+		<item name="dispMemberSignUpForm">
+			<value xml:lang="ko"><![CDATA[회원가입 페이지]]></value>
+		</item>
+		<item name="dispMemberModifyInfo">
+			<value xml:lang="ko"><![CDATA[회원정보 수정 페이지]]></value>
+		</item>
+	</item>
+	<item name="xi_change_pages_list_desc" type="array">
+		<item name="dispMemberLoginForm">
+			<value xml:lang="ko"><![CDATA[비회원 접속차단 및 비회원 KCB인증 기능을 사용하려면 반드시 체크하셔야합니다.]]></value>
+		</item>
+		<item name="dispMemberSignUpForm">
+			<value xml:lang="ko"><![CDATA[회원가입시 확장변수를 연동하거나, KCB인증시스템을 사용하시려면 반드시 체크하셔야합니다.]]></value>
+		</item>
+		<item name="dispMemberModifyInfo">
+			<value xml:lang="ko"><![CDATA[회원가입시 확장변수를 연동했다면 반드시 체크하셔야합니다.]]></value>
+		</item>
+	</item>
+	
+	<item name="xi_agreement_list">
+		<value xml:lang="ko"><![CDATA[등록된 약관 목록]]></value>
+	</item>
+	<item name="xi_agreement_list_adm">
+		<value xml:lang="ko"><![CDATA[약관 관리]]></value>
+	</item>
+	<item name="xi_agreement_add">
+		<value xml:lang="ko"><![CDATA[새 약관추가]]></value>
+	</item>
+	<item name="xi_agreement_add_desc">
+		<value xml:lang="ko"><![CDATA[새 약관을 추가합니다. 회원가입 약관은, 기본 회원모듈의 약관입니다.]]></value>
+	</item>
+	<item name="xi_agreement_name">
+		<value xml:lang="ko"><![CDATA[약관 이름]]></value>
+	</item>
+	
+	<item name="msg_not_new_agreement">
+		<value xml:lang="ko"><![CDATA[새 약관명이 입력되지 않았습니다.]]></value>
+	</item>
+	<item name="msg_not_agreement">
+		<value xml:lang="ko"><![CDATA[약관선택이 잘못되었습니다. 재시도 하시기 바랍니다.]]></value>
+	</item>
+	<item name="not_agreement_content">
+		<value xml:lang="ko"><![CDATA[아직 내용이 작성되지 않았습니다.]]></value>
+	</item>
+	<item name="msg_confirm_delete">
+		<value xml:lang="ko"><![CDATA[정말 삭제합니까? 이 작업은 되돌릴 수 없습니다.]]></value>
+	</item>
+	
+	<item name="xi_limit_setting">
+		<value xml:lang="ko"><![CDATA[기능 및 제한사항 설정]]></value>
+	</item>
+	
+	<item name="xi_limit_list" type="array">
+		<item name="use_nom_limit">
+			<value xml:lang="ko"><![CDATA[비회원 접속차단]]></value>
+		</item>
+		<item name="use_nomember">
+			<value xml:lang="ko"><![CDATA[비회원 KCB인증]]></value>
+		</item>
+		<item name="use_signup">
+			<value xml:lang="ko"><![CDATA[가입시 KCB인증]]></value>
+		</item>
+		<item name="use_duplicate">
+			<value xml:lang="ko"><![CDATA[중복가입 차단]]></value>
+		</item>
+		<item name="use_signup_limit">
+			<value xml:lang="ko"><![CDATA[가입/접근 제한]]></value>
+		</item>
+		<item name="use_update">
+			<value xml:lang="ko"><![CDATA[기회원 KCB인증]]></value>
+		</item>
+		<item name="use_member">
+			<value xml:lang="ko"><![CDATA[기회원 강제인증]]></value>
+		</item>
+		<item name="use_voted">
+			<value xml:lang="ko"><![CDATA[추천인기능]]></value>
+		</item>
+	</item>
+	
+	<item name="voted_point">
+		<value xml:lang="ko"><![CDATA[추천포인트]]></value>
+	</item>
+	<item name="voted_point_desc">
+		<value xml:lang="ko"><![CDATA[추천인 ID를 입력받았을 때, 추천한 회원에게 설정한 포인트를 지급합니다.]]></value>
+	</item>
+	
+	<item name="xi_limit_desc" type="array">
+		<item name="use_nom_limit">
+			<value xml:lang="ko"><![CDATA[로그인 하지 않은 상태에서 사이트 내부를 볼 수없도록 합니다.]]></value>
+		</item>
+		<item name="use_nomember">
+			<value xml:lang="ko"><![CDATA[비회원 접속차단시, 가입/로그인을 하지않고 KCB인증만으로 사이트 이용을 가능하게합니다.]]></value>
+		</item>
+		<item name="use_signup">
+			<value xml:lang="ko"><![CDATA[회원가입 이전에 KCB인증 과정을 거치도록 합니다.]]></value>
+		</item>
+		<item name="use_duplicate">
+			<value xml:lang="ko"><![CDATA[CI 및 DI값을 이용하여 중복가입을 차단합니다.]]></value>
+		</item>
+		<item name="use_signup_limit">
+			<value xml:lang="ko"><![CDATA[가입 또는 비회원 KCB인증이후 연령 또는 성별로 사이트 이용을 제한합니다.]]></value>
+		</item>
+		<item name="use_update">
+			<value xml:lang="ko"><![CDATA[이미 가입한 회원이 언제든 재인증을 할 수 있도록 합니다.]]></value>
+		</item>
+		<item name="use_member">
+			<value xml:lang="ko"><![CDATA[KCB인증이 되지않은 기회원을 인증페이지에서 벗어날 수 없게하여, 강제로 인증시킵니다.]]></value>
+		</item>
+	</item>
+	
+	
+	<item name="limit_of_age">
+		<value xml:lang="ko"><![CDATA[나이로 제한]]></value>
+	</item>
+	<item name="limit_of_sex">
+		<value xml:lang="ko"><![CDATA[성별로 제한]]></value>
+	</item>
+	<item name="use_signup_limit_setting">
+		<value xml:lang="ko"><![CDATA[가입/접근 제한 사용시 제한할 사항을 설정합니다.]]></value>
+	</item>
+	<item name="xi_full">
+		<value xml:lang="ko"><![CDATA[만]]></value>
+	</item>
+	<item name="xi_age">
+		<value xml:lang="ko"><![CDATA[세]]></value>
+	</item>
+	<item name="xi_nouse">
+		<value xml:lang="ko"><![CDATA[사용 안함]]></value>
+	</item>
+	
+	<item name="xi_limit_sex" type="array">
+		<item name="limit_M">
+			<value xml:lang="ko"><![CDATA[남자]]></value>
+		</item>
+		<item name="limit_F">
+			<value xml:lang="ko"><![CDATA[여자]]></value>
+		</item>
+	</item>
+	
+	<item name="xi_limit_updown" type="array">
+		<item name="limit_up">
+			<value xml:lang="ko"><![CDATA[이상]]></value>
+		</item>
+		<item name="limit_down">
+			<value xml:lang="ko"><![CDATA[이하]]></value>
+		</item>
+	</item>
+	
+	<item name="xi_group_setting">
+		<value xml:lang="ko"><![CDATA[연동할 그룹 추가]]></value>
+	</item>
+	<item name="xi_limit_setting_desc">
+		<value xml:lang="ko"><![CDATA[KCB인증시 연령 또는 성별에따라 특정한그룹에 자동으로 추가하여 줍니다.]]></value>
+	</item>
+	<item name="xi_select_group">
+		<value xml:lang="ko"><![CDATA[그룹선택]]></value>
+	</item>
+	<item name="xi_select_group_desc">
+		<value xml:lang="ko"><![CDATA[연동할 그룹을 선택합니다.]]></value>
+	</item>
+	<item name="xi_group_age">
+		<value xml:lang="ko"><![CDATA[그룹 가입 기준나이]]></value>
+	</item>
+	<item name="xi_group_age_desc">
+		<value xml:lang="ko"><![CDATA[인증시점의 만 나이를 이용해, 선택한 그룹에 추가하여 줍니다.]]></value>
+	</item>
+	<item name="xi_group_sex">
+		<value xml:lang="ko"><![CDATA[그룹 가입 기준성별]]></value>
+	</item>
+	<item name="xi_group_sex_desc">
+		<value xml:lang="ko"><![CDATA[성별에 따라 선택한 그룹에 추가하여 줍니다.]]></value>
+	</item>
+	
+	<item name="xi_sex_list" type="array">
+		<item name="male">
+			<value xml:lang="ko"><![CDATA[남자]]></value>
+		</item>
+		<item name="female">
+			<value xml:lang="ko"><![CDATA[여자]]></value>
+		</item>
+	</item>
+	
+	<item name="msg_not_condition">
+		<value xml:lang="ko"><![CDATA[그룹 가입조건이 아무것도 설정되지 않았습니다.]]></value>
+	</item>
+	
+	<item name="xi_group_list">
+		<value xml:lang="ko"><![CDATA[연동된 그룹목록]]></value>
+	</item>
+	<item name="xi_group_content_sex_limit">
+		<value xml:lang="ko"><![CDATA[이 그룹은, KCB인증시 연령이 만 %s세 %s임과 동시에 성별이 %s인 회원이 추가됩니다.]]></value>
+	</item>
+	<item name="xi_group_content_limit">
+		<value xml:lang="ko"><![CDATA[이 그룹은, KCB인증시 연령이 만 %s세 %s인 회원이 추가됩니다.]]></value>
+	</item>
+	<item name="xi_group_content_sex">
+		<value xml:lang="ko"><![CDATA[이 그룹은, KCB인증시 성별이 %s인 회원이 추가됩니다.]]></value>
+	</item>
+	<item name="xi_group_content_error">
+		<value xml:lang="ko"><![CDATA[이 그룹은 가입조건이 손상 되었습니다. 삭제 후 다시 추가해주세요.]]></value>
+	</item>
+	
+	<item name="xi_extra_vars">
+		<value xml:lang="ko"><![CDATA[가입/수정시 변수연동]]></value>
+	</item>
+	<item name="xi_target">
+		<value xml:lang="ko"><![CDATA[연동할 내용]]></value>
+	</item>
+	<item name="xi_variables">
+		<value xml:lang="ko"><![CDATA[변수 설정]]></value>
+	</item>
+	<item name="xi_variables_list" type="array">
+		<item name="user_name">
+			<value xml:lang="ko"><![CDATA[실명]]></value>
+		</item>
+		<item name="birthday">
+			<value xml:lang="ko"><![CDATA[생년월일]]></value>
+		</item>
+		<item name="sex">
+			<value xml:lang="ko"><![CDATA[성별]]></value>
+		</item>
+		<item name="mobile">
+			<value xml:lang="ko"><![CDATA[휴대전화]]></value>
+		</item>
+		<item name="foreign">
+			<value xml:lang="ko"><![CDATA[내/외국인 구분]]></value>
+		</item>
+		<item name="auth_type">
+			<value xml:lang="ko"><![CDATA[인증수단]]></value>
+		</item>
+	</item>
+	<item name="xi_variables_typeA" type="array">
+		<item name="sex">
+			<value xml:lang="ko"><![CDATA[남자일 때]]></value>
+		</item>
+		<item name="foreign">
+			<value xml:lang="ko"><![CDATA[내국인 일 때]]></value>
+		</item>
+		<item name="auth_type">
+			<value xml:lang="ko"><![CDATA[아이핀 인증일 때]]></value>
+		</item>
+	</item>
+	<item name="xi_variables_typeB" type="array">
+		<item name="sex">
+			<value xml:lang="ko"><![CDATA[여자일 때]]></value>
+		</item>
+		<item name="foreign">
+			<value xml:lang="ko"><![CDATA[외국인 일 때]]></value>
+		</item>
+		<item name="auth_type">
+			<value xml:lang="ko"><![CDATA[휴대폰 인증일 때]]></value>
+		</item>
+	</item>
+	<item name="xi_modify_view" type="array">
+		<item name="modify_enabled">
+			<value xml:lang="ko"><![CDATA[수정허용]]></value>
+		</item>
+		<item name="modify_disabled">
+			<value xml:lang="ko"><![CDATA[수정불가]]></value>
+		</item>
+		<item name="show_disabled">
+			<value xml:lang="ko"><![CDATA[노출안함]]></value>
+		</item>
+	</item>
+	
+	<item name="xi_kcb_settings">
+		<value xml:lang="ko"><![CDATA[KCB 연동설정]]></value>
+	</item>
+	<item name="xi_domain">
+		<value xml:lang="ko"><![CDATA[실사용 도메인]]></value>
+	</item>
+	<item name="xi_domain_example">
+		<value xml:lang="ko"><![CDATA[www.example.com]]></value>
+	</item>
+	<item name="xi_domain_desc">
+		<value xml:lang="ko"><![CDATA[KCB와 계약한 실제 사용 도메인을 입력합니다. (www가 포함된경우 www.을 반드시 입력.)]]></value>
+	</item>
+	<item name="xi_shopid">
+		<value xml:lang="ko"><![CDATA[샵 아이디]]></value>
+	</item>
+	<item name="xi_shopid_example">
+		<value xml:lang="ko"><![CDATA[P12300000000]]></value>
+	</item>
+	<item name="xi_shopid_desc">
+		<value xml:lang="ko"><![CDATA[KCB에서 발급받은 샵 ID를 입력합니다. 해당 아이디는 아이핀과 휴대폰본인인증을 구분하지 않고 사용합니다.]]></value>
+	</item>
+	
+	<item name="xi_oknames">
+		<value xml:lang="ko"><![CDATA[샵ID 발급신청]]></value>
+	</item>
+	
+	<item name="xi_kcb_detail_settings">
+		<value xml:lang="ko"><![CDATA[KCB 인증 상세설정]]></value>
+	</item>
+	<item name="xi_kcb_detail_use">
+		<value xml:lang="ko"><![CDATA[사용할 기능 선택]]></value>
+	</item>
+	<item name="xi_kcb_detail_use_desc">
+		<value xml:lang="ko"><![CDATA[사용할 KCB인증수단을 선택합니다.<br />기회원KCB인증 또는 비회원 KCB 인증 사용시 아이핀 또는 휴대폰본인인증 둘중 하나 이상을 반드시 사용하셔야합니다.]]></value>
+	</item>
+	<item name="xi_kcb_detail_use_list" type="array">
+		<item name="ipin">
+			<value xml:lang="ko"><![CDATA[아이핀 인증]]></value>
+		</item>
+		<item name="mobile">
+			<value xml:lang="ko"><![CDATA[휴대폰 본인인증]]></value>
+		</item>
+	</item>
+	
+	<item name="xi_kcb_module">
+		<value xml:lang="ko"><![CDATA[KCB 모듈 업로드]]></value>
+	</item>
+	<item name="xi_kcb_module_desc">
+		<value xml:lang="ko"><![CDATA[서버환경에 맞는 KCB모듈을 업로드해야합니다.<br />모듈은 계약한 담당자를 통해 메일로 전달받거나, 계약한 웹 사이트에서 다운받을 수 있습니다.]]></value>
+	</item>
+	
+	<item name="xi_kcb_notfounded_module">
+		<value xml:lang="ko"><![CDATA[KCB모듈파일이 업로드되지 않아, 플러그인을 불러올 수 없습니다.]]></value>
+	</item>
+	
+	<item name="allow_sms">
+		<value xml:lang="ko"><![CDATA[문자메시지 수신 동의]]></value>
+	</item>
+	
+	<item name="check_parameater">
+		<value xml:lang="ko"><![CDATA[입력 값의 확인이 필요합니다.]]></value>
+	</item>
+	<item name="msg_user_duplicated">
+		<value xml:lang="ko"><![CDATA[이미 회원으로 가입되어있습니다. <a href='".getNotEncodedUrl('act','dispMemberFindAccount')."'>아이디/비밀번호 찾기</a>를 이용해주세요.]]></value>
+	</item>
+	<item name="msg_warning_variables">
+		<value xml:lang="ko"><![CDATA[데이터가 위/변조 된 것 같습니다. 문제가 지속되면 관리자에게 문의하세요.]]></value>
+	</item>
+	<item name="msg_cancel_auth">
+		<value xml:lang="ko"><![CDATA[인증이 취소되었거나, 문제가 발생하였습니다. 다시시도해주세요.]]></value>
+	</item>
+	
+	<item name="xi_kcb">
+		<value xml:lang="ko"><![CDATA[본인인증]]></value>
+	</item>
+	<item name="msg_not_voted_member">
+		<value xml:lang="ko"><![CDATA[추천인 아이디가 존재하지 않습니다.]]></value>
+	</item>
+	<item name="msg_different_user">
+		<value xml:lang="ko"><![CDATA[기존의 인증정보와 다릅니다.]]></value>
+	</item>
+	<item name="msg_not_auth">
+		<value xml:lang="ko"><![CDATA[인증이 완료되지않았거나, 정보가 올바르지 않습니다. 다시 시도해주십시오.]]></value>
+	</item>
+	<item name="msg_success_auth">
+		<value xml:lang="ko"><![CDATA[현재의 인증정보가 성공적으로 반영 되었습니다.]]></value>
+	</item>
+	<item name="about_module_mid">
+		<value xml:lang="ko"><![CDATA[모듈이 사용될 대상을 지정할 수 있습니다. (모두 해제 시 모든 대상에서 사용 가능합니다.)]]></value>
+	</item>
+</lang>

@@ -1,0 +1,8 @@
+<query id="deleteLog" action="delete">
+    <tables>
+        <table name="rockgame" />
+    </tables>
+    <conditions>
+        <condition operation="equal" column="game_srl" var="game_srl" filter="number" />
+    </conditions>
+</query>

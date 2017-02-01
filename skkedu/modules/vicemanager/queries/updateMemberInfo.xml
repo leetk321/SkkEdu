@@ -1,0 +1,12 @@
+<query id="updateMemberInfo" action="update">
+    <tables>
+        <table name="member" />
+    </tables>
+    <columns>
+        <column name="denied" var="denied" />
+        <column name="limit_date" var="limit_date" />
+    </columns>
+    <conditions>
+        <condition operation="equal" column="member_srl" var="member_srl" notnull="notnull" filter="number" />
+    </conditions>
+</query>

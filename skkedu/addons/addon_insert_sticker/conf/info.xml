@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<addon version="0.2">
+    <title xml:lang="ko">XENARA 스티커 삽입 애드온</title>
+    <description xml:lang="ko">
+	    문서작성 에디터 또는 댓글작성 에디터 내에 스티커를 삽입하는 애드온입니다.(XE기본 에디터에서만 작동함)
+    </description>
+    <version>0.1</version>
+    <date>2013-08</date>
+    <author email_address="kolaskks@naver.com" link="http://xenara.co.kr">
+        <name xml:lang="ko">XENARA</name>
+    </author>
+
+  	<extra_vars>
+        <var name="insert_sticker_editor" type="select">
+            <title xml:lang="ko">스티커 삽입 에디터</title>
+            <description xml:lang="ko">스티커 삽입 에디터를 선택하세요.</description>
+            <options value="all">
+                <title xml:lang="ko">문서,댓글작성 에디터</title>
+            </options>
+            <options value="document">
+                <title xml:lang="ko">문서작성 에디터</title>
+            </options>
+            <options value="comment">
+                <title xml:lang="ko">댓글작성 에디터</title>
+            </options>
+        </var>
+  	</extra_vars>
+</addon>

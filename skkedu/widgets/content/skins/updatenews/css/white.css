@@ -1,0 +1,14 @@
+.updatenews { line-height:25px; height:25px; overflow:hidden; clear:both; white-space:nowrap; position:relative; margin:0; padding:0; white-space:nowrap; }
+.updatenews .updatenews_obj { height:40px; white-space:nowrap; overflow:hidden; }
+.updatenews .updatenews_box { margin:0; padding:0; white-space:nowrap; overflow:hidden; position:absolute; top:0;}
+.updatenews .updatenews_box div { divst-style:none; height:40px; overflow:hidden; white-space:nowrap; font-size:9pt; }
+.updatenews .updatenews_box .updatenews_board { color:#ddd; text-decoration:none; font-size:9pt;}
+.updatenews .updatenews_box .updatenews_title { color:#ddd; text-decoration:none; font-size:9pt;}
+.updatenews .updatenews_box .updatenews_title:hover { text-decoration:underline; }
+.updatenews .updatenews_box .updatenews_category { color:#ddd; text-decoration:none;  font-size:9pt;}
+.updatenews .updatenews_box .updatenews_category:hover { text-decoration:underline; }
+.updatenews .updatenews_box .updatenews_comment { color:#f66; font:12px Tahoma; text-decoration:none; }
+.updatenews .updatenews_box .updatenews_trackback { color:#66C; font:12px Tahoma; text-decoration:none; }
+.updatenews .updatenews_box .updatenews_date { color:#ddd; font:10px Tahoma; white-space:nowrap; }
+.updatenews .updatenews_box .updatenews_author,
+.updatenews .updatenews_box .updatenews_author a { color:#fff; font:normal normal bold 12px Tahoma; white-space:nowrap; }

@@ -1,0 +1,6 @@
+.lottery { position:relative; width:380px; height:180px; background:url(../img/lottery_bg.gif) no-repeat; }
+.lottery .title { position:absolute; left:150px; top:18px; font:bold 13px "돋움",Dotum; }
+.lottery #number { position:absolute; left:103px; top:90px; z-index:1; width:153px; height:100px; text-align:center; font:bold 14px "돋움",Dotum !important; }
+.lottery #number_bg { display:none; position:absolute; left:103px; top:60px; z-index:2; width:153px; height:100px; }
+.lottery #number_bg ul { clear:both; margin:0; padding:0; list-style:none; }
+.lottery #number_bg ul li { float:left; width:25px; height:25px; background-color:#9f9f9f; }

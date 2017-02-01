@@ -1,0 +1,37 @@
+<!--// XE 기본 모바일레이아웃은 jQuery를 로딩하지 않는 관계로 강제로 로딩시킴. 
+	만약 jQuery모바일이나 기타 모바일레이아웃에서 jQuery관련 플러그인을 사용하는경우
+	아래의 스크립트 로딩은 지워도 괜찮습니다 -->
+<script src="{getUrl()}common/js/jquery.min.js"></script>
+<load target="./css/memberextend.css" />
+
+
+<!--@if($memberextend_config->progressUse == 'Y')-->
+<div class="me_progress">
+	<table  margin="0" padding="0" cellpadding="0" cellspacing="0" border="0" align="center"> 
+		<tr>
+			<td class="current"|cond="$act == dispMemberextendIndex" cond="$type_count != 1">
+				<img src="./img/select.png"/>
+			</td>
+			<td class="pointer" cond="$type_count != 1"><img src="./img/pointer.png"/></td>
+			<td class="current"|cond="$act == dispMemberextendAuthentication" cond="$memberextend_config->authenticationUse == 'Y'">
+				<img src="./img/key.png">
+			</td>
+			<td class="pointer" cond="$memberextend_config->authenticationUse == 'Y'"><img src="./img/pointer.png"/></td>
+			<td class="current"|cond="$act == dispMemberextendAgreement">
+				<img src="./img/agree.png"/>
+			</td>
+			<td class="pointer"><img src="./img/pointer.png"/></td>
+			<td class="current"|cond="$act == dispMemberSignUpForm">
+				<img src="./img/member_info.png"/>
+			</td>
+			<td class="pointer"><img src="./img/pointer.png"/></td>
+			<td class="current"|cond="$act == dispMemberextendCompleteSignUp">
+				<img src="./img/finish.png"/>
+			</td>
+		</tr> 
+	</table>
+	<!--@if($member_config->enable_confirm == 'Y')-->
+	<div style="color:red; text-align:center; margin-top:10px; font-size:12px; letter-spacing:-1px;">해당 사이트는 회원가입 완료후, 가입 인증메일이 발송됩니다.</div>
+	<!--@end-->
+</div>
+<!--@endif-->

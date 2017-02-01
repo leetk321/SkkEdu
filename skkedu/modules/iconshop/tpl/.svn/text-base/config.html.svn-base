@@ -1,0 +1,85 @@
+<!--#include("./header.html")-->
+<!--%import("filter/insert_module.xml")-->
+<h3 class="xeAdmin">{$lang->cmd_module_config}</h3>
+
+<form action="./" method="post" onsubmit="return procFilter(this, insert_module)" enctype="multipart/form-data">
+<input type="hidden" name="module_srl" value="{$iconshop_info->module_srl}" />
+<input type="hidden" name="mid" value="{$iconshop_info->mid}" />
+
+    <table cellspacing="0" class="rowTable">
+
+    <tr>
+        <th scope="row"><div>{$lang->module_category}</div></th>
+        <td>
+            <select name="module_category_srl">
+                <option value="0">{$lang->notuse}</option>
+                <!--@foreach($module_category as $key => $val)-->
+                <option value="{$key}" <!--@if($iconshop_info->module_category_srl==$key)-->selected="selected"<!--@end-->>{$val->title}</option>
+                <!--@end-->
+            </select>
+            <p>{$lang->about_module_category}</p>
+        </td>
+    </tr>
+
+    <tr>
+        <th scope="row"><div>{$lang->browser_title}</div></th>
+        <td>
+            <input type="text" name="browser_title" value="{htmlspecialchars($iconshop_info->browser_title)}"  class="inputTypeText w200" id="browser_title"/>
+            <a href="{getUrl('','module','module','act','dispModuleAdminLangcode','target','browser_title')}" onclick="popopen(this.href);return false;" class="buttonSet buttonSetting"><span>{$lang->cmd_find_langcode}</span></a>
+        </td>
+    </tr>
+
+    <tr>
+        <th scope="row"><div>{$lang->layout}</div></th>
+        <td>
+            <select name="layout_srl">
+            <option value="0">{$lang->notuse}</option>
+            <!--@foreach($layout_list as $key => $val)-->
+            <option value="{$val->layout_srl}" <!--@if($iconshop_info->layout_srl==$val->layout_srl)-->selected="selected"<!--@end-->>{$val->title} ({$val->layout})</option>
+            <!--@end-->
+            </select>
+            <p>{$lang->about_layout}</p>
+        </td>
+    </tr>
+    <tr>
+        <th scope="row"><div>{$lang->skin}</div></th>
+        <td>
+            <select name="skin">
+                <!--@foreach($skin_list as $key=>$val)-->
+                <option value="{$key}" <!--@if($iconshop_info->skin==$key ||(!$iconshop_info->skin && $key=='xe_board'))-->selected="selected"<!--@end-->>{$val->title}</option>
+                <!--@end-->
+            </select>
+            <p>{$lang->about_skin}</p>
+        </td>
+    </tr>
+    <tr>
+        <th scope="row"><div>{$lang->description}</div></th>
+        <td>
+            <textarea name="description" class="inputTypeTextArea fullWidth">{htmlspecialchars($iconshop_info->description)}</textarea>
+            <p>{$lang->about_description}</p>
+        </td>
+    </tr>
+    <tr>
+        <th scope="row"><div>{$lang->header_text}</div></th>
+        <td>
+            <textarea name="header_text" class="inputTypeTextArea fullWidth" id="header_text">{htmlspecialchars($iconshop_info->header_text)}</textarea>
+            <a href="{getUrl('','module','module','act','dispModuleAdminLangcode','target','header_text')}" onclick="popopen(this.href);return false;" class="buttonSet buttonSetting"><span>{$lang->cmd_find_langcode}</span></a>
+            <p>{$lang->about_header_text}</p>
+        </td>
+    </tr>
+    <tr>
+        <th scope="row"><div>{$lang->footer_text}</div></th>
+        <td>
+            <textarea name="footer_text" class="inputTypeTextArea fullWidth" id="footer_text">{htmlspecialchars($iconshop_info->footer_text)}</textarea>
+            <a href="{getUrl('','module','module','act','dispModuleAdminLangcode','target','footer_text')}" onclick="popopen(this.href);return false;" class="buttonSet buttonSetting"><span>{$lang->cmd_find_langcode}</span></a>
+            <p>{$lang->about_footer_text}</p>
+        </td>
+    </tr>
+    <tr>
+        <th colspan="2" class="button">
+            <span class="button black strong"><input type="submit" value="{$lang->cmd_save}" accesskey="s" /></span>
+        </th>
+    </tr>
+    </table>
+
+</form>

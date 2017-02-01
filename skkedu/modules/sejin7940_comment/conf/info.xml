@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module version="0.2">
+	<title xml:lang="ko">작성 댓글 보기 (sejin7940_comment)</title>
+	<description xml:lang="ko"></description>
+	<version>1.8</version>
+	<date>2016-10-20</date>
+	<category>content</category>
+	<author email_address="sejin7940@gmail.com" link="http://sejin7940.co.kr">
+		<name xml:lang="ko">sejin7940</name>
+	</author>
+</module>

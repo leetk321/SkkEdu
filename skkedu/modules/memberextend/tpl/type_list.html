@@ -1,0 +1,84 @@
+<include target="header.html" /> 
+<load target="js/member_admin_type.js" usecdn="true" />
+<script>
+	xe.lang.typeDeleteMessage = '{$lang->msg_type_delete}';
+	xe.lang.multilingual = '{$lang->cmd_set_multilingual}';
+	xe.lang.modify = '{$lang->cmd_modify}';
+	xe.lang.deleteMSG = '{$lang->cmd_delete}';
+</script>
+<style>
+	input.description		{width:350px;}
+	
+</style>
+
+<form action="" method="post" ruleset="insertTypeConfig">
+	<input type="hidden" name="module" value="memberextend" />
+	<input type="hidden" name="act" value="procMemberextendAdminTypeConfig" />
+	<table class="sortable x_table x_table-striped x_table-hover">
+		<caption>
+			<strong>{count($type_list)}{$lang->msg_types_exist}</strong>
+		</caption>
+		<thead>
+			<tr>
+				<th scope="col"><em style="color:red">*</em> {$lang->type_title}</th>
+				<th scope="col">{$lang->description}</th>
+				<th scope="col">{$lang->default_type}</th>
+				<th scope="col"></th>
+				<th scope="col">{$lang->use}/{$lang->unuse}</th>
+				<th scope="col"></th>
+				<th scope="col"></th>
+			</tr>
+		</thead>
+		<tfoot>
+			<tr>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td><a href="#" class="_addType">{$lang->cmd_add}</a></td>
+			</tr>
+		</tfoot>
+		<tbody class="uDrag _typeList">
+			<tr loop="$type_list=>$type_srl,$type_info">
+				<td>
+					<div class="wrap">
+						<button type="button" class="dragBtn">Move to</button>
+						<input type="hidden" name="type_srls[]" value="{$type_info->type_srl}" />
+						<input type="text" name="type_titles[]" value="{htmlspecialchars($type_info->title)}" class="lang_code" title="{$lang->type_title}" />
+					</div>
+				</td>
+				<td><input type="text" name="descriptions[]" class="description" value="{$type_info->description}" title="{$lang->description}" /></td>
+				<td><span cond="$type_info->is_default=='Y'" >Default</span><span cond="$type_info->is_default=='N'">Extended</span></td>
+				<td></td>
+				<td><label><input type="radio" name="{$type_info->type_srl}_isUse" value="Y" checked="checked"|cond="$type_info->is_active == 'Y'" />사용</label><label><input type="radio" name="{$type_info->type_srl}_isUse" value="N" checked="checked"|cond="$type_info->is_active == 'N'" />미사용</label></td>
+				<td>
+					<a href="{getUrl('','module','admin','act','dispMemberextendAdminTypeConfig','type_srl',$type_srl)}" cond="$type_info->is_default=='N'">{$lang->cmd_modify}</a>
+					<a href="{$default_modify_link}" cond="$type_info->is_default=='Y'">{$lang->cmd_modify}</a>
+				</td>
+				<td><div class="_deleteTD" style="display:none"|cond="$type_info->is_default == 'Y'"><a href="#{$type_srl}" class="_deleteType">{$lang->cmd_delete}</a></div></td>
+			</tr>
+			<tr style="display:none" class="_template">
+				<td>
+					<div class="wrap">
+						<button type="button" class="dragBtn">Move to</button>
+						<input type="hidden" name="type_srls[]" value="new" disabled="disabled"/>
+						<input type="text" name="type_titles[]" value=""  disabled="disabled" class="lang_code" />
+					</div>
+				</td>
+				<td><input type="text" name="descriptions[]" class="description" value="" disabled="disabled" /></td>
+				<td></td>
+				<td></td>
+				<td><label><input type="radio" name="_isUse" value="Y" />{$lang->use}</label><label><input type="radio" name="_isUse" value="N" />{$lang->unuse}</label></td>
+				<td></td>
+				<td><div class="_deleteTD"><a href="#new" class="_deleteType">{$lang->cmd_delete}</a></div></td>
+			</tr>
+
+		</tbody>
+	</table>
+	<div class="x_clearfix">
+		<span class="x_pull-right"><input class="x_btn x_btn-primary" type="submit" value="{$lang->cmd_save}" /></span>
+	</div>
+</form>
+<include target="footer.html" />

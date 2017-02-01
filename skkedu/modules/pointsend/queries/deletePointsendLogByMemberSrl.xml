@@ -1,0 +1,9 @@
+<query id="deletePointsendLog" action="delete">
+	<tables>
+		<table name="pointsend_log" />
+	</tables>
+	<conditions>
+		<condition operation="equal" column="sender_srl" var="member_srl" filter="number" pipe="or" />
+		<condition operation="equal" column="receiver_srl" var="member_srl" filter="number" pipe="or" />
+	</conditions>
+</query>

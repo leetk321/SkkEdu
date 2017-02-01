@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<skin version="0.2">
+    <title xml:lang="ko">기본형 스킨</title>
+	<title xml:lang="en">default skin</title>
+    <description xml:lang="ko">기본형 스킨입니다.</description>
+    <description xml:lang="en">기본형 스킨입니다.</description>
+    <version>0.2</version>
+    <date>2012-12-29</date>
+    <link>http://study4you.kr/</link>
+    <author email_address="" link="http://study4you.kr/">
+        <name xml:lang="ko">배워서남준다</name>
+        <name xml:lang="en">Study4u</name>
+    </author>
+    <colorset>
+		<color name="default">
+            <title xml:lang="ko">기본</title>
+            <title xml:lang="en">default</title>
+        </color>
+	</colorset>
+</skin>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<addon version="0.2">
+    <title xml:lang="ko">베스트 댓글 애드온</title>
+    <description xml:lang="ko">
+        추천을 가장 많이 받은 베스트 댓글을 상단에 출력합니다.
+    </description>
+    <version>0.1.2</version>
+    <date>2015-12-18</date>
+
+    <author email_address="webmaster@conory.com" link="http://www.conory.com">
+        <name xml:lang="ko">CONORY</name>
+    </author>
+	<extra_vars>
+		<var name="comment_count" type="text">
+			<title xml:lang="ko">베스트 댓글 개수</title>
+			<description xml:lang="ko">출력될 베스트 댓글 개수를 입력해주세요. 기본값은 5개입니다.</description>
+		</var>
+		<var name="more_voted_count" type="text">
+			<title xml:lang="ko">기준 추천수</title>
+			<description xml:lang="ko">기준 추천수 이상인 댓글만 베스트 댓글로 올립니다.</description>
+		</var>
+		<var name="show_best" type="select">
+			<title xml:lang="ko">Best 표시</title>
+			<description xml:lang="ko">베스트 댓글에 애드온 자체적으로 Best 표시를 합니다.</description>
+            <options value="">
+                <title xml:lang="ko">예</title>
+            </options>			
+            <options value="N">
+                <title xml:lang="ko">아니요</title>
+            </options>
+		</var>
+	</extra_vars>
+</addon>

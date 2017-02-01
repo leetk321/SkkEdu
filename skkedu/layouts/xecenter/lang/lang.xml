@@ -1,0 +1,142 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!--// 언어 코드 참조 하세요
+en,English        //영어
+ko,한국어         //한국어
+jp,日本語         //일본어
+zh-CN,中文(中国)   //중국어
+zh-TW,中文(臺灣)  //타이완어
+fr,Français       //프랑스어
+de,Deutsch        //독일어
+ru,Русский        //러시아어
+es,Español        //스페인어
+tr,Türkçe         //터키어
+vi,Tiếng Việt     //베트남어
+mn,Mongolian      //몽골어
+-->
+<lang>
+	<item name="qc_search">
+		<value xml:lang="ko"><![CDATA[검색]]></value><!--//한국어-->
+		<value xml:lang="en"><![CDATA[Search]]></value><!--//영어-->
+		<value xml:lang="es"><![CDATA[Buscar]]></value><!--//스페인어-->
+	</item>
+	<item name="qc_search_intro">
+		<value xml:lang="ko"><![CDATA[검색어를 입력해주세요]]></value>
+		<value xml:lang="en"><![CDATA[Please enter some keyword]]></value>
+		<value xml:lang="es"><![CDATA[Ingresen su palabras]]></value>
+	</item>
+	<item name="qc_myinfo">
+		<value xml:lang="ko"><![CDATA[내정보]]></value>
+		<value xml:lang="en"><![CDATA[MyInfo]]></value>
+		<value xml:lang="es"><![CDATA[MiInfo]]></value>
+	</item>
+	<item name="qc_login">
+		<value xml:lang="ko"><![CDATA[로그인]]></value>
+		<value xml:lang="en"><![CDATA[Login]]></value>
+		<value xml:lang="es"><![CDATA[Login]]></value>
+	</item>
+	<item name="qc_logout">
+		<value xml:lang="ko"><![CDATA[로그아웃]]></value>
+		<value xml:lang="en"><![CDATA[Logout]]></value>
+		<value xml:lang="es"><![CDATA[Logout]]></value>
+	</item>
+	<item name="qc_signup">
+		<value xml:lang="ko"><![CDATA[회원가입]]></value>
+		<value xml:lang="en"><![CDATA[SignUp]]></value>
+		<value xml:lang="es"><![CDATA[Registrate]]></value>
+	</item>
+	<item name="qc_pic_change">
+		<value xml:lang="ko"><![CDATA[사진변경]]></value>
+		<value xml:lang="en"><![CDATA[Change]]></value>
+		<value xml:lang="es"><![CDATA[Cambiar]]></value>
+	</item>
+	<item name="qc_level">
+		<value xml:lang="ko"><![CDATA[레벨]]></value>
+		<value xml:lang="en"><![CDATA[Level]]></value>
+		<value xml:lang="es"><![CDATA[Nivel]]></value>
+	</item>
+	<item name="qc_register">
+		<value xml:lang="ko"><![CDATA[가입일]]></value>
+		<value xml:lang="en"><![CDATA[SignUp]]></value>
+		<value xml:lang="es"><![CDATA[Fecha de Inscripcion]]></value>
+	</item>
+	<item name="qc_lastlogin">
+		<value xml:lang="ko"><![CDATA[최근로그인]]></value>
+		<value xml:lang="en"><![CDATA[Last Login]]></value>
+		<value xml:lang="es"><![CDATA[Ultima Login]]></value>
+	</item>
+	<item name="qc_info_change">
+		<value xml:lang="ko"><![CDATA[개인정보 관리 및 변경]]></value>
+		<value xml:lang="en"><![CDATA[Change Member Info]]></value>
+		<value xml:lang="es"><![CDATA[Cambiar Mi perfiles]]></value>
+	</item>
+	<item name="qc_last_article">
+		<value xml:lang="ko"><![CDATA[최근작성글]]></value>
+		<value xml:lang="en"><![CDATA[Last Articles]]></value>
+		<value xml:lang="es"><![CDATA[Ultimo Articulos]]></value>
+	</item>
+	<item name="qc_last_comment">
+		<value xml:lang="ko"><![CDATA[최근작성댓글]]></value>
+		<value xml:lang="en"><![CDATA[Last Comment]]></value>
+		<value xml:lang="es"><![CDATA[Utimo Comentario]]></value>
+	</item>
+	<item name="qc_last_message">
+		<value xml:lang="ko"><![CDATA[최근쪽지]]></value>
+		<value xml:lang="en"><![CDATA[Last Message]]></value>
+		<value xml:lang="es"><![CDATA[Utimo Mensage]]></value>
+	</item>
+	<item name="qc_sitemap">
+		<value xml:lang="ko"><![CDATA[전체메뉴]]></value>
+		<value xml:lang="en"><![CDATA[SiteMap]]></value>
+		<value xml:lang="es"><![CDATA[Mapa del sitio]]></value>
+	</item>
+	<item name="qc_family_site">
+		<value xml:lang="ko"><![CDATA[패밀리사이트]]></value>
+		<value xml:lang="en"><![CDATA[Family Site]]></value>
+		<value xml:lang="es"><![CDATA[Sitio de Familia]]></value>
+	</item>
+	<item name="qc_login_site">
+		<value xml:lang="ko"><![CDATA[사이트 로그인]]></value>
+		<value xml:lang="en"><![CDATA[Login to site]]></value>
+		<value xml:lang="es"><![CDATA[Entrar en el sitio]]></value>
+	</item>
+	<item name="qc_keep_login">
+		<value xml:lang="ko"><![CDATA[로그인유지]]></value>
+		<value xml:lang="en"><![CDATA[keep login]]></value>
+		<value xml:lang="es"><![CDATA[Mantenga login]]></value>
+	</item>
+	<item name="qc_login_intro">
+		<value xml:lang="ko"><![CDATA[패스워드를 입력해주세요]]></value>
+		<value xml:lang="en"><![CDATA[Please enter the Password]]></value>
+		<value xml:lang="es"><![CDATA[Por favor, Introduzca la Contrasena]]></value>
+	</item>
+	<item name="qc_login_intro2">
+		<value xml:lang="ko"><![CDATA[를 입력해주세요]]></value>
+		<value xml:lang="en"><![CDATA[ ]]></value>
+		<value xml:lang="es"><![CDATA[ ]]></value>
+	</item>
+	<item name="qc_lost_id">
+		<value xml:lang="ko"><![CDATA[아이디/비밀번호를 잃어 버리셨나요?]]></value>
+		<value xml:lang="en"><![CDATA[Did you forget your Id or Password?]]></value>
+		<value xml:lang="es"><![CDATA[¿Ha olvidado su ID o contrasena?]]></value>
+	</item>
+	<item name="qc_social_login">
+		<value xml:lang="ko"><![CDATA[간편 소셜 로그인]]></value>
+		<value xml:lang="en"><![CDATA[Social Login]]></value>
+		<value xml:lang="es"><![CDATA[Social Login]]></value>
+	</item>
+	<item name="qc_to_top">
+		<value xml:lang="ko"><![CDATA[맨위로]]></value>
+		<value xml:lang="en"><![CDATA[To Top]]></value>
+		<value xml:lang="es"><![CDATA[Arriba]]></value>
+	</item>
+	<item name="qc_to_content">
+		<value xml:lang="ko"><![CDATA[컨텐츠]]></value>
+		<value xml:lang="en"><![CDATA[Content]]></value>
+		<value xml:lang="es"><![CDATA[Contenido]]></value>
+	</item>
+	<item name="qc_to_bottom">
+		<value xml:lang="ko"><![CDATA[아래로]]></value>
+		<value xml:lang="en"><![CDATA[Bottom]]></value>
+		<value xml:lang="es"><![CDATA[Abajo]]></value>
+	</item>
+</lang>

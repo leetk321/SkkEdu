@@ -1,0 +1,230 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<lang>
+	<item name="memberextend_config">
+		<value xml:lang="ko"><![CDATA[회원 타입 설정]]></value>
+		<value xml:lang="en"><![CDATA[Member Type Config]]></value>
+	</item>
+	<item name="type_title">
+		<value xml:lang="ko"><![CDATA[회원 타입]]></value>
+		<value xml:lang="en"><![CDATA[Member Type]]></value>
+	</item>
+	<item name="default_type">
+		<value xml:lang="ko"><![CDATA[기본 타입]]></value>
+		<value xml:lang="en"><![CDATA[Member Type]]></value>
+	</item>
+	<item name="default_agreement">
+		<value xml:lang="ko"><![CDATA[기본 약관]]></value>
+		<value xml:lang="en"><![CDATA[Common Agreement]]></value>
+	</item>
+	<item name="item_typelist">
+		<value xml:lang="ko"><![CDATA[회원타입 유형]]></value>
+		<value xml:lang="en"><![CDATA[Member Type List]]></value>
+	</item>
+	<item name="item_basic_config">
+		<value xml:lang="ko"><![CDATA[공통 설정]]></value>
+		<value xml:lang="en"><![CDATA[Common Info]]></value>
+	</item>
+	<item name="item_dashboard">
+		<value xml:lang="ko"><![CDATA[대시보드]]></value>
+		<value xml:lang="en"><![CDATA[Dashboard]]></value>
+	</item>
+	<item name="item_current_version">
+		<value xml:lang="ko"><![CDATA[현재 모듈버전]]></value>
+		<value xml:lang="en"><![CDATA[Your Version]]></value>
+	</item>
+	<item name="item_released_version">
+		<value xml:lang="ko"><![CDATA[최신 모듈버전]]></value>
+		<value xml:lang="en"><![CDATA[Lastest Version]]></value>
+	</item>
+	<item name="unuse">
+		<value xml:lang="ko"><![CDATA[미사용]]></value>
+		<value xml:lang="en"><![CDATA[Unused]]></value>
+	</item>
+	
+
+	
+	<item name="agreement_config">
+		<value xml:lang="ko"><![CDATA[약관 설정]]></value>
+		<value xml:lang="en"><![CDATA[Agreement]]></value>
+	</item>
+	<item name="agreement_title">
+		<value xml:lang="ko"><![CDATA[약관 제목]]></value>
+		<value xml:lang="en"><![CDATA[Agreement Title]]></value>
+	</item>
+	<item name="agreement_list">
+		<value xml:lang="ko"><![CDATA[약관 목록]]></value>
+		<value xml:lang="en"><![CDATA[Agreement List]]></value>
+	</item>
+	
+	
+	<item name="target_group">
+		<value xml:lang="ko"><![CDATA[가입시 설정될 회원그룹]]></value>
+		<value xml:lang="en"><![CDATA[Target Member Group]]></value>
+	</item>
+	<item name="insert_membertype">
+		<value xml:lang="ko"><![CDATA[회원 타입 추가]]></value>
+		<value xml:lang="en"><![CDATA[Add Member Type]]></value>
+	</item>
+	<item name="enable_agreement_bytype">
+		<value xml:lang="ko"><![CDATA[개별 약관 사용]]></value>
+		<value xml:lang="en"><![CDATA[Use Specific Agreement]]></value>
+	</item>
+	<item name="enable_agreement_default">
+		<value xml:lang="ko"><![CDATA[공통 약관 사용]]></value>
+		<value xml:lang="en"><![CDATA[Use Default Agreement]]></value>
+	</item>
+	<item name="enable_progressheader">
+		<value xml:lang="ko"><![CDATA[회원가입  진행상황 표시]]></value>
+		<value xml:lang="en"><![CDATA[Use Signup Progress Header]]></value>
+	</item>
+	<item name="enable_signupcomplete">
+		<value xml:lang="ko"><![CDATA[회원 가입 완료페이지 표시]]></value>
+		<value xml:lang="en"><![CDATA[Display registration completion page]]></value>
+	</item>
+	<item name="enable_viewmembertype">
+		<value xml:lang="ko"><![CDATA[회원 타입 표시]]></value>
+		<value xml:lang="en"><![CDATA[Display Member Type]]></value>
+	</item>
+	<item name="enable_authentication">
+		<value xml:lang="ko"><![CDATA[인증절차 사용]]></value>
+		<value xml:lang="en"><![CDATA[Display Authentication Page]]></value>
+	</item>
+	<item name="enable_ipin_auth">
+		<value xml:lang="ko"><![CDATA[아이핀 인증 사용]]></value>
+		<value xml:lang="en"><![CDATA[Use i-pin Authentication]]></value>
+	</item>
+	<item name="enable_idnumber_auth">
+		<value xml:lang="ko"><![CDATA[주민등록번호 실명인증 사용]]></value>
+		<value xml:lang="en"><![CDATA[Use IDNumber Authentication]]></value>
+	</item>
+	<item name="enable_phone_auth">
+		<value xml:lang="ko"><![CDATA[핸드폰 인증 사용]]></value>
+		<value xml:lang="en"><![CDATA[Use Cellphone Authentication]]></value>
+	</item>
+	<item name="enable_mailauth">
+		<value xml:lang="ko"><![CDATA[메일 인증 사용]]></value>
+		<value xml:lang="en"><![CDATA[Use e-Mail Authentication]]></value>
+	</item>
+	
+	
+	
+	<item name="about_target_group">
+		<value xml:lang="ko"><![CDATA[회원가입시, 자동으로 설정 될 회원그룹 입니다. 중복설정 가능하며 아무것도 선택하지 않을시 기본 회원그룹을 따릅니다.]]></value>
+		<value xml:lang="en"><![CDATA[When visitor sign up as a member of your website, this function automatically sets the member groups. it can select more than one group. If you do not select anything, the settings is default. ]]></value>
+	</item>
+	<item name="warning_target_group">
+		<value xml:lang="ko"><![CDATA[기존 회원의 그룹은 그대로 유지됩니다. 앞으로 가입하는 회원만 위의 설정을 따릅니다.]]></value>
+		<value xml:lang="en"><![CDATA[Group of registered members is untouched. ]]></value>
+	</item>
+	
+	
+	<item name="about_enable_agreement_bytype">
+		<value xml:lang="ko"><![CDATA[회원가입시 회원타입별 가입약관을 출력합니다. (아니오 선택시, 회원 기본설정을 따릅니다)]]></value>
+		<value xml:lang="en"><![CDATA[It will show agreement by member type. (When you select No, the default settings are applied.)]]></value>
+	</item>
+	<item name="about_enable_agreement_default">
+		<value xml:lang="ko"><![CDATA[회원가입시 공통 가입약관을 출력합니다. 공통약관은 기본 회원설정에서 수정가능합니다.]]></value>
+		<value xml:lang="en"><![CDATA[It will show default agreement . (Default Agreement can be modified in the setting of default member)]]></value>
+	</item>
+	<item name="about_enable_progressheader">
+		<value xml:lang="ko"><![CDATA[회원가입시 상단에 회원가입 진행상황을 표시합니다.]]></value>
+		<value xml:lang="en"><![CDATA[You can display the progress of the registration on the member registration.]]></value>
+	</item>
+	<item name="about_enable_signupcomplete">
+		<value xml:lang="ko"><![CDATA[회원가입 완료 후 회원가입완료 페이지를 보여줍니다.]]></value>
+		<value xml:lang="en"><![CDATA[After completing registration, registration completion page appears.]]></value>
+	</item>
+	<item name="about_enable_viewmembertype">
+		<value xml:lang="ko"><![CDATA[회원이 다른 회원의 정보를 조회시, 회원타입을 표시합니다.]]></value>
+		<value xml:lang="en"><![CDATA[If the member to search the information on the other members, it will display member type field.]]></value>
+	</item>
+	<item name="about_enable_authentication">
+		<value xml:lang="ko"><![CDATA[회원 가입전, 회원 인증절차를 사용합니다. (i-pin인증, 주민등록번호 실명인증, 핸드폰인증)]]></value>
+		<value xml:lang="en"><![CDATA[It will show authentication page before signup page]]></value>
+	</item>
+	<item name="about_enable_ipin_auth">
+		<value xml:lang="ko"><![CDATA[아이핀 인증 사용, 현재는 지원되지 않고있습니다. 추후 추가예정]]></value>
+		<value xml:lang="en"><![CDATA[Use i-pin Authentication]]></value>
+	</item>
+	<item name="about_enable_idnumber_auth">
+		<value xml:lang="ko"><![CDATA[주민등록번호 실명인증 사용, 현재는 지원되지 않고있습니다. 추후 추가예정]]></value>
+		<value xml:lang="en"><![CDATA[Use IDNumber Authentication]]></value>
+	</item>
+	<item name="about_enable_phone_auth">
+		<value xml:lang="ko"><![CDATA[핸드폰 인증 사용]]></value>
+		<value xml:lang="en"><![CDATA[Use Cellphone Authentication]]></value>
+	</item>
+	<item name="about_enable_mailauth">
+		<value xml:lang="ko"><![CDATA[메일 인증 사용합니다. 코어모듈의 설정과 동기화됩니다.]]></value>
+		<value xml:lang="en"><![CDATA[Use e-Mail Authentication]]></value>
+	</item>
+	<item name="about_mskin">
+		<value xml:lang="ko"><![CDATA[XE설정에서 모바일페이지를 사용할 경우에만 작동합니다.]]></value>
+		<value xml:lang="en"><![CDATA[If you are not using a mobile page, this feature does not work.]]></value>
+	</item>
+	<item name="about_memberextend_redirect_url">
+		<value xml:lang="ko"><![CDATA[회원 가입 후 이동할 페이지를 선택해 주세요. 선택된 페이지가 없는 경우 기본 회원타입 설정을 따릅니다.]]></value>
+		<value xml:lang="en"><![CDATA[Please select a page where users will go after sign up. When this is empty, it will be set as the default membertype's setting]]></value>
+	</item>
+	
+	
+	
+	<item name="msg_need_agreement_check">
+		<value xml:lang="ko"><![CDATA[모든 약관에 동의하셨을 경우에만 회원가입이 가능합니다.]]></value>
+		<value xml:lang="en"><![CDATA[You can be registered only if it is agreed to all agreements.]]></value>
+	</item>
+	<item name="msg_no_agreement_list">
+		<value xml:lang="ko"><![CDATA[현재 저장되어있는 약관이 존재하지 않습니다.]]></value>
+		<value xml:lang="en"><![CDATA[There is no agreement that is currently stored.]]></value>
+	</item>
+	<item name="msg_insert_type_name_detail">
+		<value xml:lang="ko"><![CDATA[기본회원타입은 삭제되지 않습니다.]]></value>
+		<value xml:lang="en"><![CDATA[You can't delete Default Membertype.]]></value>
+	</item>
+	<item name="msg_types_exist">
+		<value xml:lang="ko"><![CDATA[개의 회원타입이 존재합니다.]]></value>
+		<value xml:lang="en"><![CDATA[Types exist.]]></value>
+	</item>
+	<item name="msg_type_delete">
+		<value xml:lang="ko"><![CDATA[선택한 회원타입을 삭제합니다. 회원타입 내 저장된 모든 정보 역시 삭제됩니다.]]></value>
+		<value xml:lang="en"><![CDATA[You can remove the member type selected. All information is stored in the member types are also deleted.]]></value>
+	</item>
+	<item name="msg_delete_agreement">
+		<value xml:lang="ko"><![CDATA[선택한 약관을 삭제합니다.]]></value>
+		<value xml:lang="en"><![CDATA[You can remove selected agreement.]]></value>
+	</item>
+	<item name="msg_exists_in_default_signupForm">
+		<value xml:lang="ko"><![CDATA[기본 가입폼에 존재하는 입력항목ID 입니다. 다른 입력항목ID를 이용하여 등록하세요.]]></value>
+		<value xml:lang="en"><![CDATA[This is an column ID that exists in the default. Please register with the other column ID.]]></value>
+	</item>
+	<item name="msg_exists_in_join_form">
+		<value xml:lang="ko"><![CDATA[이미 존재하는 입력항목ID 입니다. 다른 입력항목ID를 이용하여 등록하세요.]]></value>
+		<value xml:lang="en"><![CDATA[This is an column ID that already exists. Please register with the other column ID.]]></value>
+	</item>
+	<item name="msg_fieldrequired">
+		<value xml:lang="ko"><![CDATA[%s 값은 필수입니다.]]></value>
+		<value xml:lang="en"><![CDATA[Please enter a value for %s]]></value>
+	</item>
+	<item name="msg_warning_change_membertype">
+		<value xml:lang="ko"><![CDATA[회원타입이 바뀌게되면 회원 타입별 가입폼에 해당되는 회원정보는 삭제됩니다 계속 하시겠습니까?]]></value>
+		<value xml:lang="en"><![CDATA[Member type is changed, do you want to continue, it will be deleted member information corresponding to the member type-specific registration form]]></value>
+	</item>
+	<item name="msg_phone_auth_approved">
+		<value xml:lang="ko"><![CDATA[핸드폰 인증 모듈이 설치되어있습니다. 정상적으로 이용가능합니다.]]></value>
+		<value xml:lang="en"><![CDATA[Approved]]></value>
+	</item>
+	<item name="msg_phone_auth_denied">
+		<value xml:lang="ko"><![CDATA[핸드폰 인증 모듈이 설치되어있지 않습니다. 쉬운설치에서  <a href="http://www.xpressengine.com/index.php?mid=download&category_srl=18322923&parent_srl=18322917&package_srl=21195185" target="_blank">'MessageXE 휴대폰 인증'</a>모듈을 설치하여 주시기 바랍니다.]]></value>
+		<value xml:lang="en"><![CDATA[Approved]]></value>
+	</item>
+	
+	
+	
+	
+	
+	
+	<item name="desc_overall">
+		<value xml:lang="ko"><![CDATA[해당 모듈은 회원타입을 추가 및 설정이 가능합니다 .<br /> 회원 타입을 추가한 다음, 해당 타입의 설정 에서 가입폼 추가 및 약관 세팅이 가능합니다. <br /> 처음 해당 모듈을 설치한 경우 생성되는 기본멤버타입은 회원모듈의 설정을 따르며, 삭제되지 않습니다. <br />회원타입별로 개별설정을 하지 않는한 확장 회원타입은 기본회원타입의 설정을 상속받습니다. ]]></value>
+		<value xml:lang="en"><![CDATA[Member type is changed, do you want to continue, it will be deleted member information corresponding to the member type-specific registration form]]></value>
+	</item>
+</lang>

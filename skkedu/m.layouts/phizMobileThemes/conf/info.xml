@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout version="0.2">
+    <title xml:lang="ko">phiz Mobile 테마</title>
+    <title xml:lang="en">phiz Mobile Themes</title>
+    <description xml:lang="ko">
+        phiz Mobile 테마
+        Author : phiz
+    </description>
+    <description xml:lang="en">
+        phiz Mobile Themes
+        Author : phiz
+    </description>
+    <version>1.2</version>
+    <date>2014-07-02</date>
+    <link>http://phiz.kr/</link>
+
+    <author email_address="phiz@phiz.kr" link="http://phiz.kr/">
+        <name xml:lang="ko">phiz</name>
+        <name xml:lang="en">phiz</name>
+    </author>
+    <extra_vars>
+	<group>
+	<title xml:lang="ko">일반 설정</title>
+	<title xml:lang="en">General Settings</title>
+	<description xml:lang="ko">메인페이지는 슬라이드, 위젯등이 포함됩니다.</description>
+	<var name="mainPage" type="radio">
+			<title xml:lang="ko">메인 페이지</title>
+			<title xml:lang="en">Main page</title>
+			<options value="yes">
+				<title xml:lang="ko">사용</title>
+				<title xml:lang="en">Use the Slide</title>
+			</options>
+			<options value="no">
+				<title xml:lang="ko">사용하지 않음</title>
+				<title xml:lang="en">Do not use the Slide</title>
+			</options>
+		</var>
+	<var name="logo_text" type="text">
+			<title xml:lang="ko">로고 글자</title>
+			<title xml:lang="en">Logo text</title>
+		</var>
+			<var name="brand_color" type="select">
+				<title xml:lang="ko">로고 글자 색상</title>
+				<description xml:lang="ko">로고의 텍스트 색상을 지정합니다.</description>
+				<options value="default">
+					<title xml:lang="ko">회색</title>
+					<title xml:lang="en">default</title>
+				</options>
+				<options value="primary">
+					<title xml:lang="ko">파란색</title>
+					<title xml:lang="en">primary</title>
+				</options>
+				<options value="success">
+					<title xml:lang="ko">초록색</title>
+					<title xml:lang="en">success</title>
+				</options>
+				<options value="info">
+					<title xml:lang="ko">하늘색</title>
+					<title xml:lang="en">info</title>
+				</options>
+				<options value="warning">
+					<title xml:lang="ko">주황색</title>
+					<title xml:lang="en">warning</title>
+				</options>
+				<options value="danger">
+					<title xml:lang="ko">빨간색</title>
+					<title xml:lang="en">danger</title>
+				</options>
+				<options value="wisteria">
+					<title xml:lang="ko">보라색</title>
+					<title xml:lang="en">wisteria</title>
+				</options>
+				<options value="inverse">
+					<title xml:lang="ko">아스팔트색</title>
+					<title xml:lang="en">Wet Asphalt</title>
+				</options>
+			</var>
+			<var name="header_bg" type="select">
+				<title xml:lang="ko">메뉴바 푸터배경색</title>
+				<description xml:lang="ko">메뉴바와 푸터 배경색을 지정합니다.</description>
+				<options value="default">
+					<title xml:lang="ko">회색</title>
+					<title xml:lang="en">default</title>
+				</options>
+				<options value="primary">
+					<title xml:lang="ko">파란색</title>
+					<title xml:lang="en">primary</title>
+				</options>
+				<options value="success">
+					<title xml:lang="ko">초록색</title>
+					<title xml:lang="en">success</title>
+				</options>
+				<options value="info">
+					<title xml:lang="ko">하늘색</title>
+					<title xml:lang="en">info</title>
+				</options>
+				<options value="warning">
+					<title xml:lang="ko">주황색</title>
+					<title xml:lang="en">warning</title>
+				</options>
+				<options value="danger">
+					<title xml:lang="ko">빨간색</title>
+					<title xml:lang="en">danger</title>
+				</options>
+				<options value="wisteria">
+					<title xml:lang="ko">보라색</title>
+					<title xml:lang="en">wisteria</title>
+				</options>
+				<options value="inverse">
+					<title xml:lang="ko">아스팔트색</title>
+					<title xml:lang="en">Wet Asphalt</title>
+				</options>
+			</var>
+		<var name="logo_image" type="image">
+			<title xml:lang="ko">로고이미지</title>
+			<title xml:lang="en">Logo image</title>
+			<description xml:lang="ko">레이아웃의 상단에 표시될 로고이미지를 입력하세요. (세로길이는 50px 이내.)</description>
+			<description xml:lang="en">Please input a logo image which will be displayed on the top of layout. (the image with a transparent background, 23px height is recommended.)</description>
+		</var>
+		<var name="index_url" type="text">
+			<title xml:lang="ko">홈 페이지 URL</title>
+			<title xml:lang="en">Homepage URL</title>
+			<description xml:lang="ko">로고를 클릭시에 이동할 홈 페이지 URL을 입력해 주세요.</description>
+			<description xml:lang="en">Please input the URL to redirect when user clicks the logo.</description>
+		</var>
+		<var name="footer_copyright" type="textarea">
+			<title xml:lang="ko">footer 카피라이트</title>
+			<title xml:lang="en">Copyright of footer</title>
+			<description xml:lang="ko">footer 카피라이트</description>
+			<description xml:lang="en">Copyright of footer</description>
+		</var>
+			<var name="footerInfo_bg" type="select">
+				<title xml:lang="ko">푸터인포메이션 배경색</title>
+				<description xml:lang="ko">푸터인포메이션 배경색을 지정합니다.</description>
+				<options value="default">
+					<title xml:lang="ko">회색</title>
+					<title xml:lang="en">default</title>
+				</options>
+				<options value="primary">
+					<title xml:lang="ko">파란색</title>
+					<title xml:lang="en">primary</title>
+				</options>
+				<options value="success">
+					<title xml:lang="ko">초록색</title>
+					<title xml:lang="en">success</title>
+				</options>
+				<options value="info">
+					<title xml:lang="ko">하늘색</title>
+					<title xml:lang="en">info</title>
+				</options>
+				<options value="warning">
+					<title xml:lang="ko">주황색</title>
+					<title xml:lang="en">warning</title>
+				</options>
+				<options value="danger">
+					<title xml:lang="ko">빨간색</title>
+					<title xml:lang="en">danger</title>
+				</options>
+				<options value="wisteria">
+					<title xml:lang="ko">보라색</title>
+					<title xml:lang="en">wisteria</title>
+				</options>
+				<options value="inverse">
+					<title xml:lang="ko">아스팔트색</title>
+					<title xml:lang="en">Wet Asphalt</title>
+				</options>
+			</var>
+		<var name="footer_info" type="textarea">
+			<title xml:lang="ko">footer Infomation</title>
+			<title xml:lang="en">footer Infomation</title>
+			<description xml:lang="ko">footer Infomation</description>
+			<description xml:lang="en">footer Infomation</description>
+		</var>
+	<var name="message" type="radio">
+			<title xml:lang="ko">메뉴에서 쪽지함 보기</title>
+			<title xml:lang="en">use message</title>
+			<options value="yes">
+				<title xml:lang="ko">출력</title>
+				<title xml:lang="en">Use</title>
+			</options>
+			<options value="no">
+				<title xml:lang="ko">출력 않음</title>
+				<title xml:lang="en">Do not use</title>
+			</options>
+		</var>
+	<var name="editor_tool" type="radio">
+			<title xml:lang="ko">에디터 툴 출력</title>
+			<title xml:lang="en">Display editor tool</title>
+			<options value="yes">
+				<title xml:lang="ko">출력</title>
+				<title xml:lang="en">Display</title>
+			</options>
+			<options value="no">
+				<title xml:lang="ko">출력 않음</title>
+				<title xml:lang="en">Do not display</title>
+			</options>
+		</var>
+	</group>
+	<group>
+	<title xml:lang="ko">메인페이지 설정</title>
+	<title xml:lang="en">Main Page Settings</title>
+	<description xml:lang="ko">메인페이지는 랜딩 페이지 또는 위젯 등을 설정합니다.
+	내용을 입력하지 않으면 출력되지 않습니다.</description>
+	<var name="m_pm" type="radio">
+			<title xml:lang="ko">메인 화면</title>
+			<title xml:lang="en">Main promotion</title>
+			<options value="yes">
+				<title xml:lang="ko">사용</title>
+				<title xml:lang="en">Use the promotion</title>
+			</options>
+			<options value="no">
+				<title xml:lang="ko">사용하지 않음</title>
+				<title xml:lang="en">Do not use the promotion</title>
+			</options>
+		</var>
+		<var name="pm_bg_image" type="image">
+			<title xml:lang="ko">메인화면 배경이미지</title>
+			<title xml:lang="en">Background image for landing page.</title>
+			<description xml:lang="ko">메인화면의 백그라운드 이미지</description>
+			<description xml:lang="en">Background image for landing page.</description>
+		</var>
+		<var name="pm_bg_color" type="text">
+			<title xml:lang="ko">메인화면 배경 색상</title>
+			<title xml:lang="en">Background image for landing page.</title>
+			<description xml:lang="ko">메인화면 배경 색상(단위 포함)을 입력하세요</description>
+			<description xml:lang="en">Input background color code.</description>
+		</var>
+		<var name="m_pm_title" type="text">
+			<title xml:lang="ko">*제목</title>
+			<title xml:lang="en">title</title>
+			<description xml:lang="ko">제목을 입력해 주세요.</description>
+			<description xml:lang="en">Please input the title.</description>
+		</var>
+		<var name="m_pm_titlecolor" type="text">
+			<title xml:lang="ko">*제목 색상</title>
+			<title xml:lang="en">title</title>
+			<description xml:lang="ko">제목색상(단위포함)을 입력해 주세요.</description>
+			<description xml:lang="en">Please input the title color.</description>
+		</var>
+		<var name="m_pm_image" type="image">
+			<title xml:lang="ko">메인페이지 이미지</title>
+			<title xml:lang="en">Main page Image</title>
+			<description xml:lang="ko">로고 또는 사이트를 상징하는 이미지를 제목을 입력해 주세요.
+			가로,세로 크기가 같은 이미지</description>
+			<description xml:lang="en">Please input the image.</description>
+		</var>
+		<var name="m_widget1" type="textarea">
+			<title xml:lang="ko">위젯1</title>
+			<title xml:lang="en">description</title>
+			<description xml:lang="ko">내용을 입력해 주세요.(html 또는 위젯코드)</description>
+			<description xml:lang="en">Please input the Widget code.</description>
+		</var>
+		<var name="m_widget2" type="textarea">
+			<title xml:lang="ko">위젯2</title>
+			<title xml:lang="en">description</title>
+			<description xml:lang="ko">내용을 입력해 주세요.(html 또는 위젯코드)</description>
+			<description xml:lang="en">Please input the Widget code.</description>
+		</var>
+		<var name="m_widget3" type="textarea">
+			<title xml:lang="ko">위젯3</title>
+			<title xml:lang="en">description</title>
+			<description xml:lang="ko">내용을 입력해 주세요.(html 또는 위젯코드)</description>
+			<description xml:lang="en">Please input the Widget code.</description>
+		</var>
+		<var name="m_widget4" type="textarea">
+			<title xml:lang="ko">위젯4</title>
+			<title xml:lang="en">description</title>
+			<description xml:lang="ko">내용을 입력해 주세요.(html 또는 위젯코드)</description>
+			<description xml:lang="en">Please input the Widget code.</description>
+		</var>
+		<var name="m_widget5" type="textarea">
+			<title xml:lang="ko">위젯5</title>
+			<title xml:lang="en">description</title>
+			<description xml:lang="ko">내용을 입력해 주세요.(html 또는 위젯코드)</description>
+			<description xml:lang="en">Please input the Widget code.</description>
+		</var>
+		<var name="m_widget6" type="textarea">
+			<title xml:lang="ko">위젯6</title>
+			<title xml:lang="en">description</title>
+			<description xml:lang="ko">내용을 입력해 주세요.(html 또는 위젯코드)</description>
+			<description xml:lang="en">Please input the Widget code.</description>
+		</var>
+		<var name="m_widget7" type="textarea">
+			<title xml:lang="ko">위젯7</title>
+			<title xml:lang="en">description</title>
+			<description xml:lang="ko">내용을 입력해 주세요.(html 또는 위젯코드)</description>
+			<description xml:lang="en">Please input the Widget code.</description>
+		</var>
+		<var name="m_widget8" type="textarea">
+			<title xml:lang="ko">위젯8</title>
+			<title xml:lang="en">description</title>
+			<description xml:lang="ko">내용을 입력해 주세요.(html 또는 위젯코드)</description>
+			<description xml:lang="en">Please input the Widget code.</description>
+		</var>
+		<var name="m_widget9" type="textarea">
+			<title xml:lang="ko">위젯9</title>
+			<title xml:lang="en">description</title>
+			<description xml:lang="ko">내용을 입력해 주세요.(html 또는 위젯코드)</description>
+			<description xml:lang="en">Please input the Widget code.</description>
+		</var>
+		<var name="m_widget10" type="textarea">
+			<title xml:lang="ko">위젯10</title>
+			<title xml:lang="en">description</title>
+			<description xml:lang="ko">내용을 입력해 주세요.(html 또는 위젯코드)</description>
+			<description xml:lang="en">Please input the Widget code.</description>
+		</var>
+	</group>
+	</extra_vars>
+    <menus>
+        <menu name="main_menu" maxdepth="3" default="true">
+            <title xml:lang="ko">상단 메뉴</title>
+            <title xml:lang="en">Top menu</title>
+        </menu>
+    </menus>
+</layout>

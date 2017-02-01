@@ -1,0 +1,13 @@
+<query id="updateMember" action="update">
+	<tables>
+		<table name="memberextend" />
+	</tables>
+	<columns>
+		<column name="type_srl" var="type_srl" notnull="notnull" />
+		<column name="type_extra_vars" var="type_extra_vars" notnull="notnull" />
+		<column name="regdate" default="curdate()" />
+	</columns>
+	<conditions>
+        <condition operation="equal" column="member_srl" var="member_srl" />
+    </conditions>
+</query>

@@ -1,0 +1,58 @@
+{@ $depth = $module_info->display_depth}
+<table cellspacing="0" border="0" cond="$oDocument->getCommentCount()"  class="smVc" >
+	<tbody>{@ $_comment_list = $oDocument->getComments() }
+    <!--@foreach($_comment_list as $key => $comment)-->
+	<tr>
+		<td class="title">
+		<div class="c_content" <!--@if($comment->get('depth'))--> style="margin-left:{($comment->get('depth'))*20}px" <!--@end-->>
+		<span class="c_text" >
+		<font class="xe_content">{$comment->getContentText(text)}</font>
+		</span>
+		
+        <span class="c_time" cond="$module_info->display_time!='N'">
+		<!--@if( ($cur_date = date('Y-m-d'))==($comment->getRegdate('Y-m-d')) )-->
+        <font color="#FF6666">{$comment->getRegdate('H:i:s')}</font>
+        <!--@else-->
+        {$comment->getRegdate('y.m.d')}	
+        <!--@end-->       
+        </span>
+
+        <span class="bar">:</span>
+                
+        <span class="non">
+			<span class="c_name"><block cond="!$comment->member_srl && !$comment->homepage">{$comment->getNickName()}</block><a cond="$comment->member_srl" href="#popup_menu_area" class="member_{$comment->member_srl}" onclick="return false">{$comment->getNickName()}</a></span>
+        </span> 
+
+		<!--@if($comment->get('depth') < $depth && $module_info->display_comment_depth !='N')--><a href="{getUrl('act','dispBoardReplyComment','comment_srl',$comment->comment_srl)}" title="{$lang->cmd_reply}" cond="$grant->write_comment" class="c_op" ><span class="btn_reply">{$lang->cmd_reply}</span></a><!--@end-->
+
+        <span><a cond="$comment->isGranted()||!$comment->get('member_srl')" href="{getUrl('act','dispBoardModifyComment','comment_srl',$comment->comment_srl)}" title="{$lang->cmd_modify}" class="c_op"><img src="./css/modify.gif" border="0" alt="{$lang->cmd_modify}" /></a></span>
+					
+        <!--@if($comment->isGranted() || !$comment->get('member_srl'))-->
+		<span><a href="{getUrl('act','dispBoardDeleteComment','comment_srl',$comment->comment_srl)}" title="{$lang->cmd_delete}" class="c_op"><img src="./css/delete.gif"  border="0" alt="{$lang->cmd_delete}" /></a></span>
+		<!--@end-->
+			
+        </div>
+		</td>
+	</tr>
+    <!--@end--> 
+</tbody></table>
+
+<!-- 댓글 페이지 네비게이션 -->     
+<!--@if($oDocument->comment_page_navigation)-->         
+{@                 
+$cpageStr = sprintf('%d_cpage', $oDocument->get('document_srl'));
+$cpage = Context::get($cpageStr);         
+}     
+	<div class="c_navi"> 
+    <div class="pa">       
+    <a href="{getUrl($cpageStr,1)}#{$oDocument->get('document_srl')}_comment" >&lsaquo;&lsaquo;</a>			
+		<!--@while($page_no = $oDocument->comment_page_navigation->getNextPage())-->             
+    	<!--@if($cpage == $page_no)-->                 
+        <strong>{$page_no}</strong>              
+        <!--@else-->                 
+        <a href="{getUrl($cpageStr,$page_no)}#{$oDocument->get('document_srl')}_comment">{$page_no}</a>             
+        <!--@end-->         
+        <!--@end-->         
+        <a href="{getUrl($cpageStr,$oDocument->comment_page_navigation->last_page)}#{$oDocument->get('document_srl')}_comment" >&rsaquo;&rsaquo;</a>     
+	</div></div>     
+<!--@end--> 

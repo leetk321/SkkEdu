@@ -1,0 +1,61 @@
+<table name="rockgame">
+    <column name="game_srl" type="number" size="11" notnull="notnull" auto_increment="auto_increment" primary_key="primary_key" />
+	<column name="member_srl" type="number" size="11" notnull="notnull" />
+	<column name="nick_name" type="varchar" size="40" notnull="notnull" />
+	<column name="com_select" type="varchar" size="10" notnull="notnull" />
+	<column name="user_select" type="varchar" size="10" notnull="notnull" />
+	<column name="result" type="varchar" size="10" notnull="notnull" />
+	<column name="game_point" type="number" size="13" notnull="notnull" />
+	<column name="set_point" type="number" size="13" notnull="notnull" />
+	<column name="regdate" type="varchar" size="20" notnull="notnull" />
+    <column name="ipaddress" type="varchar" size="128" notnull="notnull" />
+</table>
+
+
+<!--
+** name (열의 이름)
+
+
+** size (열의 크기. 숫자나 문자 타입에 사용됩니다.)
+-숫자 타입	: 정확도를 나타냅니다.
+-문자 타입	: 해당 문자열이 포함할 수 있는 문자의 개수를 나타냅니다.
+
+
+** type (열이 저장할 데이터 타입. 값은 다음 중 하나입니다.)
+(xe) 		== 	(MySQL)
+number 		== 	Bigint
+bignumber 	== 	Bigint
+varchar 	== 	varchar
+char 		== 	char 
+text 		== 	text 
+bigtext 	== 	longtext 
+date 		== 	varchar(14)
+float 		== 	float
+
+
+** default (열의 기본값 지정)
+
+
+** notnull (열이 널(null)값을 허용하는지 지정. 열이 널값을 허용하면 이 속성을 생략하고, 
+			허용하지 않으면 다음과 같이 이 속성을 추가합니다.)  
+			예제) notnull = "notnull" 
+
+			
+** primary_key (테이블의 primary key 로 사용될 열(column) 지정. 
+				각 열에 primary_key="primary_key" 속성을 지정하면 두 속성이 묶여서 primary_key 가 됩니다.)
+
+				
+** index (열의 인덱스 생성. 이 속성의 값은 생성될 인덱스의 이름을 나타냅니다. 
+		인덱스 이름을 하나 이상의 열에 중복으로 사용하면 결합 인덱스가 생성됩니다. )
+		예제) index="idx_list_order)
+
+		
+** unique (열에 대한 고유한 인덱스 생성. 이 속성의 값은 생성될 인덱스의 이름을 나타냅니다)
+
+
+**auto_increment ( 열값이 자동으로 증가하는지 지정합니다. 예제) auto_increment="auto_increment")
+
+
+-->
+
+

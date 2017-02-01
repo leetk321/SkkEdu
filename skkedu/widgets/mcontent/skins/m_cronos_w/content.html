@@ -1,0 +1,14 @@
+<!--%import("mcontent.css")-->
+<load target="black.css" cond="$colorset == 'black'" />
+<style cond="$layout_info->index_color">
+	.cronos_m{ border-top-color: {$layout_info->index_color};}
+</style>
+<div class="cronos_m">
+<!--@if($widget_info->list_type == "image_title")-->
+	<!--#include("./image_title.html")-->
+<!--@elseif($widget_info->list_type == "image_title_content")-->
+	<!--#include("./image_title_content.html")-->
+<!--@else-->
+	<!--#include("./normal.html")-->
+<!--@end-->
+</div>

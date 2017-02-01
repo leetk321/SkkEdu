@@ -1,0 +1,117 @@
+<script type="text/javascript">
+jQuery(function($){
+	$('input[name="enable_authentication"]').click(function(){
+		if($(this).val() == 'Y'){
+			$('#enable_phone_section').find('input').removeAttr('disabled');
+			$('#enable_ipin_section, #enable_idnumber_section, #enable_phone_section').slideDown(300);
+			
+		}
+		else if($(this).val() == 'N') {
+			$('#enable_ipin_section, #enable_idnumber_section, #enable_phone_section').find('input').attr('disabled', 'disabled');
+			$('#enable_ipin_section, #enable_idnumber_section, #enable_phone_section').slideUp(300);
+		}
+	});
+});
+</script>
+
+<include target="header.html" />
+<form action="./" class="x_form-horizontal" method="post">
+	<input type="hidden" name="module" value="memberextend" />
+	<input type="hidden" name="act" value="procMemberextendAdminGeneralConfig" />
+	<input type="hidden" name="success_return_url" value="{getUrl('act', $act)}" />
+	<input type="hidden" name="type_srl" value="{$type_srl}" />
+	<div class="x_control-group">
+		<label class="x_control-label" for="skin">{$lang->skin} <a data-admin-toggle="#help_menuName" class="x_icon-question-sign" href="./admin/help/index.html#UMAN_skin" target="_blank">{$lang->help}</a></label>
+		<div class="x_controls">
+			<select id="skin" name="skin">
+				<option loop="$skin_list=>$key,$val" value="{$key}" selected="selected"|cond="$config->skin==$key">{$val->title} ({$key})</option>
+			</select>
+		</div>
+	</div>
+	<div class="x_control-group">
+		<label class="x_control-label" for="skin">{$lang->mobile_skin} <a data-admin-toggle="#help_menuName" class="x_icon-question-sign" href="./admin/help/index.html#UMAN_skin" target="_blank">{$lang->help}</a></label>
+		<div class="x_controls">
+			<select id="mobile_skin" name="mobile_skin">
+				<option loop="$mskin_list=>$key,$val" value="{$key}" selected="selected"|cond="$config->skin==$key">{$val->title} ({$key})</option>
+			</select>
+			<p class="x_help-block">{$lang->about_mskin}</p>
+		</div>
+	</div>
+	<div class="x_control-group">
+		<div class="x_control-label">{$lang->enable_progressheader}</div>
+		<div class="x_controls">
+			<label class="x_inline" for="enable_progressheader_yes"><input type="radio" name="enable_progressheader" id="enable_progressheader_yes" value="Y" checked="checked"|cond="$config->progressUse == 'Y'" /> {$lang->cmd_yes}</label>
+			<label class="x_inline" for="enable_progressheader_no"><input type="radio" name="enable_progressheader" id="enable_progressheader_no" value="N" checked="checked"|cond="$config->progressUse != 'Y'"/> {$lang->cmd_no}</label>
+			<p class="x_help-block">{$lang->about_enable_progressheader}</p>
+		</div>
+	</div>
+	<div class="x_control-group">
+		<div class="x_control-label">{$lang->enable_viewmembertype}</div>
+		<div class="x_controls">
+			<label class="x_inline" for="enable_viewmembertype_yes"><input type="radio" name="enable_viewmembertype" id="enable_viewmembertype_yes" value="Y" checked="checked"|cond="$config->viewMemberTypeUse == 'Y'" /> {$lang->cmd_yes}</label>
+			<label class="x_inline" for="enable_viewmembertype_no"><input type="radio" name="enable_viewmembertype" id="enable_viewmembertype_no" value="N" checked="checked"|cond="$config->viewMemberTypeUse != 'Y'"/> {$lang->cmd_no}</label>
+			<p class="x_help-block">{$lang->about_enable_viewmembertype}</p>
+		</div>
+	</div>
+	<div class="x_control-group" id="enable_mailauth_section">
+		<div class="x_control-label">{$lang->enable_mailauth}</div>
+		<div class="x_controls">
+			<label class="x_inline" for="enable_mailauth_yes"><input type="radio" name="enable_mailauth" id="enable_mailauth_yes" value="Y" checked="checked"|cond="$member_config->enable_confirm == 'Y'" /> {$lang->cmd_yes}</label>
+			<label class="x_inline" for="enable_mailauth_no"><input type="radio" name="enable_mailauth" id="enable_mailauth_no" value="N" checked="checked"|cond="$member_config->enable_confirm != 'Y'"/> {$lang->cmd_no}</label>
+			<p class="x_help-block">{$lang->about_enable_mailauth}</p>
+		</div>
+	</div>
+	<div class="x_control-group">
+		<div class="x_control-label">{$lang->enable_authentication}</div>
+		<div class="x_controls">
+			<label class="x_inline" for="enable_authentication_yes"><input type="radio" name="enable_authentication" id="enable_authentication_yes" value="Y" checked="checked"|cond="$config->authenticationUse == 'Y'" /> {$lang->cmd_yes}</label>
+			<label class="x_inline" for="enable_authentication_no"><input type="radio" name="enable_authentication" id="enable_authentication_no" value="N" checked="checked"|cond="$config->authenticationUse != 'Y'"/> {$lang->cmd_no}</label>
+			<p class="x_help-block">{$lang->about_enable_authentication}</p>
+		</div>
+	</div>
+	<script type="text/javascript">
+		jQuery(document).ready(function($){
+			$('#enable_ipin_section, #enable_idnumber_section').attr('disabled', 'disabled').find('input').attr('disabled','disabled');
+			if($('#enable_authentication_no').attr('checked') == 'checked'){
+				$('#enable_phone_section, #enable_ipin_section, #enable_idnumber_section').find('input').attr('disabled', 'disabled').end()
+				.hide();
+			}
+		});
+	</script>
+	<div class="x_control-group" id="enable_ipin_section">
+		<div class="x_control-label">{$lang->enable_ipin_auth}</div>
+		<div class="x_controls">
+			<label class="x_inline" for="enable_ipin_auth_yes"><input type="radio" name="enable_ipin_auth" id="enable_ipin_auth_yes" value="Y" checked="checked"|cond="$config->ipinAuthUse == 'Y'" /> {$lang->cmd_yes}</label>
+			<label class="x_inline" for="enable_ipin_auth_no"><input type="radio" name="enable_ipin_auth" id="enable_ipin_auth_no" value="N" checked="checked"|cond="$config->ipinAuthUse != 'Y'"/> {$lang->cmd_no}</label>
+			<p class="x_help-block">{$lang->about_enable_ipin_auth}</p>
+		</div>
+	</div>
+	<div class="x_control-group" id="enable_idnumber_section">
+		<div class="x_control-label">{$lang->enable_idnumber_auth}</div>
+		<div class="x_controls">
+			<label class="x_inline" for="enable_idnumber_auth_yes"><input type="radio" name="enable_idnumber_auth" id="enable_idnumber_auth_yes" value="Y" checked="checked"|cond="$config->idnumberAuthUse == 'Y'" /> {$lang->cmd_yes}</label>
+			<label class="x_inline" for="enable_idnumber_auth_no"><input type="radio" name="enable_idnumber_auth" id="enable_idnumber_auth_no" value="N" checked="checked"|cond="$config->idnumberAuthUse != 'Y'"/> {$lang->cmd_no}</label>
+			<p class="x_help-block">{$lang->about_enable_idnumber_auth}</p>
+		</div>
+	</div>
+	<div class="x_control-group" id="enable_phone_section" >
+		<div class="x_control-label">{$lang->enable_phone_auth}</div>
+		<div class="x_controls" cond="$check_phone_auth">
+			<label class="x_inline" for="enable_phone_auth_yes"><input type="radio" name="enable_phone_auth" id="enable_phone_auth_yes" value="Y" checked="checked"|cond="$config->phoneAuthUse == 'Y'" /> {$lang->cmd_yes}</label>
+			<label class="x_inline" for="enable_phone_auth_no"><input type="radio" name="enable_phone_auth" id="enable_phone_auth_no" value="N" checked="checked"|cond="$config->phoneAuthUse != 'Y'"/> {$lang->cmd_no}</label>
+			<p class="x_help-block">{$lang->about_enable_phone_auth}</p>
+		</div>
+		<div class="x_controls">
+			<div class="message <!--@if($check_phone_auth)-->update<!--@elseif(!$check_phone_auth)-->error<!--@endif-->">
+				<p>{$phone_auth_message}</p> 
+			</div>
+		</div>
+	</div>
+	
+	
+	
+	<div class="x_clearfix btnArea">
+		<span class="x_pull-right"><input class="x_btn x_btn-primary" type="submit" value="{$lang->cmd_save}" /></span>
+	</div>
+</form>
+<include target="footer.html" />

@@ -1,0 +1,38 @@
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=yes, target-densitydpi=medium-dpi">
+<load target="filter/add_friend.xml" />
+<load target="css/communication.css" index="50" />
+<load cond="$communication_config->colorset=='black'||$communication_config->mcolorset=='black'" target="css/black.css" index="51" />
+<load target="js/communication.js" />
+<section class="xc">
+	<div class="border full-width popup-width">
+		<h1 class="h1">{$lang->cmd_add_friend}</h1>
+		<div cond="$XE_VALIDATOR_MESSAGE && $XE_VALIDATOR_ID == 'modules/communication/skins/sketchbook5_communication_skin/add_friend/1'" class="message {$XE_VALIDATOR_MESSAGE_TYPE}">
+			<p>{$XE_VALIDATOR_MESSAGE}</p>
+		</div>
+		<form ruleset="addFriend" action="./" method="post">
+			<input type="hidden" name="module" value="communication" />
+			<input type="hidden" name="act" value="procCommunicationAddFriend" />
+			<input type="hidden" name="target_srl" value="{$target_info->member_srl}" />
+			<input type="hidden" name="xe_validator_id" value="modules/communication/skins/sketchbook5_communication_skin/add_friend/1" />
+			<table class="table table-striped table-hover">
+				<tr>
+					<th scope="row">{$lang->nick_name}</th>
+					<td>{$target_info->nick_name}</td>
+				</tr>
+				<tr>
+					<th scope="row"><label for="friend_group_srl">{$lang->friend_group}</label></th>
+					<td>
+						<select name="friend_group_srl" id="friend_group_srl">
+							<option value="">{$lang->default_friend_group}</option>
+							<option loop="$friend_group_list => $key,$val" value="{$val->friend_group_srl}">{$val->title}</option>
+						</select> 
+						<a href="{getUrl('act','dispCommunicationAddFriendGroup')}" class="btn" onclick="mpopopen(this.href);return false;">{$lang->cmd_add_friend_group}</a>
+					</td>
+				</tr>
+			</table>
+			<div class="btnArea" style="border-top:0;padding:0">
+				<input type="submit" value="{$lang->cmd_add_friend}" class="btn btn-inverse" />
+			</div>
+		</form>
+	</div>
+</section>

@@ -1,0 +1,209 @@
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"> 
+</head>
+<body>
+<!--// LAYOUT //-->	
+	<!--// HEADER //-->	
+	
+		<header class="page-header">
+				<a id="cd-menu-trigger" href="#0"><span class="cd-menu-icon"></span></a>
+				<a href="{$layout_info->logo_url}">
+					{@ $_MlogoImg = $layout_info->MlogoImg}
+					<!--@if($_MlogoImg)-->
+						<img src="{$_MlogoImg}">
+					<!--@else-->
+						{$layout_info->logoText}
+					<!--@end-->
+				</a>
+				
+				<button type="button" id="tdSearch" class="menu-search cd-popup-trigger-c"><i class="xi-magnifier xi-2x"></i></button>
+				<block cond="!$is_logged">
+				<button type="button" class="menu-member cd-popup-trigger"><i class="xi-user-circle xi-2x"></i></button>
+				</block>
+				<block cond="$is_logged">
+				<button type="button" class="menu-member cd-popup-trigger-b"><i class="xi-user-address xi-2x"></i></button>
+				</block>
+				
+	<!-- // LNB //-->	
+			<block loop="$gnb->list=>$key1, $val1" cond="$val1['selected'] && $val1['list']">	
+				<div class="swiper-container">
+					<div class="swiper-wrapper">
+							<div loop="$val1['list']=>$key2,$val2" class="swiper-slide">
+								<a href="{$val2['href']}" class="on"|cond="$val2['selected']" target="_blank"|cond="$val2['open_window']=='Y'">{$val2['link']}</a>
+							</div>
+					</div>		
+							<div class="swiper-button-next swiper-button-white"></div>
+							<div class="swiper-button-prev swiper-button-white"></div>
+				</div>
+			</block>			
+		</header>
+		
+	<!--// CONTENT //-->	
+		<main class="cd-main-content">	
+			<div id="mgrid" class="content-fa">
+				{$content}
+				
+					<!--// FOOTER //-->	
+				<section class="footer-fa">					
+					<div class="ft_icon">
+						<a href="{$layout_info->ft_link1}"><i class="{$layout_info->ft_icon1} xi-2x"></i></a>
+						<a href="{$layout_info->ft_link2}"><i class="{$layout_info->ft_icon2} xi-2x"></i></a> 
+						<a href="{$layout_info->ft_link3}"><i class="{$layout_info->ft_icon3} xi-2x"></i></a>
+					</div>
+				
+					<ul class="ft_menu">
+						<li loop="$ft_menu->list=>$key1,$val1" class="active"|cond="$val1['selected']">
+							<a href="{$val1['href']}" target="_blank"|cond="$val1['open_window']=='Y'">{$val1['link']}</a>
+						</li>
+					</ul>
+					
+					<p>
+						<span style="font-size:9px;">Copyright 2015&nbsp;</span>
+						<span class="ft-title">{$layout_info->ft_title}</span>
+						<span style="font-size:9px;">&nbsp;All Rights Reserved.</span>
+					</p>	
+				</section>	
+			</div>	
+		</main>
+	<!--// SCROLL UP //-->				
+		<a href="#0" class="cd-top">Top</a>		
+
+
+	<!--// LOGIN WINDOW POPUP //-->	
+		<div class="cd-popup" role="alert">
+		<div class="cd-popup-container">
+			<form action="{getUrl()}" method="post" autocomplete="off">
+			<fieldset>
+				<input type="hidden" name="act" value="procMemberLogin" />
+				<input type="hidden" name="success_return_url" value="{htmlspecialchars(getRequestUriByServerEnviroment(), ENT_COMPAT | ENT_HTML401, 'UTF-8', FALSE)}" />
+				<input type="hidden" name="xe_validator_id" value="m.layouts/thedreamer/layout/1" />
+
+				<div class="login_input">         
+				<input name="user_id" type="text" title="user id" class="form-text id" placeholder="ID" />
+				<input name="password" type="password" title="password" class="form-text" placeholder="PASSWORD" />
+				</div>
+				
+			<div class="keep_login">	
+				<label class="chk_label" for="keepid_opt">
+					<input type="checkbox" name="keep_signed" id="keepid_opt" value="Y" />
+					<span class="checkbox"></span>&nbsp;STAY SIGNED IN
+				</label>
+				<a target="_self" href="{getUrl('act','dispMemberFindAccount','mid',$layout_info->signupMid)}">FORGOT PASSWORD?</a>	
+			</div>
+
+				<ul class="cd-buttons">
+					<li><a target="_self" href="{getUrl('act','dispMemberSignUpForm','mid',$layout_info->signupMid)}">SIGN UP</a></li>
+					<li><input type="submit" class="bt_login" value="SIGN IN" /></li>
+				</ul>
+			</fieldset>
+			</form>  		
+			<a href="#0" class="cd-popup-close img-replace">Close</a>
+		</div> 
+		</div>
+		
+		<div class="cd-popup-b" role="alert">
+		<div class="cd-popup-container-b">
+	<div class="memberinfo">
+		
+			
+			<!--@if($logged_info->profile_image->src)-->
+				<img src="{$logged_info->profile_image->src}" alt="{$logged_info->nick_name}" />
+			<!--@else-->
+				<img src="./img/guest.png" alt="{$logged_info->nick_name}" />
+			<!--@end-->
+	<div class="mi_profile_a">
+	<table>
+		<tr><td class="id_style">ID</td></tr>
+		<tr><td>{$logged_info->user_id}</td></tr>
+	</table>
+	
+	<table>
+		<tr><td class="id_style">E-MAIL</td></tr>
+		<tr><td>{$logged_info->email_address}</td></tr>
+	</table>
+	
+	<table>
+		<tr><td class="id_style">NAME</td></tr>
+		<tr><td>{$logged_info->user_name}</td></tr>
+	</table>
+	<table>
+		<tr><td class="id_style">GROUP</td></tr>
+		<tr><td>{implode(', ', $logged_info->group_list)}</td></tr>
+	</table>
+	<table>
+		<tr><td class="id_style">SIGN UP DATE</td></tr>
+		<tr><td>{zdate($logged_info->regdate,"y.m.d")}</td></tr>
+	</table>
+	<table>
+		<tr><td class="id_style">LAST VISIT</td></tr>
+		<tr><td>{zdate($logged_info->last_login,"y.m.d")}</td></tr>
+	</table>
+	</div>
+	<div class="mi_profile_b">
+	<ul>
+		<li><a href="{getUrl('act','dispMemberOwnDocument')}">작성글 보기</a></li>
+		<li><a href="{getUrl('act','dispMemberLeave','member_srl','')}">{$lang->cmd_leave}</a></li>
+	</ul>
+	<ul>
+		<li><a href="{getUrl('act','dispMemberScrappedDocument')}">스크랩</a></li>
+		<li><a href="{getUrl('act','dispCommunicationMessages','member_srl','')}">쪽지함</a></li>
+	</ul>
+	<ul>
+		<li><a href="{getUrl('act','dispMemberModifyPassword','member_srl','')}">{$lang->cmd_modify_member_password}</a></li>
+	</ul>
+	</div>
+			
+		
+		</div>
+			<ul class="cd-buttons">
+				<li><a href="{getUrl('act','dispMemberModifyInfo','member_srl','')}">MODIFY INFO</a></li>
+				<li><a href="{getUrl('act','dispMemberLogout')}">SIGN OUT</a></li>
+			</ul>
+			<a href="#0" class="cd-popup-close img-replace">Close</a>
+		</div> 
+		</div>
+		
+		<div class="cd-popup-c" role="alert">
+		<div class="cd-popup-container-c">
+			<form action="{getUrl()}" method="post">
+				<input type="hidden" name="vid" value="{$vid}" cond="$vid" />
+				<input type="hidden" name="mid" value="isx" />
+				<input type="hidden" name="act" value="IS" />
+				<input type="hidden" name="search_target" value="title_content" />
+				
+				<table class="searchfield">         
+					<tr>
+						<td><input name="is_keyword" type="search" autocomplete="Off" class="tdInput" title="keyword" placeholder="검색어를 입력하세요" /></td>
+						<td><input type="submit" id="submit_img" value="" alt="search"></td>
+					</tr>
+				</table>
+			</form>
+		</div> 
+		</div>		
+		
+		</div>
+		
+	<!-- // GNB //-->	
+	<nav id="cd-lateral-nav">
+		<ul class="gnbmenu">
+			<li>
+			<div class="gnbinfo">
+			<!--@if($logged_info->profile_image->src)-->
+				<img src="{$logged_info->profile_image->src}" alt="{$logged_info->nick_name}" />
+			<!--@else-->
+				<img src="./img/guest.png" alt="{$logged_info->nick_name}" />
+			<!--@end-->
+			</div>
+			</li>
+			<li loop="$gnb->list => $key1, $val1" class="active"|cond="$val1['selected']">
+			<a href="{$val1['href']}">{$val1['link']}</a>	
+			</li> <!-- item-has-children -->
+		</ul> <!-- cd-navigation -->
+	</nav>	
+	</body>	
+</html>
+
+<include target="setting.html" />

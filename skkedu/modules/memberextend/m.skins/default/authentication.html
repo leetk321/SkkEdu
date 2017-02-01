@@ -1,0 +1,49 @@
+<include target="header.html" />
+<load target="./css/agreement.css" />
+
+<div class="me_typelist">
+	<table width="100%" cellpadding="0" cellspacing="0">
+		<!--@if($memberextend_config->ipinAuthUse == 'Y')-->
+		<tr>
+			<td align="right" class="me_desc">아이핀 인증</td>
+			<td align="right" class="me_type">
+				<form action="./" method="post" enctype="multipart/form-data" class="form-horizontal">
+					<input type="hidden" name="module" value="memberextend" />
+					<input type="hidden" name="act" value="procMemberextendAuthentication" />
+					<input type="hidden" name="type_srl" value="{$member_type}" />
+					<input type="hidden" name="auth_type" value="ipin" />
+					<input type="submit" value="인증" />
+				</form>
+			</td>
+		</tr>
+		<!--@end-->
+		<!--@if($memberextend_config->idnumberAuthUse == 'Y')-->
+		<tr>
+			<td align="right" class="me_desc">주민번호 인증</td>
+			<td align="right" class="me_type">
+				<form action="./" method="post" enctype="multipart/form-data" class="form-horizontal">
+					<input type="hidden" name="module" value="memberextend" />
+					<input type="hidden" name="act" value="procMemberextendAuthentication" />
+					<input type="hidden" name="type_srl" value="{$member_type}" />
+					<input type="hidden" name="auth_type" value="idnumber" />
+					<input type="submit" value="인증" />
+				</form>
+			</td>
+		</tr>
+		<!--@end-->
+		<!--@if($memberextend_config->phoneAuthUse == 'Y')-->
+		<tr>
+			<td align="right" class="me_desc">핸드폰 인증</td>
+			<td align="right" class="me_type">
+				<form action="./" method="post" enctype="multipart/form-data" class="form-horizontal">
+					<input type="hidden" name="module" value="memberextend" />
+					<input type="hidden" name="act" value="procMemberextendAuthentication" />
+					<input type="hidden" name="type_srl" value="{$member_type}" />
+					<input type="hidden" name="auth_type" value="phone" />
+					<input type="submit" value="인증" />
+				</form>
+			</td>
+		</tr>
+		<!--@end-->
+	</table>
+</div>

@@ -1,0 +1,14 @@
+<load target="css/contact.css" />
+{@ 
+	if (!$module_info->contactTitleText) $contactTitleText = 'CONTACT US';
+	if ($module_info->contactTitleText) $contactTitleText = $module_info->contactTitleText; 
+	if (!$module_info->contactTitle) $contactTitle = '관리자에게 메일 보내기';
+	if ($module_info->contactTitle) $contactTitle = $module_info->contactTitle; 
+}
+<div class="contact_us">
+	<div class="contactHeader">
+		<div cond="$module_info->mid" class="contactTitle">
+			<h2 class="contactTitleText">{$contactTitleText}</h2>
+			<a cond="$is_logged && $logged_info->is_admin == 'Y'" class="setup" href="{getUrl('act','dispContactAdminContactInfo')}">{$lang->cmd_setup}</a>
+		</div>
+    </div>

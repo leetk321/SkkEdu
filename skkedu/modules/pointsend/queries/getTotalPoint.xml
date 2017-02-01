@@ -1,0 +1,14 @@
+<query id="getTotalPoint" action="select">
+	<tables>
+		<table name="pointsend_log" />
+	</tables>
+	<columns>
+		<column name="sum(point)" alias="total" />
+	</columns>
+	<conditions>
+		<condition operation="equal" column="sender_srl" var="sender_srl" filter="number" pipe="and" />
+		<condition operation="equal" column="receiver_srl" var="receiver_srl" filter="number" pipe="and" />
+		<condition operation="more" column="regdate" var="start_date" pipe="and" />
+		<condition operation="less" column="regdate" var="end_date" pipe="and" />
+	</conditions>
+</query>

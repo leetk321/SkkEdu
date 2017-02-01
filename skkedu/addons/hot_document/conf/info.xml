@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<addon version="0.2">
+    <title xml:lang="ko">화제의 글 애드온</title>
+    <description xml:lang="ko">
+        추천 수가 정해진 범위 위에 해당하는 글들을 공지사항 위치에 표시합니다.
+    </description>
+    <version>1.2.3</version>
+    <date>2015-01-07</date>
+    <author email_address="canto87@naver.com" link="http://canto.btool.kr">
+        <name xml:lang="ko">Canto</name>
+    </author>
+	<extra_vars>
+		<var name="list_count">
+			<title xml:lang="ko">표시할 게시글 수</title>
+			<description xml:lang="ko">표시할 게시글의 수를 지정합니다.</description>
+		</var>
+		<var name="readed_count">
+			<title xml:lang="ko">조회 수 범위</title>
+			<description xml:lang="ko">해당 조회 수 이상의 글만 표시합니다. ( 다른 범위 와 동시에 사용 가능합니다. 0일 경우 체크하지 않습니다.)</description>
+		</var>
+		<var name="readed_count_op" type="select">
+			<options value="AND">
+				<title>AND</title>
+			</options>
+			<options value="OR">
+				<title>OR</title>
+			</options>
+			<title xml:lang="ko">조회 수 AND/OR</title>
+			<description xml:lang="ko">다른 옵션과 같이 사용할 때 AND/OR를 지정할 수 있습니다.</description>
+		</var>
+		<var name="voted_count">
+			<title xml:lang="ko">추천 수 범위</title>
+			<description xml:lang="ko">해당 추천 수 이상의 글만 표시합니다. ( 다른 범위 와 동시에 사용 가능합니다. 0일 경우 체크하지 않습니다.)</description>
+		</var>
+		<var name="voted_count_op" type="select">
+			<options value="AND">
+				<title>AND</title>
+			</options>
+			<options value="OR">
+				<title>OR</title>
+			</options>
+			<title xml:lang="ko">추천 수 AND/OR</title>
+			<description xml:lang="ko">다른 옵션과 같이 사용할 때 AND/OR를 지정할 수 있습니다.</description>
+		</var>
+		<var name="comment_count">
+			<title xml:lang="ko">댓글 수 범위</title>
+			<description xml:lang="ko">해당 댓글 수 이상의 글만 표시합니다. ( 다른 범위 와 동시에 사용 가능합니다. 0일 경우 체크하지 않습니다.)</description>
+		</var>
+		<var name="comment_count_op" type="select">
+			<options value="AND">
+				<title>AND</title>
+			</options>
+			<options value="OR">
+				<title>OR</title>
+			</options>
+			<title xml:lang="ko">댓글 수 AND/OR</title>
+			<description xml:lang="ko">다른 옵션과 같이 사용할 때 AND/OR를 지정할 수 있습니다.</description>
+		</var>
+		<var name="chk_time">
+			<title xml:lang="ko">시간 범위</title>
+			<description xml:lang="ko">해당 시간 전까지 작성 된 글에 한하여 체크를 합니다. 예) 24시간 전까지의 글일 경우 24 ( 0 일 경우 체크를 하지 않으며 최근 순서로 뽑아옵니다.)</description>
+		</var>
+		<var name="sort_index" type="select">
+			<options value="list_order">
+				<title>게시글 번호</title>
+			</options>
+			<options value="readed_count">
+				<title>조회 수</title>
+			</options>
+			<options value="voted_count">
+				<title>추천 수</title>
+			</options>
+			<options value="comment_count">
+				<title>코멘트 수</title>
+			</options>
+			<title xml:lang="ko">정렬 방식</title>
+			<description xml:lang="ko">추출한 게시글의 정렬 방식을 선택합니다.</description>
+		</var>
+		<var name="extraction_mode" type="select">
+			<options value="board">
+				<title>개별 게시판</title>
+			</options>
+			<options value="total">
+				<title>전체 게시판</title>
+			</options>
+			<title xml:lang="ko">추출 방식</title>
+			<description xml:lang="ko">추출 방식을 선택합니다 ( 현재 접속 게시판 게시글 / 애드온을 사용하는 전체 게시판 게시글 )</description>
+		</var>
+		<var name="cache_time">
+			<title xml:lang="ko">캐시 시간</title>
+			<description xml:lang="ko">데이터 캐시를 보존할 시간을 정해주세요. (분단위)</description>
+		</var>
+	</extra_vars>
+</addon>

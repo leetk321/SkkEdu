@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<addon version="0.2">
+	<version>1.2</version>
+	<license>GPL</license>
+	<date>2013-01-16</date>
+	<link>http://www.youhogeon.com</link>
+    <title xml:lang="ko">RadarURL 동시접속자 출력 애드온</title>
+	<description xml:lang="ko">radarURL을 이용하여 동시접속자를 사이트에 출력합니다.</description>
+    <author email_address="idog@youhogeon.com" link="http://www.youhogeon.com">
+		<name xml:lang="ko">Youhogeon</name>
+	</author>
+    <extra_vars>
+        <var name="position" type="select">
+            <title xml:lang="ko">위치</title>
+			<description xml:lang="ko">동시접속자수가 출력될 위치를 선택해주세요.</description>
+			<options value="lefttop">
+				<title xml:lang="ko">왼쪽-위</title>
+			</options>
+			<options value="leftcenter">
+				<title xml:lang="ko">왼쪽-중간</title>
+			</options>
+			<options value="leftbottom">
+				<title xml:lang="ko">왼쪽-아래</title>
+			</options>
+			<options value="bottomleft">
+				<title xml:lang="ko">아래-왼쪽</title>
+			</options>
+			<options value="bottomcenter">
+				<title xml:lang="ko">아래-중앙</title>
+			</options>
+			<options value="bottomright">
+				<title xml:lang="ko">아래-오른쪽</title>
+			</options>
+			<options value="righttop">
+				<title xml:lang="ko">오른쪽-위</title>
+			</options>
+			<options value="rightcenter">
+				<title xml:lang="ko">오른쪽-중간</title>
+			</options>
+			<options value="rightbottom">
+				<title xml:lang="ko">오른쪽-아래</title>
+			</options>
+		</var>
+        <var name="target" type="select">
+            <title xml:lang="ko">이동 방법</title>
+			<description xml:lang="ko">동접수를 눌렀을때 상세보기 페이지로 이동하는 방법을 선택합니다.</description>
+			<options value="blank">
+				<title xml:lang="ko">새창(기본값)</title>
+			</options>
+			<options value="this">
+				<title xml:lang="ko">현재창</title>
+			</options>
+			<options value="none">
+				<title xml:lang="ko">이동하지 않음</title>
+			</options>
+		</var>
+        <var name="admin" type="select">
+            <title xml:lang="ko">관리자에게만 표시</title>
+			<description xml:lang="ko">관리자에게만 동접수가 표시될지의 여부를 선택합니다.</description>
+			<options value="N">
+				<title xml:lang="ko">모두에게 표시(기본값)</title>
+			</options>
+			<options value="Y">
+				<title xml:lang="ko">관리자에게만 표시</title>
+			</options>
+		</var>
+    </extra_vars>
+</addon>

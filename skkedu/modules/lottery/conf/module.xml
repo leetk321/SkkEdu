@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<module>
+    <actions>
+        <action name="dispLotteryBuy" type="view" standalone="true" index="true" />
+
+        <action name="procLotteryBuy" type="controller" standalone="true"  />
+        <action name="procLotteryPointReceive" type="controller" standalone="true"  />
+
+        <action name="dispLotteryAdminConfig" type="view" standalone="true" admin_index="true" />
+        <action name="dispLotteryAdminLogList" type="view" standalone="true" />
+
+        <action name="procLotteryAdminConfig" type="controller" standalone="true"  />
+        <action name="procLotteryAdminLogDelete" type="controller" standalone="true"  />
+        <action name="procLotteryAdminLogReset" type="controller" standalone="true"  />
+    </actions>
+</module>

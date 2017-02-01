@@ -1,0 +1,14 @@
+<query id="insertPointsendLog" action="insert">
+	<tables>
+		<table name="pointsend_log" />
+	</tables>
+	<columns>
+		<column name="log_srl" var="log_srl" filter="number" default="getNextSequence()" />
+		<column name="sender_srl" var="sender_srl" filter="number" notnull="notnull" />
+		<column name="receiver_srl" var="receiver_srl" filter="number" notnull="notnull" />
+		<column name="ipaddress" var="ipaddress" default="ipaddress()" />
+		<column name="point" var="point" filter="number" notnull="notnull" />
+		<column name="comment" var="comment" />
+		<column name="regdate" var="regdate" default="curdate()" />
+	</columns>
+</query>

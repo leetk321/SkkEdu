@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<skin version="0.2">
+
+    <title xml:lang="ko">소시랑 모바일 한줄 메모 스킨</title>
+
+    <description xml:lang="ko">
+
+        소시랑 모바일 한줄 메모게시판 스킨입니다.
+
+    </description>
+
+
+    <version>0.3</version>
+
+    <date>2011-12-05</date>
+
+
+
+    <author email_address="master@sosirang.com" link="http://www.sosirang.com/">
+
+        <name xml:lang="ko">카이네드</name>
+
+    </author>
+
+	<extra_vars />
+
+</skin>
+

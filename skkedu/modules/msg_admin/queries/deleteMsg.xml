@@ -1,0 +1,9 @@
+<query id="deleteMsg" action="delete">
+    <tables>
+        <table name="member_message" />
+    </tables>
+    <conditions>
+        <condition operation="in" column="message_srl" var="message_srls" notnull="notnull" />
+        <condition operation="equal" column="message_type" var="message_type" notnull="notnull" pipe="and" />
+    </conditions>
+</query>

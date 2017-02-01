@@ -1,0 +1,12 @@
+<query id="getRockgamePointSum" action="select">
+    <tables>
+        <table name="rockgame" />
+    </tables>
+    <columns>
+        <column name="sum(game_point)" alias="point_sum_user" />
+    </columns>
+	<conditions>
+        <condition operation="equal" column="substr(regdate,1,10)" var="regdate" notnull="notnull" />
+		<condition operation="equal" column="member_srl" var="member_srl" notnull="notnull" pipe="and" />
+    </conditions>
+</query>

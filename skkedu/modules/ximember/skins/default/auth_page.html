@@ -1,0 +1,66 @@
+<load target="../../../member/tpl/js/signup_check.js" />
+<include target="./common_header.html" />
+<section>
+<h1>본인 인증</h1>
+<div cond="$XE_VALIDATOR_MESSAGE" class="message {$XE_VALIDATOR_MESSAGE_TYPE}">
+	<p>{$XE_VALIDATOR_MESSAGE}</p>
+</div>
+<div cond="$forced == 'Y'" class="message info">
+	<p>
+		죄송합니다. 본인 인증 기록이 남아있지 않아, 더이상 페이지를 탐색할 수 없습니다.<br />
+		아래에 제공되는 인증 수단을 통해, 본인 인증을 진행한 후 계속 탐색할 수 있습니다.
+	</p>
+</div>
+<hr />
+<h4>본인인증을 통해, 현재의 정보를 업데이트 할 수 있습니다.</h4><br />
+<p>가급적 아이핀인증을 권합니다.</p><br />
+
+<div class="login-footer">
+	<a class="btn" href="#AuthArea" class="mobilebutton" title="휴대폰 안심본인인증" onClick="return checkAgree('jsSubmit');">휴대폰으로 본인인증</a>
+	<a class="btn" href="#AuthArea" class="ipinbutton" title="아이핀 본인인증" onClick="return checkAgree('certKCBIpin');">아이핀(i-PIN)으로 인증</a>
+</div>
+<form name="kcbInForm" method="post">
+  <input type="hidden" name="IDPCODE" value="{$idpCode}" />
+  <input type="hidden" name="IDPURL" value="{$idpUrl}" />
+  <input type="hidden" name="CPCODE" value="{$cpCode}" />
+  <input type="hidden" name="CPREQUESTNUM" value="{$curtime}" />
+  <input type="hidden" name="RETURNURL" value="{$returnUrl}" />
+  <input type="hidden" name="WEBPUBKEY" value="{$pubkey}" />
+  <input type="hidden" name="WEBSIGNATURE" value="{$sig}" />
+</form>
+<form name="auth_frm" method="post">
+<input type="hidden" name="tc" value="kcb.oknm.online.safehscert.popup.cmd.P901_CertChoiceCmd">
+<input type="hidden" name="rqst_data" id="rqst_data"	value="{$rqst_data}" />
+<input type="hidden" name="target_id"	value="" />
+</form>
+<form name="kcbResultForm" method="post" >
+	<input type="hidden" name="idcf_mbr_com_cd" 		value="" />
+	<input type="hidden" name="hs_cert_svc_tx_seqno" 	value=""	/>
+	<input type="hidden" name="hs_cert_msr_cd" 			value="" />
+	<input type="hidden" name="hs_cert_rqst_caus_cd" 	value="" />
+	<input type="hidden" name="result_cd" 				value="" 	/>
+	<input type="hidden" name="result_msg" 				value="" 	/>
+</form>
+<form name="kcbOutForm" method="post">
+  <input type="hidden" name="encPsnlInfo" />
+  <input type="hidden" name="virtualno" />
+  <input type="hidden" name="dupinfo" />
+  <input type="hidden" name="realname" />
+  <input type="hidden" name="cprequestnumber" />
+  <input type="hidden" name="age" />
+  <input type="hidden" name="sex" />
+  <input type="hidden" name="nationalinfo" />
+  <input type="hidden" name="birthdate" />
+  <input type="hidden" name="coinfo1" />
+  <input type="hidden" name="coinfo2" />
+  <input type="hidden" name="ciupdate" />
+  <input type="hidden" name="cpcode" />
+  <input type="hidden" name="authinfo" />
+</form>
+<form name="nextact" id="nextact" method="get" action="./" style="text-align:center;">
+	<input type="hidden" name="error_return_url" value="" />
+	<input type="hidden" name="mid" value="{$mid}" />
+	<input type="hidden" name="act" value="procXimemberAuthUpdater" />
+</form>
+</section>
+<include target="./common_footer.html" />

@@ -1,0 +1,16 @@
+<query id="updateXimember" action="update">
+    <tables>
+        <table name="ximember" />
+    </tables>
+    <columns>
+        <column name="birth_ori" var="birth_ori" />
+        <column name="sex" var="sex" />
+        <column name="is_forigen" var="is_forigen" />
+        <column name="auth_type" var="auth_type" />
+        <column name="allow_sms" var="allow_sms" />
+        <column name="mobile" var="mobile" />
+    </columns>
+    <conditions>
+        <condition operation="equal" column="member_srl" var="member_srl" notnull="notnull" filter="number" />
+    </conditions>
+</query>

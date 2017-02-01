@@ -1,0 +1,78 @@
+<!--// 심플바 공간-->
+<div class="simple_bar_wrap" cond="$layout_info->simple_bar_use == 'yes'" style="z-index:3;"><!--//심플바-->
+	<div class="simple_bar_bg"></div><!--//배경-->
+	<!--// 포인트 외치미-->
+	<!--//시작페이지 + 즐겨찾기 + 심플바 심플링크-->
+	<div class="simple_wrap fix_width">
+		<!--// 시작페이지 + 즐겨찾기 등록 -->
+		<div class="simplebar_etc_wrap" cond="$layout_info->simplebar_etc_use == 'yes'">
+			<div class="simplebar_etc"><a href="javascript:;" onclick="startsite(this,'{getUrl()}');">
+				<img src="img/bookmark.png" alt="add_start_site" style="margin-right:2px;"/>시작페이지</a></div>
+			<div class="simplebar_etc"><a href="javascript:bookmarksite();">
+				<img src="img/bookmark2.png" alt="add_favorite_site" style="margin-right:3px;"/>즐겨찾기</a></div>
+			<script type="text/javascript"> <!--//즐겨찾기 함수-->
+				var sidebarurl = '{getUrl()}'; // 사이트주소
+				var sidebartitle = '{Context::getBrowserTitle()}'; // 사이트 이름
+				var url = this.location; 
+				var title = document.title; 
+
+				function bookmarksite() { 
+					if (window.sidebar && window.sidebar.addPanel){ // Firefox 
+					window.sidebar.addPanel(sidebartitle, sidebarurl,""); 
+					} 
+					else if ( document.all ) { // IE Favorite 
+					window.external.AddFavorite(url, title); 
+					} 
+					else if (window.opera && window.print) { // Opera 
+					return true;
+					} 
+					else if (navigator.appName=="Netscape") { //크롬
+					alert('< CTRL+D키 >를 눌러 즐겨찾기에 추가해주세요 :)'); 
+					} 
+					else if (browser.indexOf('konqueror')!=-1) { // Konqueror
+						alert('< CTRL+B키 >를 눌러 즐겨찾기에 추가해주세요 :)');
+					}
+					else if (browser.indexOf('webkit')!=-1){ // safari
+						alert('< CTRL+B >또는 < Command+B키 >를 눌러 즐겨찾기에 추가해주세요 :)');
+					} else {
+						alert('현재 사용중인 브라우저에서는 즐겨찾기를 추가할 수 없습니다.')
+					}
+				}	
+				function startsite(Obj,url) { 
+					if ( document.all && window.external) { // IE
+						Obj.style.behavior='url(#default#homepage)';
+						Obj.setHomePage(url);
+					}
+					else {
+						alert('익스플로러(IE)에서만 시작페이지를 등록 할 수 있습니다.')
+					}	
+				} 
+			</script>
+		</div>	
+		<!--// 심플바 링크 -->
+		<div class="simplebar_link" cond="$layout_info->simplebar_link1">
+			<a href="{$layout_info->simplebar_link1_url}" onclick="popopen(this.href); return false"|cond="$layout_info->simplebar_link1_type == 'popup'" onclick="window.open(this.href); return false"|cond="$layout_info->simplebar_link1_type == 'winopen'">
+			<img src="<!--@if(!$layout_info->simplebar_link1_img)-->img/simple_link/{$layout_info->simplebar_link1_img_select}<!--@end-->{$layout_info->simplebar_link1_img}" alt="simplebar_link1" /> {$layout_info->simplebar_link1}</a>
+		</div>
+		<div class="simplebar_link" cond="$layout_info->simplebar_link2">
+			<a href="{$layout_info->simplebar_link2_url}" onclick="popopen(this.href); return false"|cond="$layout_info->simplebar_link2_type == 'popup'" onclick="window.open(this.href); return false"|cond="$layout_info->simplebar_link2_type == 'winopen'">
+			<img src="<!--@if(!$layout_info->simplebar_link2_img)-->img/simple_link/{$layout_info->simplebar_link2_img_select}<!--@end-->{$layout_info->simplebar_link2_img}" alt="simplebar_link2" /> {$layout_info->simplebar_link2}</a>
+		</div>
+		<div class="simplebar_link" cond="$layout_info->simplebar_link3">
+			<a href="{$layout_info->simplebar_link3_url}" onclick="popopen(this.href); return false"|cond="$layout_info->simplebar_link3_type == 'popup'" onclick="window.open(this.href); return false"|cond="$layout_info->simplebar_link3_type == 'winopen'">
+			<img src="<!--@if(!$layout_info->simplebar_link3_img)-->img/simple_link/{$layout_info->simplebar_link3_img_select}<!--@end-->{$layout_info->simplebar_link3_img}" alt="simplebar_link3" /> {$layout_info->simplebar_link3}</a>
+		</div>
+		<div class="simplebar_link" cond="$layout_info->simplebar_link4">
+			<a href="{$layout_info->simplebar_link4_url}" onclick="popopen(this.href); return false"|cond="$layout_info->simplebar_link4_type == 'popup'" onclick="window.open(this.href); return false"|cond="$layout_info->simplebar_link4_type == 'winopen'">
+			<img src="<!--@if(!$layout_info->simplebar_link4_img)-->img/simple_link/{$layout_info->simplebar_link4_img_select}<!--@end-->{$layout_info->simplebar_link4_img}" alt="simplebar_link4" /> {$layout_info->simplebar_link4}</a>
+		</div>
+		<div class="simplebar_link" cond="$layout_info->simplebar_link5">
+			<a href="{$layout_info->simplebar_link5_url}" onclick="popopen(this.href); return false"|cond="$layout_info->simplebar_link5_type == 'popup'" onclick="window.open(this.href); return false"|cond="$layout_info->simplebar_link5_type == 'winopen'">
+			<img src="<!--@if(!$layout_info->simplebar_link5_img)-->img/simple_link/{$layout_info->simplebar_link5_img_select}<!--@end-->{$layout_info->simplebar_link5_img}" alt="simplebar_link5" /> {$layout_info->simplebar_link5}</a>
+		</div>
+		<div class="simplebar_link" cond="$layout_info->simplebar_link6">
+			<a href="{$layout_info->simplebar_link6_url}" onclick="popopen(this.href); return false"|cond="$layout_info->simplebar_link6_type == 'popup'" onclick="window.open(this.href); return false"|cond="$layout_info->simplebar_link6_type == 'winopen'">
+			<img src="<!--@if(!$layout_info->simplebar_link6_img)-->img/simple_link/{$layout_info->simplebar_link6_img_select}<!--@end-->{$layout_info->simplebar_link6_img}" alt="simplebar_link6" /> {$layout_info->simplebar_link6}</a>
+		</div>
+	</div>
+</div>

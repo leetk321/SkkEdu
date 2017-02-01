@@ -1,0 +1,9 @@
+<load target="lang.xml" />
+<load target="css/default.css" />
+<load cond="$module_config->colorset=='black'||$module_config->mcolorset=='black'" target="css/black.css" />
+<section class="xmc">
+	<ul class="nav nav-tabs" cond="$is_logged && $logged_info->menu_list && (!$member_srl || $member_srl == $logged_info->member_srl)">
+		<li loop="$logged_info->menu_list=>$key,$val" class="active"|cond="$key==$act||($key==dispMemberInfo&&($act==dispMemberModifyInfo||$act==dispMemberModifyPassword||$act==dispMemberLeave))">
+			<a href="{getUrl('', 'act',$key, 'mid', $mid, 'vid', $vid)}">{Context::getLang($val)}</a>
+		</li>
+	</ul>

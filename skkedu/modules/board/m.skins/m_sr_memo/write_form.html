@@ -1,0 +1,69 @@
+{@ Context::addJsFile("./common/js/jquery.js", true, '', -100000) }
+{@ Context::addJsFile("./common/js/js_app.js", true, '', -100000) }
+{@ Context::addJsFile("./common/js/x.js", true, '', -100000) }
+{@ Context::addJsFile("./common/js/common.js", true, '', -100000) }
+{@ Context::addJsFile("./common/js/xml_handler.js", true, '', -100000) }
+{@ Context::addJsFile("./common/js/xml_js_filter.js", true, '', -100000) }
+<!--%import("js/mboard.js")-->
+<!--%import("css/mboard.css")-->
+
+<div class="bd">
+
+<!--@if($oDocument->isExists())-->
+<h2 class="h2"><a href="{getUrl('','vid',$vid,'mid',$mid)}">{$module_info->browser_title}</a> &rsaquo; {$lang->cmd_write}</h2>
+<!--@end-->
+
+<form action="./" method="POST" onsubmit="return procFilter(this, insert)">
+<input type="hidden" name="mid" value="{$mid}" />
+<input type="hidden" name="content" value="sosirang" />
+<input type="hidden" name="document_srl" value="{$document_srl}" />
+		<ul class="sn">
+        
+        	<!--@if($module_info->use_category == "Y")-->
+			<li>
+				<label for="nCategory" class="db fb">{$lang->category}</label>
+				<select name="category_srl" id="nCategory">
+					<!--@foreach($category_list as $val)-->	
+					<option <!--@if(!$val->grant)-->disabled="disabled"<!--@endif--> value="{$val->category_srl}" <!--@if($val->grant&&$val->selected||$val->category_srl==$oDocument->get('category_srl'))-->selected=="selected"<!--@endif-->>
+					{str_repeat("&nbsp;&nbsp;",$val->depth)} {$val->title} ({$val->document_count})
+					</option>
+					<!--@end-->
+				</select>
+			</li>
+			<!--@end-->
+			
+			<li>
+				<label for="nTitle" class="db fb">{$lang->title}</label>
+                <input cond="$oDocument->getTitleText()" name="title" type="text" id="nTitle" class="itx" value="{htmlspecialchars($oDocument->getTitleText())}" />
+		<input cond="!$oDocument->getTitleText()" name="title" type="text" id="nTitle" class="itx" />
+			</li>
+			
+			<!--@if(!$is_logged)-->
+			<li>
+				<label for="uName" class="db fb">{$lang->writer}</label>
+				<input name="nick_name" type="text" id="uName" class="itx" />
+			</li>
+			<li>
+				<label for="uPw" class="db fb">{$lang->password}</label>
+				<input name="password" type="password" id="uPw" class="itx" />
+			</li>
+			<!--@endif-->
+			<li style="display:none">
+            <input type="checkbox" name="allow_comment" value="Y" <!--@if($oDocument->allowComment())-->checked="checked"<!--@end--> id="reAllow" />
+				<label for="reAllow">{$lang->allow_comment}</label>
+                
+            </li>
+			<li style="padding:5px 0;" >	
+                <input cond="$grant->manager" type="checkbox" name="is_notice" value="Y" checked="checked"|cond="$oDocument->isNotice()" id="is_notice" />
+			<label cond="$grant->manager" for="is_notice">{$lang->notice}</label>
+            
+            	<input cond="$grant->manager" type="checkbox" name="title_bold" id="title_bold" value="Y" checked="checked"|cond="$oDocument->get('title_bold')=='Y'" />
+				<label cond="$grant->manager" for="title_bold">{$lang->title_bold}</label>
+			</li>
+		</ul>
+		<div class="cm">
+			<button type="submit" class="bn">{$lang->cmd_registration}</button>
+		</div>
+   </form>     
+</div>
+

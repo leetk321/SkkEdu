@@ -1,0 +1,68 @@
+<!--@if($layout_info->counter_use != 'no')-->
+<load target="default.css" />
+<load target="lang.xml" />
+
+<div class="qook_counter fix_width">
+	<div class="counter_float">
+		<span class="size_wrap"><!--//카운터 전체길이 구하기 위함 -->
+			<span class="size" cond="$layout_info->counter_use_user == 'yes'"> <!--// 레이아웃에서 조건문 제어 -->
+				<a class="first"><img src="img/user.png" alt="user" />{$lang->qc_visitor}<!--//방문자--></a>
+				<a class="second">{$lang->qc_today}<!--//오늘-->:</a><a class="number">{number_format($today_counter->unique_visitor)}</a>
+				<a class="second">{$lang->qc_yesterday}<!--//어제-->:</a><a class="number">{number_format($yesterday_counter->unique_visitor)}</a>
+				<a class="second">{$lang->qc_total}<!--//전체-->:</a><a class="number">{number_format($total_counter->unique_visitor)}</a>
+				<a class="margin"></a>	
+			</span>
+			<!--@if($layout_info->counter_use_user == 'admin')-->
+			<span class="size" cond="$grant->manager">
+				<a class="first"><img src="img/user.png" alt="user" />{$lang->qc_visitor}<!--//방문자--></a>
+				<a class="second">{$lang->qc_today}<!--//오늘-->:</a><a class="number">{number_format($today_counter->unique_visitor)}</a>
+				<a class="second">{$lang->qc_yesterday}<!--//어제-->:</a><a class="number">{number_format($yesterday_counter->unique_visitor)}</a>
+				<a class="second">{$lang->qc_total}<!--//전체-->:</a><a class="number">{number_format($total_counter->unique_visitor)}</a>
+				<a class="margin"></a>	
+			</span><!--@end-->
+			
+			<span class="size" cond="$layout_info->counter_use_page == 'yes'"> <!--// 레이아웃에서 조건문 제어 -->
+				<a class="first"><img src="img/page.png" alt="page" />{$lang->qc_pageview}<!--//페이지뷰--></a>
+				<a class="second">{$lang->qc_today}<!--//오늘-->:</a><a class="number">{number_format($today_counter->pageview)}</a> 		
+				<a class="second">{$lang->qc_yesterday}<!--//어제-->:</a><a class="number">{number_format($yesterday_counter->pageview)}</a> 		
+				<a class="second">{$lang->qc_total}<!--//전체-->:</a><a class="number">{number_format($total_counter->pageview)}</a> 
+				<a class="margin"></a>
+			</span>
+			<!--@if($layout_info->counter_use_page == 'admin')-->
+			<span class="size" cond="$grant->manager"> 
+				<a class="first"><img src="img/page.png" alt="page" />{$lang->qc_pageview}<!--//페이지뷰--></a>
+				<a class="second">{$lang->qc_today}<!--//오늘-->:</a><a class="number">{number_format($today_counter->pageview)}</a> 		
+				<a class="second">{$lang->qc_yesterday}<!--//어제-->:</a><a class="number">{number_format($yesterday_counter->pageview)}</a> 		
+				<a class="second">{$lang->qc_total}<!--//전체-->:</a><a class="number">{number_format($total_counter->pageview)}</a> 
+				<a class="margin"></a>
+			</span><!--@end-->
+			
+			<span class="size" cond="$layout_info->counter_use_info == 'yes'"> <!--// 레이아웃에서 조건문 제어 -->
+				<a class="first"><img src="img/info.png" alt="info" />{$lang->qc_count_info}<!--//정보--></a>
+				<block cond="$layout_info->counter_info_user != 'no'"><a class="second" href="{getUrl('act','dispMemberAdminList')}"|cond="$grant->manager">{$lang->qc_member}<!--//회원-->:</a><a class="number">{number_format($status->member->total)}</a><a class="number1">(+{number_format($status->member->today)})</a> </block>
+				<block cond="$layout_info->counter_info_document != 'no'"><a class="second" href="{getUrl('act','dispDocumentAdminList')}"|cond="$grant->manager">{$lang->qc_document}<!--//문서-->:</a><a class="number">{number_format($status->document->total)}</a><a class="number1">(+{number_format($status->document->today)})</a> </block>		
+				<block cond="$layout_info->counter_info_comment != 'no'"><a class="second" href="{getUrl('act','dispCommentAdminList')}"|cond="$grant->manager">{$lang->qc_comment}<!--//댓글-->:</a><a class="number">{number_format($status->comment->total)}</a><a class="number1">(+{number_format($status->comment->today)})</a> </block>
+			</span>
+			<!--@if($layout_info->counter_use_info == 'admin')-->
+			<span class="size" cond="$grant->manager">
+				<a class="first"><img src="img/info.png" alt="info" />{$lang->qc_count_info}<!--//정보--></a>
+				<block cond="$layout_info->counter_info_user != 'no'"><a class="second" href="{getUrl('act','dispMemberAdminList')}"|cond="$grant->manager">{$lang->qc_member}<!--//회원-->:</a><a class="number">{number_format($status->member->total)}</a><a class="number1">(+{number_format($status->member->today)})</a> </block>
+				<block cond="$layout_info->counter_info_document != 'no'"><a class="second" href="{getUrl('act','dispDocumentAdminList')}"|cond="$grant->manager">{$lang->qc_document}<!--//문서-->:</a><a class="number">{number_format($status->document->total)}</a><a class="number1">(+{number_format($status->document->today)})</a> </block>		
+				<block cond="$layout_info->counter_info_comment != 'no'"><a class="second" href="{getUrl('act','dispCommentAdminList')}"|cond="$grant->manager">{$lang->qc_comment}<!--//댓글-->:</a><a class="number">{number_format($status->comment->total)}</a><a class="number1">(+{number_format($status->comment->today)})</a> </block>
+			</span><!--@end-->
+		</span>	
+	</div>
+</div>
+
+
+<!--// 레이아웃에서 css제어 -->
+<style type="text/css">
+.qook_counter .first{color:{$layout_info->counter_color};}
+.qook_counter .second{color:{$layout_info->counter_content_color};}
+.qook_counter .number{color:{$layout_info->counter_number_color};}
+.qook_counter .number1{color:{$layout_info->counter_up_color};}
+.qook_counter .margin{margin-right:{$layout_info->counter_margin}px;}	
+</style>
+
+
+<!--@end-->

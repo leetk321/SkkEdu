@@ -1,0 +1,46 @@
+{@ Context::addJsFile("./common/js/jquery.js", true, '', -100000) }
+{@ Context::addJsFile("./common/js/js_app.js", true, '', -100000) }
+{@ Context::addJsFile("./common/js/common.js", true, '', -100000) }
+{@ Context::addJsFile("./common/js/xml_handler.js", true, '', -100000) }
+{@ Context::addJsFile("./common/js/xml_js_filter.js", true, '', -100000) }
+<!--%import("js/mboard.js")-->
+<!--%import("css/mboard.css")-->
+<div class="bd">
+
+    <h2><a href="{getUrl('','vid',$vid,'mid',$mid)}">{$module_info->browser_title}</a></h2>
+
+<!--@if($oSourceComment->isExists())-->
+<div style="padding:10px; font-size:16px;">
+{$oSourceComment->getContentText(text)}
+</div>
+<!--@end-->
+
+		<form action="./" method="POST" class="sn tgo open" onsubmit="return procFilter(this, insert_comment);">
+		<input type="hidden" name="mid" value="{$mid}" />
+		<input type="hidden" name="document_srl" value="{$oComment->get('document_srl')}" />
+		<input type="hidden" name="comment_srl" value="{$oComment->get('comment_srl')}" />
+		<input type="hidden" name="parent_srl" value="{$oComment->get('parent_srl')}" />
+
+				<h2>{$lang->comment}</h2>
+                <textarea name="content" title="{$lang->title}" class="itx" rows="2" style=" height:100px">{htmlspecialchars($oComment->get('content'))}</textarea>
+                
+
+			<!--@if(!$is_logged)-->
+
+				<h2>{$lang->writer}</h2>
+				<input name="nick_name" type="text" id="uName" class="itx" value="{htmlspecialchars($oComment->get('nick_name'))}" />
+
+				<h2>{$lang->password}</h2>
+				<input name="password" type="password" id="uPw" class="itx" />
+
+			<!--@endif-->
+
+		<div align="right" style="padding:10px 10px 10px 0;">
+        
+        <button type="button" onclick="history.back()" class="sm-btn-de">{$lang->cmd_back}</button>
+        
+		<button type="submit" class="sm-btn">{$lang->cmd_registration}</button>
+		</div>
+		</form>
+
+</div>

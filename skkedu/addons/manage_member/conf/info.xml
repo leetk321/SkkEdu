@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<addon version="0.2">
+    <title xml:lang="ko">회원 관리</title>
+    <description xml:lang="ko">
+        부운영자가 회원 관리를 할 수 있도록 해줍니다.
+    </description>
+    <version>0.2</version>
+    <date>2012-05-28</date>
+
+    <author email_address="" link="">
+        <name xml:lang="ko">CMD</name>
+    </author>
+	<extra_vars>
+        <var name="manager_list">
+            <title xml:lang="ko">회원 관리자 아이디</title>
+            <description xml:lang="ko">
+                회원을 관리할 회원의 아이디를 입력해 주세요.
+				2개 이상은 콤마로 구분해 주세요.
+            </description>
+        </var>
+    </extra_vars>
+</addon>

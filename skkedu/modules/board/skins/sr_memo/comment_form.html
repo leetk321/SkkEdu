@@ -1,0 +1,42 @@
+<include target="header.html" />
+
+<h2>{$lang->comment}</h1>
+
+<div cond="$oSourceComment->isExists()" class="context_data">
+	<h3 class="author">
+		<a cond="$oSourceComment->homepage" href="{$oSourceComment->homepage}">{$oSourceComment->getNickName()}</a>
+		<strong cond="!$oSourceComment->homepage">{$oSourceComment->getNickName()}</strong>
+	</h3>
+	{$oSourceComment->getContent(false)}
+</div>
+<div class="feedback" style="clear:both; position:relative; display:block">
+	<form action="./" method="post" onsubmit="return procFilter(this, insert_comment)" class="write_comment">
+		<input type="hidden" name="mid" value="{$mid}" />
+		<input type="hidden" name="document_srl" value="{$oComment->get('document_srl')}" />
+		<input type="hidden" name="comment_srl" value="{$oComment->get('comment_srl')}" />
+		<input type="hidden" name="parent_srl" value="{$oComment->get('parent_srl')}" />
+        <div style="padding:10px 0;">
+        <input type="text" name="content" value=" {htmlspecialchars($oComment->get('content'))}" class="iText" style="width:99%" />
+		</div>
+                
+		<div class="write_author">
+			<span class="item" cond="!$is_logged">
+				<label for="userName" class="iLabel">{$lang->writer}</label>
+				<input type="text" name="nick_name" id="userName" class="iText userName" value="{htmlspecialchars($oComment->get('nick_name'))}" style="width:120px;" />
+			</span>
+			<span class="item" cond="!$is_logged">
+				<label for="userPw" class="iLabel">{$lang->password}</label>
+				<input type="password" name="password" id="userPw" class="iText userPw" style="width:120px;" />
+			</span>
+			
+			<input cond="$is_logged && $module_info->display_notify!='N'" type="checkbox" name="notify_message" value="Y" checked="checked"|cond="$oComment->get('notify_message')=='Y'" id="notify_message" class="iCheck" />
+			<label cond="$is_logged && $module_info->display_notify!='N'" for="notify_message">{$lang->notify}</label>
+			
+		</div>
+		<div class="btnArea">
+        	<span class="sm_btn25"><input type="button" value="{$lang->cmd_back}" onclick="location.href='{getUrl('act','')}'" /></span>
+			<span class="sm_btn25 blue"><button type="submit">{$lang->cmd_comment_registration}</button></span>
+		</div>
+	</form>
+</div>
+<include target="footer.html" />

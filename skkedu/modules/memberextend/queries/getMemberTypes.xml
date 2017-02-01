@@ -1,0 +1,8 @@
+<query id="getMemberTypes" action="select">
+    <tables>
+        <table name="memberextend_type" />
+    </tables>
+    <navigation>
+        <index var="sort_index" default="list_order" order="order_type" />
+    </navigation>
+</query>

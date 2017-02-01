@@ -1,0 +1,75 @@
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=yes, target-densitydpi=medium-dpi">
+<load target="css/communication.css" index="50" />
+<load cond="$communication_config->colorset=='black'||$communication_config->mcolorset=='black'" target="css/black.css" index="51" />
+<load target="js/communication.js" />
+<section class="xc">
+	<div class="border full-width popup-width">
+		<h1 class="h1">{$lang->cmd_send_message}</h1>
+		<div cond="$XE_VALIDATOR_MESSAGE && $XE_VALIDATOR_ID == 'modules/communication/skins/sketchbook5_communication_skin/send_message/1'" class="message {$XE_VALIDATOR_MESSAGE_TYPE}">
+			<p>{$XE_VALIDATOR_MESSAGE}</p>
+		</div>
+<!--@if(!Mobile::isFromMobilePhone())-->
+		<form ruleset="sendMessage" action="./" method="post">
+			<input type="hidden" name="module" value="communication" />
+			<input type="hidden" name="act" value="procCommunicationSendMessage" />
+			<input type="hidden" name="content" value="{htmlspecialchars($source_message->content, ENT_COMPAT | ENT_HTML401, 'UTF-8', false)}" />
+			<input type="hidden" name="receiver_srl" value="{$receiver_info->member_srl}" />
+			<input type="hidden" name="xe_validator_id" value="modules/communication/skins/sketchbook5_communication_skin/send_message/1" />
+			<table class="table table-striped table-hover">
+				<tr>
+					<th scope="row"><label for="textfield1">{$lang->receiver}</label></th>
+					<td>{$receiver_info->nick_name}</td>
+				</tr>
+				<tr>
+					<th scope="row">{$lang->title}</th>
+					<td><input type="text" name="title" id="message_title" value="{$source_message->title}" style="width:90%" /></td>
+				</tr>
+				<tr>
+					<th scope="row">{$lang->cmd_option}</th>
+					<td><input type="checkbox" value="Y" name="send_mail" /> {$lang->cmd_send_mail}</td>
+				</tr>
+			</table>
+			{$editor}
+			<div class="btnArea">
+				<input type="submit" value="{$lang->cmd_send_message}" class="btn btn-inverse" />
+			</div>
+		</form>
+<!--@else-->
+		<form ruleset="sendMessage" action="./" method="post" id="fo_comm">
+			<input type="hidden" name="module" value="communication" />
+			<input type="hidden" name="is_popup" value="Y" />
+			<input type="hidden" name="act" value="procCommunicationSendMessage" />
+			<input type="hidden" name="receiver_srl" value="{$receiver_info->member_srl}" />
+			<input type="hidden" name="source_content" value="{htmlspecialchars($source_message->content, ENT_COMPAT | ENT_HTML401, 'UTF-8', false)}" />
+			<input type="hidden" name="content" value="" />
+			<input type="hidden" name="xe_validator_id" value="modules/communication/skins/sketchbook5_communication_skin/send_message/1" />
+			<input type="hidden" name="success_return_url" value="{getNotEncodedUrl('','act', 'dispCommunicationSendMessage', 'receiver_srl', $receiver_info->member_srl)}" />
+			<table class="table table-striped table-hover message">
+				<tr>
+					<th scope="row">{$lang->receiver}</th>
+					<td>{$receiver_info->nick_name}</td>
+				</tr>
+				<tr>
+					<th scope="row">{$lang->title}</th>
+					<td><input type="text" name="title" id="message_title" value="{$source_message->title}" style="width:92%" /></td>
+				</tr>
+				<tr>
+					<th scope="row">{$lang->cmd_option}</th>
+					<td><input type="checkbox" value="Y" name="send_mail" /> {$lang->cmd_send_mail}</td>
+				</tr>
+				<tr>
+					<th scope="row">{$lang->content}</th>
+					<td>{$source_message->content}</td>
+				</tr>
+				<tr>
+					<td colspan="2"><textarea id="message_content" name="new_content" rows="8" style="width:93%"></textarea></td>
+				</tr>
+			</table>
+			<div class="btnArea">
+				<a href="{getUrl('', 'act','dispCommunicationMessages')}" class="btn pull-left">{$lang->cmd_list}</a>
+				<button type="button" class="btn btn-inverse pull-right" onClick="mergeContents();">{$lang->cmd_send_message}</button>
+			</div>
+		</form>
+<!--@end-->
+	</div>
+</section>

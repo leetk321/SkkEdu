@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<addon version="0.2">
+    <title xml:lang="ko">메시지톡 Pro</title>
+    <description xml:lang="ko">
+   	커뮤니케이션 쪽지 기능을 대화형태로 볼 수 있도록 개선한 메시지톡입니다.
+   	메시지톡을 설치하신 후 본 애드온을 사용으로 해 주시면 됩니다.
+    </description>
+    <version>2.0.1</version>
+    <date>2013-11-26</date>
+
+    <author email_address="celldream79@gmail.com" link="http://www.2sisstore.com">
+        <name xml:lang="ko">NSTORY PTE. LTD.</name>
+    </author>
+	<extra_vars>
+		<var name="member_menu" type="select">
+            <title xml:lang="ko">멤버탭 추가</title>
+            <description xml:lang="ko">멤버탭에 메시지톡을 추가합니다. - 맴버탭추가 : 클릭시 메세지톡페이지으로 이동하면서 팝업 - 맴버탭추가 안함 : 레이아웃에서 해당 메뉴 직접 추가</description>
+			<options value="YES">
+				<title xml:lang="ko">멤버탭 추가</title>
+			</options>
+            <options value="NO">
+            	<title xml:lang="ko">멤버탭 추가안함</title>
+            </options>
+        </var>
+		<var name="send_mode" type="select">
+            <title xml:lang="ko">메시지 전달 방식</title>
+            <description xml:lang="ko">엔터를 눌렀을 때 메시지톡이 전달되도록 합니다. 엔터적용시 줄바꿈은 shift+ enter 입니다.</description>
+			<options value="YES">
+				<title xml:lang="ko">엔터 적용(엔터 전송)</title>
+			</options>
+            <options value="NO">
+            	<title xml:lang="ko">엔터 미적용(엔터 줄바꿈)</title>
+            </options>
+        </var>
+		<var name="alert_message" type="select">
+            <title xml:lang="ko">메시지 도착 알림</title>
+            <description xml:lang="ko">신규메시지가 왔을 때 알림 사용여부를 선택합니다</description>
+			<options value="YES">
+				<title xml:lang="ko">메시지 알림적용</title>
+			</options>
+            <options value="NO">
+            	<title xml:lang="ko">메시지 알림 미적용</title>
+            </options>
+        </var>
+		<var name="alert_message_voice" type="select">
+            <title xml:lang="ko">메시지 도착 음성 알림</title>
+            <description xml:lang="ko">신규메시지가 왔을 때 쪽지 알림 사운드를 재생합니다</description>
+            <options value="YES">
+            	<title xml:lang="ko">음성 재생</title>
+            </options>
+            <options value="NO">
+            	<title xml:lang="ko">음성 재생 안함</title>
+            </options>
+        </var>
+		<var name="pusher_key" type="text">
+			<title xml:lang="ko">PUSHER KEY</title>
+			<description xml:lang="ko">메시지톡 실시간 대화를 위한 PUSHER KEY를 입력하세요</description>
+		</var>       
+		<var name="pusher_app_id" type="text">
+			<title xml:lang="ko">PUSHER APP ID</title>
+			<description xml:lang="ko">메시지톡 실시간 대화를 위한 PUSHER APP ID를 입력하세요</description>
+		</var>       
+		<var name="pusher_secret" type="text">
+			<title xml:lang="ko">PUSHER SECRET</title>
+			<description xml:lang="ko">메시지톡 실시간 대화를 위한 PUSHER SECRET를 입력하세요</description>
+		</var>       
+		<var name="show_message_default" type="text">
+            <title xml:lang="ko">초기 메시지 개수</title>
+            <description xml:lang="ko">메시지톡 내용을 클릭했을 때 보여질 개수 지정. ※ 기본개수 10개. (최대 50개)</description>
+        </var>
+		<var name="show_message_more" type="text">
+            <title xml:lang="ko">이전 메시지 보기 개수</title>
+            <description xml:lang="ko">이전 메시지를 보기 위해 more 버튼을 클릭했을 때 추가로 보여질 개수 지정. ※ 기본개수 10개. (최대 50개)</description>
+        </var>
+		<var name="alert_message_realtime" type="text">
+            <title xml:lang="ko">실시간 메시지 체크(1/1000 초)</title>
+            <description xml:lang="ko">페이지 새로고침없이 메시지 도착 알림을 확인하는 시간(초)을 입력하시면 됩니다.  예)기본 0(사용안함). 5초(5000ms)이상 임의 설정가능/5초이하는 무조건 5초로 설정됨 * 계산법: 초당 * 1000= 실시간메세지체크값 * 짧을수록 서버에 부담이 됩니다. 적절히 조절해 주세요.</description>
+        </var>
+		<var name="alert_message_showtime" type="text">
+            <title xml:lang="ko">메시지 도착 알림 팝업 유지시간(1/1000 초)</title>
+            <description xml:lang="ko">메시지 도착 알림 팝업 유지시간(초)을 입력하시면 됩니다.  예)기본 15초(15000). 1초(1000)이상 임의 설정가능</description>
+        </var>
+        <var name="xe_path" type="text">
+            <title xml:lang="ko">XE 설치경로</title>
+            <description xml:lang="ko">XE 설치경로를 입력하세요. 예)/xe</description>
+        </var>
+        <var name="colorset_background" type="text">
+            <title xml:lang="ko">배경 컬러셋</title>
+            <description xml:lang="ko">메시지톡 배경색상을 입력하세요. 예)#333</description>
+        </var>
+        <var name="colorset_bar" type="text">
+            <title xml:lang="ko">상/하단 바 색상</title>
+            <description xml:lang="ko">메시지톡 상/하단 바의 색상을 입력하세요. 예)#333</description>
+        </var>
+        <var name="colorset_tabfont" type="text">
+            <title xml:lang="ko">탭글자 색상</title>
+            <description xml:lang="ko">메시지톡 탭글자 색상을 입력하세요. 예)#333</description>
+        </var>
+	</extra_vars>
+</addon>

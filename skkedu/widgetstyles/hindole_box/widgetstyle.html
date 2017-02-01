@@ -1,0 +1,10 @@
+<!--%import("style.css")-->
+
+<div class="simpleWidgetStyle">
+    <h2>{$widgetstyle_extar_var->ws_title}</h2>
+    <!--@if($widgetstyle_extar_var->ws_more_url)-->
+        <a href="{$widgetstyle_extar_var->ws_more_url}" class="widgetMoreLink">
+        {$widgetstyle_extar_var->ws_more_text}</a>
+    <!--@end-->
+    <div class="widgetContent">{$widget_content}</div>
+</div>

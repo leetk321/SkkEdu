@@ -1,0 +1,137 @@
+<load target="mx.css" />
+
+<!--@if($lang_type=='ko')-->
+{@
+	$lang->lang = '언어';
+	$lang->sitemap = '사이트맵';
+}
+<!--@else-->
+{@
+	$lang->lang = 'Language';
+	$lang->sitemap = 'Sitemap';
+}
+<!--@end-->
+
+<!--// 메인 메뉴 색상 순서 변경 (원하시는 순서로 배열하세요) -->
+{@$_colorset_list = array('lightsky','orange','sky','green','lightpink','red','yellow','blue','purple','pink','greenyellow','deeppink')}
+
+<block loop="$main_menu->list=>$key1,$val1" cond="$val1['selected']">
+{@$_idx = 0}<!--@foreach($main_menu->list as $key => $val)--><!--@if($val['selected'])-->
+<div id="xe" class="{$_colorset_list[$_idx]}">
+<!--@endif-->{@$_idx++}<!--@end-->
+</block>
+
+<div id="hd" class="clear">
+	<!--// 탑 메뉴 -->
+	<div id="top_mn">
+		<a class="show_srch" id="show_srch" onclick="toggle('srch')">{$lang->cmd_search}</a>
+		<a class="lang" href="{getUrl('act','dispModuleChangeLang','oldact',$act)}">{$lang->lang}</a>
+		<a class="pc" href="{getUrl('m',0)}">PC{$lang->cmd_view}</a>
+		<a cond="$is_logged" class="login" href="{getUrl('act','dispMemberLogout')}">{$lang->cmd_logout}</a>
+		<a cond="!$is_logged" class="login" href="{getUrl('act','dispMemberLoginForm')}">{$lang->cmd_login}</a>
+		<a class="home" href="#hd" onclick="toggle('sitemap')">{$lang->sitemap}</a>
+		<!--// 검색 -->
+		<div id="srch">
+			<form action="{getUrl()}" method="get">
+				<input type="hidden" name="vid" value="{$vid}" />
+				<input type="hidden" name="mid" value="{$mid}" />
+				<input type="hidden" name="act" value="IS" />
+				<input type="text" name="is_keyword" value="{$is_keyword}" title="{$lang->cmd_search}" class="itx" accesskey="S" />
+				<input type="image" src="./img/bs_white.png" alt="Search" class="is" />
+			</form>
+		</div>
+		<button type="button" onclick="toggle('top_mn');sitemap()">{$lang->menu}</button>
+	</div>
+	<!--// 사이트맵 -->
+	<div id="sitemap" class="clear">
+		<ul>
+			{@$_idx = 0}
+			<li loop="$main_menu->list=>$key1,$val1" cond="$val1['link']" class="li1 clear {$_colorset_list[$_idx]}">
+				<a class="a1<!--@if($val1['selected'])--> on<!--@end-->" href="{$val1['href']}" target="_blank"|cond="$val1['open_window']=='Y'">{$val1['link']}</a>
+				<ul cond="$val1['list']">
+					<li loop="$val1['list']=>$key2,$val2" cond="$val2['link']" class="li2">
+						<a class="a2<!--@if($val2['selected'])--> on<!--@end-->" href="{$val2['href']}" target="_blank"|cond="$val2['open_window']=='Y'">{$val2['link']}</a>
+					</li>
+				</ul>
+			{@$_idx++}
+			</li>
+		</ul>
+	</div>
+	<!--// 로고 -->
+	<div class="hgroup clear">
+		<h1>
+			<a loop="$main_menu->list=>$key1,$val1" cond="$val1['selected']" href="{$val1['href']}" class="on">{$val1['link']}</a>
+			<a href="<!--@if($layout_info->index_url)-->{$layout_info->index_url}<!--@else-->{getUrl('')}<!--@end-->" class="home"><img cond="$layout_info->logo_image" src="{$layout_info->logo_image}" alt="{$layout_info->logo_text}" /><block cond="!$layout_info->logo_image">{$layout_info->logo_text}</block></a>
+		</h1>
+	</div>
+	<!--// 메인메뉴 -->
+	<div id="gnb"><div id="btn_more">
+		<!--// 2차가 아니면 1차만 출력 -->
+		<ul class="gnb_1">
+			{@$_idx = 0}
+			<li loop="$main_menu->list=>$key1,$val1" cond="$val1['link']" class="li1 {$_colorset_list[$_idx]}">
+				<a class="a1" href="{$val1['href']}" target="_blank"|cond="$val1['open_window']=='Y'">{$val1['link']}</a>
+				<button cond="$_idx=='4'" type="button" class="btn_more" title="More" onclick="toggle('gnb');toggle('btn_more')"><b>▼</b><span>▲</span><style type="text/css">#gnb{padding-right:32px}</style></button>{@$_idx++}
+			</li>
+			
+		</ul>
+		<!--// 1차 선택되면 2차만 출력 -->
+		<ul loop="$main_menu->list=>$key1,$val1" cond="$val1['selected'] && $val1['list']" class="gnb_2">
+			{@$_idx = 0}
+			<li loop="$val1['list']=>$key2,$val2" cond="$val2['link']" class="li1">
+				<a class="a1<!--@if($val2['selected'])--> on<!--@end-->" href="{$val2['href']}" target="_blank"|cond="$val2['open_window']=='Y'">{$val2['link']}</a>
+				<button cond="$_idx=='4'" type="button" class="btn_more" title="More" onclick="toggle('gnb');toggle('btn_more')"><b>▼</b><span>▲</span><style type="text/css">#gnb{padding-right:32px}</style></button>{@$_idx++}<style type="text/css">.gnb_1{display:none}</style>
+			</li>
+<style type="text/css">#hd h1 .home{padding:8px 0 0 8px;font-size:16px}</style>
+		</ul>
+	</div></div>
+</div>
+
+<div id="cnt" class="clear">{$content}</div>
+
+<div id="ft" class="clear">
+	<div cond="$bottom_menu->list" id="btm_mn">
+		<ul>
+			<li loop="$bottom_menu->list=>$key,$val" cond="$val['link']"><a href="{$val['href']}" target="_blank"|cond="$val['open_window']=='Y'">{$val['link']}</a></li>
+		</ul>
+	</div>
+	<p id="address"> {$layout_info->address} </p>
+	<p id="maker"> <a href="http://www.xpressengine.com" target="_blank">Powered by <strong>X</strong>press <strong>E</strong>ngine</a> / <a href="" target="_blank">Designed by hikaru100</a> </p>
+</div>
+
+</div>
+
+<script type="text/javascript">
+function toggle(id){
+	if(document.getElementById(id).className=='open'){
+		document.getElementById(id).className=''
+	} else {
+		document.getElementById(id).className='open'
+	}
+};
+function sitemap(){
+	if(document.getElementById('top_mn').style.display='block'){
+		document.getElementById('sitemap').className='';
+		document.getElementById('srch').className='';
+	}
+};
+<!--// 소스 : 'http://cafe.naver.com/webstandardproject' by yamoo9  -->
+var tester = document.getElementById('top_mn');
+fixedPosition(tester);
+function fixedPosition(element){
+	addEventListener('scroll', function(){
+		if(document.getElementById('top_mn').className=='open'){
+			element.style.top = window.pageYOffset + 'px';
+		} else {
+			element.style.top = window.pageYOffset - 62 + 'px';
+		}
+	}, false);
+	addEventListener('click', function(){
+		if(document.getElementById('top_mn').className=='open'){
+			element.style.top = window.pageYOffset + 'px';
+		} else {
+			element.style.top = window.pageYOffset - 62 + 'px';
+		}
+	}, false);
+};
+</script>

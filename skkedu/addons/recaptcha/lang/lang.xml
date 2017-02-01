@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<lang>
+	<item name="about_recaptcha">
+		<value xml:lang="ko"><![CDATA[자동등록 로봇을 방지하기위한 절차입니다.]]></value>
+		<value xml:lang="en"><![CDATA[This is to prevent automated registrations robot.]]></value>
+		<value xml:lang="jp"><![CDATA[これは自動化された登録ロボットを防ぐためです。]]></value>
+		<value xml:lang="zh-CN"><![CDATA[这是为了防止自动注册机器人。]]></value>
+		<value xml:lang="zh-TW"><![CDATA[這是為了防止自動註冊機器人。]]></value>
+		<value xml:lang="fr"><![CDATA[Ce est pour éviter automatisé robots des inscriptions.]]></value>
+		<value xml:lang="ru"><![CDATA[Это необходимо для предотвращения автоматических регистраций робота.]]></value>
+		<value xml:lang="es"><![CDATA[Esto es para evitar registros robot automatizado.]]></value>
+		<value xml:lang="de"><![CDATA[Dies ist auf eine automatische Registrierung von Roboter zu verhindern.]]></value>
+	</item>
+	<item name="about_recaptcha_error">
+		<value xml:lang="ko"><![CDATA[인증에 실패하였습니다. (errorCode : %s)]]></value>
+		<value xml:lang="en"><![CDATA[Authorization failed. (errorCode : %s)]]></value>
+		<value xml:lang="jp"><![CDATA[認証に失敗しました。 (errorCode : %s)]]></value>
+		<value xml:lang="zh-CN"><![CDATA[授权失败。 (errorCode : %s)]]></value>
+		<value xml:lang="zh-TW"><![CDATA[授權失敗。 (errorCode : %s)]]></value>
+		<value xml:lang="fr"><![CDATA[Échec de l'autorisation. (errorCode : %s)]]></value>
+		<value xml:lang="ru"><![CDATA[Авторизация не удалась. (errorCode : %s)]]></value>
+		<value xml:lang="es"><![CDATA[Error de autorización. (errorCode : %s)]]></value>
+		<value xml:lang="de"><![CDATA[Autorisierung fehlgeschlagen. (errorCode : %s)]]></value>
+	</item>
+</lang>

@@ -1,0 +1,12 @@
+<filter name="saveListSetting" module="loginlog" act="procLoginlogAdminSaveListSetting">
+	<form>
+		<node target="listSetting" required="true" />
+	</form>
+	<parameter>
+		<param name="listSetting" target="listSetting" />
+	</parameter>
+	<response callback_func="completeInsertConfig">
+		<tag name="error" />
+		<tag name="message" />
+	</response>
+</filter>

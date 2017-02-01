@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<skin version="0.2">
+    <title xml:lang="ko">소시랑 한줄메모 스킨</title>
+    <description xml:lang="ko">소시랑닷컴(sosirang.com)</description>
+    <version>0.9.1</version>
+    <date>2012-07-19</date>
+
+    <author email_address="master@sosirang.com" link="http://www.sosirang.com">
+        <name xml:lang="ko">소시랑닷컴</name>
+	</author>
+
+    <license>GPLv2</license>
+
+    <extra_vars>
+		
+		<var name="title" type="text">
+            <title xml:lang="ko">게시판 제목</title>
+            <description xml:lang="ko">게시판의 제목을 적어주세요.</description>
+        </var>
+		
+		<var name="sub_title" type="text">
+            <title xml:lang="ko">게시판 부제목</title>
+            <description xml:lang="ko">게시판 제목 옆에 나타날 부제목을 적어주세요.</description>
+        </var>
+        <var name="comment" type="textarea">
+            <title xml:lang="ko">게시판 상세 설명</title>
+            <description xml:lang="ko">게시판 제목 아래 표시될 설명을 입력하실 수 있습니다.</description>
+        </var>
+		
+        <var name="duration_new" type="text" default="24">
+            <title xml:lang="ko">new표시 시간 (hours)</title>
+            <description xml:lang="ko">새로 등록된 게시물의 new 표시시간을 정할 수 있습니다.</description>
+        </var>
+
+		
+		<var name="display_search" type="select">
+            <title xml:lang="ko">검색 표시</title>
+            <options value="Y">
+                <title xml:lang="ko">출력</title>
+            </options>
+            <options value="N">
+                <title xml:lang="ko">출력하지 않음</title>
+            </options>
+
+        </var>
+		
+		
+		<var name="display_no" type="select">
+            <title xml:lang="ko">번호/아이콘 옵션</title>
+            <options value="Y">
+                <title xml:lang="ko">번호 표시</title>
+            </options>
+            <options value="N">
+                <title xml:lang="ko">아이콘 표시</title>
+            </options>
+			<description xml:lang="ko">번호 또는 아이콘 선택 표시합니다.</description>
+        </var>
+
+		<var name="display_commentcount" type="select">
+            <title xml:lang="ko">댓글수 표시</title>
+            <options value="Y">
+                <title xml:lang="ko">출력</title>
+            </options>
+            <options value="N">
+                <title xml:lang="ko">출력하지 않음</title>
+            </options>
+        </var>
+		
+		<var name="display_comment_depth" type="select">
+            <title xml:lang="ko">댓글에 답글 입력 옵션</title>
+			<description xml:lang="ko">댓글에 답글을 입력하지 않을 경우 선택합니다.</description>
+            <options value="Y">
+                <title xml:lang="ko">입력</title>
+            </options>
+            <options value="N">
+                <title xml:lang="ko">입력하지 않음</title>
+            </options>
+        </var>
+		
+		<var name="display_depth" type="text" default="10">
+            <title xml:lang="ko">댓글에 답글 수</title>
+            <description xml:lang="ko">댓글에 답글 수를 제한합니다.(기본 10 / 최소 1)</description>
+        </var>
+		
+		<var name="display_time" type="select">
+            <title xml:lang="ko">작성시간 표시</title>
+            <options value="Y">
+                <title xml:lang="ko">출력</title>
+            </options>
+            <options value="N">
+                <title xml:lang="ko">출력하지 않음</title>
+            </options>
+        </var>
+		
+		<var name="display_notify" type="select">
+
+            <title xml:lang="ko">알림 표시</title>
+			<options value="Y">
+                <title xml:lang="ko">출력</title>
+            </options>
+            <options value="N">
+                <title xml:lang="ko">출력하지 않음</title>
+            </options>
+            
+        </var>	
+	
+
+    </extra_vars>
+</skin>

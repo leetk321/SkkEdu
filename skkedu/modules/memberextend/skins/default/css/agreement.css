@@ -1,0 +1,9 @@
+@charset "utf-8";
+
+/* section									{border:1px solid #F00;} */
+.Agreement						{width:700px; margin:10px auto; padding:15px 15px 10px 15px; border-radius:10px; background:#f8f8f8; border:1px solid #999; -webkit-box-shadow:0px 0px 15px rgba(0,0,0,0.1); -moz-box-shadow:0px 0px 15px rgba(0,0,0,0.1); box-shadow:0px 0px 15px rgba(0,0,0,0.1);}
+.Agreement:hover				{-webkit-box-shadow:0px 0px 15px rgba(0,0,0,0.5); -moz-box-shadow:0px 0px 15px rgba(0,0,0,0.5); box-shadow:0px 0px 15px rgba(0,0,0,0.5);}
+.Agreement > .Title				{margin:0px 0px 5px 0px; padding:5px; border-bottom:1px dotted #000; font-size:20px; font-weight:bold;}
+.Agreement > .Text				{width:auto; height:250px; overflow:auto}
+.Agreement > .Confirm			{margin:10px 0px 0px 0px; padding:5px 0px 0px 0px; border-top:1px dotted #ccc; text-align:right;}
+.Agreement > .Confirm > input	{margin:0px; padding:0px; top:3px; *top:2px; left:-5px; position:relative;}

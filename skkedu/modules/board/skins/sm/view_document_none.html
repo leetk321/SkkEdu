@@ -1,0 +1,90 @@
+ <ul class="smVt">
+	<li style="background:#f8f8f8"|cond="$oDocument->isNotice()" onmouseover="toggle_object('action_{$oDocument->document_srl}'); return false;" onmouseout="toggle_object('action_{$oDocument->document_srl}'); return false;">
+
+        <div id="list_{$oDocument->document_srl}" style="display:block; position:relative" class="xe_content">
+ 
+                <div style="float:left">
+                <!--@if(!$oDocument->isNotice())-->
+                <img src="css/list.gif" title="{$no}" alt="{$no}" /> 
+                <!--@else-->
+                <img src="css/notice.gif" />
+                <!--@end-->
+				</div>
+
+                <span style="position:absolute; left:0; top:0;" cond="$grant->manager && $module_info->display_checkbox != 'N' && $module_info->display_header != 'N'">
+                <input type="checkbox" name="cart" value="{$oDocument->document_srl}" class="iCheck" title="Check This Article" onclick="doAddDocumentCart(this)" checked="checked"|cond="$oDocument->isCarted()" /></span>
+
+                <div style="display:none;"|cond="$module_info->action != 'N'" id="action_{$oDocument->document_srl}"|cond="$module_info->action != 'N'" class="action">
+   
+                 <!--@if($oDocument->isNotice())-->
+                 	<!--@if($module_info->notice_comment != 'N')-->
+                 	<a href="#" onclick="toggle_object('reply_{$oDocument->document_srl}'); return false;" cond="$grant->write_comment">&crarr; {$lang->cmd_reply}</a><!--@end-->
+                 <!--@else-->
+                 	
+                    <a href="#" onclick="toggle_object('reply_{$oDocument->document_srl}'); return false;" cond="$grant->write_comment">&crarr; {$lang->cmd_reply}</a>
+                 <!--@end-->
+                <span cond="$oDocument->isEditable()"><a href="#" onclick="toggle_object('insert_{$oDocument->document_srl}'); toggle_object('list_{$oDocument->document_srl}'); return false;" title="{$lang->cmd_modify}">{$lang->cmd_modify}</a></span>
+                <span cond="$oDocument->isEditable()"><a href="#" onclick="toggle_object('delete_{$oDocument->document_srl}'); toggle_object('list_{$oDocument->document_srl}'); return false;" title="{$lang->cmd_delete}">{$lang->cmd_delete}</a></span>
+                </div>
+
+                <div class="sm_text" style="margin-left:15px;" >				
+                <!--@if(!$oDocument->isNotice())-->
+                <!--@if($module_info->use_category == "Y" && $oDocument->get('category_srl'))--><a href="{getUrl('category',$oDocument->get('category_srl'), 'document_srl', '')}" class="sm_category" style="color:{$category_list[$oDocument->get('category_srl')]->color};"|cond="$category_list[$oDocument->get('category_srl')]->color != transparent" style="color:#000;"|cond="$category_list[$oDocument->get('category_srl')]->color == 'transparent'">{$category_list[$oDocument->get('category_srl')]->title}</a><!--@end--> <!--@end-->
+
+                               
+				<span class="sm_name">  
+                <!--@if($oDocument->isNotice())-->
+                	<!--@if($module_info->notice_name == 'S')-->
+                	<!--@else-->
+                		<!--@if($module_info->notice_name != 'N')-->
+						<block cond="!$oDocument->getMemberSrl() && !$oDocument->isExistsHomepage()">{$oDocument->getNickName()}</block><a cond="$oDocument->getMemberSrl()" href="#popup_menu_area" class="member_{$oDocument->get('member_srl')}" onclick="return false">{$oDocument->getNickName()}</a> : 
+						<!--@else-->
+                		{$lang->notice} : 
+                		<!--@end-->
+                	<!--@end-->
+                <!--@else-->
+                <block cond="!$oDocument->getMemberSrl() && !$oDocument->isExistsHomepage()">{$oDocument->getNickName()}</block><a cond="$oDocument->getMemberSrl()" href="#popup_menu_area" class="member_{$oDocument->get('member_srl')}" onclick="return false">{$oDocument->getNickName()}</a> : 
+                <!--@end-->
+                </span>
+				
+
+                <span class="document<!--@if($oDocument->document_srl)-->_{$oDocument->document_srl}<!--@end--><!--@if($oDocument->getMemberSrl())-->_{$oDocument->getMemberSrl()}<!--@end--> xe_content">{$oDocument->getTitle()} 
+                
+                <span class="sm_count" cond="$oDocument->getCommentcount() && !$oDocument->isNotice()"><a href="#" onclick="toggle_object('list_reply_{$oDocument->document_srl}'); return false;" >{$oDocument->getCommentcount()}</a></span>
+                
+                <span class="sm_time" cond="$module_info->display_time !='N'">
+
+                <!--@if( ($cur_date = date('Y-m-d'))==($oDocument->getRegdate('Y-m-d')) )-->
+                <font color="#FF6666">{getTimeGap($oDocument->get('regdate'), "Y.m.d H:i")}</font>
+                <!--@else-->
+                {$oDocument->getRegdate('Y.m.d')}
+               
+                <!--@end-->
+                
+
+                {$oDocument->printExtraImages(60*60*$module_info->duration_new)}
+
+                </span>
+                </span>
+
+			</div> 
+             </div>  
+			<div id="delete_{$oDocument->document_srl}" style="display:none;"><include target="delete_document.html" /></div>   
+			<div id="insert_{$oDocument->document_srl}" style="display:none;"><include target="insert_document.html" /></div>
+            
+
+</li>
+</ul>
+
+<div id="reply_{$oDocument->document_srl}" style="display:none; border-bottom:1px solid #ccc; background-color:#f7f7f7;"><include target="document_reply.html" /></div>
+
+
+<div id="list_reply_{$oDocument->document_srl}" style="<!--@if($module_info->display_comment != 'N')-->display:block;<!--@else-->display:none;<!--@end-->">
+<!--@if($oDocument->isNotice())-->
+	<!--@if($module_info->notice_comment != 'N')-->
+	<include target="./comment_none.html" />
+	<!--@end-->
+<!--@else-->
+<include target="./comment_none.html" />
+<!--@end-->  
+</div>

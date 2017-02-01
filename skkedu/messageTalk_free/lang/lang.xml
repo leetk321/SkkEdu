@@ -1,0 +1,88 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<lang>
+	<item name="messageTalk">
+		<value xml:lang="ko"><![CDATA[메시지톡-Free]]></value>
+		<value xml:lang="en"><![CDATA[messageTalk-Free]]></value>
+		<value xml:lang="jp"><![CDATA[メッセージトーク-Free]]></value>
+	</item>
+	<item name="cmd_view_messageTalk_All">
+		<value xml:lang="ko"><![CDATA[전체]]></value>
+		<value xml:lang="en"><![CDATA[All]]></value>
+		<value xml:lang="jp"><![CDATA[受信箱]]></value>
+	</item>
+	<item name="cmd_view_messageTalk_New">
+		<value xml:lang="ko"><![CDATA[안읽은 메시지]]></value>
+		<value xml:lang="en"><![CDATA[New Messages]]></value>
+		<value xml:lang="jp"><![CDATA[ニューメッセージ]]></value>
+	</item>
+	<item name="cmd_view_messageTalk_FindFriends">
+		<value xml:lang="ko"><![CDATA[친구찾기]]></value>
+		<value xml:lang="en"><![CDATA[Find Friends]]></value>
+		<value xml:lang="jp"><![CDATA[友達検索]]></value>
+	</item>
+	<item name="msg_no_messageTalk">
+		<value xml:lang="ko"><![CDATA[메시지가 없습니다]]></value>
+		<value xml:lang="en"><![CDATA[No Message]]></value>
+		<value xml:lang="jp"><![CDATA[メッセージがありません。]]></value>
+	</item>
+	<item name="msg_deleted_messageTalk">
+		<value xml:lang="ko"><![CDATA[선택한 메시지를 삭제하였습니다]]></value>
+		<value xml:lang="en"><![CDATA[Completed delete Messages]]></value>
+		<value xml:lang="jp"><![CDATA[選択したメッセージを削除しました。]]></value>
+	</item>
+	<item name="msg_select_delete_messageTalk">
+		<value xml:lang="ko"><![CDATA[삭제할 메시지를 선택하시기 바랍니다]]></value>
+		<value xml:lang="en"><![CDATA[Please select the message you want to delete]]></value>
+		<value xml:lang="jp"><![CDATA[削除するメッセージを選択してください。]]></value>
+	</item>
+	<item name="msg_no_input_messageTalk">
+		<value xml:lang="ko"><![CDATA[메시지를 입력하세요]]></value>
+		<value xml:lang="en"><![CDATA[Please enter a send Message]]></value>
+		<value xml:lang="jp"><![CDATA[メッセージを入力してください。]]></value>
+	</item>
+	<item name="msg_no_FindFriends">
+		<value xml:lang="ko"><![CDATA[일치하는 검색결과가 없습니다]]></value>
+		<value xml:lang="en"><![CDATA[No Search Result]]></value>
+		<value xml:lang="jp"><![CDATA[一致する検索結果がありません。]]></value>
+	</item>
+	<item name="msg_id_FindFriends">
+		<value xml:lang="ko"><![CDATA[아이디]]></value>
+		<value xml:lang="en"><![CDATA[ID]]></value>
+		<value xml:lang="jp"><![CDATA[アイディー]]></value>
+	</item>
+	<item name="msg_nickname_FindFriends">
+		<value xml:lang="ko"><![CDATA[닉네임]]></value>
+		<value xml:lang="en"><![CDATA[Nickname]]></value>
+		<value xml:lang="jp"><![CDATA[ニックネーム ]]></value>
+	</item>
+	<item name="msg_email_FindFriends">
+		<value xml:lang="ko"><![CDATA[이메일]]></value>
+		<value xml:lang="en"><![CDATA[E-mail]]></value>
+		<value xml:lang="jp"><![CDATA[イーメール]]></value>
+	</item>
+	<item name="cmd_search_FindFriends">
+		<value xml:lang="ko"><![CDATA[검색]]></value>
+		<value xml:lang="en"><![CDATA[Search]]></value>
+		<value xml:lang="jp"><![CDATA[檢索]]></value>
+	</item>
+	<item name="msg_no_FindFriends_Keyword">
+		<value xml:lang="ko"><![CDATA[검색키워드를 입력하세요]]></value>
+		<value xml:lang="en"><![CDATA[Please enter a search Keyword]]></value>
+		<value xml:lang="jp"><![CDATA[検索キーワードを入力してください。]]></value>
+	</item>
+	<item name="msg_line_Breaks">
+		<value xml:lang="ko"><![CDATA[줄바꿈]]></value>
+		<value xml:lang="en"><![CDATA[Line breaks]]></value>
+		<value xml:lang="jp"><![CDATA[改行]]></value>
+	</item>
+	<item name="alert_new_messageTalk">
+		<value xml:lang="ko"><![CDATA[새로운 메시지가 도착하였습니다.]]></value>
+		<value xml:lang="en"><![CDATA[You have new message(s).]]></value>
+		<value xml:lang="jp"><![CDATA[件の新しいメッセージを受信しました。]]></value>
+	</item>
+	<item name="license_host_domain">
+		<value xml:lang="ko"><![CDATA[www.ssinggo.com]]></value>
+		<value xml:lang="en"><![CDATA[www.ssinggo.com]]></value>
+		<value xml:lang="jp"><![CDATA[www.ssinggo.com]]></value>
+	</item>
+</lang>

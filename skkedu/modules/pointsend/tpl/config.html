@@ -1,0 +1,113 @@
+<include target="./header.html" />
+
+<div cond="$XE_VALIDATOR_MESSAGE" class="message {$XE_VALIDATOR_MESSAGE_TYPE}">
+	<p>{$XE_VALIDATOR_MESSAGE}</p>
+</div>
+
+<form ruleset="insertConfig" action="./" method="post" class="x_form-horizontal">
+	<input type="hidden" name="module" value="pointsend" />
+	<input type="hidden" name="act" value="procPointsendAdminInsertConfig" />
+
+	<section class="section">
+		<h1>{$lang->fee_function}</h1>
+		<div class="x_control-group">
+			<label class="x_control-label" for="use_fee">{$lang->fee_function}</label>
+			<div class="x_controls">
+				<select name="use_fee" id="use_fee">
+					<option value="Y" selected|cond="$config->use_fee == 'Y'">사용합니다.</option>
+					<option value="N" selected|cond="$config->use_fee == 'N'">사용하지 않습니다.</option>
+				</select>
+				<p class="x_help-block">
+					포인트 선물 시, 선물한 포인트에 대해 수수료를 부과할 수 있습니다.
+				</p>
+			</div>
+		</div>
+		<div class="x_control-group">
+			<label for="" class="x_control-label">수수료 부과 기준</label>
+			<div class="x_controls">
+				<select name="fee_condition">
+					<option value="PERSENT">선물한 포인트에서 일정한 비율(%)만큼 추가로 부과</option>
+				</select>
+			</div>
+		</div>
+		<div class="x_control-group">
+			<label class="x_control-label" for="fee_apply_point">{$lang->fee_apply_point}</label>
+			<div class="x_controls">
+				<input type="number" id="fee_apply_point" name="fee_apply_point" value="{$config->fee_apply_point}"> 포인트부터
+			</div>
+		</div>
+		<div class="x_control-group">
+			<div class="x_control-label">{$lang->fee_but_group}</div>
+			<div class="x_controls">
+				<label class="x_inline" loop="$group_list => $key, $val"><input type="checkbox" name="fee_but_group[]" value="{$key}" checked|cond="in_array($key, $config->fee_but_group)"> {$val->title}</label>
+				<p class="x_help-block">
+					선택한 그룹은 수수료를 항상 면제받습니다.
+				</p>
+			</div>
+		</div>
+	</section>
+
+	<section class="section">
+		<h1>{$lang->fee_persent} 설정</h1>
+		<div class="x_control-group" loop="$group_list => $key, $val">
+			<div class="x_control-label">{$val->title}</div>
+			<div class="x_controls">
+				선물한 포인트의 <input type="number" name="fee_percent[{$key}]" value="{$config->fee_percent[$key]}" min="0" max="100"> %
+			</div>
+		</div>
+	</section>
+
+	<section class="section">
+		<h1>{$lang->pointgift_limit}</h1>
+		<div class="x_control-group">
+			<div class="x_control-label">{$lang->pointgift_denied_group}</div>
+			<div class="x_controls">
+				<label class="x_inline" loop="$group_list => $key, $val"><input type="checkbox" name="deny_group[]" id="deny_{$key}" value="{$key}" checked|cond="in_array($key, $config->deny_group)"> {$val->title}</label>
+				<p>{$lang->about_deny_group}</p>
+			</div>
+		</div>
+		<div class="x_control-group">
+			<div class="x_control-label">{$lang->pointgift_daily_limit}</div>
+			<div class="x_controls">
+				<input type="number" name="daily_limit" value="{(int)$config->daily_limit}">
+			</div>
+		</div>
+		<div class="x_control-group">
+			<div class="x_control-label">{$lang->pointgift_sameip_deny}</div>
+			<div class="x_controls">
+				<label class="x_inline">
+					<input type="checkbox" name="sameip_deny" value="Y" checked|cond="$config->sameip_deny == 'Y'" disabled|cond="!$loginlog_installed">
+					<block cond="$loginlog_installed">
+						{$lang->use}
+					</block>
+					<block cond="!$loginlog_installed">
+						{$lang->cannot_use}
+					</block>
+				</label>
+				<div class="message alert" cond="!$loginlog_installed">
+					<p>{$lang->about_cannot_use}</p>
+				</div>
+			</div>
+		</div>
+	</section>
+	<div class="btnArea">
+		<input type="submit" class="x_btn x_btn-primary" value="{$lang->cmd_save}">
+	</div>
+
+		<block cond="False">
+		<h2 class="h2">{$lang->cmd_setup_notification_message}</h2>
+		<p>{$lang->about_notification_message}</p>
+		<table width="100%" border="1" cellspacing="0">
+		<tbody>
+		<tr>
+			<th>{$lang->title}</th>
+			<td><input type="text" name="notification_title" id="notification_t" value="{htmlspecialchars($config->notification_title)}" class="inputTypeText w400 lang_code" /></td>
+		</tr>
+		<tr>
+			<th>{$lang->content}</th>
+			<td><textarea name="notification_content" id="notification_c" cols="55" rows="10" class="inputTypeTextArea lang_code">{htmlspecialchars($config->notification_content)}</textarea></td>
+		</tr>
+		</tbody>
+		</table>
+		</block>
+</form>

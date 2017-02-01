@@ -1,0 +1,62 @@
+<include target="header.html" />
+<load target="./js/autoresize.jquery.min.js" />
+
+<form ruleset="pointsendToGroup" action="./" method="post">
+	<input type="hidden" name="module" value="pointsend">
+	<input type="hidden" name="act" value="procPointsendAdminSendToGroup">
+
+	<section class="section">
+		<h1><i class="fa fa-users"></i> {$lang->cmd_group_pointsend}</h1>
+	</section>
+
+	<table class="x_table x_table-striped">
+		<caption>Total:</caption>
+		<thead>
+			<tr>
+				<th><input type="checkbox" title="Check All" data-name="cart"></th>
+				<th>{$lang->group_title}</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr cond="count($group_list) < 1">
+				<td colspan="3">등록된 그룹이 없습니다.</td>
+			</tr>
+			<tr loop="$group_list => $key, $val">
+				<td><input type="checkbox" name="cart" value="{$val->group_srl}"></td>
+				<td>{$val->title}</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<table cellspacing="0" class="x_table">
+	<tbody>
+		<tr>
+			<th><i class="fa fa-envelope-o" aria-hidden="true"></i> {$lang->message_title}</th>
+			<td><input type="text" name="message_title" value="" class="inputTitle"></td>
+		</tr>
+		<tr>
+			<th><i class="fa fa-envelope-o" aria-hidden="true"></i> {$lang->message_body}</th>
+			<td><textarea name="message_body" cols="50" rows="10" class="inputContent"></textarea></td>
+		</tr>
+		<tr>
+			<th>{$lang->send_point}</th>
+			<td><input type="number" name="point" value="" style="width:80px;"></td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<input type="submit" value="{$lang->cmd_pointsend}" class="x_btn">
+			</td>
+		</tr>
+	</tbody>
+	</table>
+</form>
+<p>{$lang->about_send_group}</p>
+
+<script>
+(function($){
+	$('.inputContent').autoResize({
+		animateDuration : 300,
+		extraSpace : 0,
+	});
+})(jQuery);
+</script>

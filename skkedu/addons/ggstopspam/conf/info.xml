@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<addon version="0.2">
+    <title xml:lang="ko">GG Stop Spam 애드온</title>
+    <description xml:lang="ko">
+        스팸 패턴을 분석해 취약점을 공략하여 스팸이 등록되지 않도록 합니다.
+    </description>
+    <version>0.1</version>
+    <date>2014-05-20</date>
+
+    <author email_address="xeadmin@forppl.com" link="http://xeadmin.com/">
+        <name xml:lang="ko">포피플</name>
+    </author>
+    <extra_vars>
+
+    </extra_vars>
+    
+</addon>

@@ -1,0 +1,15 @@
+<load target="css/communication.css" />
+<load target="css/messages.css" />
+<load cond="$communication_config->mcolorset=='black'" target="css/black.css" />
+<section class="xc">
+<div id="border" class="bd">
+	<div class="hx h2">
+		<h2>{$lang->cmd_message_box}</h2>
+	</div>
+	<ul class="gn">
+		<li loop="$lang->message_box=>$key,$val">
+			<a href="{getUrl('act','dispCommunicationMessages','message_type',$key)}">{$lang->message_box[$key]}</a>
+		</li>
+	</ul>
+</div>
+</section>

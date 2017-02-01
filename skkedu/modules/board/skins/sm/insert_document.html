@@ -1,0 +1,56 @@
+<load target="filter/insert.xml" />
+
+	<!--@if(!$oDocument->isGranted())-->
+			<form action="./" method="get" onsubmit="return procFilter(this, input_password)" class="write_author ">
+			<input type="hidden" name="mid" value="{$mid}" />
+			<input type="hidden" name="page" value="{$page}" />
+			<input type="hidden" name="document_srl" value="{$oDocument->document_srl}" />
+		<div class="sm-input-body">
+        <input type="password" name="password" required placeholder="{$lang->password}" style="background:#FFF" />
+        <input type="submit" value="{$lang->cmd_input}" class="sm-btn" />
+        <a href="#" onclick="toggle_object('insert_{$oDocument->document_srl}'); toggle_object('list_{$oDocument->document_srl}'); return false;" title="{$lang->cmd_cancel}" class="sm-btn-de">{$lang->cmd_cancel}</a></span>    
+			</form>
+	<!--@else--> 
+	<form action="./" method="post" onsubmit="return procFilter(this, window.insert)" class="write_author">
+	<input type="hidden" name="mid" value="{$mid}" />
+	<input type="hidden" name="document_srl" value="{$oDocument->document_srl}" />
+        
+        <div class="sm-input-body">
+        
+        <!--@if($module_info->use_category=="Y")-->
+		<select name="category_srl" style="margin-right:5px; margin-bottom:0;">
+			<!--@foreach($category_list as $val)-->
+			<option <!--@if(!$val->grant)-->disabled="disabled"<!--@endif--> value="{$val->category_srl}" <!--@if($val->grant&&$val->selected||$val->category_srl==$oDocument->get('category_srl'))-->selected="selected"<!--@endif-->>
+				{str_repeat("&nbsp;&nbsp;",$val->depth)} {$val->title} ({$val->document_count})
+			</option>
+			<!--@endforeach-->
+		</select>
+        <!--@endif-->
+        
+        <input type="text" name="title" value="{htmlspecialchars($oDocument->get('title'))}"style="width:60%; background:#FFF;" class="write_text xe_content" />
+        <button type="submit" title="{$lang->cmd_registration}" class="sm-btn">{$lang->cmd_registration}</button>
+        <a href="#" onclick="toggle_object('insert_{$oDocument->document_srl}'); toggle_object('list_{$oDocument->document_srl}'); return false;" class="sm-btn-de" title="{$lang->cmd_cancel}">{$lang->cmd_cancel}</a></span>
+		</div>
+        
+         <div cond="!$is_logged" id="write_author" >
+			<input type="text" name="nick_name" id="userName" class="iText" style="width:120px" required placeholder="{$lang->writer}" title="{$lang->writer}" value="{htmlspecialchars($oDocument->get('nick_name'))}" />
+			<input type="password" name="password" id="userPw"  required placeholder="{$lang->password}" class="iText" style="width:120px" cond="!$is_logged" />
+		</div> 
+        <div class="confirm">             
+            {@ $_color = array('555555','222288','226622','2266EE','8866CC','88AA66','EE2222','EE6622','EEAA22','EEEE22','FF00CC') }
+			<span cond="$grant->manager" >
+      		<select name="title_color" id="title_color" <!--@if($oDocument->get('title_color'))-->style="color:#{$oDocument->get('title_color')};"<!--@end--> onchange="this.style.color=this.options[this.selectedIndex].style.color;">
+                <option value="" style="color:#CCCCCC;">{$lang->title_color}</option>
+                <!--@foreach($_color as $_col)-->
+                <option value="{$_col}" style="color:#{$_col}" <!--@if($oDocument->get('title_color')==$_col)-->selected="selected"<!--@end-->>{$lang->title_color}</option>
+                <!--@endforeach-->
+            </select>
+            </span>
+            <span style="display:inline-block" cond="$grant->manager"><label for="title_bold"><input type="checkbox" name="title_bold" id="title_bold" value="Y" checked="checked"|cond="$oDocument->get('title_bold')=='Y'" /> {$lang->title_bold}</label> </span>
+             <span style="display:none"><label for="comment_status"><input type="checkbox" name="comment_status" value="ALLOW" checked="checked" id="comment_status" />
+            {$lang->allow_comment}</label></span>
+             <span style="display:inline-block" cond="$grant->manager"><label cond="$grant->manager" for="is_notice"><input cond="$grant->manager" type="checkbox" name="is_notice" value="Y" checked="checked"|cond="$oDocument->isNotice()" id="is_notice" /> {$lang->notice}</label></span>
+
+       </div>	
+	</form>
+<!--@end-->

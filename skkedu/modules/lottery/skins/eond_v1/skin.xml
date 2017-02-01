@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<skin version="0.2">
+    <title xml:lang="ko">이온디 v1 포인트복권</title>
+    <description xml:lang="ko">
+        이온디 v1 포인트복권 스킨
+        제작자 : 이온디
+    </description>
+    <version>0.1</version>
+    <date>2014-11-24</date>
+    <author email_address="eond@eond.com" link="http://eond.com">
+        <name xml:lang="ko">이온디</name>
+    </author>
+    <author link="http://eond.com">
+        <name xml:lang="ko">이온디</name>
+    </author>
+    <license>GPL v2</license>
+    <colorset>
+        <color name="default" src="img/screenshot.png">
+            <title xml:lang="ko">기본</title>
+        </color>
+    </colorset>
+</skin>
+

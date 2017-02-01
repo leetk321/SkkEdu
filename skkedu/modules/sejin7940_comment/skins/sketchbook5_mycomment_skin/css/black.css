@@ -1,0 +1,94 @@
+@charset "utf-8";
+.xmc{background:#191919;color:#DDD}
+.xmc a{color:#EEE}
+/* Form Control Reset */
+.xmc select,
+.xmc textarea,
+.xmc input[type="text"],
+.xmc input[type="password"],
+.xmc input[type="datetime"],
+.xmc input[type="datetime-local"],
+.xmc input[type="date"],
+.xmc input[type="month"],
+.xmc input[type="time"],
+.xmc input[type="week"],
+.xmc input[type="number"],
+.xmc input[type="email"],
+.xmc input[type="url"],
+.xmc input[type="search"],
+.xmc input[type="tel"],
+.xmc input[type="color"],
+.xmc input[type="file"]{color:#666}
+.xmc input:-moz-placeholder, 
+.xmc textarea:-moz-placeholder {color:#666}
+.xmc input:-ms-input-placeholder, 
+.xmc textarea:-ms-input-placeholder {color:#666}
+.xmc input::-webkit-input-placeholder, 
+.xmc textarea::-webkit-input-placeholder {color:#666}
+/* Forms */
+.xmc .help-block,
+.xmc .help-inline{color:#595959}
+/* Tabs */
+.xmc .nav>li>a{background-color:transparent;color:#DDD}
+.xmc .nav>li>a:hover,
+.xmc .nav>li>a:focus{text-decoration:none;background-color:#333333}
+.xmc .nav-tabs>.active>a,
+.xmc .nav-tabs>.active>a:hover,
+.xmc .nav-tabs>.active>a:focus{color:#ffffff;background-color:#555555}
+/* Form */
+.xmc .form em{font-style:normal;color:#FAA}
+.xmc .form label.overlap{position:absolute;color:#777}
+.xmc .form textarea{position:relative;width:272px;color:#DDD;padding:8px;margin-bottom:12px;border-width:1px;border-style:solid;border-color:#aaa #ccc #ccc #aaa;background:#0B0B0B;filter:alpha(opacity:60);opacity:.6;transition:all .2s;-moz-transition:all .2s;-webkit-transition:all .2s;box-shadow:inset 1px 1px 2px rgba(0,0,0,.1);border-radius:3px}
+.xmc .form select{position:relative;width:300px;color:#DDD;height:40px;padding:8px;margin-bottom:12px;border-width:1px;border-style:solid;border-color:#aaa #ccc #ccc #aaa;background:#0B0B0B;filter:alpha(opacity:60);opacity:.6;transition:all .2s;-moz-transition:all .2s;-webkit-transition:all .2s;box-shadow:inset 1px 1px 2px rgba(0,0,0,.1);border-radius:3px}
+/* Table */
+.xmc .table caption strong{color:#FAA}
+.xmc .table th{background:#0B0B0B}
+.xmc .table tfoot td{font-weight:bold;background:#0B0B0B}
+.xmc .table.even tbody tr:nth-of-type(even) td{background-color:#151515}
+.xmc .table em{font-style:normal;font-weight:normal;color:#FAA}
+.xmc .table-striped tbody>tr:nth-child(odd)>td,
+.xmc .table-striped tbody>tr:nth-child(odd)>th{background-color:#151515}
+.xmc .table-hover tbody tr:hover>td,
+.xmc .table-hover tbody tr:hover>th{background-color:#0e0e0e}
+.xmc .table.even th{background:#0B0B0B}
+/* Pagination */
+.xmc .pagination ul>li>a,
+.xmc .pagination ul>li>span{background-color:#1b1b1b;border:1px solid #333333}
+.xmc .pagination ul>li>a:hover,
+.xmc .pagination ul>li>a:focus,
+.xmc .pagination ul>.active>a,
+.xmc .pagination ul>.active>span{background-color:#2f2f2f}
+.xmc .pagination ul>.active>a,
+.xmc .pagination ul>.active>span{color:#FFAAAA;cursor:default}
+.xmc .pagination ul>.disabled>span,
+.xmc .pagination ul>.disabled>a,
+.xmc .pagination ul>.disabled>a:hover,
+.xmc .pagination ul>.disabled>a:focus{color:#FFAAAA;cursor:default;background-color:transparent}
+/* Text Button */
+.xmc .btn{color:#FFF;text-shadow:1px 1px 0 rgba(0,0,0,.8);border-color:#666;background:#333;-webkit-box-shadow:0 1px 3px #000;box-shadow:0 1px 3px #000}
+.xmc .btn:hover,
+.xmc .btn:focus,
+.xmc .btn:active,
+.xmc .btn.active,
+.xmc .btn.disabled,
+.xmc .btn[disabled]{color:#F0F0F0;background-color:#555;*background-color:#555;-webkit-box-shadow:0 1px 6px #000;box-shadow:0 1px 6px #000}
+.xmc .btn:active,
+.xmc .btn.active{background-color:#222222}
+.xmc .btn:hover,
+.xmc .btn:focus{color:#F0F0F0;}
+.xmc .btn-inverse.active{color:rgba(255, 255, 255, 0.75)}
+.xmc .btn-inverse{color:#ffffff!important;text-shadow:0 -1px 0 rgba(0, 0, 0, 0.25);background-color:#363636;*background-color:#222222;background-image:-moz-linear-gradient(top, #444444, #222222);background-image:-webkit-gradient(linear, 0 0, 0 100%, from(#444444), to(#222222));background-image:-webkit-linear-gradient(top, #444444, #222222);background-image:-o-linear-gradient(top, #444444, #222222);background-image:linear-gradient(to bottom, #444444, #222222);background-repeat:repeat-x;border-color:#222222 #222222 #000000;border-color:rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff444444', endColorstr='#ff222222', GradientType=0);filter:progid:DXImageTransform.Microsoft.gradient(enabled=false)}
+.xmc .btn-inverse:hover,
+.xmc .btn-inverse:focus,
+.xmc .btn-inverse:active,
+.xmc .btn-inverse.active,
+.xmc .btn-inverse.disabled,
+.xmc .btn-inverse[disabled]{color:#ffffff;background-color:#222222;*background-color:#151515}
+.xmc .btn-inverse:active,
+.xmc .btn-inverse.active{background-color:#080808 \9}
+.xmc .signin>.login-header>h1{margin:0;font-size:16px;line-height:1.4;font-weight:600;color:#EEE}
+.xmc .signin>.login-footer{padding:14px 15px 15px;margin-bottom:0;text-align:right;background-color:#101010;border-top:1px solid #333;-webkit-border-radius:0 0 6px 6px;-moz-border-radius:0 0 6px 6px;border-radius:0 0 6px 6px;*zoom:1;-webkit-box-shadow:inset 0 1px 0 #000;-moz-box-shadow:inset 0 1px 0 #000;box-shadow:inset 0 1px 0 #000;color:#EEE}
+/* 내가 작성한 댓글내역 보기 */
+#commentListTable a {color:#CCC}
+/* Border */
+.xmc .border{background:#191919;}

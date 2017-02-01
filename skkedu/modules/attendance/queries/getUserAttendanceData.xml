@@ -1,0 +1,22 @@
+<query id="getUserAttendanceData" action="select">
+    <tables>
+        <table name="attendance" />
+    </tables>
+    <columns>
+        <column name="regdate" alias="regdate" />
+        <column name="greetings" alias="greetings" />
+        <column name="today_point" alias="today_point" />
+		<column name="today_random" alias="today_random" />
+        <column name="ipaddress" alias="ipaddress" />
+		<column name="perfect_m" alias="perfect_m" />
+		<column name="present_y" alias="present_y" />
+		<column name="count(*)" alias="count"/>
+    </columns>
+    <conditions>
+		<condition operation="like_prefix" column="regdate" var="date"  />
+		<condition operation="more" column="regdate" var="mdate" pipe="and" />
+		<condition operation="less" column="regdate" var="ldate" pipe="and" />
+		<condition operation="equal" column="member_srl" var="member_srl" pipe="and"/>
+    </conditions>
+
+</query>

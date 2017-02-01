@@ -1,0 +1,93 @@
+<include target="header.html" />
+<section class="section">
+<h1>{$lang->xi_group_setting}
+	<a href="#xi_limit_setting" class="x_icon-question-sign" data-toggle>{$lang->help}</a>
+	<p id="xi_limit_setting" class="x_help-block" hidden>{$lang->xi_limit_setting_desc}</p>
+</h1>
+<form action="./" class="x_form-horizontal" ruleset="insertXimemberConfig" method="post">
+	<input type="hidden" name="module" value="ximember" />
+	<input type="hidden" name="act" value="procXimemberAdminGroupAdd" />
+	<input type="hidden" name="success_return_url" value="{getUrl('', 'module', 'admin', 'act', $act)}" />
+	<div class="x_control-group">
+		<label class="x_control-label">{$lang->xi_select_group}</label>
+		<div class="x_controls">
+			<select name="group_srl">
+				<option loop="$group_list => $key,$val" value="{$val->group_srl}">{$val->title}</option>
+			</select>
+			<p class="x_help-inline">{$lang->xi_select_group_desc}</p>
+		</div>
+	</div>
+	<div class="x_control-group">
+		<label class="x_control-label">{$lang->xi_group_age}</label>
+		<div class="x_controls">
+			{$lang->xi_full}
+			<input type="text" name="fullage" value="" />
+			{$lang->xi_age}
+			<select name="limit_type">
+				<option value="">{$lang->notuse}</option>
+				<option value="limit_up">{$lang->xi_limit_updown['limit_up']}</option>
+				<option value="limit_down">{$lang->xi_limit_updown['limit_down']}</option>
+			</select>
+			<p class="x_help-inline">{$lang->xi_group_age_desc}</p>
+		</div>
+	</div>
+	<div class="x_control-group">
+		<label class="x_control-label">{$lang->xi_group_sex}</label>
+		<div class="x_controls">
+			{$lang->sex}
+			<select name="sex_type">
+				<option value="">{$lang->notuse}</option>
+				<option value="male">{$lang->xi_sex_list['male']}</option>
+				<option value="female">{$lang->xi_sex_list['female']}</option>
+			</select>
+			<p class="x_help-inline">{$lang->xi_group_sex_desc}</p>
+		</div>
+	</div>
+	
+	<div class="x_clearfix btnArea">
+		<span class="x_pull-right"><input class="x_btn x_btn-primary" type="submit" value="{$lang->cmd_add}" /></span>
+	</div>
+</form>
+</section>
+
+
+<section class="section">
+	<h1>{$lang->xi_group_list}</h1>
+	
+	<form action="./" class="x_form-horizontal" method="post">
+	
+	<div class="x_control-group">
+		<label class="x_control-label">{$lang->xi_group_list}</label>
+		<div class="x_controls">
+			<table class="x_table sortable x_table-striped x_table-hover">
+				<thead><tr>
+					<th scope="col" class="nowr"	style="text-align:center;">{$lang->no}</th>
+					<th scope="col" class="nowr"	style="text-align:center;">{$lang->group_title}</th>
+					<th scope="col" class="nowr"	style="text-align:center;">{$lang->content}</th>
+					<th scope="col" class="nowr" style="text-align:center;">{$lang->cmd_delete}</th>
+				</tr></thead>
+				<tbody>
+					<tr loop="$config->groups=>$key,$val">
+					{@$group_info = $group_list[$val->group_srl]}
+					<td scope="col" class="nowr"	style="text-align:center;">{$key+1}</td>
+					<td scope="col" class="nowr"	style="text-align:center;">{$group_info->title}</td>
+					<td scope="col" class="nowr">
+						<!--@if($val->limit_type && $val->sex_type)-->
+							{sprintf($lang->xi_group_content_sex_limit,$val->fullage,$lang->xi_limit_updown[$val->limit_type],$lang->xi_sex_list[$val->sex_type])}
+						<!--@else if($val->limit_type)-->
+							{sprintf($lang->xi_group_content_limit,$val->fullage,$lang->xi_limit_updown[$val->limit_type])}
+						<!--@else if($val->sex_type)-->
+							{sprintf($lang->xi_group_content_sex,$lang->xi_sex_list[$val->sex_type])}
+						<!--@else-->
+							{sprintf($lang->xi_group_content_error)}
+						<!--@end-->
+					</td>
+					<td scope="col" class="nowr" style="text-align:center;">
+						<a href="{getUrl('act','procXimemberAdminGroupDelete','group_key',$key)}" onclick="return confirm('{$lang->msg_confirm_delete}')">{$lang->cmd_delete}</a>
+					</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</form>
+</section>

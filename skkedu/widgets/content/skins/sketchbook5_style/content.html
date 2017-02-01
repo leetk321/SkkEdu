@@ -1,0 +1,38 @@
+<load target="./js/content_widget.js" cond="$widget_info->page_count || count($widget_info->tab)" />
+<load target="./css/sk5_content.css" />
+
+<div class="sk5_content">
+	<!--@if($widget_info->tab_type	== "tab_left" || $widget_info->tab_type == "tab_top")-->
+		<div class="bd_cnb">
+			<ul class="bubble">
+			{@$i=0}
+			<!--@foreach($widget_info->tab as $module_srl => $tab)-->
+				<li<!--@if($i==0)--> class="active"<!--@end-->><a href="{$tab->url}" onmouseover="content_widget_tab_show(jQuery(this),jQuery(this).parents('div.bd_cnb').next('dl.wd'),{$i})">{$tab->title}</a></li>
+			{@$i++}
+			<!--@end-->
+			</ul>
+		</div>
+		
+		<dl class="wd">
+		{@$i=0}
+		<!--@foreach($widget_info->tab as $module_srl => $tab)-->
+			<dt>{$tab->title}</dt>
+			<dd<!--@if($i==0)--> class="open"<!--@end-->>
+				{@$widget_info->content_items = $tab->content_items}
+				<!--@if($widget_info->list_type == "gallery")-->
+					<!--#include("./gallery.html")-->
+				<!--@else-->
+					<!--#include("./normal.html")-->
+				<!--@end-->
+			</dd>
+		{@$i++}
+		<!--@end-->
+		</dl>
+	<!--@else-->
+		<!--@if($widget_info->list_type == "gallery")-->
+			<!--#include("./gallery.html")-->
+		<!--@else-->
+			<!--#include("./normal.html")-->
+		<!--@end-->
+	<!--@end-->
+</div>

@@ -1,0 +1,18 @@
+@charset "utf-8";
+
+.me_typelist		{width:500px; margin:auto;}
+.me_typelist td		{border-bottom:1px solid #e1e1e1; margin:0px; padding:10px 0px; height:50px;}
+
+.me_type			{width:200px;}
+.me_desc			{width:auto;}
+.me_btn				{width:100px;}
+
+
+.me_progress				{margin:auto}
+.me_progress td 	        {padding:10px; color:#333; width:110px; text-align:center; border-top:1px solid #999999; border-radius:10px; border-bottom:1px solid #999999; border-left:3px solid #999999; border-right:3px solid #999999;}
+.me_progress td.current		{padding:10px; color:#333; width:110px; text-align:center; border-top:1px solid #ffa1a1; border-radius:10px; border-bottom:1px solid #ffa1a1; border-left:3px solid #ffa1a1; border-right:3px solid #ffa1a1;}
+.me_progress > table tr > td > img	{vertical-align: middle; float:left}
+.me_progress > table tr > td > span {display:inline-block; margin-top:3px;}
+
+td.pointer img 				{vertical-align: middle; }
+td.pointer					{width:6px; border:0px;} 

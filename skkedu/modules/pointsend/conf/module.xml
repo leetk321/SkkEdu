@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module>
+	<grants />
+	<permissions />
+	<actions>
+		<action name="dispPointsendAdminIndex" type="view" admin_index="true" />
+
+		<action name="dispPointsendAdminAddons" type="view" />
+
+		<action name="dispPointsendAdminGrantSetup" type="view" menu_name="pointgiftGrantSetup" menu_index="true" />
+		<action name="dispPointsendAdminDesignSetup" type="view" menu_name="pointgiftDesignSetup" menu_index="true" />
+
+		<action name="dispPointsendAdminSend" type="view" />
+		<action name="dispPointsendAdminSendToGroup" type="view" />
+		<action name="dispPointsendAdminSendToMember" type="view" />
+		<action name="dispPointsendAdminSendToAll" type="view" />
+		<action name="dispPointsendAdminLogList" type="view" />
+		<action name="dispPointsendAdminBatchLogList" type="view" />
+		<action name="dispPointsendAdminRevert" type="view" />
+
+		<action name="procPointsendAdminInsertConfig" type="controller" ruleset="insertPointgiftConfig" />
+		<action name="procPointsendAdminGrantSetup" type="controller" />
+		<action name="procPointsendAdminDesignSetup" type="controller" />
+
+		<action name="procPointsendAdminDeleteLog" type="controller" />
+		<action name="procPointsendAdminRevert" type="controller" />
+		<action name="procPointsendAdminSendToGroup" type="controller" ruleset="pointsendToGroup" />
+		<action name="procPointsendAdminSendToMember" type="controller" ruleset="pointsendByUserId" />
+		<action name="procPointsendAdminSendToAll" type="controller" />
+
+		<action name="dispPointsend" type="view" index="true" />
+		<action name="dispPointsendLog" type="view" />
+
+		<action name="procPointsend" type="controller" />
+	</actions>
+	<menus>
+		<menu name="pointgiftGrantSetup">
+			<title xml:lang="ko">포인트 선물 권한 설정</title>
+		</menu>
+		<menu name="pointgiftDesignSetup">
+			<title xml:lang="ko">포인트 선물 디자인 설정</title>
+		</menu>
+	</menus>
+</module>

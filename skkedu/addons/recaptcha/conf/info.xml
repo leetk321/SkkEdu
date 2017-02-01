@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<addon version="0.2">
+    <title xml:lang="ko">reCAPTCHA 2.0 애드온</title>
+    <description xml:lang="ko">
+        게시글,댓글,회원가입,비밀번호찾기,쪽지발송에서 구글에서 제공하는 reCAPTCHA를 이용해 자동등록 프로그램을 방지하는 애드온입니다.
+		API key는 https://www.google.com/recaptcha 에서 발급 받을 수 있습니다.
+    </description>
+    <version>0.2.1</version>
+    <date>2016-04-26</date>
+
+    <author email_address="webmaster@conory.com" link="http://www.conory.com">
+        <name xml:lang="ko">CONORY</name>
+    </author>
+
+	<extra_vars>
+		<var name="sitekey" type="text">
+			<title xml:lang="ko">Site key</title>
+			<description xml:lang="ko">발급받은 Site key를 입력해주세요. 입력하지않으면 작동하지않습니다.</description>
+		</var>		
+		<var name="secretkey" type="text">
+			<title xml:lang="ko">Secret key</title>
+			<description xml:lang="ko">발급받은 Secret key를 입력해주세요. 입력하지않으면 작동하지않습니다.</description>
+		</var>	
+		<var name="captcha_auth" type="select">
+			<title xml:lang="ko">reCAPTCHA 인증</title>
+			<description xml:lang="ko">한번의 인증만으로 지속적(브라우저 닫기전까지)으로 이용할 수도 있습니다.</description>
+            <options value="">
+                <title xml:lang="ko">할때마다 인증</title>
+            </options>
+            <options value="Y">
+                <title xml:lang="ko">한번만 인증</title>
+            </options>
+		</var>	
+		<var name="auth_target" type="select">
+			<title xml:lang="ko">인증대상</title>
+			<description xml:lang="ko">reCAPTCHA로 인증해야될 대상을 선택해주세요. (관리자는 무조건 제외.)</description>
+            <options value="">
+                <title xml:lang="ko">비회원만</title>
+            </options>
+            <options value="Y">
+                <title xml:lang="ko">모두(비회원+회원)</title>
+            </options>
+		</var>
+		<var name="apply_write" type="select">
+			<title xml:lang="ko">게시글,댓글 적용</title>
+			<description xml:lang="ko">게시글,댓글작성 할때 reCAPTCHA적용합니다.</description>
+            <options value="">
+                <title xml:lang="ko">적용함</title>
+            </options>
+            <options value="N">
+                <title xml:lang="ko">적용안함</title>
+            </options>
+		</var>	
+		<var name="apply_join" type="select">
+			<title xml:lang="ko">회원가입 적용</title>
+			<description xml:lang="ko">회원가입할때 reCAPTCHA적용합니다.</description>
+            <options value="">
+                <title xml:lang="ko">적용함</title>
+            </options>
+            <options value="N">
+                <title xml:lang="ko">적용안함</title>
+            </options>
+		</var>	
+		<var name="apply_find_account" type="select">
+			<title xml:lang="ko">비밀번호 찾기 적용</title>
+			<description xml:lang="ko">비밀번호 찾기할때 reCAPTCHA적용합니다. (인증메일 재발송에도 적용합니다.)</description>
+            <options value="">
+                <title xml:lang="ko">적용함</title>
+            </options>
+            <options value="N">
+                <title xml:lang="ko">적용안함</title>
+            </options>
+		</var>	
+		<var name="apply_message" type="select">
+			<title xml:lang="ko">쪽지발송 적용</title>
+			<description xml:lang="ko">쪽지발송할때 reCAPTCHA적용합니다. 쪽지는 회원만 보낼 수 있기에 "인증대상"설정과 무관하게 적용됩니다.</description>
+            <options value="">
+                <title xml:lang="ko">적용함</title>
+            </options>
+            <options value="N">
+                <title xml:lang="ko">적용안함</title>
+            </options>
+		</var>	
+	</extra_vars>	
+</addon>

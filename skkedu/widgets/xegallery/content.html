@@ -1,0 +1,38 @@
+<!--// 위젯이나 레이아웃에서 로딩된 js 중복 체크 -->
+<!--@foreach(Context::getJsFile() as $key => $jsfile)-->
+	<!--@if(preg_match('/jquery.easing.1.3.js/i',$jsfile['file']))-->{@$easingjs='Y'}<!--@end-->
+	<!--@if(preg_match('/jquery.prettyPhoto.js/i',$jsfile['file']))-->{@$ptyptojs='Y'}<!--@end-->
+	<!--@if(preg_match('/jquery.fancybox.js/i',$jsfile['file']))-->{@$fcboxjs='Y'}<!--@end-->
+	<!--@if(preg_match('/cufon-yui.js/i',$jsfile['file']))-->{@$cufonjs='Y'}<!--@end-->
+<!--@end-->
+<load cond="$xGalry_info->viewer=='Y' && $xGalry_info->viewer_type=='prettyPhoto'" target="./common/plugin/prettyPhoto/css/prettyPhoto.css" media="screen" />
+<load cond="$xGalry_info->viewer=='Y' && $xGalry_info->viewer_type=='fancybox'" target="./common/plugin/fancybox/source/jquery.fancybox.css" media="screen" />
+<load cond="$xGalry_info->viewer=='Y' && $xGalry_info->viewer_type=='fancybox'" target="./common/plugin/fancybox/source/helpers/jquery.fancybox-buttons.css" media="screen" />
+<load cond="$xGalry_info->viewer=='Y' && $xGalry_info->viewer_type=='fancybox'" target="./common/plugin/fancybox/source/helpers/jquery.fancybox-thumbs.css" media="screen" />
+
+<load cond="$ptyptojs!='Y' && $xGalry_info->viewer=='Y' && $xGalry_info->viewer_type=='prettyPhoto'" target="./common/plugin/prettyPhoto/jquery.prettyPhoto.js" />
+<load cond="$xGalry_info->viewer=='Y' && $xGalry_info->viewer_type=='fancybox'" target="./common/plugin/fancybox/source/jquery.fancybox.pack.js" />
+<load cond="$xGalry_info->viewer=='Y' && $xGalry_info->viewer_type=='fancybox'" target="./common/plugin/fancybox/source/helpers/jquery.fancybox-buttons.js" />
+<load cond="$xGalry_info->viewer=='Y' && $xGalry_info->viewer_type=='fancybox'" target="./common/plugin/fancybox/source/helpers/jquery.fancybox-media.js" />
+<load cond="$xGalry_info->viewer=='Y' && $xGalry_info->viewer_type=='fancybox'" target="./common/plugin/fancybox/source/helpers/jquery.fancybox-thumbs.js" />
+<load cond="$cufonjs!='Y' && $xGalry_info->cufon == 'Y'" target="./common/plugin/cufon-yui.js" />
+<load cond="$easingjs!='Y'" target="./common/jquery.easing.1.3.js" />
+<load cond="$xGalry_info->viewer_social=='true'" target="http://platform.twitter.com/widgets.js" />
+<load cond="$xGalry_info->widget_title!=''" target="./common/viewTitle/viewTitle.js" />
+{@
+	if($xGalry_info->items_shuffle=='Y') shuffle($xGalry_info->xegallery_items);
+	$xe_path = getSiteUrl();
+	if(substr($xe_path, -1)!="/") $xe_path .= "/";
+	$xgdpath = $xe_path."widgets/xegallery";
+}
+
+<style type="text/css">
+/* Image rounded corners */
+.rounded-all { position:relative;-webkit-border-radius: {$xGalry_info->apply_round_px}px {$xGalry_info->apply_round_px}px {$xGalry_info->apply_round_px}px {$xGalry_info->apply_round_px}px; -moz-border-radius: {$xGalry_info->apply_round_px}px {$xGalry_info->apply_round_px}px {$xGalry_info->apply_round_px}px {$xGalry_info->apply_round_px}px; -khtml-border-radius: {$xGalry_info->apply_round_px}px {$xGalry_info->apply_round_px}px {$xGalry_info->apply_round_px}px {$xGalry_info->apply_round_px}px; border-radius: {$xGalry_info->apply_round_px}px {$xGalry_info->apply_round_px}px {$xGalry_info->apply_round_px}px {$xGalry_info->apply_round_px}px;}
+.norounded-bottom { position:relative;-moz-border-radius: {$xGalry_info->apply_round_px}px {$xGalry_info->apply_round_px}px 0px 0px; -webkit-border-radius: {$xGalry_info->apply_round_px}px {$xGalry_info->apply_round_px}px 0px 0px; -khtml-border-radius: {$xGalry_info->apply_round_px}px {$xGalry_info->apply_round_px}px 0px 0px; border-radius: {$xGalry_info->apply_round_px}px {$xGalry_info->apply_round_px}px 0px 0px;}
+.rounded-top { position:relative;-moz-border-radius: {$xGalry_info->apply_round_px}px {$xGalry_info->apply_round_px}px 0 0; -webkit-border-radius: {$xGalry_info->apply_round_px}px {$xGalry_info->apply_round_px}px 0 0; -khtml-border-radius: {$xGalry_info->apply_round_px}px {$xGalry_info->apply_round_px}px 0 0; border-radius: {$xGalry_info->apply_round_px}px {$xGalry_info->apply_round_px}px 0 0;}
+.rounded-bottom { position:relative;-moz-border-radius: 0 0 {$xGalry_info->apply_round_px}px {$xGalry_info->apply_round_px}px; -webkit-border-radius: 0 0 {$xGalry_info->apply_round_px}px {$xGalry_info->apply_round_px}px; -khtml-border-radius: 0 0 {$xGalry_info->apply_round_px}px {$xGalry_info->apply_round_px}px; border-radius: 0 0 {$xGalry_info->apply_round_px}px {$xGalry_info->apply_round_px}px;}
+.rounded-left { position:relative;-moz-border-radius: {$xGalry_info->apply_round_px}px 0 0 0; -webkit-border-radius: {$xGalry_info->apply_round_px}px 0 0 0; -khtml-border-radius: {$xGalry_info->apply_round_px}px 0 0 0; border-radius: {$xGalry_info->apply_round_px}px 0 0 0;}
+.rounded-right { position:relative;-moz-border-radius: 0 {$xGalry_info->apply_round_px}px 0 0; -webkit-border-radius: 0 {$xGalry_info->apply_round_px}px 0 0; -khtml-border-radius: 0 {$xGalry_info->apply_round_px}px 0 0; border-radius: 0 {$xGalry_info->apply_round_px}px 0 0;}
+/* xegallery 위젯 0.2 버전 by 배워서남준다(http://study4you.kr) */
+</style>

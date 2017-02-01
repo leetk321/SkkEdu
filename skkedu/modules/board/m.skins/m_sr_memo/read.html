@@ -1,0 +1,106 @@
+ 	<div class="rd" style="border-bottom:1px solid #CCC; background:<!--@if($oDocument->isNotice())-->#F7F7F7<!--@else--><!--@end-->">
+		<div class="co">
+            	
+                <!--@if($oDocument->isNotice())-->
+        		<span class="notice">{$lang->notice}</span>
+                <!--@else-->
+                
+                <!--@if($module_info->use_category == "Y" && $oDocument->get('category_srl'))-->
+                 					<a href="{getUrl('category',$oDocument->get('category_srl'), 'document_srl', '')}" class="category">{$category_list[$oDocument->get('category_srl')]->title} &rsaquo; </a>
+                 <!--@end-->  
+               <!--@end-->
+                
+                <span class="t_text">
+                
+                
+                <!--@if($oDocument->isNotice())-->
+                {$oDocument->getTitle()}
+                <!--@else--> 
+                <!--@if($module_info->display_link !='N' && $grant->write_comment)-->
+
+                	<!--@if($module_info->display_link_op !='N')-->
+        	        	<a href="{getUrl('act','dispBoardReplyComment','comment_srl',$comment->comment_srl)}" onclick="toggle_object('comment_{$oDocument->document_srl}'); return false;">{$oDocument->getTitle()}</a>
+	                <!--@else-->
+                    	<a href="{$oDocument->getPermanentUrl()}">{$oDocument->getTitle()} </a>
+
+            	    <!--@end-->
+
+                <!--@else-->
+                {$oDocument->getTitle()}
+                <!--@end--> 
+                <!--@end-->
+                
+                </span>
+                
+				<!--@if(!$oDocument->isNotice() && $module_info->display_commentcount !='N')-->
+                <!--@if($oDocument->getCommentcount() > 0)-->
+				<span class="replyNum">+{$oDocument->getCommentcount()}</span>
+                <!--@end-->     
+				<!--@end-->
+                
+                <div style="clear:both; position:relative;"> 
+                <!--@if(!$oDocument->isNotice())-->
+                <span class="name"><strong>{$oDocument->getNickName()}</strong></span> 
+				<!--@end-->
+                
+                <!--@if($module_info->display_time !='N' && !$oDocument->isNotice())-->
+                <span class="date">
+				{$oDocument->getRegdate("y.m.d")}
+                </span>
+                <!--@end-->
+                
+                
+                <span class="option">
+                
+                <!--@if(!$oDocument->isNotice() && $grant->write_comment)-->
+                <!--<input type="image" src="css/add.gif" onclick="toggle_object('comment_{$oDocument->document_srl}'); return false;" title="{$lang->comment}" alt="{$lang->comment}" />--><!--대댓글기능 봉인--><!--@end-->
+                
+                <a cond="$oDocument->isEditable()" href="{getUrl('act','dispBoardWrite','document_srl',$oDocument->document_srl,'comment_srl','')}" title="{$lang->cmd_modify}" ><img src="./css/modify.gif" border="0" alt="{$lang->cmd_modify}" /></a>
+					<a cond="$oDocument->isEditable()" href="{getUrl('act','dispBoardDelete','document_srl',$oDocument->document_srl, 'comment_srl','')}" title="{$lang->cmd_delete}"><img src="./css/delete.gif"  border="0" alt="{$lang->cmd_delete}" /></a>
+        		</span>
+                </div>
+		</div>
+	</div>
+    <!-- 댓글 -->
+ 
+  
+
+
+<div id="comment_{$oDocument->document_srl}" style="display:none; border-bottom:1px solid #ccc; background:#efefef">
+<!-- 댓글 입력 폼 -->
+<div class="bd rd">
+<!--@if($grant->write_comment)-->
+		<load target="filter/insert_comment.xml" />
+    <form action="./" method="post" onsubmit="return procFilter(this, insert_comment)">
+    <input type="hidden" name="mid" value="{$mid}" />
+    <input type="hidden" name="document_srl" value="{$oDocument->document_srl}" />
+    <input type="hidden" name="comment_srl" value="" />
+		<ul class="sn" style="list-style:none; margin:0;padding:10px;">
+			<li>
+            	<label for="nTitle" class="db fb">{$lang->comment}</label>
+				<input type="text" name="content" cols="20" rows="5" id="rText" class="itxx">
+			</li>
+			<!--@if(!$is_logged)-->
+			<li>
+				<label for="uName" class="db fb">{$lang->writer}</label>
+				<input name="nick_name" type="text" id="uName" class="itx" />
+			</li>
+			<li>
+				<label for="uPw" class="db fb">{$lang->password}</label>
+				<input name="password" type="password" id="uPw" class="itx" />
+			</li>
+			<!--@endif-->
+		</ul>
+		<div style=" text-align:center; margin-bottom:10px;">
+        	<button type="submit" class="bn_w">{$lang->cmd_comment_registration}</button>
+		</div>
+		</form>
+		<!--@end-->                
+</div></div>
+
+<!-- 댓글 파일 include -->   
+<!--@if(!$oDocument->isNotice())-->   
+<div style="background:#efefef;">
+<include target="./comment.html" />
+</div>
+<!--@end-->

@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widget version="0.2">
+    <title xml:lang="ko">Facebook 위젯</title>
+    <title xml:lang="en">Facebook Widget</title>
+    <description xml:lang="ko">페이스북 위젯을 추가합니다.</description>
+    <description xml:lang="en">You can displays Facebook Widget.</description>
+    <version>0.1</version>
+    <date>2011-04-29</date>
+
+    <author email_address="" link="http://study4u.hosting.paran.com/">
+        <name xml:lang="ko">Study4u</name>
+        <name xml:lang="en">Study4u</name>
+    </author>
+
+    <extra_vars>
+	<group>
+		<title xml:lang="ko">기본 옵션</title>
+		<title xml:lang="en">기본 옵션</title>
+
+		<var id="facebook_url">
+            <type>text</type>
+            <name xml:lang="ko">URL or Domain</name>
+            <name xml:lang="en">URL or Domain</name>
+            <description xml:lang="ko">입력예 : http://www.facebook.com/platform</description>
+        </var>
+
+		<var id="fb_width">
+            <type>text</type>
+            <name xml:lang="ko">Width</name>
+            <name xml:lang="en">Width</name>
+        </var>
+
+		<var id="fb_height">
+            <type>text</type>
+            <name xml:lang="ko">Height</name>
+            <name xml:lang="en">Height</name>
+        </var>
+
+		<var id="fb_showfaces">
+            <type>select</type>
+            <name xml:lang="ko">Show Faces</name>
+            <name xml:lang="en">Show Faces</name>
+            <options>
+                <value>true</value>
+                <name xml:lang="ko">Yes</name>
+                <name xml:lang="en">Yes</name>
+            </options>
+            <options>
+                <value>false</value>
+                <name xml:lang="ko">No</name>
+                <name xml:lang="en">No</name>
+            </options>
+        </var>
+
+		<var id="fb_action">
+            <type>select</type>
+            <name xml:lang="ko">Verb to display</name>
+            <name xml:lang="en">Verb to display</name>
+            <options>
+                <value>like</value>
+                <name xml:lang="ko">like</name>
+                <name xml:lang="en">like</name>
+            </options>
+            <options>
+                <value>recommend</value>
+                <name xml:lang="ko">recommend</name>
+                <name xml:lang="en">recommend</name>
+            </options>
+        </var>
+
+		<var id="fb_colorscheme">
+            <type>select</type>
+            <name xml:lang="ko">Color Scheme</name>
+            <name xml:lang="en">Color Scheme</name>
+            <options>
+                <value>light</value>
+                <name xml:lang="ko">light</name>
+                <name xml:lang="en">light</name>
+            </options>
+            <options>
+                <value>dark</value>
+                <name xml:lang="ko">dark</name>
+                <name xml:lang="en">dark</name>
+            </options>
+        </var>
+
+		<var id="fb_font">
+            <type>select</type>
+            <name xml:lang="ko">Font family</name>
+            <name xml:lang="en">Font family</name>
+            <options>
+                <value></value>
+                <name xml:lang="ko">Default</name>
+                <name xml:lang="en">Default</name>
+            </options>
+             <options>
+                <value>arial</value>
+                <name xml:lang="ko">arial</name>
+                <name xml:lang="en">arial</name>
+            </options>
+			<options>
+                <value>lucida+grande</value>
+                <name xml:lang="ko">lucida grande</name>
+                <name xml:lang="en">lucida grande</name>
+            </options>
+            <options>
+                <value>segoe+ui</value>
+                <name xml:lang="ko">segoe ui</name>
+                <name xml:lang="en">segoe ui</name>
+            </options>
+			<options>
+                <value>tahoma</value>
+                <name xml:lang="ko">Tahoma</name>
+                <name xml:lang="en">Tahoma</name>
+            </options>
+			<options>
+                <value>trebuchet+ms</value>
+                <name xml:lang="ko">trebuchet ms</name>
+                <name xml:lang="en">trebuchet ms</name>
+            </options>
+			<options>
+                <value>verdana</value>
+                <name xml:lang="ko">verdana</name>
+                <name xml:lang="en">verdana</name>
+            </options>
+		</var>
+	</group>
+
+	<group>
+		<title xml:lang="ko">Like Button</title>
+		<title xml:lang="en">Like Button</title>
+
+		<var id="fb_send_button">
+            <type>select</type>
+            <name xml:lang="ko">Send Button</name>
+            <name xml:lang="en">Send Button</name>
+            <options>
+                <value>true</value>
+                <name xml:lang="ko">Yes</name>
+                <name xml:lang="en">Yes</name>
+            </options>
+            <options>
+                <value>false</value>
+                <name xml:lang="ko">No</name>
+                <name xml:lang="en">No</name>
+            </options>
+        </var>
+
+		<var id="fb_layout">
+            <type>select</type>
+            <name xml:lang="ko">Layout Style</name>
+            <name xml:lang="en">Layout Style</name>
+            <options>
+                <value>standard</value>
+                <name xml:lang="ko">standard</name>
+                <name xml:lang="en">standard</name>
+            </options>
+            <options>
+                <value>button_count</value>
+                <name xml:lang="ko">button_count</name>
+                <name xml:lang="en">button_count</name>
+            </options>
+            <options>
+                <value>box_count</value>
+                <name xml:lang="ko">box_count</name>
+                <name xml:lang="en">box_count</name>
+            </options>
+        </var>
+	</group>
+
+	<group>
+		<title xml:lang="ko">Like Box, Recommendations, Activity Feed</title>
+		<title xml:lang="en">Like Box, Recommendations, Activity Feed</title>
+
+		<var id="fb_stream">
+            <type>select</type>
+            <name xml:lang="ko">Stream</name>
+            <name xml:lang="en">Stream</name>
+            <options>
+                <value>true</value>
+                <name xml:lang="ko">Yes</name>
+                <name xml:lang="en">Yes</name>
+            </options>
+             <options>
+                <value>false</value>
+                <name xml:lang="ko">No</name>
+                <name xml:lang="en">No</name>
+            </options>
+		</var>
+
+		<var id="fb_header">
+            <type>select</type>
+            <name xml:lang="ko">Header</name>
+            <name xml:lang="en">Header</name>
+            <options>
+                <value>true</value>
+                <name xml:lang="ko">Yes</name>
+                <name xml:lang="en">Yes</name>
+            </options>
+             <options>
+                <value>false</value>
+                <name xml:lang="ko">No</name>
+                <name xml:lang="en">No</name>
+            </options>
+		</var>
+
+		<var id="fb_border_color">
+            <type>color</type>
+            <name xml:lang="ko">Border Color</name>
+            <name xml:lang="en">Border Color</name>
+		</var>
+
+		<var id="fb_recommendations">
+            <type>select</type>
+            <name xml:lang="ko">Show recommendations</name>
+            <name xml:lang="en">Show recommendations</name>
+			<description xml:lang="ko">Activity Feed only</description>
+			<options>
+                <value>false</value>
+                <name xml:lang="ko">No</name>
+                <name xml:lang="en">No</name>
+			</options>
+            <options>
+                <value>true</value>
+                <name xml:lang="ko">Yes</name>
+                <name xml:lang="en">Yes</name>
+            </options>
+		</var>
+
+	</group>
+
+	<group>
+		<title xml:lang="ko">Live Stream, Login Button, Registration \n - 이 플러그인을 이용하려면 어플리케이션 ID가 필요합니다. \n http://developers.facebook.com/setup 에서 어플리케이션 ID를 만드세요.</title>
+		<title xml:lang="en">Live Stream, Login Button, Registration \n - 이 플러그인을 이용하려면 어플리케이션 ID가 필요합니다. \n http://developers.facebook.com/setup 에서 어플리케이션 ID를 만드세요.</title>
+
+		<var id="fb_appid">
+            <type>text</type>
+            <name xml:lang="ko">App ID</name>
+            <name xml:lang="en">App ID</name>
+            <description xml:lang="ko">회원님의 어플리케이션 ID를 넣어주세요.</description>
+		</var>
+
+		<var id="fb_xid">
+            <type>text</type>
+            <name xml:lang="ko">XID</name>
+            <name xml:lang="en">XID</name>
+            <description xml:lang="ko">If you have multiple live stream boxes on the same page, specify a unique 'xid' for each.</description>
+		</var>
+
+		<var id="fb_via_url">
+            <type>text</type>
+            <name xml:lang="ko">Via Attribution URL</name>
+            <name xml:lang="en">Via Attribution URL</name>
+            <description xml:lang="ko">The URL that users are redirected to when they click on your app name on a status (if not specified, your Connect URL is used).</description>
+		</var>
+
+		<var id="fb_post_to_friends">
+            <type>select</type>
+            <name xml:lang="ko">Always post to friends</name>
+            <name xml:lang="en">Always post to friends</name>
+            <options>
+                <value>true</value>
+                <name xml:lang="ko">Yes</name>
+                <name xml:lang="en">Yes</name>
+            </options>
+             <options>
+                <value>false</value>
+                <name xml:lang="ko">No</name>
+                <name xml:lang="en">No</name>
+            </options>
+		</var>
+	</group>
+
+	<group>
+		<title xml:lang="ko">Comments, Send Button</title>
+		<title xml:lang="en">Comments, Send Button</title>
+
+		<var id="fb_urlto">
+            <type>text</type>
+            <name xml:lang="ko">URL to</name>
+            <name xml:lang="en">URL to</name>
+            <description xml:lang="ko">example.com</description>
+		</var>
+
+		<var id="fb_num_posts">
+            <type>text</type>
+            <name xml:lang="ko">Number of posts</name>
+            <name xml:lang="en">Number of posts</name>
+			<description xml:lang="ko">Comments only</description>
+		</var>
+	</group>
+
+	<group>
+		<title xml:lang="ko">Login Button, Facepile</title>
+		<title xml:lang="en">Login Button, Facepile</title>
+
+		<var id="fb_max_rows">
+            <type>text</type>
+            <name xml:lang="ko">Max Rows</name>
+            <name xml:lang="en">Max Rows</name>
+		</var>
+	</group>
+
+	</extra_vars>
+</widget>

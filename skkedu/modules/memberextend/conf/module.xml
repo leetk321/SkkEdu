@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module>
+    <grants />
+    
+    <permissions />
+
+	<actions>
+		<!-- Frontend disp -->
+		<action name="dispMemberextendIndex" type="view" standalone="true" index="true" />
+		<action name="dispMemberextendAgreement" type="view" standalone="true" />
+		<action name="dispMemberextendAuthentication" type="view" standalone="true" />
+		
+		<!-- Frontend proc -->
+		<action name="procMemberextendAgreement" type="controller" standalone="true" />
+		<action name="procMemberextendAuthentication" type="controller" standalone="true" />
+		
+		<!-- Frontend model -->
+		
+		<!-- Backend disp -->
+		<action name="dispMemberextendAdminDashboard" type="view" standalone="true" admin_index="true" menu_name="userTypeList" menu_index="true"/>
+		<action name="dispMemberextendAdminTypeList" type="view" standalone="true" menu_name="userTypeList" />
+		<action name="dispMemberextendAdminTypeConfig" type="view" standalone="true" menu_name="userTypeList"/>
+		<action name="dispMemberextendAdminAgreementConfig" type="view" standalone="true" menu_name="userTypeList" />
+		<action name="dispMemberextendAdminGeneralConfig" type="view" standalone="true" menu_name="userTypeList" />
+		
+		<!-- Backend proc -->
+		<action name="procMemberextendAdminTypeConfig" type="controller" standalone="true" />
+		<action name="procMemberextendAdminSignupConfig" type="controller" standalone="true" />
+		<action name="procMemberextendAdminAgreementConfig" type="controller" standalone="true" />
+		<action name="procMemberextendAdminGeneralConfig" type="controller" standalone="true" />
+		<action name="procMemberextendAdminAgreeOrder" type="controller" standalone="true" />
+		<action name="procMemberextendAdminDeleteAgree" type="controller" standalone="true" />
+		<action name="procMemberextendAdminDeleteType" type="controller" standalone="true" />
+		<action name="procMemberextendAdminInsertJoinForm" type="controller" standalone="true" />
+		<action name="procMemberextendAdminDeleteJoinForm" type="controller" standalone="true" />
+		<action name="procMemberextendAdminGatheringAgreement" type="controller" standalone="true" />
+		
+		
+		<!-- Backend model -->
+		<action name="getMemberextendAdminInsertJoinForm" type="model" standalone="true" />
+		
+    </actions>
+    <menus>
+		<menu name="userTypeList">
+			<title xml:lang="en">Member Type</title>
+			<title xml:lang="ko">회원 타입</title>
+		</menu>
+	</menus>
+</module>

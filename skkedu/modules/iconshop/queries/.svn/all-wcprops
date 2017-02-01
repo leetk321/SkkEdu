@@ -1,0 +1,107 @@
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/iconshop_lk/!svn/ver/13/trunk/modules/iconshop/queries
+END
+getMemberIcon.xml
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/iconshop_lk/!svn/ver/13/trunk/modules/iconshop/queries/getMemberIcon.xml
+END
+getMemberIconListWithAdmin.xml
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/iconshop_lk/!svn/ver/15/trunk/modules/iconshop/queries/getMemberIconListWithAdmin.xml
+END
+updateMemberIcon.xml
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/iconshop_lk/!svn/ver/13/trunk/modules/iconshop/queries/updateMemberIcon.xml
+END
+getMemberIconBySelected.xml
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/iconshop_lk/!svn/ver/13/trunk/modules/iconshop/queries/getMemberIconBySelected.xml
+END
+getIconList.xml
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/iconshop_lk/!svn/ver/13/trunk/modules/iconshop/queries/getIconList.xml
+END
+updateIsSelected.xml
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/iconshop_lk/!svn/ver/13/trunk/modules/iconshop/queries/updateIsSelected.xml
+END
+getIcon.xml
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/iconshop_lk/!svn/ver/13/trunk/modules/iconshop/queries/getIcon.xml
+END
+getMemberIconCount.xml
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/iconshop_lk/!svn/ver/13/trunk/modules/iconshop/queries/getMemberIconCount.xml
+END
+updateIcon.xml
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/iconshop_lk/!svn/ver/20/trunk/modules/iconshop/queries/updateIcon.xml
+END
+deleteMemberIcon.xml
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/iconshop_lk/!svn/ver/13/trunk/modules/iconshop/queries/deleteMemberIcon.xml
+END
+deleteLog.xml
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/iconshop_lk/!svn/ver/13/trunk/modules/iconshop/queries/deleteLog.xml
+END
+insertMemberIcon.xml
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/iconshop_lk/!svn/ver/13/trunk/modules/iconshop/queries/insertMemberIcon.xml
+END
+insertLog.xml
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/iconshop_lk/!svn/ver/13/trunk/modules/iconshop/queries/insertLog.xml
+END
+deleteIcon.xml
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/iconshop_lk/!svn/ver/13/trunk/modules/iconshop/queries/deleteIcon.xml
+END
+getMemberIconList.xml
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/iconshop_lk/!svn/ver/13/trunk/modules/iconshop/queries/getMemberIconList.xml
+END
+insertIcon.xml
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/iconshop_lk/!svn/ver/20/trunk/modules/iconshop/queries/insertIcon.xml
+END
+getLogList.xml
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/iconshop_lk/!svn/ver/13/trunk/modules/iconshop/queries/getLogList.xml
+END

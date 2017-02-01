@@ -1,0 +1,17 @@
+<query id="insertXimember" action="insert">
+    <tables>
+        <table name="ximember" />
+    </tables>
+    <columns>
+        <column name="member_srl" var="member_srl" filter="number" notnull="notnull" />
+        <column name="ci" var="ci" notnull="notnull" />
+        <column name="di" var="di" notnull="notnull" />
+        <column name="birth_ori" var="birth_ori" notnull="notnull" />
+        <column name="sex" var="sex" notnull="notnull" />
+        <column name="is_forigen" var="is_forigen" notnull="notnull" />
+        <column name="auth_type" var="auth_type" notnull="notnull" />
+        <column name="allow_sms" var="allow_sms" notnull="notnull" />
+        <column name="voted_member_srl" var="voted_member_srl" />
+        <column name="mobile" var="mobile" />
+    </columns>
+</query>

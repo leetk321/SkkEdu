@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module>
+	<grants />
+	<permissions />
+	<actions>
+		<action name="dispVicemanagerAdminConfig" type="view" standalone="true" admin_index="true" />
+		<action name="dispVicemanagerMemberList" type="view" standalone="true" />
+		<action name="dispVicemanagerMemberModify" type="view" standalone="true" />
+
+		<action name="procVicemanagerMemberModify" type="controller" standalone="true" ruleset="modifyMember" />
+		<action name="procVicemanagerAdminInsertConfig" type="controller" standalone="true" />
+	</actions>
+	<menus>
+		<menu name="Vicemanager" type="all">
+			<title xml:lang="ko">부운영자 모듈</title>
+		</menu>
+	</menus>
+</module>

@@ -1,0 +1,69 @@
+<include target="header.html" />
+<load target="js/agreement_config.js" usecdn="true" />
+<style scoped>
+#smart_content,
+#smart_content>.tool{clear:none !important}
+</style>
+<script>
+	xe.lang.msg_delete_agreement = '{$lang->msg_delete_agreement}';
+</script>
+<form action="./" method="post" enctype="multipart/form-data" class="form-horizontal" cond="!$target_agreement->no" >
+	<input type="hidden" name="module" value="memberextend" />
+	<input type="hidden" name="act" value="procMemberextendAdminAgreeOrder" />
+	<input type="hidden" name="success_return_url" value="{getUrl('act', $act)}" />
+	<input type="hidden" name="type_srl" value="{$type_srl}" />
+	<div class="x_control-group">
+		<p class="x_control-label">{$lang->agreement_list}</p>
+		<div class="x_controls">
+			<table class="sortable x_table x_table-striped x_table-hover">
+				<thead>
+					<tr>
+						<th scope="col" class="nowr" style="text-align:center">{$lang->title}</th>
+						<th scope="col" class="nowr" style="text-align:center">{$lang->cmd_edit}</th>
+					</tr>
+				</thead>
+				<tbody class="uDrag">
+					<!--@foreach($agreementList as $key=>$item)-->
+					<tr>
+						<th scope="row">
+							<input type="hidden" name="list_order[]" value="{$key}" />
+							<div class="wrap">
+								<button type="button" class="dragBtn">Move to</button>
+								<span class="_title" style="display:inline-block;white-space:nowrap;overflow:hidden;width:120px;text-overflow:ellipsis" title="{$item->title}">{$item->title}</span>
+							</div>
+						</th>
+						<td class="nowr" style="text-align:center"><a href="{getUrl('','module','admin','act','dispMemberextendAdminAgreementConfig','type_srl',$type_srl,'agree_no',$key)}">{$lang->cmd_edit}</a> <i>|</i> <a href="#" ivalue="{$key}" class="_AgreementDelete">{$lang->cmd_delete}</a></td>
+					</tr>
+					<!--@end-->
+					
+				</tbody>
+			</table>
+			<!--@if(count($agreementList) == 0)-->
+			<span>{$lang->msg_no_agreement_list}</span>
+			<!--@endif-->
+		</div>
+	</div>
+	<div class="x_clearfix btnArea">
+		<span class="x_pull-right"><input class="x_btn x_btn-primary" type="submit" value="{$lang->cmd_save}" /></span>
+	</div>
+</form>
+<form action="./" method="post" enctype="multipart/form-data" class="form-horizontal">
+	<input type="hidden" name="module" value="memberextend" />
+	<input type="hidden" name="act" value="procMemberextendAdminAgreementConfig" />
+	<input type="hidden" name="success_return_url" value="{getUrl('act', $act, 'agree_no', '')}" />
+	<input type="hidden" name="type_srl" value="{$type_srl}" />
+	<input type="hidden" name="agreement_no" value="{$target_agreement->no}"/>
+	{@ $target_agreement->content = str_replace("'", '"', $target_agreement->content);}
+	<input type="hidden" name="agreement" value='{$target_agreement->content}'/>
+	<div class="x_control-group">
+		<label class="x_control-label" for="agreement_title">{$lang->agreement_title}<input type="text" name="agreement_title" style="margin-left:20px;" value="{$target_agreement->title}" /></label>
+		<div class="x_controls">{$editor}</div>
+	</div>
+	
+	<div class="x_clearfix btnArea">
+		<span class="x_pull-right" cond="!$target_agreement->no"><input class="x_btn x_btn-primary" type="submit" value="{$lang->cmd_add}" /></span>
+		<span class="x_pull-right" cond="$target_agreement->no"><input class="x_btn x_btn-primary" type="submit" value="{$lang->cmd_modify}" /></span>
+		<span class="x_pull-left" cond="$target_agreement->no"><a href="{getUrl('act', $act, 'agree_no', '')}">{$lang->cmd_cancel}</a></span>
+	</div>
+</form>
+<include target="footer.html" />

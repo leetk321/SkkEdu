@@ -1,0 +1,49 @@
+<!--%import("js/iconshop_admin.js")-->
+<!--%import("../../common/css/popup.css")-->
+
+<div id="popHeader">
+    <h3 class="xeAdmin">{$lang->iconSearch}</h3>
+</div>
+
+<div id="popBody">
+    <form action="./" method="post">
+        <input type="hidden" name="module" value="iconshop" />
+        <input type="hidden" name="act" value="dispIconshopAdminIconSearch" />
+        <input type="hidden" name="target_id" value="{$target_id}" />
+        <table class="rowTable" cellspacing="0">
+        <tbody>
+            <tr>
+                <td>
+                    <select name="search_target">
+                        <option value="s_icon_srl" <!--@if($search_target != "s_title")-->selected="selected"<!--@end-->>{$lang->icon_srl}</option>
+                        <option value="s_title" <!--@if($search_target == "s_title")-->selected="selected"<!--@end-->>{$lang->icon_title}</option>
+                    </select>
+                    <input type="text" name="search_keyword" value="{$search_keyword}" class="inputTypeText w200" /> <span class="button blue"><input type="submit" value="{$lang->cmd_search}" /></span>
+                    <p>{$lang->iconSearch_about}</p>
+                </td>
+            </tr>
+            </tr>
+        </tbody>
+        </table>
+        <!--@if($result_list)-->
+        <table class="rowTable" cellspacing="0">
+        <thead>
+            <tr>
+                <th><div>{$lang->icon_srl}</div></th>
+                <th class="wide"><div>{$lang->icon_title}</div></th>
+                <th><div>{$lang->cmd_select}</div></th>
+            <tr>
+        </thead>
+        <tbody>
+            <!--@foreach($result_list as $key => $val)-->
+            <tr>
+                <td>{$val->icon_srl}</td>
+                <td>{$val->title}</td>
+                <td><a href="#" onclick="iconSelected('{$target_id}',{$val->icon_srl}); return false;" class="button green"><span>{$lang->cmd_select}</span></a></td>
+            </tr>
+            <!--@end-->
+        </tbody>
+        </table>
+        <!--@end-->
+    </form>
+</div>

@@ -1,0 +1,48 @@
+<!--// 컬러셋 체크 -->
+    <!--@if(!$module_info->colorset)-->
+        {@$module_info->colorset = "white"}
+    <!--@end-->
+<!--// CSS 파일 로드 (컬러셋에 따라서) -->
+    <!--%import("css/common.css")-->
+
+    <!--@if($module_info->colorset == "cyan")--> <!--%import("css/cyan.css")-->
+    <!--@elseif($module_info->colorset == "red")--> <!--%import("css/red.css")-->
+    <!--@elseif($module_info->colorset == "green")--> <!--%import("css/green.css")-->
+    <!--@elseif($module_info->colorset == "purple")--> <!--%import("css/purple.css")-->
+    <!--@elseif($module_info->colorset == "black")--> 
+        <!--%import("css/black.css")-->
+        {@ $btn_class = "black" }
+    <!--@else--> <!--%import("css/white.css")-->
+    <!--@end-->
+
+<!--// 스킨 설정중 새글의 시간 설정 값이 없으면 임의로 지정 -->
+    <!--@if(!$module_info->duration_new = (int)$module_info->duration_new)-->{@ $module_info->duration_new = 12 }<!--@end-->
+    <!--@if(!$module_info->content_cut_size = (int)$module_info->content_cut_size)-->{@ $module_info->content_cut_size= 240 }<!--@end-->
+
+<!--// 스킨 설정중 썸네일 관련 항목을 지정 -->
+    <!--@if(!$module_info->thumbnail_type)-->{@ $module_info->thumbnail_type = 'crop'; }<!--@end-->
+    <!--@if(!$module_info->thumbnail_width)-->{@ $module_info->thumbnail_width = 100; }<!--@end-->
+    <!--@if(!$module_info->thumbnail_height)-->{@ $module_info->thumbnail_height = 100; }<!--@end-->
+
+<!--// 정렬에 따른 아이콘 미리 지정 -->
+    <!--@if($order_type == "desc")-->
+        {@ $order_icon = "buttonDescending.gif" }
+        {@ $order_type = "asc"; }
+    <!--@else-->
+        {@ $order_icon = "buttonAscending.gif" }
+        {@ $order_type = "desc"; }
+    <!--@end-->
+
+<!--// 사용자가 선택한 게시판 형태에 따른 설정(포럼형은 적용 안됨) -->
+<!--@if($module_info->default_style != 'forum' && $module_info->default_style != 'blog')-->
+    <!--@if($listStyle=='gallery')-->
+        {@ $module_info->default_style = 'gallery'}
+    <!--@elseif($listStyle=='webzine')-->
+        {@ $module_info->default_style = 'webzine'}
+    <!--@elseif($listStyle=='list')-->
+        {@ $module_info->default_style = 'list'}
+    <!--@end-->
+<!--@end-->
+
+<!--// 상단 텍스트 출력 -->
+    {$module_info->header_text}

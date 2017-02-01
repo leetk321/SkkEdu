@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<skin version="0.2">
+    <title xml:lang="ko">XE 커뮤니케이션 phiz 모바일 기본 스킨</title>
+    <description xml:lang="ko">
+        XE 커뮤니케이션 phiz 모바일 기본 스킨입니다.
+        phiz (phiz@phiz.kr) 
+    </description>
+    <version>1.7</version>
+    <date>2014-03-02</date>
+    <author email_address="phiz@phiz.kr" link="http://phiz.kr/">
+        <name xml:lang="ko">phiz</name>
+        <name xml:lang="en">phiz</name>
+        <name xml:lang="zh-TW">phiz</name>
+        <name xml:lang="tr">phiz</name>
+    </author>
+</skin>

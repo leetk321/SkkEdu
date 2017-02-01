@@ -1,0 +1,13 @@
+<query id="getRockgameCountWin" action="select">
+    <tables>
+        <table name="rockgame" />
+    </tables>
+    <columns>
+        <column name="count(*)" alias="count_win" />
+    </columns>
+	<conditions>
+        <condition operation="equal" column="member_srl" var="member_srl" notnull="notnull" pipe="and" />
+        <condition operation="equal" column="result" var="result" notnull="notnull" pipe="and" />
+        <condition operation="equal" column="substr(regdate,1,10)" var="regdate" pipe="and" />
+    </conditions>
+</query>

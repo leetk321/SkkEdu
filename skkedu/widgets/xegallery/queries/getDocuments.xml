@@ -1,0 +1,14 @@
+<query id="getDocuments" action="select">
+    <tables>
+        <table name="documents" />
+    </tables>
+    <columns>
+        <column name="*" />
+    </columns>
+    <conditions>
+        <condition operation="in" column="document_srl" var="document_srl" notnull="notnull" pipe="and" />
+		<condition operation="in" column="category_srl" var="category_srl" pipe="and" />
+		<condition operation="in" column="status" var="statusList" pipe="and" />
+		<condition operation="more" column="regdate" var="regdate" pipe="and" />
+    </conditions>
+</query>

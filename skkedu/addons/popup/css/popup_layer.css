@@ -1,0 +1,9 @@
+@charset "utf-8";
+
+#addon-popup-layer { display: none; position: absolute; top: 100px; background-color: #fff; border: 5px solid #aaa; z-index: 1000; }
+#addon-popup-modal { display: none; }
+#addon-popup-container { }
+#addon-popup-content { overflow: hidden; }
+#addon-popup-image { display: block; margin: 0 auto; }
+#addon-popup-menu { background-color: #333; color: #fff; text-align: right; padding: 10px; }
+#addon-popup-button-close { cursor: pointer; margin-left: 24px; }

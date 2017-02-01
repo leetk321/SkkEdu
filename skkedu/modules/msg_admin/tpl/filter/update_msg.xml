@@ -1,0 +1,15 @@
+<filter name="update_msg" module="msg_admin" act="procMsg_adminAdminModify" confirm_msg_code="confirm_submit">
+    <form>
+        <node target="title" required="true" minlength="1" maxlength="240" />
+        <node target="content" required="true" minlength="1" />
+		<node target="readed_date" filter="number" minlength="14" maxlength="14" />
+    </form>
+    <parameter />
+    <response callback_func="completeModify">
+        <tag name="error" />
+        <tag name="message" />
+        <tag name="message_srl" />
+        <tag name="message_type" />
+		<tag name="page" />
+	</response>
+</filter>

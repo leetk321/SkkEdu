@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ruleset version="1.5.0">
+	<customrules>
+	</customrules>
+	<fields>
+		<field name="fee_apply_point" rule="number" />
+		<field name="daily_limit" rule="number" />
+		<field name="notification_title" maxlength="250" />
+		<field name="notification_content" maxlength="250" />
+	</fields>
+</ruleset>

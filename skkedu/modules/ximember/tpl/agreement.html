@@ -1,0 +1,66 @@
+<include target="header.html" />
+	<section class="section">
+		<h1>{$lang->xi_agreement_add}</h1>
+		
+		<form action="./" class="x_form-horizontal" ruleset="insertXimemberConfig" method="post">
+		<input type="hidden" name="module" value="ximember" />
+		<input type="hidden" name="act" value="procXimemberAdminInsertAgree" />
+		<input type="hidden" name="success_return_url" value="{getUrl('', 'module', 'admin', 'act', $act)}" />
+		<div class="x_control-group">
+			<label class="x_control-label">{$lang->xi_agreement_name}</label>
+			<div class="x_controls">
+				<input type="text" name="new_agreement" value="" placeholder="{$lang->xi_agreement_name}" />
+				<p class="x_help-inline">{$lang->xi_agreement_add_desc}</p>
+			</div>	
+		</div>
+		
+		<div class="x_clearfix btnArea">
+			<span class="x_pull-right"><input class="x_btn x_btn-primary" type="submit" value="{$lang->xi_agreement_add}" /></span>
+		</div>
+		</form>
+	</section>	
+	<section class="section">
+		<h1>{$lang->xi_agreement_list_adm}</h1>
+		
+		<form action="./" class="x_form-horizontal" method="post">
+		<input type="hidden" name="module" value="ximember" />
+		<input type="hidden" name="act" value="procXimemberAdminAgreeConfig" />
+		<input type="hidden" name="success_return_url" value="{getUrl('', 'module', 'admin', 'act', $act)}" />
+		<div class="x_control-group">
+			<label class="x_control-label">{$lang->xi_agreement_list}</label>
+			<div class="x_controls">
+				<table class="x_table sortable x_table-striped x_table-hover">
+					<thead><tr>
+						<th scope="col" class="nowr"	style="text-align:center;">{$lang->no}</th>
+						<th scope="col" class="nowr"	style="text-align:center;">{$lang->xi_agreement_name}</th>
+						<th scope="col" class="nowr"	style="text-align:center;">{$lang->use}</th>
+						<th scope="col" class="nowr"	style="text-align:center;">{$lang->cmd_required}/{$lang->cmd_optional}</th>
+						<th scope="col" class="nowr" 	style="text-align:center;">{$lang->cmd_edit}</th>
+						<th scope="col" class="nowr" 	style="text-align:center;">{$lang->cmd_delete}</th>
+					</tr></thead>
+					<tbody>
+					<tr loop="$config->agreements => $agree_srl,$agreement">
+						<td scope="col" class="nowr" style="text-align:center;">{$agree_srl}</td>
+						
+						<td scope="col" class="nowr">{$agreement->name}</td>
+						<td scope="col" class="nowr" style="text-align:center;">
+							<input type="checkbox" name="is_use_{$agree_srl}" value="Y" title="{$lang->use}" checked="checked"|cond="$agreement->is_use == 'Y'" /></td>
+						<td scope="col" class="nowr">
+							<label for="required_{$agree_srl}_re" class="x_inline"><input type="radio" id="required_{$agree_srl}_re" 	checked="checked"|cond="$agreement->required == 'Y'" name="required_{$agree_srl}" value="Y" /> {$lang->cmd_required}</label>
+							<label for="required_{$agree_srl}_op" class="x_inline"><input type="radio" id="required_{$agree_srl}_op" 	checked="checked"|cond="$agreement->required != 'Y'" name="required_{$agree_srl}" value="N" /> {$lang->cmd_optional}</label>
+						</td>
+						<td scope="col" class="nowr" style="text-align:center;">
+							<a href="{getUrl('act','dispXimemberAdminEditAgree','agree_srl',$agree_srl)}">{$lang->cmd_edit}</a>
+						</td>
+						<td scope="col" class="nowr" style="text-align:center;">
+							<a cond="$agree_srl != 'default'" href="{getUrl('act','procXimemberAdminDeleteAgree','agree_srl',$agree_srl)}" onclick="return confirm('{$lang->msg_confirm_delete}');">{$lang->cmd_delete}</a>
+						</td>
+					</tr></tbody>
+				</table>
+			</div>
+		</div>
+		<div class="x_clearfix btnArea">
+			<span class="x_pull-right"><input class="x_btn x_btn-primary" type="submit" value="{$lang->cmd_save}" /></span>
+		</div>
+		</form>
+	</section>

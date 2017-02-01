@@ -1,0 +1,89 @@
+<load target="css/default.css" />
+<load target="js/admin.js" />
+
+<!--#include("./header.html")-->
+
+<!--//메세지창-->
+<div cond="$XE_VALIDATOR_MESSAGE" class="message {$XE_VALIDATOR_MESSAGE_TYPE}">
+	<p>{$XE_VALIDATOR_MESSAGE}</p>
+</div>
+
+<caption>
+	<strong>전체:{number_format($total_count)} 페이지:{number_format($page)}/{number_format($total_page)}</strong>
+</caption>
+ 
+<!-- 광고현황 -->
+<form method="get" action="./" id="game_log" class="table">
+	<table cellpadding='6' cellspacing="0" border='0' style="width:100%">
+		<thead bgcolor="efefef">
+			<tr> 
+				<th scope="col"><input type="checkbox" title="모두체크하기" data-name="cart"/></th>
+				<th scope="col">게임번호</th>
+				<th scope="col">member_srl</th>
+				<th scope="col">닉네임</th>
+				<th scope="col">컴퓨터선택</th>
+				<th scope="col">사용자선택</th>
+				<th scope="col">결과</th>
+				<th scope="col">포인트</th>
+				<th scope="col">게임날짜</th>
+				<th scope="col">IP주소</th>
+			</tr>
+		</thead>
+		<tbody class="text_center">   
+		<!--@foreach($game_log as $no => $game_log_info)-->
+			<tr>
+				<td><input type="checkbox" name="cart" value="{$game_log_info->game_srl}" /></td>
+				<td>{$game_log_info->game_srl}</td>
+				<td>{$game_log_info->member_srl}</td>
+				<td><a class="member_{$game_log_info->member_srl}" href="#" onclick="return false">{$game_log_info->nick_name}</a></td>
+				<td><!--@if($game_log_info->com_select == 'rock')-->주먹<!--@elseif($game_log_info->com_select == 'paper')-->보<!--@else-->가위<!--@end--></td>
+				<td><!--@if($game_log_info->user_select == 'rock')-->주먹<!--@elseif($game_log_info->user_select == 'paper')-->보<!--@else-->가위<!--@end--></td>
+				<td><!--@if($game_log_info->result == 'win')--><a style="color:tomato;">승리</a><!--@elseif($game_log_info->result == 'lose')--><a style="color:#08c;">패배</a><!--@else--><a style="color:#555;">비김</a><!--@end--></td>
+				<td>{$game_log_info->game_point}</td> 
+				<td>{$game_log_info->regdate}</td> 
+				<td>{$game_log_info->ipaddress}</td> 
+			</tr>
+		<!--@end-->
+		</tbody>
+	</table>
+
+	<!--// 로그삭제버튼 -->
+	<div style="padding:10px 0; margin:10px 0;">
+		<span class="btn x_pull-left"><button type="button" onclick="jsDeleteLog(); return false;">선택삭제</button></span>
+		<span class="btn x_pull-left" style="margin-left:10px;"><button type="button" onclick="jsDeleteLogAll(); return false;">전체삭제</button></span>
+	</div> 
+
+</form>
+
+
+<!--// 페이지 네비게이션 -->
+<div class="xecenter_page_navi" style="margin-top:20px;"> 
+	<a class="xecenter_effect" href="{getUrl('page','','module_srl','')}" >{$lang->first_page}</a> 
+	<!--@while($page_no = $page_navigation->getNextPage())-->
+		<!--@if($page == $page_no)-->
+			<a class="xecenter_page_navi xecenter_effect"><strong cond="$page_no == $page">{$page_no}</strong></a>
+		<!--@else-->
+			<a class="xecenter_page_navi xecenter_effect" href="{getUrl('page',$page_no,'module_srl','')}">{$page_no}</a> 
+		<!--@end-->
+	<!--@end-->
+	<a class="xecenter_effect" href="{getUrl('page',$page_navigation->last_page,'module_srl','')}" >{$lang->last_page}</a>
+</div>
+
+<!--//검색 -->
+<div class="search">
+	<form action="" method="get">
+		<input type="hidden" name="error_return_url" value="" />
+		<input type="hidden" name="module" value="{$module}" /> 
+		<input type="hidden" name="page" value="1" />
+		<select name="search_target">
+			<option value="">검색대상</option>					
+			<option value="member_srl" selected="selected"|cond="$search_target == 'member_srl'">회원번호(member_srl)</option>
+			<option value="ipaddress" selected="selected"|cond="$search_target == 'ipaddress'">IP주소</option>
+			<option value="result" selected="selected"|cond="$search_target == 'result'">게임결과</option>
+		</select>
+		<input type="text" name="search_keyword" value="{htmlspecialchars($search_keyword)}" />
+		<div class="btn"><input type="submit" value="{$lang->cmd_search}" /></div>
+		<div class="btn"><a href="{getUrl('', 'module',$module, 'act',$act, 'search_target','', 'search_keyword','')}">{$lang->cmd_cancel}</a></div>
+	</form>
+</div>
+

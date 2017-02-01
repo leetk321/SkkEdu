@@ -1,0 +1,95 @@
+<!--//컬러피커 플러그인 -->
+	<load target="object/colorpicker/css/layout.css" />
+	<load target="object/colorpicker/css/colorpicker.css" />
+	<script type="text/javascript" src="object/colorpicker/js/colorpicker.js"></script>
+	<script type="text/javascript" src="object/colorpicker/js/eye.js"></script>
+	<script type="text/javascript" src="object/colorpicker/js/utils.js"></script>
+	<script type="text/javascript" src="object/colorpicker/js/layout.js"></script>
+
+	<!--// 컬러피커+패턴 감싸기-->
+	<div class="color_picker" style="z-index:5;">
+		<!--// 컬러피커 (배경) -->
+		<div id="colorSelector"><div style="background-color: #fff"></div></div>
+		<select id="color_picker_target" >
+			<option value="">변경대상(배경)</option>
+			<option value=".menu_bg, .content_top, .content_bottoms, .menu_bottom, .simple_menu li a">★원터치★</option>
+			<option value="body">배경화면</option>
+			<option value=".menu_bg">메인메뉴</option>
+			<option value="#body, #body .contents, #body .lnb, .content_left_bar, .content_widget_bar">컨텐츠</option>
+			<option value=".content_top">컨텐츠상단</option>
+			<option value=".content_bottoms">컨텐츠하단</option>
+			<option value=".menu_bottom">하단메뉴</option>
+			<option value=".bg_bottom">하단</option>
+			<option value=".simple_menu li a">심플메뉴</option>
+		</select>
+		
+		<!--// 패턴 테스트 기능 -->
+		<div class="preview_pattern">
+			<select id="preview_pattern" >
+				<option value="">대상 패턴변경</option>
+				<option value="url(./layouts/xecenter/img/pattern/pattern0.png)">패턴없음</option>
+				<option value="url(./layouts/xecenter/img/pattern/pattern1.png)">1번 패턴</option>
+				<option value="url(./layouts/xecenter/img/pattern/pattern2.png)">2번 패턴</option>
+				<option value="url(./layouts/xecenter/img/pattern/pattern3.png)">3번 패턴</option>
+				<option value="url(./layouts/xecenter/img/pattern/pattern4.png)">4번 패턴</option>
+				<option value="url(./layouts/xecenter/img/pattern/pattern5.png)">5번 패턴</option>
+				<option value="url(./layouts/xecenter/img/pattern/pattern6.png)">6번 패턴</option>
+				<option value="url(./layouts/xecenter/img/pattern/pattern7.png)">7번 패턴</option>
+				<option value="url(./layouts/xecenter/img/pattern/pattern8.png)">8번 패턴</option>
+				<option value="url(./layouts/xecenter/img/pattern/pattern9.png)">9번 패턴</option>
+				<option value="url(./layouts/xecenter/img/pattern/pattern10.png)">10번 패턴</option>
+				<option value="url(./layouts/xecenter/img/pattern/pattern11.png)">11번 패턴</option>
+				<option value="url(./layouts/xecenter/img/pattern/pattern12.png)">12번 패턴</option>
+				<option value="url(./layouts/xecenter/img/pattern/pattern13.png)">13번 패턴</option>
+				<option value="url(./layouts/xecenter/img/pattern/pattern14.png)">14번 패턴</option>
+				<option value="url(./layouts/xecenter/img/pattern/pattern15.png)">15번 패턴</option>
+				<option value="url(./layouts/xecenter/img/pattern/pattern16.png)">16번 패턴</option>
+				<option value="url(./layouts/xecenter/img/pattern/pattern17.png)">17번 패턴</option>
+				<option value="url(./layouts/xecenter/img/pattern/pattern18.png)">18번 패턴</option>
+				<option value="url(./layouts/xecenter/img/pattern/pattern19.png)">19번 패턴</option>
+				<option value="url(./layouts/xecenter/img/pattern/pattern20.png)">20번 패턴</option>
+				<option value="url(./layouts/xecenter/img/pattern/pattern21.png)">21번 패턴</option>
+				<option value="url(./layouts/xecenter/img/pattern/pattern22.png)">22번 패턴</option>
+				<option value="url(./layouts/xecenter/img/pattern/pattern23.png)">23번 패턴</option>
+				<option value="url(./layouts/xecenter/img/pattern/50-1.png)">그라데이션50-1</option>
+				<option value="url(./layouts/xecenter/img/pattern/50-2.png)">그라데이션50-2</option>
+				<option value="url(./layouts/xecenter/img/pattern/50-3.png)">그라데이션50-3</option>
+				<option value="url(./layouts/xecenter/img/pattern/45-1.png)">그라데이션45-1</option>
+				<option value="url(./layouts/xecenter/img/pattern/45-2.png)">그라데이션45-2</option>
+				<option value="url(./layouts/xecenter/img/pattern/45-3.png)">그라데이션45-3</option>
+				<option value="url(./layouts/xecenter/img/pattern/45-4.png)">그라데이션45-4</option>
+				<option value="url(./layouts/xecenter/img/pattern/25-1.png)">그라데이션25-1</option>
+				<option value="url(./layouts/xecenter/img/pattern/25-2.png)">그라데이션25-2</option>
+				<option value="url(./layouts/xecenter/img/pattern/25-3.png)">그라데이션25-3</option>
+				<option value="url(./layouts/xecenter/img/pattern/25-4.png)">그라데이션25-4</option>
+				<option value="url(./layouts/xecenter/img/pattern/img_pattern1.png)">이미지 패턴1</option>
+				<option value="url(./layouts/xecenter/img/pattern/img_pattern2.png)">이미지 패턴2</option>
+				<option value="url(./layouts/xecenter/img/pattern/img_pattern3.png)">이미지 패턴3</option>
+				<option value="url(./layouts/xecenter/img/pattern/img_pattern4.png)">이미지 패턴4</option>
+				<option value="url(./layouts/xecenter/img/pattern/img_pattern5.png)">이미지 패턴5</option>
+				<option value="url(./layouts/xecenter/img/pattern/img_pattern6.png)">이미지 패턴6</option>
+				<option value="url(./layouts/xecenter/img/pattern/img_pattern7.png)">이미지 패턴7</option>
+				<option value="url(./layouts/xecenter/img/pattern/img_pattern8.png)">이미지 패턴8</option>
+				<option value="url(./layouts/xecenter/img/pattern/img_pattern9.png)">이미지 패턴9</option>
+				<option value="url(./layouts/xecenter/img/pattern/img_pattern10.png)">이미지 패턴10</option>
+				<option value="url(./layouts/xecenter/img/pattern/img_pattern11.png)">이미지 패턴11</option>
+			</select>
+		</div>		
+		<!--// 컬러피커 (폰트)-->
+		<div id="colorSelector2" style="margin-top:5px"><div style="background-color: #fff"></div></div>
+		<select id="color_picker_target2" >
+			<option value="">변경대상(폰트)</option>
+			<option value=".gnb li a">메인메뉴</option>
+			<option value=".gnb li li a">2차메뉴</option>
+			<option value=".lnb li a">서브메뉴</option>
+			<option value=".qook_counter .first">카운터 대제목</option>
+			<option value=".qook_counter .second">카운터 내용</option>
+			<option value=".qook_counter .number">카운터 숫자</option>
+			<option value=".qook_counter .number1">카운터 증가숫자</option>
+			<option value=".menu_bottom .auto_float li a">하단메뉴</option>
+			<option value=".menu_bottom .site_map_btn">전체메뉴</option>
+			<option value=".menu_bottom .family_site_btn">패밀리사이트</option>
+			<option value=".simple_menu li a">심플메뉴</option>
+			<option value=".menu .login_btn a">정보창</option>
+		</select>
+	</div>

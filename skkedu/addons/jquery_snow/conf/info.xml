@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<addon version="0.2">
+    <title xml:lang="ko">Snow 애드온</title>
+    <description xml:lang="ko">사이트에 눈이 내리도록 하는 애드온</description>
+    <version>0.1</version>
+    <date>2012-12-07</date>
+	<link>http://pureani.tistory.com</link>
+
+    <author email_address="middleyks@hanmail.net" link="http://pureani.tistory.com">
+        <name xml:lang="ko">Pure Ani</name>
+    </author>
+</addon>

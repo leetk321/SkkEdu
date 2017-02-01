@@ -1,0 +1,72 @@
+<include target="header.html" />
+<load target="filter/search.xml" />
+
+<div cond="!$grant->write_document" style="margin:0 0 5px 0;padding:10px;text-align:center;border:10px solid #EEE">{$lang->cmd_write} {$lang->msg_not_permitted}</div>
+
+<include target="write_form.html" cond="$oDocument && $grant->write_document" />
+
+
+<p cond="!$document_list && !$notice_list" class="no_documents">{$lang->no_documents}</p>
+
+<!--@if($module_info->list_more == 'N')-->
+	<include target="list_footer.html" />
+<!--@end-->
+        
+
+<!--@if($module_info->default_style == 'none')-->
+	<div class="list">
+	<!--@if($grant->list)-->
+		<!--// 공지사항 -->
+    	<!--@if($notice_list)-->
+        <div id="notice"> 
+        	<block loop="$notice_list=>$no,$oDocument">
+        		<include target="view_document_none.html" />
+        	</block>
+        </div>
+        <!--@end-->
+        
+        <!--// 일반글 -->
+        <div id="list">
+        	<block loop="$document_list=>$no,$oDocument">
+        		<include target="view_document_none.html" />
+        	</block>
+        	<div id="list_more"></div>  
+		</div>
+        <!--@if($module_info->list_more == 'N')-->
+        <button id="mo-btn" class="mo-btn xe_content" cond="$module_info->more_button == 'Y'">{$lang->more}</button><!--@end-->
+	<!--@end-->
+    </div>
+<!--@else-->
+	<div class="list">
+   	<!--@if($grant->list)-->
+		<!--// 공지사항 -->
+    	<!--@if($notice_list)-->
+        <div id="notice">
+        	<block loop="$notice_list=>$no,$oDocument">
+        		<include target="view_document.html" />
+        	</block>      
+        </div>
+        <!--@end-->
+        
+        <!--// 일반글 -->
+        <div id="list">
+        	<block loop="$document_list=>$no,$oDocument">
+        		<include target="view_document.html" />
+        	</block>
+        	<div id="list_more"></div>  
+		</div>
+        <!--@if($module_info->list_more == 'N')-->
+        <button id="mo-btn" class="mo-btn xe_content" cond="$module_info->more_button != 'N'">{$lang->more}</button><!--@end-->
+	<!--@end-->
+    </div>
+<!--@end--> 
+
+<!--@if($module_info->list_more != 'N' || $module_info->list_more == 'Y')-->
+	<include target="list_footer.html" />
+<!--@end-->
+
+<div class="cfix">&nbsp;</div>
+<!--@if($module_info->list_more == 'N')--> 
+	<include target="more.html" />
+<!--@end-->
+<include target="footer.html" />

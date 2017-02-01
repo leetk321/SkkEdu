@@ -1,0 +1,14 @@
+<query id="getJoinFormList" action="select">
+    <tables>
+        <table name="memberextend_join_form" />
+    </tables>
+    <columns>
+        <column name="*" />
+    </columns>
+    <conditions>
+        <condition operation="equal" column="type_srl" var="type_srl" />
+    </conditions>
+    <navigation>
+        <index var="sort_index" default="list_order" order="asc" />
+    </navigation>
+</query>

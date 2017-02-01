@@ -1,0 +1,84 @@
+<include target="header.html" />
+<form action="./" class="x_form-horizontal" ruleset="insertXimemberConfig" method="post" enctype="multipart/form-data">
+	<input type="hidden" name="module" value="ximember" />
+	<input type="hidden" name="act" value="procXimemberAdminConfig" />
+	<input type="hidden" name="success_return_url" value="{getUrl('', 'module', 'admin', 'act', $act)}" />
+	<section class="section">
+	<h1>{$lang->subtitle_primary}</h1>
+	<div class="x_control-group">
+		<label class="x_control-label">{$lang->use_ximember}</label>
+		<div class="x_controls">
+			<label class="x_line" for="use_ximember_Y"><input type="radio" id="use_ximember_Y" name="use_ximember" checked="checked"|cond="$config->use_ximember == 'Y'" value="Y" /> {$lang->cmd_yes}</label>
+			<label class="x_line" for="use_ximember_N"><input type="radio" id="use_ximember_N" name="use_ximember" checked="checked"|cond="$config->use_ximember != 'Y'" value="N" /> {$lang->cmd_no}</label>
+			<p class="x_help-inline">{$lang->use_ximember_desc}</p>
+		</div>
+	</div>
+	<div class="x_control-group">
+		<label class="x_control-label">{$lang->xi_change_pages}</label>
+		<div class="x_controls">
+			<label loop="$lang->xi_change_pages_list => $act_key,$pagename" class="x_line" for="xi_change_{$act_key}">
+				<input type="checkbox" id="xi_change_{$act_key}" name="xi_change_pages[]" value="{$act_key}" checked="checked"|cond="in_array($act_key,$config->xi_change_pages)" /> {$pagename}
+				<a href="#xi_change_desc_{$act_key}" class="x_icon-question-sign" data-toggle>{$lang->help}</a>
+				<p id="xi_change_desc_{$act_key}" class="x_help-block" hidden>{$lang->xi_change_pages_list_desc[$act_key]}</p>
+			</label>
+			<p class="x_help-inline">{$lang->xi_change_pages_desc}</p>
+		</div>
+	</div>
+	</section>
+	<section class="section">
+	<h1>{$lang->desktop_settings}</h1>
+	<div class="x_control-group">
+		<label class="x_control-label" for="layout_srl">{$lang->layout}</label>
+		<div class="x_controls">
+			<select name="layout_srl" id="layout_srl">
+				<option value="0">{$lang->notuse}</option>
+				<option loop="$layout_list => $key, $val" value="{$val->layout_srl}" selected="selected"|cond="$config->layout_srl== $val->layout_srl">{$val->title} ({$val->layout})</option>
+			</select>
+			<a href="#layout_help" class="x_icon-question-sign" data-toggle>{$lang->help}</a>
+			<p id="layout_help" class="x_help-block" hidden>{$lang->about_layout}</p>
+		</div>
+	</div>
+	<div class="x_control-group">
+		<label class="x_control-label" for="skin">{$lang->skin}</label>
+		<div class="x_controls">
+			<select name="skin" id="skin" style="width:auto">
+				<option loop="$skin_list=> $key, $val" value="{$key}" selected="selected"|cond="$config->skin== $key || (!$config->skin && $key=='default')">{$val->title}</option>
+			</select>
+		</div>
+	</div>
+	</section>
+	<section class="section">
+		<h1>{$lang->mobile_settings}</h1>
+		<div class="x_control-group">
+			<label class="x_control-label">{$lang->mobile_view}</label>
+			<div class="x_controls">
+				<label class="x_inline" for="use_mobile"><input type="checkbox" name="use_mobile" id="use_mobile" value="Y" checked="checked"|cond="$config->use_mobile == 'Y'" /> {$lang->about_mobile_view}</label>
+			</div>
+		</div>
+		<div class="x_control-group">
+			<label class="x_control-label" for="mlayout_srl">{$lang->mobile_layout}</label>
+			<div class="x_controls">
+				<select name="mlayout_srl" id="mlayout_srl">
+					<option value="0">{$lang->notuse}</option>
+					<option loop="$mlayout_list => $key, $val" value="{$val->layout_srl}" selected="selected"|cond="$config->mlayout_srl== $val->layout_srl">{$val->title} ({$val->layout})</option>
+				</select>
+				<a href="#mobile_layout_help" class="x_icon-question-sign" data-toggle>{$lang->help}</a>
+				<p id="mobile_layout_help" class="x_help-block" hidden>{$lang->about_layout}</p>
+			</div>
+		</div>
+		<div class="x_control-group">
+			<label class="x_control-label" for="mskin">{$lang->mobile_skin}</label>
+			<div class="x_controls">
+				<select name="mskin" id="mskin">
+					<option loop="$mskin_list=> $key, $val" value="{$key}" selected="selected"|cond="$config->mskin== $key || (!$config->skin && $key=='default')">{$val->title}</option>
+				</select>
+				<a href="#mobile_skin_help" class="x_icon-question-sign" data-toggle>{$lang->help}</a>
+				<p id="mobile_skin_help" class="x_help-block" hidden>{$lang->about_skin}</p>
+			</div>
+		</div>
+	</section>
+	<div class="x_clearfix btnArea">
+		<span class="x_pull-left" cond="$member_srl"><button class="x_btn" type="button" onclick="history.go(-1)">{$lang->cmd_cancel}</button></span>
+		<span class="x_pull-right"><input class="x_btn x_btn-primary" type="submit" value="{$lang->cmd_save}" /></span>
+	</div>
+</form>

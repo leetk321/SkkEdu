@@ -1,0 +1,1 @@
+<filter name="delete_checked_msg" module="msg_admin" act="procMsg_adminAdminAllDelete" confirm_msg_code="confirm_delete" />

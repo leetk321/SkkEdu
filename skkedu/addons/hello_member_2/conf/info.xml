@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<addon version="0.2">
+	<title xml:lang="ko">자동등업 애드온</title>
+	<description xml:lang="ko">지정된 게시판에 글을 쓰면 정회원으로 자동 등업하게하는 애드온입니다.</description>
+	<version>1.0.0.0</version>
+	<date>2012-04-21</date>
+
+	<author email_address="soonj@nate.com" link="http://backupxe.com/">
+		<name xml:lang="ko">카르마</name>
+	</author>
+	<link>http://www.wildgreen.co.kr/</link>
+
+	<extra_vars>
+		<var name="with_group" type="text">
+			<title xml:lang="ko">정회원 그룹</title>
+			<description xml:lang="ko">선택한 게시판에 글을 쓰면 자동으로 레벨이 변경될 정회원 그룹의 Group_srl번호를 입력하십시요. 입력하지 않가나 default group과 같으면 작동하지 않습니다.</description>
+		</var>
+		<var name="documents" type="text">
+			<title xml:lang="ko">게시물 숫자</title>
+			<description xml:lang="ko">입력한 숫자만큼의 글을 쓰면 정회원으로 등업됩니다.(입력하지않으면 1개만 써도 등업)</description>
+		</var>
+		<var name="del_group" type="select">
+			<title xml:lang="ko">자동등업취소</title>
+			<description xml:lang="ko">가입인사글을 삭제하면 등업도 취소하게 하는 기능입니다. 사용함을 선택하는 경우 가입인사를 쓰면 자동등업되지만 해당 글을 삭제하면 등업도 취소됩니다.</description>
+			<options value="N">
+				<title xml:lang="ko">사용안함</title>
+			</options>
+			<options value="Y">
+				<title xml:lang="ko">사용함</title>
+			</options>
+		</var>
+		<var name="give_point" type="text">
+			<title xml:lang="ko">포인트</title>
+			<description xml:lang="ko">정회원 등업시 지급할 포인트를 입력하십시요. 입력하지 않으면 작동하지 않습니다.</description>
+		</var>
+		<var name="send_message" type="select">
+			<title xml:lang="ko">쪽지 보내기</title>
+			<description xml:lang="ko">정회원으로 등업되면 쪽지를 보내는 기능입니다.</description>
+			<options value="N">
+				<title xml:lang="ko">사용안함</title>
+			</options>
+			<options value="Y">
+				<title xml:lang="ko">사용함</title>
+			</options>
+		</var>
+		<var name="title" type="text">
+			<title xml:lang="ko">쪽지 제목</title>
+			<description xml:lang="ko">등업된 회원에게 보낼 쪽지의 제목을 입력하십시요.</description>
+		</var>
+		<var name="msg_content" type="textarea">
+			<title xml:lang="ko">쪽지 내용</title>
+			<description xml:lang="ko">등업된 회원에게 보낼 쪽지의 내용을 입력하십시요.</description>
+		</var>
+		 <var name="update_group" type="select">
+			<title xml:lang="ko">등업 방식</title> 
+			<description xml:lang="ko">그룹 조작 방식을 선택합니다. 기본적으로 기존그룹을 정회원그룹으로 변경합니다. 사용안함을 선택한 경우 새로 정회원 그룹이 추가됩니다.</description> 
+			<options value="Y">
+			<title xml:lang="ko">기존그룹변경</title>
+			</options>
+				<options value="N">
+				<title xml:lang="ko">정회원그룹추가</title>
+			 </options>
+		</var>
+	</extra_vars>
+</addon>

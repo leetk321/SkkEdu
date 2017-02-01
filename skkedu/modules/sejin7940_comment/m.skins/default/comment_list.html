@@ -1,0 +1,40 @@
+<!--@if(is_dir(_XE_PATH_.'modules/mobileex'))-->
+	{@
+	$oModuleModel = &getModel('module');
+	$mobileex_config = $oModuleModel->getModuleConfig('mobileex');
+	}
+	<!--@if($mobileex_config->mskin=='sejin7940_mobileex')-->
+		<!--#include("../../../mobileex/m.skins/sejin7940_mobileex/member_header.html")-->
+	<!--@else-->
+		<!--#include("../../../mobileex/m.skins/default/member_header.html")-->
+	<!--@end-->
+<!--@else-->
+	<include target="./common_header.html" />
+<!--@end-->
+
+<div class="member_info_wrap">
+	  <h3 class="p_tit">{$member_title = $lang->cmd_my_comment } <span class="tn">{number_format($total_count)}</span></h3>
+      <ul class="mblst_list">
+      	<!--@if(number_format($total_count) == 0)-->
+	        <li class="empty">작성한 댓글이 없습니다.</li>
+        <!--@else-->
+			{@$lst_num = $total_count - ($page-1)*20; }
+			<block loop="$comment_list=>$no,$val">
+				{@ $comment = cut_str(trim(strip_tags($val->content)), $module_config->comment_cut_size, '...');}
+				<li id="comment_{$val->comment_srl}">
+				   <span class="mblst_num">{$lst_num}</span> 
+					<span class="mblst_date">{$val->getRegdate("Y-m-d")}</span>
+					<a class="mblst_link"  href="{getUrl('','document_srl',$val->document_srl)}#comment_{$val->comment_srl}" target="_blank"><span class="mblst_subject"><!--@if($val->member_srl<0)-->[익명] <!--@end--><!--@if($val->isSecret())-->[{$lang->secret}]<!--@end--> <!--@if(strlen($comment))-->{$comment}<!--@else--><em>{$lang->no_text_comment}</em><!--@end--></span></a>
+					 {@$lst_num--}
+				</li>
+			</block>
+		<!--@end-->
+     </ul>
+     <div class="mb_paging">
+       <a href="<!--@if($page==1 || !$page)-->#none<!--@else-->{getUrl('page',$page-1,'module_srl','')}<!--@end-->" class="btn_page btn_prev"><span class="img_arrow ico_prev">이전</span></a>
+             <span class="blind">현재페이지</span><span class="num_page">{$page}</span> <span class="txt_bar">/</span> {$total_page}
+        <a href="<!--@if($page==$page_navigation->last_page || $total_page == 1)-->#none<!--@else-->{getUrl('page',$page+1,'module_srl','')}<!--@end-->" class="btn_page btn_next"><span class="img_arrow ico_next">다음</span></a>
+     </div>
+
+</div>
+

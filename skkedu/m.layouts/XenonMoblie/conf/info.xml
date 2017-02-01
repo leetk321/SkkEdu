@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout version="0.2">
+    <title>Xenon Moblie Layout</title>
+    <description>
+        Xenon 모바일 레이아웃
+    </description>
+    <version>1.9.1</version>
+    <date>2013-03-26</date>
+    <link>http://teamatde.co.kr/</link>
+
+    <author email_address="hyung778@gmail.com" link="http://teamatde.co.kr/">
+        <name>LI-NA</name>
+    </author>
+    <extra_vars>
+		<var name="local_load" type="select">
+            <title>j쿼리 모바일 내장 로드</title>
+			<options value="no">
+				<title>사용 안함</title>
+			</options>
+			<options value="yes">
+				<title>사용</title>
+			</options>
+			<description>
+				소모되는 트레픽은 책임지지 않습니다. 약 200kb정도 더 로딩합니다.
+			</description>
+		</var>
+		<var name="theme_select" type="select">
+            <title>커스텀테마 선택</title>
+			<options value="no">
+				<title>사용 안함</title>
+			</options>
+			<options value="custom">
+				<title>사용자 태마</title>
+			</options>
+			<description>
+				사용자 태마를 현재 테스트중입니다. 초록색 태마가 내장되어있지만...
+			</description>
+		</var>
+		<var name="color_set" type="select">
+            <title>컬러셋 선택</title>
+			<options value="none">
+				<title>기본</title>
+			</options>
+			<options value="A">
+				<title>올블랙</title>
+			</options>
+			<options value="b">
+				<title>그레이 블루</title>
+			</options>
+			<options value="c">
+				<title>그레이</title>
+			</options>
+			<options value="d">
+				<title>화이트</title>
+			</options>
+			<options value="e">
+				<title>옐로우</title>
+			</options>
+		</var>
+    	<var name="index_title" type="text">
+            <title>홈페이지 타이틀</title>
+			<description>헤더에 출력됩니다.</description>
+		</var>
+		<var name="title_style" type="text">
+			<title>타이틀 커스텀 스타일</title>
+			<description>한줄로 입력하세요. 이 스타일은 h1 테그에 적용됩니다. 예) font-size: 12px; font-color: red;</description>
+		</var>
+        <var name="logo_image" type="image">
+            <title>로고이미지</title>
+            <description>레이아웃의 상단에 표시될 로고이미지를 입력하세요. (안쓰는것이 제일 잘 어울립니다. 아니면 16px의 이미지를 첨부해주세요.)</description>
+        </var>
+        <var name="index_url" type="text">
+            <title>메인페이지 URL</title>
+            <description>입력하지 않으면 자동으로 메인페이지의 URL을 구합니다.</description>
+        </var>
+		<var name="index_footer" type="text">
+            <title>푸터 타이틀</title>
+			<description>푸터에 출력됩니다.</description>
+		</var>
+		<var name="footer_style" type="text">
+            <title>푸터 스타일</title>
+			<description>푸터에 출력될 문구에 대한 스타일을 한줄로 입력하세요.</description>
+		</var>
+		<var name="footer_pc" type="select">
+            <title>푸터에 PC로 보기 버튼</title>
+			<options value="yes">
+				<title>사용</title>
+			</options>
+			<options value="no">
+				<title>사용 안함</title>
+			</options>
+			<description>사용하지 않으면 회원메뉴에 출력됩니다.</description>
+		</var>
+		<var name="hader_pos" type="select">
+            <title>스크롤 헤더</title>
+			<options value="yes">
+				<title>사용</title>
+			</options>
+			<options value="no">
+				<title>사용 안함</title>
+			</options>
+			<description>사용하면 헤더가 항상 위에 떠 있게 됩니다. 터치 한번을 하면 헤더라 사라지고, 다시하면 나타납니다.</description>
+		</var>
+		<var name="ajax" type="select">
+            <title>Ajax 비활성화</title>
+			<options value="no">
+				<title>사용 안함</title>
+			</options>
+			<options value="yes">
+				<title>사용</title>
+			</options>
+			<description>Ajax 관련 오류를 수정하며, 타 스킨을 사용할 수 있게 합니다. 단, Ajax 기능 비활성화로 로딩없이 검색 및 게시글을 보는 기능이 사라집니다.</description>
+		</var>
+    </extra_vars>
+    <menus>
+        <menu name="main_menu" maxdepth="4" default="true">
+            <title>메인 메뉴</title>
+        </menu>
+    </menus>
+</layout>

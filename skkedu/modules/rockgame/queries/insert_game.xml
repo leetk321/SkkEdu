@@ -1,0 +1,17 @@
+<query id="insert_game" action="insert">
+    <tables>
+        <table name="rockgame" />
+    </tables>
+    <columns>
+        <column name="game_srl" var="game_srl" />
+        <column name="member_srl" var="member_srl" />
+        <column name="nick_name" var="nick_name" />
+        <column name="com_select" var="com_select" />
+        <column name="user_select" var="user_select" />
+        <column name="result" var="result" />
+        <column name="game_point" var="game_point" />
+        <column name="set_point" var="set_point" />
+        <column name="regdate" var="regdate" />
+        <column name="ipaddress" default="ipaddress()" />
+    </columns>
+</query>

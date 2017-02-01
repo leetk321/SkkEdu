@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<widgetstyle>
+    <title xml:lang="ko">흰돌 심플 박스형</title>
+    <description xml:lang="ko">심플한 박스로 꾸며진 위젯스타일 입니다.</description>
+    <version>0.1</version>
+    <date>2014-01-11</date>
+    <preview>preview.gif</preview>
+    <author email_address="kim-hyunchel@hotmail.com" link="http://www.xeview.com">
+        <name xml:lang="ko">흰돌</name>
+        <name xml:lang="en">hindole</name>
+    </author>
+
+    <extra_vars>
+        <var name="ws_title" type="text">
+            <name xml:lang="ko">제목</name>
+            <description xml:lang="ko">제목 텍스트</description>
+        </var>
+        <var name="ws_more_url" type="text">
+            <name xml:lang="ko">더보기 URL</name>
+            <description xml:lang="ko">http:// 포함한 URL를 등록합니다.</description>
+        </var>
+        <var name="ws_more_text" type="text">
+            <name xml:lang="ko">더보기 텍스트</name>
+       </var>
+    </extra_vars>
+</widgetstyle>

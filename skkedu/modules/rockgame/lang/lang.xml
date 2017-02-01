@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<lang>
+    <item name="about_rockgame">
+        <value xml:lang="ko"><![CDATA[포인트를 사용하여 가위바위보 게임을 하는 모듈입니다]]></value>
+    </item>
+    <item name="game_point"> 
+        <value xml:lang="ko"><![CDATA[참가포인트]]></value>
+    </item>
+</lang>

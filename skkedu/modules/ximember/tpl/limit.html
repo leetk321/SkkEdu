@@ -1,0 +1,53 @@
+<include target="header.html" />
+<section class="section">
+<h1>{$lang->xi_limit_setting}</h1>
+<form action="./" class="x_form-horizontal" ruleset="insertXimemberConfig" method="post">
+	<input type="hidden" name="module" value="ximember" />
+	<input type="hidden" name="act" value="procXimemberAdminLimitConfig" />
+	<input type="hidden" name="success_return_url" value="{getUrl('', 'module', 'admin', 'act', $act)}" />
+	
+	<block loop="$lang->xi_limit_list => $key,$name">
+		<div class="x_control-group">
+			<label class="x_control-label">{$name}</label>
+			<div class="x_controls">
+				<label for="{$key}_Y"><input id="{$key}_Y" type="radio" name="{$key}" value="Y"	checked="checked"|cond="$config->limit[$key] == 'Y'" />{$lang->use}</label>
+				<label for="{$key}_N"><input id="{$key}_N" type="radio" name="{$key}" value="N"	checked="checked"|cond="$config->limit[$key] != 'Y'" />{$lang->notuse}</label>
+				<p class="x_help-inline">{$lang->xi_limit_desc[$key]}</p>
+			</div>	
+		</div>
+		
+		<div id="use_signup_limit_setting" class="x_control-group" cond="$key == 'use_voted'" style="display:none;"|cond="$config->limit['use_signup_limit'] != 'Y'">
+			<label class="x_control-label">{$lang->voted_point} {$lang->cmd_setup}</label>
+			<div class="x_controls"><input type="text" name="voted_point" value="{$config->limit['voted_point']}" />
+				<p class="x_help">{$lang->voted_point_desc}</p>
+			</div>
+		</div>
+		<div id="use_signup_limit_setting" class="x_control-group" cond="$key == 'use_signup_limit'" style="display:none;"|cond="$config->limit['use_signup_limit'] != 'Y'">
+			<label class="x_control-label">{$lang->xi_limit_list['use_signup_limit']} {$lang->cmd_setup}</label>
+			<div class="x_controls">
+				<b>{$lang->limit_of_age}</b>
+				{$lang->xi_full}
+				<input type="text" style="width:150px;" name="fullage" value="{$config->limit['fullage']}" />
+				{$lang->xi_age}
+				<select name="limit_type" style="width:150px;">
+					<option value="">{$lang->xi_nouse}</option>
+					<option selected="selected"|cond="$config->limit['limit_type'] == 'limit_up'" value="limit_up">{$lang->xi_limit_updown['limit_up']}</option>
+					<option selected="selected"|cond="$config->limit['limit_type'] == 'limit_down'" value="limit_down">{$lang->xi_limit_updown['limit_down']}</option>
+				</select>
+				<hr />
+				<b>{$lang->limit_of_sex}</b>
+				<select name="limit_sex" style="width:150px;">
+					<option value="">{$lang->xi_nouse}</option>
+					<option selected="selected"|cond="$config->limit['limit_sex'] == 'limit_M'" value="limit_M">{$lang->xi_limit_sex['limit_M']}</option>
+					<option selected="selected"|cond="$config->limit['limit_sex'] == 'limit_F'" value="limit_F">{$lang->xi_limit_sex['limit_F']}</option>
+				</select>
+				<p class="x_help">{$lang->use_signup_limit_setting}</p>
+			</div>	
+		</div>
+	</block>
+	
+	<div class="x_clearfix btnArea">
+		<span class="x_pull-right"><input class="x_btn x_btn-primary" type="submit" value="{$lang->cmd_save}" /></span>
+	</div>
+</form>
+</section>

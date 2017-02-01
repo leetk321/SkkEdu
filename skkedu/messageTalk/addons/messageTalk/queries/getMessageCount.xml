@@ -1,0 +1,15 @@
+﻿<query id="getMessageCount" action="select">
+    <tables>
+        <table name="member_message" alias="member_message" />
+        <table name="member" alias="member" />
+    </tables>
+    <columns>
+        <column name="*"  />
+    </columns>
+    <conditions>
+        <condition operation="equal" column="member_message.receiver_srl" var="receiver_srl" notnull="notnull" />
+        <condition operation="equal" column="member_message.readed" var="readed" default="N" notnull="notnull" pipe="and" />
+        <condition operation="equal" column="member_message.sender_srl" var="member.member_srl" pipe="and" />
+		<condition operation="equal" column="related_srl" var="related_srl" default="0" notnull="notnull" pipe="and" />
+    </conditions>
+</query>

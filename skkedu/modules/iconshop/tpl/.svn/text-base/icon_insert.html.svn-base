@@ -1,0 +1,166 @@
+<!--#include("./header.html")-->
+<h3 class="xeAdmin">{($icon_data->icon_srl)?$lang->iconModify :$lang->iconInsert} </h3>
+
+<form id="fo_insert" action="./" method="post" enctype="multipart/form-data" target="hidden_iframe">
+<input type="hidden" name="module" value="iconshop" />
+<input type="hidden" name="act" value="procIconshopAdminIconInsert" />
+<!--@if($icon_data->icon_srl)--><input type="hidden" name="icon_srl" value="{$icon_data->icon_srl}" /><!--@end-->
+
+    <table cellspacing="0" class="rowTable">
+    <tr>
+        <th scope="row"><div>{$lang->icon_title}</div></th>
+        <td>
+            <input type="text" name="title" value="{$icon_data->title}" class="inputTypeText w200" />
+        </td>
+    </tr>
+    <tr>
+        <th scope="row"><div>{$lang->icon_total_count}</div></th>
+        <td>
+            <input type="text" name="total_count" value="{$icon_data->total_count}" class="inputTypeText w80" />
+            <p>{$lang->total_count_about}</p>
+        </td>
+    </tr>
+    <tr>
+        <th scope="row"><div>{$lang->icon_price}</div></th>
+        <td>
+            <input type="text" name="price" value="{$icon_data->price}" class="inputTypeText w80" />
+        </td>
+    </tr>
+    <tr>
+        <th scope="row"><div>{$lang->buy_limit}</div></th>
+        <td>
+            <select name="buy_limit">
+            <!--@foreach($lang->iconshop_checked_list as $key=>$val)-->
+            <option value="{$val}" <!--@if($val==$icon_data->buy_limit)-->selected="selected"<!--@end-->>{$val}</option>
+            <!--@end-->
+            </select>
+            <p>{$lang->buy_limit_about}</p>
+        </td>
+    </tr>
+    <tr>
+        <th scope="row"><div>{$lang->send_limit}</div></th>
+        <td>
+            <select name="send_limit">
+            <!--@foreach($lang->iconshop_checked_list as $key=>$val)-->
+            <option value="{$val}" <!--@if($val==$icon_data->send_limit)-->selected="selected"<!--@end-->>{$val}</option>
+            <!--@end-->
+            </select>
+            <p>{$lang->send_limit_about}</p>
+        </td>
+    </tr>
+    <tr>
+        <th scope="row"><div>{$lang->sell_limit}</div></th>
+        <td>
+            <select name="sell_limit">
+            <!--@foreach($lang->iconshop_checked_list as $key=>$val)-->
+            <option value="{$val}" <!--@if($val==$icon_data->sell_limit)-->selected="selected"<!--@end-->>{$val}</option>
+            <!--@end-->
+            </select>
+            <p>{$lang->sell_limit_about}</p>
+        </td>
+    </tr>
+    <tr>
+        <th scope="row"><div>{$lang->point_limit}</div></th>
+        <td>
+            <select name="point_limit">
+            <!--@foreach($lang->iconshop_checked_list as $key=>$val)-->
+            <option value="{$val}" <!--@if($val==$icon_data->point_limit)-->selected="selected"<!--@end-->>{$val}</option>
+            <!--@end-->
+            </select>
+            <p>{$lang->point_limit_about}</p>
+        </td>
+    </tr>
+    <tr>
+        <th scope="row"><div>{$lang->minute_limit}</div></th>
+        <td>
+            <select name="minute_limit">
+            <!--@foreach($lang->iconshop_checked_list2 as $key=>$val)-->
+            <option value="{$val}" <!--@if($val==$icon_data->minute_limit)-->selected="selected"<!--@end-->>{$val}</option>
+            <!--@end-->
+            </select>
+            <input type="text" name="minute" value="{$icon_data->minute}" class="inputTypeText w80" />{$lang->unit_min}
+            <p>{$lang->minute_limit_about}</p>
+        </td>
+    </tr>
+    <tr>
+        <th scope="row"><div>{$lang->event_limit}</div></th>
+        <td>
+            <select name="event_limit">
+            <!--@foreach($lang->iconshop_checked_list2 as $key=>$val)-->
+            <option value="{$val}" <!--@if($val==$icon_data->event_limit)-->selected="selected"<!--@end-->>{$val}</option>
+            <!--@end-->
+            </select>
+                <span>
+                    <input type="hidden" name="event_start" value="{$icon_data->event_start}" />
+                    <input type="text" value="{zdate($icon_data->event_start,'Y-m-d')}" readonly="readonly" class="inputDate inputTypeText" />
+                    <span class="button"><input type="button" value="{$lang->cmd_delete}" class="dateRemover" /></span>
+                </span>
+            ~
+                <span>
+                    <input type="hidden" name="event_end" value="{$icon_data->event_end}" />
+                    <input type="text" value="{zdate($icon_data->event_end,'Y-m-d')}" readonly="readonly" class="inputDate inputTypeText" />
+                    <span class="button"><input type="button" value="{$lang->cmd_delete}" class="dateRemover" /></span>
+                </span>
+            <p>{$lang->event_limit_about}</p>
+        </td>
+    </tr>
+    <tr>
+        <th scope="row"><div>{$lang->level_limit}</div></th>
+        <td>
+            <input type="text" name="level_limit" value="{$icon_data->level_limit}" class="inputTypeText w80" />
+            <p>{$lang->level_limit_about}</p>
+        </td>
+    </tr>
+    <tr>
+        <th scope="row"><div>{$lang->group_limit}</div></th>
+        <td>
+            <!--@foreach($group_list as $key => $val)-->
+            <label for="groups_{$key}"><input type="checkbox" name="group_limit[]" id="groups_{$key}" value="{$key}" <!--@if($icon_data->group_limit && in_array($key,$icon_data->group_limit_list))-->checked="checked"<!--@end--> />{$val->title}</label> 
+            <!--@end-->
+            <p>{$lang->group_limit_about}</p>
+        </td>
+    </tr>
+    <tr>
+        <th scope="row"><div>{$lang->description}</div></th>
+        <td>
+            <textarea name="content" class="inputTypeTextArea w400" id="content">{nl2br($icon_data->content)}</textarea>
+        </td>
+    </tr>
+    <tr>
+        <th scope="row"><div>{$lang->icon_file1}</div></th>
+        <td>
+            <input type="file" name="file1" value="" class="inputTypeText w400" />
+            <!--@if($icon_data->file1)-->
+            <p>
+                <img src="{$icon_data->file1}" title="{$icon_data->title}" alt="{$icon_data->title}" />
+                <label for="file1_del"><input type="checkbox" name="file1_del" id="file1_del" value="Y" /> {$lang->cmd_modify}</label>
+            </p>
+            <!--@end-->
+            <p>{sprintf($lang->image_format_about,$module_config->icon_width,$module_config->icon_height)}</p>
+        </td>
+    </tr>
+
+    <tr>
+        <th colspan="2" class="button">
+            <span class="button strong black"><input type="submit" value="{$lang->cmd_registration}" /></span>
+        </th>
+    </tr>
+    </table>
+</form>
+<iframe name="hidden_iframe" frameborder="0" style="display:none"></iframe>
+
+<script type="text/javascript">
+(function($){
+    $(function(){
+        var option = { changeMonth: true, changeYear: true, gotoCurrent: false,yearRange:'-100:+10', onSelect:function(){
+
+            $(this).prev('input[type="hidden"]').val(this.value.replace(/-/g,""))}
+        };
+        $.extend(option,$.datepicker.regional['{$lang_type}']);
+        $(".inputDate").datepicker(option);
+		$(".dateRemover").click(function() {
+			$(this).parent().prevAll('input').val('');
+			return false;});
+    });
+})(jQuery);
+</script>

@@ -1,0 +1,48 @@
+<load target="filter/insert.xml" />
+<form action="./" method="post" onsubmit="return procFilter(this, window.insert)" style="margin-bottom:10px;" class="write_author">
+	<input type="hidden" name="mid" value="{$mid}" />
+	<input type="hidden" name="document_srl" value="" />
+
+        <div class="sm-input-body">
+        
+        <select name="category_srl" cond="$module_info->use_category=='Y'">
+			<option loop="$category_list => $val" disabled="disabled"|cond="!$val->grant" value="{$val->category_srl}" selected="selected"|cond="$val->grant&&$val->selected||$val->category_srl==$oDocument->get('category_srl')">
+				{str_repeat("&nbsp;&nbsp;",$val->depth)} {$val->title} ({$val->document_count})
+			</option>
+		</select>
+        
+		<input type="text" name="title" title="{$lang->title}" onclick="toggle_object('write_author'); return false;" class="write_text xe_content" width="70%" style="width:70%" />
+        <button type="submit" title="{$lang->cmd_registration}" class="sm-btn ">{$lang->cmd_registration}</button>
+		</div>
+
+        <div cond="!$is_logged" id="write_author" style="display:none">
+			<input type="text" name="nick_name" id="userName" style="width:120px" required placeholder="{$lang->writer}" title="{$lang->writer}" value="{htmlspecialchars($oDocument->get('nick_name'))}" />
+			<input type="password" name="password" id="userPw"  required placeholder="{$lang->password}"  style="width:120px" cond="!$is_logged" />
+
+        </div> 
+        <div class="confirm" >            
+            {@ $_color = array('555555','222288','226622','2266EE','8866CC','88AA66','EE2222','EE6622','EEAA22','EEEE22','FF00CC') }
+			<span cond="$grant->manager" >
+      		<select name="title_color" id="title_color" onchange="this.style.color=this.options[this.selectedIndex].style.color;">
+                <option value="" style="color:#CCCCCC;">{$lang->title_color}</option>
+               
+                <option loop="$_color => $_col" value="{$_col}" style="color:#{$_col}">{$lang->title_color}</option>
+                
+            </select>
+            </span>
+            <span cond="$grant->manager" style="display:inline-block"><label for="title_bold"><input type="checkbox" name="title_bold" id="title_bold" value="Y"  /> {$lang->title_bold}</label></span>
+           
+             <span style="display:none" ><label for="comment_status"><input type="checkbox" name="comment_status"  value="ALLOW" checked="checked" id="comment_status" /> {$lang->allow_comment}</label><input type="checkbox" name="allow_comment" value="Y" <!--@if($oDocument->allowComment())-->checked="checked"<!--@end--> id="allow_comment" />
+                <label for="allow_comment">{$lang->allow_comment}</label></span>
+             <span cond="$grant->manager" style="display:inline-block"><label cond="$grant->manager" for="is_notice"><input cond="$grant->manager" type="checkbox" name="is_notice" value="Y"  id="is_notice" /> {$lang->notice}</label></span>      
+             
+             <div class="btnArea" cond="$grant->manager">
+		<a href="{getUrl('','module','document','act','dispDocumentManageDocument')}" onclick="popopen(this.href,'manageDocument'); return false;" class="sm-btn-a"> {$lang->cmd_manage_document}</a>
+        <a href="{getUrl('act','dispBoardAdminBoardInfo')}" title="{$lang->cmd_setup}" class="sm-btn-a">{$lang->cmd_setup}</a>
+        <a href="#" onclick="XE.checkboxToggleAll({ doClick:true }); return false;" title="Check All" class="sm-btn-a">{$lang->total}</a>
+	</div>
+          
+       </div>
+       
+       
+</form>

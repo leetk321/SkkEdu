@@ -1,0 +1,24 @@
+<include target="header.html" />
+<section class="section">
+	<h1>{$agreement->name} {$lang->cmd_edit}</h1>
+	<form action="./" class="x_form-horizontal" ruleset="insertXimemberConfig" method="post">
+	<input type="hidden" name="module" value="ximember" />
+	<input type="hidden" name="act" value="procXimemberAdminEditAgree" />
+	<input type="hidden" name="success_return_url" value="{getUrl('', 'module', 'admin', 'act', $act, 'agree_srl',$agreement->srl)}" />
+	<input type="hidden" name="agree_srl" value="{$agreement->srl}" />
+	<input type="hidden" name="agreement" value="{htmlspecialchars($agreement->content)}" />
+	<div class="x_control-group">
+		<label class="x_control-label">{$lang->content}</label>
+		<div class="x_controls">
+			{$editor}
+		</div>	
+	</div>
+	
+	<div class="x_clearfix btnArea">
+		<div class="x_pull-right">
+			<a href="{getUrl('act', 'dispXimemberAdminAgree')}" type="button" class="x_btn">{$lang->cmd_cancel}</a>
+			<input class="x_btn x_btn-primary" type="submit" value="{$lang->cmd_save}" />
+		</div>
+	</div>
+	</form>
+</section>

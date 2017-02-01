@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<lang>
+	<item name="qc_visitor">
+		<value xml:lang="ko"><![CDATA[방문자]]></value>
+		<value xml:lang="en"><![CDATA[Visitor]]></value>
+	</item>
+	<item name="qc_pageview">
+		<value xml:lang="ko"><![CDATA[페이지뷰]]></value>
+		<value xml:lang="en"><![CDATA[PageView]]></value>
+	</item>
+	<item name="qc_count_info">
+		<value xml:lang="ko"><![CDATA[정보]]></value>
+		<value xml:lang="en"><![CDATA[Info]]></value>
+	</item>
+	<item name="qc_today">
+		<value xml:lang="ko"><![CDATA[오늘]]></value>
+		<value xml:lang="en"><![CDATA[Today]]></value>
+	</item>
+	<item name="qc_yesterday">
+		<value xml:lang="ko"><![CDATA[어제]]></value>
+		<value xml:lang="en"><![CDATA[Yesterday]]></value>
+	</item>
+	<item name="qc_total">
+		<value xml:lang="ko"><![CDATA[전체]]></value>
+		<value xml:lang="en"><![CDATA[Total]]></value>
+	</item>
+	<item name="qc_member">
+		<value xml:lang="ko"><![CDATA[회원]]></value>
+		<value xml:lang="en"><![CDATA[Member]]></value>
+	</item>
+	<item name="qc_document">
+		<value xml:lang="ko"><![CDATA[문서]]></value>
+		<value xml:lang="en"><![CDATA[Member]]></value>
+	</item>
+	<item name="qc_comment">
+		<value xml:lang="ko"><![CDATA[댓글]]></value>
+		<value xml:lang="en"><![CDATA[Comment]]></value>
+	</item>
+</lang>

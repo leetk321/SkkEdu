@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module version="1.0">
+    <title xml:lang="ko">메시지톡</title>
+    <description xml:lang="ko">
+   	커뮤니케이션 쪽지 기능을 대화형태로 볼 수 있도록 개선한 메시지톡입니다.
+   	메시지톡을 설치하신 후 아래 내용을 사이트에 맞게 수정하시기 바랍니다.
+    </description>
+    <version>2.0.1</version>
+    <date>2013-11-26</date>
+    <author email_address="celldream79@gmail.com" link="http://www.ssinggo.com/">
+        <name xml:lang="ko">NSTORY PTE. LTD.</name>
+    </author>
+</module>

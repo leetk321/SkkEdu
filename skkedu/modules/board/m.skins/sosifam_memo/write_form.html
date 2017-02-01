@@ -1,0 +1,78 @@
+{@ Context::addJsFile("./common/js/jquery.js", true, '', -100000) }
+{@ Context::addJsFile("./common/js/js_app.js", true, '', -100000) }
+{@ Context::addJsFile("./common/js/x.js", true, '', -100000) }
+{@ Context::addJsFile("./common/js/common.js", true, '', -100000) }
+{@ Context::addJsFile("./common/js/xml_handler.js", true, '', -100000) }
+{@ Context::addJsFile("./common/js/xml_js_filter.js", true, '', -100000) }
+
+<!--%import("js/mboard.js")-->
+<!--%import("css/mboard.css")-->
+
+<div class="bd">
+<div style="padding:0 5px">
+<h2><a href="{getUrl('','vid',$vid,'mid',$mid)}">{$module_info->browser_title}</a></h2>
+
+<load target="filter/insert.xml" /> 
+<form action="./" method="post" onsubmit="return procFilter(this, insert)" >
+<input type="hidden" name="mid" value="{$mid}" />
+<input type="hidden" name="document_srl" value="{$oDocument->document_srl}" />
+
+        	<!--@if($module_info->use_category == "Y")-->
+
+				<h2>{$lang->category}</h2>
+				<select name="category_srl" id="nCategory">
+					<!--@foreach($category_list as $val)-->	
+					<option <!--@if(!$val->grant)-->disabled="disabled"<!--@endif--> value="{$val->category_srl}" <!--@if($val->grant&&$val->selected||$val->category_srl==$oDocument->get('category_srl'))-->selected=="selected"<!--@endif-->>
+					{str_repeat("&nbsp;&nbsp;",$val->depth)} {$val->title} ({$val->document_count})
+					</option>
+					<!--@end-->
+				</select>
+
+			<!--@end-->
+
+        	<h2>{$lang->title}</h2>
+        	<textarea cond="$oDocument->getTitleText()" id="nTitle" class="itx" title="{$lang->title}" rows="2" style=" height:100px" name="title">{htmlspecialchars($oDocument->getTitleText())}</textarea> 
+			
+            <textarea  cond="!$oDocument->getTitleText()" name="title" title="{$lang->title}" class="itx" rows="2" style=" height:100px"></textarea>
+
+			<!--@if(!$is_logged)-->
+
+				<h2>{$lang->writer}</h2>
+				<input name="nick_name" type="text" id="uName" class="itx" />
+
+				<h2>{$lang->password}</h2>
+				<input name="password" type="password" id="uPw" class="itx" />
+
+			<!--@endif-->
+			<div style="display:none">
+            <label for="comment_status"><input type="checkbox" name="comment_status"  value="ALLOW" checked="checked" id="comment_status" /> {$lang->allow_comment}</label><input type="checkbox" name="allow_comment" value="Y" <!--@if($oDocument->allowComment())-->checked="checked"<!--@end--> id="allow_comment" />
+                <label for="allow_comment">{$lang->allow_comment}</label>     
+            </div>
+			<div style="padding:5px 0;" >	
+                <input cond="$grant->manager" type="checkbox" name="is_notice" value="Y" checked="checked"|cond="$oDocument->isNotice()" id="is_notice" />
+			<label cond="$grant->manager" for="is_notice">{$lang->notice}</label>
+            
+            	<input cond="$grant->manager" type="checkbox" name="title_bold" id="title_bold" value="Y" checked="checked"|cond="$oDocument->get('title_bold')=='Y'" />
+				<label cond="$grant->manager" for="title_bold">{$lang->title_bold}</label>
+			</div>
+            
+            {@ $_color = array('555555','222288','226622','2266EE','8866CC','88AA66','EE2222','EE6622','EEAA22','EEEE22','FF00CC') }
+			<div cond="$grant->manager" style="padding:10px 0" >
+      		<select name="title_color" id="title_color" onchange="this.style.color=this.options[this.selectedIndex].style.color;">
+                <option value="" style="color:#CCCCCC;">{$lang->title_color}</option>
+                <!--@foreach($_color as $_col)-->
+                <option value="{$_col}" style="color:#{$_col}">{$lang->title_color}</option>
+                <!--@endforeach-->
+            </select>
+            </div>
+
+		<div align="right" style="padding:0 10px 10px 10px;">
+        
+       <button type="button" onclick="history.back()" class="sm-btn-de">{$lang->cmd_back}</button>
+        
+			<button type="submit" class="sm-btn">{$lang->cmd_registration}</button>
+		</div>
+   </form> 
+   </div>    
+</div>
+

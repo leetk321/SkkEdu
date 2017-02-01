@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/iconshop_lk/!svn/ver/13/trunk/modules/iconshop/schemas
+END
+iconshop_log.xml
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/iconshop_lk/!svn/ver/13/trunk/modules/iconshop/schemas/iconshop_log.xml
+END
+iconshop_member.xml
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/iconshop_lk/!svn/ver/13/trunk/modules/iconshop/schemas/iconshop_member.xml
+END
+iconshop_admin.xml
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/iconshop_lk/!svn/ver/20/trunk/modules/iconshop/schemas/iconshop_admin.xml
+END

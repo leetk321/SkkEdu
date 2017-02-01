@@ -1,0 +1,174 @@
+@charset "utf-8";
+
+/* Board Reset */
+.sm { background:#FFF}
+.sm img{border:0}
+.sm table,
+.sm input,
+.sm textarea,
+.sm select{font-size:12px;}
+.sm .iCheck{width:13px;height:13px;margin:0;vertical-align:middle; }
+.sm .iText{position:relative;padding:3px 4px;_margin:-1px 0;height:17px;line-height:17px;border:1px solid #a6a6a6;border-right-color:#d8d8d8;border-bottom-color:#d8d8d8;background:transparent}
+.sm h2{ margin-left:5px;}
+
+/* Board Header */
+.smHeader * {margin:0 0 20px 0;padding:0}
+.smHeader a {text-decoration:none; }
+.smHeader a:hover,
+.smHeader a:active,
+.smHeader a:focus {text-decoration:underline}
+.smHeader .smHt {letter-spacing:-0.5px;margin-bottom:10px;border-bottom:3px solid;}
+.smHeader .smHt:after {content:"";display:block;clear:both}
+.smHeader .smHtt {font-size:18px;float:left;clear:both;margin-bottom:-3px;padding:5px 15px 5px 5px;border-bottom:3px solid;}
+.smHeader .smHtt a {text-decoration:none; color:#000000}
+.smHeader .smHtt em {font-style:normal;font-weight:normal;}
+.smHeader .smDescription {padding:7px 10px;position:relative}
+
+/* view_Document.html */
+.smVt {width:100%; margin:0; padding:0; color:#333; }
+.smVt th{border:0;padding:5px 0 5px 0; height:22px; line-height:22px;  white-space:nowrap; background:#FFF;}
+.smVt th span{padding:0 10px; float:left;}
+.smVt th.title {width:100%; text-align:left; position:relative;}
+.smVt th.check{text-align:center; padding:0;}
+.smVt td{border:0; border-bottom:1px solid #c8c8c8; white-space:nowrap; padding:7px 10px; text-align:center; line-height:normal; vertical-align:middle; }
+.smVt td.no{padding:0 10px; margin:0; text-align:center; min-width:20px; font-size:11px; letter-spacing:-0.5px;}
+.smVt td.no a{ text-decoration:none; color:#000000; font-weight:bold}
+.smVt td.smVtt {text-align:left; padding:7px 10px 7px 0; white-space:normal; width:100%; vertical-align:middle; line-height:15px; letter-spacing:-0.5px;}
+.smVt td.smVtt table { border:0; table-layout:fixed; width:100%}
+.smVt td.smVtt table td{ padding:0; margin:0; border:0; word-break:break-all; word-wrap:break-word;}
+.smVt .category {border-right:1px solid #ddd;border-left:1px solid #ddd;padding:0 5px 0 5px; margin-right:5px; color:#666; text-decoration:none}
+.smVt .s_op {margin-right:5px; display:inline-block; padding:0; position:relative; text-decoration:none; color:#666666; font-size:11px}
+.smVt .s_op a{text-decoration:none; color:#666666}
+.smVt .s_name,
+.smVt .s_name a {font-size:12px;text-decoration:none; color:#333; font-weight:bold; }
+.smVt .s_count,
+.smVt .s_count a{ font-size:11px; text-decoration:none; letter-spacing:-1px; color:#F66; }
+.smVt .s_time {font-size:11px; color:#666; font-family:dotum; letter-spacing:-0.5px;margin:0 5px; display:inline-block}
+.smVt .s_text,
+.smVt .s_text a{ text-decoration:none; color:#333;  word-wrap:break-word;}
+.smVt .s_text a:hover{ text-decoration:underline;}
+.smVt .bar { padding:3px; color:#666; font-style:normal; font-weight:normal;}
+.smVt .jumpTo { float:right; margin:0; padding:0; padding-right:5px;}
+.smVt .jumpTo * {vertical-align:middle;*vertical-align:top;}
+.smVt .jumpTo select {height:20px;font-size:12px;*margin-right:5px;}
+.smVt .jumpTo button {width:22px;height:20px;line-height:18px;_line-height:normal;border:1px solid #ccc;margin:0;padding:0;text-align:center;font-size:11px;cursor:pointer;overflow:visible}
+
+/* 댓글 입력 토글 */
+.smVtc td{border:0; padding:5px 0 5px 0; white-space:nowrap; text-align:center; line-height:normal; vertical-align:middle; }
+.smVtc td.title {text-align:left; white-space:normal; vertical-align:middle; letter-spacing:-0.5px; }
+.smVtc td.submit {text-align:left; white-space:normal; vertical-align:middle;}
+.smVtc .sc_content { background:url(iconReply.gif) no-repeat center left; padding:0px 5px 0 25px; margin-left:15px;}
+.smVtc .inputText{border:1px solid #bababa; padding:3px 5px 2px 5px; height:15px; font-size:12px; *margin-top:-1px;}
+.smVtc .sc_time {font-size:11px; color:#666; font-style:normal;display:inline-block}
+.smVtc_author {margin:0px auto 0 auto; padding:0 0 7px 40px; background-color:#f7f7f7;}
+.smVtc_author .item{position:relative;display:inline-block;_margin:0 3px 0 0; background:#FFF; margin-right:10px;}
+.smVtc_author .iLabel{top:6px;left:5px;color:#666; position:absolute}
+.smVtc_author .iText{width:100px;margin:0;background:transparent}
+.smVtc_author label{margin:0 10px 0 0}
+.smVtc_author input{ border:solid 1px #CCC}
+
+/* comment.html */
+.smVc {width:100%; margin:0; padding:0;table-layout:fixed; color:#333; background-color:#f7f7f7;}
+.smVc td{border:0; border-bottom:1px solid #dfdfdf; padding:7px 10px; white-space:nowrap; text-align:center; line-height:normal; vertical-align:middle; }
+.smVc td.title{text-align:left; white-space:normal;  width:100%; vertical-align:middle; line-height:20px;word-break:break-all; word-wrap:break-word;  }
+.smVc .c_op {margin-right:5px; display:inline-block; padding:0; position:relative; text-decoration:none; color:#666666; font-size:11px}
+.smVc .c_op a{text-decoration:none; color:#666666}
+.smVc .c_count,
+.smVc .c_count a{ font-size:10px; text-decoration:none; color:#F00; font-family:dotum; letter-spacing:-0.5px;}
+.smVc .c_time {font-size:11px; color:#666; font-family:dotum; letter-spacing:-0.5px;  display:inline-block}
+.smVc .c_content { background:url(iconReply.gif) no-repeat center left; margin-left:5px; padding:0px 5px 0 25px; }
+.smVc .bar { padding:5px; color:#666;  font-style:normal; font-weight:normal;}
+.smVc .c_name,
+.smVc .c_name a{font-size:12px;text-decoration:none; color:#333; font-weight:bold ; display:inline-block;}
+.smVc .c_text{padding:0 5px 0 0; word-wrap:break-word; list-style:none;}
+.smVc .c_text a{ text-decoration:none; color:#333; }
+.smVc .c_text a:hover{ text-decoration:underline;}
+.smVc .non { margin-right:5px;}
+.c_navi { text-align:center;margin:0; padding:8px 0; width:100%; background-color:#f7f7f7; border-bottom:1px solid #c8c8c8}
+
+/* write_form.html */
+.smWrite { padding:0; margin:0; padding-bottom:5px; width:100%;}
+.smWrite table{padding:0 5px; margin:0; border:0;}
+.smWrite td{ white-space:nowrap; padding:0; padding-left:10px; margin:0; border:0;}
+.smWrite .smw_op{padding:5px 5px; margin:0;}
+.smWrite .smw_op select{ font-size:12px;border:1px solid #999;}
+.smWrite .iText{width:100%;background:transparent; border:1px solid #999;}
+.smWrite .wr{width:100%; padding-left:0;}    
+.smWrite button{display:inline-block; cursor:pointer; list-style:none; border:none; background:none; padding:0; padding-left:10px;} 
+
+.write_author{margin:8px auto 0 auto; padding:0px;}
+.write_author .item{position:relative;display:inline-block;_margin:0 3px 0 0;}
+.write_author .iLabel{top:6px;left:5px;color:#666; position:absolute}
+.write_author .iText{width:100px;margin:0 10px 0 0;background:transparent}
+.write_author label{margin:0 10px 0 0}
+.use_item{ position:relative;display:inline-block; margin-right:2px; height:12px; line-height:12px; padding:0;}
+
+/* comment_form.html | delete_form.html | delete_comment_form.html | input_password_form.html | message.html */
+.write_comment{position:relative;margin:10px 0;}
+.write_comment:after{content:"";display:block;clear:both}
+.write_comment textarea{width:645px;height:37px;}
+.write_comment .write_author{float:left}
+.write_comment .btnArea{float:right;}
+
+.context_data{background:#f7f7f7;border-top:2px solid #666;padding:15px 20px;color:#666}
+.context_data h3.author{margin:0 0 10px 0;color:#333}
+.context_data h3.title{margin:0 0 10px 0;color:#333}
+.context_data p.author{margin:0}
+.context_data p.author strong{font-weight:normal}
+.context_data .xe_content{color:#666}
+.context_message{text-align:center;border-top:2px solid #666}
+.context_message h1{font-size:16px;margin:20px 0}
+.context_message .btnArea{margin:20px 0}
+.cde { width:100%; border:solid 1px #999; padding:3px 5px 2px 5px;}
+.feedback { width:99%; margin:0 auto;}
+.feedback .write_author{margin:0 4px 0 0; position:absolute; left:0;}
+.feedback .write_author .item{position:relative;display:inline-block;_margin:0 4px 0 0;zoom:1; }
+.feedback .write_author .iLabel{top:6px;left:5px;color:#666; position:absolute}
+.feedback .write_author .iText{width:100px;margin:0 10px 0 0 ;background:transparent}
+.feedback .write_author label{margin:0 10px 0 0}
+.feedback .btnArea{ margin:0;}
+
+/* Pagination */
+/* list.html | _comment.html */
+.pa{margin:0;padding:0;line-height:normal; }
+.pa a,
+.pa strong{position:relative;color:#767676; font-size:12px; vertical-align:top;display:inline-block;text-decoration:none;padding:3px 5px; z-index:2; font-family:Tahoma, Sans-serif; vertical-align:middle;}
+.pa a:hover,
+.pa a:active,
+.pa a:focus{background-color:#f8f8f8;  border:1px solid #ccc; margin:-1px;}
+.pa strong{color:#f60;font-size:12px;  border:1px solid #ccc; margin:-1px;}
+
+.sm_ft{position:relative;margin:10px 1px 0 1px; padding-bottom:10px; }
+.sm_ft:after{content:"";display:block;clear:both}
+.sm_ft .btnArea{float:right}
+.sm_ft .pa{float:left}
+
+/* Search Form */
+.sm_lf{position:relative;margin:0; padding:5px;background:#afdc67 }
+.sm_lf:after{content:"";display:block;clear:both}
+.sm_lf .btnArea{float:right}
+.sm_lf .board_search{float:left;position:relative;margin:0 4px 0 0}
+.sm_lf .board_search *{vertical-align:top}
+.sm_lf .board_search .iText{height:12px;line-height:12px; top:2px; padding:4px 4px;width:100px;margin:-1px;border:1px solid #434549;background:#fff;}
+.sm_lf .board_search select{position:relative; top:1px; height:22px;width:80px; line-height:16px; border:1px solid #434549;}
+
+/* Button */
+.sm_btn25,
+.sm_btn25 a,
+.sm_btn25 button,
+.sm_btn25 input{display:inline-block;height:25px;line-height:25px;padding:0;margin:0;overflow:visible;position:relative;background:url(btn25.gif) no-repeat;cursor:pointer}
+.sm_btn25{background-position:0 0;margin:0 2px 0 0;vertical-align:top}
+.sm_btn25 a,
+.sm_btn25 button,
+.sm_btn25 input{padding:0 12px;left:2px;font-size:12px;color:#4a4a4a;font-weight:bold;border:0;background-position:right 0;text-decoration:none}
+
+.sm_btn15,
+.sm_btn15 a,
+.sm_btn15 button,
+.sm_btn15 input{display:inline-block;height:23px;line-height:23px;padding:0;margin:0;overflow:visible;position:relative;background:url(btn15.gif) no-repeat;cursor:pointer}
+.sm_btn15{background-position:0 0;margin:0 2px 0 0;vertical-align:top}
+.sm_btn15 a,
+.sm_btn15 button,
+.sm_btn15 input{padding:0 12px;left:2px;font-size:12px;color:#fff;font-weight: normal;border:0;background-position:right 0;text-decoration:none}
+
+.btn_reply {display:none;padding:0; padding-left:13px; margin:0;overflow:visible;position:relative;background:url(reply.gif) no-repeat center left;cursor:pointer}

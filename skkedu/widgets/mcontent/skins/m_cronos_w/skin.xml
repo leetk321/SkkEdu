@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<skin version="0.2">
+    <title xml:lang="ko">cronos-x 모바일 콘텐츠 위젯 스킨</title>
+    
+    *********** 1.1 ***********
+    -1개모듈 선택시 제목나오도록 수정
+    
+     <version>1.1</version>
+    <date>2014-02-26</date>
+
+    <author email_address="help@2sisstore.com" link="http://www.2sisstore.com/">
+        <name xml:lang="ko">2sisstore</name>
+    </author>
+    
+    <colorset>
+        <color name="white">
+            <title xml:lang="ko">흰색 바탕용</title>
+        </color>
+        <color name="black">
+            <title xml:lang="ko">검은색 바탕용</title>
+        </color>
+	</colorset>
+</skin>

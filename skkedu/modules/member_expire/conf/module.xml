@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<module>
+	<grants />
+	<permissions />
+	<actions>
+		<action name="dispMember_expireAdminConfig" type="view" admin_index="true" menu_name="member_expire" />
+		<action name="dispMember_expireAdminCleanup" type="view" />
+		<action name="dispMember_expireAdminEmailSend" type="view" />
+		<action name="dispMember_expireAdminEmailTemplate" type="view" />
+		<action name="dispMember_expireAdminEmailList" type="view" />
+		<action name="dispMember_expireAdminListTargets" type="view" />
+		<action name="dispMember_expireAdminListMoved" type="view" />
+		<action name="dispMember_expireAdminListExceptions" type="view" />
+		<action name="procMember_expireAdminInsertConfig" type="controller" />
+		<action name="procMember_expireAdminInsertEmailTemplate" type="controller" />
+		<action name="procMember_expireAdminClearSentEmail" type="controller" />
+		<action name="procMember_expireAdminDoSendEmail" type="controller" />
+		<action name="procMember_expireAdminDoCleanup" type="controller" />
+		<action name="procMember_expireAdminRestoreMember" type="controller" />
+		<action name="procMember_expireAdminDeleteMember" type="controller" />
+		<action name="procMember_expireAdminInsertException" type="controller" />
+		<action name="procMember_expireAdminDeleteException" type="controller" />
+</actions>
+	<menus>
+		<menu name="member_expire" type="all">
+			<title xml:lang="ko">휴면계정 정리 모듈</title>
+		</menu>
+	</menus>
+</module>

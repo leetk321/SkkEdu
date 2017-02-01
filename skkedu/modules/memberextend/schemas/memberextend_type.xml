@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<table name="memberextend_type">
+	<column name="type_srl" type="number" size="11" notnull="notnull" auto_increment="auto_increment" primary_key="primary_key" />
+	<column name="list_order" type="number" size="11" notnull="notnull" />
+	<column name="title" type="varchar" size="80" notnull="notnull" />
+    <column name="is_default" type="char" default="N" />
+    <column name="is_active" type="char" default="N" />
+    <column name="description" type="text" />
+    <column name="regdate" type="date" />
+</table>
