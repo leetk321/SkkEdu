@@ -77,7 +77,7 @@ TIP : 반대로 체크를 해제하면 등급 취소 가능, 아래 &quot;거부
                         연산시간 : <a id="ms"></a>
                         <button class="btn4" onClick="javascript:checkNewbie()">새로고침</button>
                         
-<p style="text-align: center;"><button class="btn2" onclick="window.location.href=&quot;http://skkedu.net/index.php?act=dispVicemanagerMemberList&quot;">클럽등급 조정 도구</button></p>
+<p style="text-align: center;"><button class="btn2" onclick="window.location.href=https://skkedu.net/index.php?act=dispVicemanagerMemberList&quot;">클럽등급 조정 도구</button></p>
     
     <script src="main.php" type="text/javascript"></script>
     <script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/sha1.js"></script>

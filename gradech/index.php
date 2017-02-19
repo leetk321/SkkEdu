@@ -13,7 +13,7 @@ if( strpos($_SERVER['HTTP_REFERER'], '//skkedu.net') === false )
     
     <title>새내기클럽 관리</title>
     
-    <link href="style.css?v=161230_07" rel='stylesheet' type="text/css">
+    <link href="style.css?v=170220_02" rel='stylesheet' type="text/css">
 </head>
 <body>
     <div class="container">
@@ -25,7 +25,7 @@ if( strpos($_SERVER['HTTP_REFERER'], '//skkedu.net') === false )
         </header>
         <div class="wrapper content">
             <div class="item column d5 t0 m0">
-                <p class="box"><strong><font size = 4>★ 새내기 클럽 관리방법</font></strong> <button class="btn2" onclick=window.location.href="http://skkedu.net/index.php?act=dispVicemanagerMemberList">클럽등급 조정 도구</button></br></br>
+                <p class="box"><strong><font size = 4>★ 새내기 클럽 관리방법</font></strong> <button class="btn2" onclick=window.location.href="https://skkedu.net/index.php?act=dispVicemanagerMemberList">클럽등급 조정 도구</button></br></br>
             </br>
                 1. 새내기·헌내기 등급 조정</br>
                 비회원이 가입해 글을 열람하는 것을 방지하기 위해 수동으로 등급을 변경해주어야 합니다.</br>
@@ -36,10 +36,10 @@ if( strpos($_SERVER['HTTP_REFERER'], '//skkedu.net') === false )
                 2. 게시물 관리 : 게시물 관리 가이드 참고 (글 이동 및 삭제, 공지 등록 및 삭제)</br></br>
                 <button class="btn3" onclick="window.open('about:blank')">게시물 관리 가이드 (새 창) : 준비중</button><br/>  
                 3. 클럽 관리자 ID / Password 재설정 (재설정은 최고 관리자만 가능합니다)</br>
-                ① 교과 : eduadmin <a href = "http://skkedu.net/index.php?module=admin&act=dispMemberAdminInsert&member_srl=5568">재설정</a> 
-                ② 수교 : mathadmin <a href = "http://skkedu.net/index.php?module=admin&act=dispMemberAdminInsert&member_srl=5569">재설정</a> 
-                ③ 컴교 : comadmin <a href = "http://skkedu.net/index.php?module=admin&act=dispMemberAdminInsert&member_srl=5570">재설정</a> 
-                ④ 한교 : hanadmin <a href = "http://skkedu.net/index.php?module=admin&act=dispMemberAdminInsert&member_srl=5571">재설정</a><br/>
+                ① 교과 : eduadmin <a href = "https://skkedu.net/index.php?module=admin&act=dispMemberAdminInsert&member_srl=5568">재설정</a> 
+                ② 수교 : mathadmin <a href = "https://skkedu.net/index.php?module=admin&act=dispMemberAdminInsert&member_srl=5569">재설정</a> 
+                ③ 컴교 : comadmin <a href = "https://skkedu.net/index.php?module=admin&act=dispMemberAdminInsert&member_srl=5570">재설정</a> 
+                ④ 한교 : hanadmin <a href = "https://skkedu.net/index.php?module=admin&act=dispMemberAdminInsert&member_srl=5571">재설정</a><br/>
                 <strong>※ 닉네임, 이름, 이메일 변경 등 계정의 개인화는 차기 학생회 운영을 위해 자제하여 주시기 바랍니다.</strong><br/>
                 <strong>※ 비밀번호는 꼭 변경하여 과별로 별도 관리하고 문제가 생길 시 최고 관리자 계정(skkedu)을 이용, 재설정하여 주시기 바랍니다.</strong><br/><br/>
                 4. 매년 수시 합격 발표 전, 학교에 공문으로 합격자발표 팝업에 사범대 새내기클럽 주소 추가를 요청해야 합니다.<br/>
@@ -71,7 +71,7 @@ if( strpos($_SERVER['HTTP_REFERER'], '//skkedu.net') === false )
                 - 홈페이지 이용 중 기술적인 문제 발생<br/>
                 - 버그 및 이상동작 발견 제보<br/>
                 - 기능 추가 제안<br/>
-                <button class="btn7" onclick="window.open('http://skkedu.net/fix')">기술지원 도구 (새 창)</button><br/>
+                <button class="btn7" onclick="window.open('https://skkedu.net/fix')">기술지원 도구 (새 창)</button><br/>
  
                 <p class="box"><strong><font size = 4>★ 그룹·계정별 권한 가이드</font></strong><br/><br/>
 

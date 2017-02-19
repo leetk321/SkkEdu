@@ -5,13 +5,13 @@
 @import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css); /* font-family: 'Nanum Gothic', sans-serif; */
 @import url(http://fonts.googleapis.com/css?family=Exo+2:200,400); /* font-family:'Exo 2', sans-serif; */
 
-button.btn2 {padding:7px 20px;border:1px solid #444;border-radius:2px;background:#fff;position:absolute;right:10px;top:120px;cursor:pointer;}
-button.btn3 {padding:7px 20px;border:1px solid #444;border-radius:2px;background:#fff;position:absolute;right:10px;top:205px;cursor:pointer;}
-button.btn41 {padding:7px 20px;border:1px solid #444;border-radius:2px;background:#fff;position:absolute;right:10px;top:466px;cursor:pointer;}
-button.btn42 {padding:7px 20px;border:1px solid #444;border-radius:2px;background:#fff;position:absolute;right:10px;top:505px;cursor:pointer;}
-button.btn5 {padding:7px 20px;border:1px solid #444;border-radius:2px;background:#fff;position:absolute;right:10px;top:607px;cursor:pointer;}
-button.btn6 {padding:7px 20px;border:1px solid #444;border-radius:2px;background:#fff;position:absolute;right:10px;top:653px;cursor:pointer;}
-button.btn7 {padding:7px 20px;border:1px solid #444;border-radius:2px;background:#fff;position:absolute;right:10px;top:724px;cursor:pointer;}
+button.btn2 {padding:7px 20px;border:1px solid #444;border-radius:2px;background:#fff;position:absolute;right:10px;top:92px;cursor:pointer;}
+button.btn3 {padding:7px 20px;border:1px solid #444;border-radius:2px;background:#fff;position:absolute;right:10px;top:227px;cursor:pointer;}
+button.btn41 {padding:7px 20px;border:1px solid #444;border-radius:2px;background:#fff;position:absolute;right:10px;top:518px;cursor:pointer;}
+button.btn42 {padding:7px 20px;border:1px solid #444;border-radius:2px;background:#fff;position:absolute;right:10px;top:556px;cursor:pointer;}
+button.btn5 {padding:7px 20px;border:1px solid #444;border-radius:2px;background:#fff;position:absolute;right:10px;top:619px;cursor:pointer;}
+button.btn6 {padding:7px 20px;border:1px solid #444;border-radius:2px;background:#fff;position:absolute;right:10px;top:734px;cursor:pointer;}
+button.btn7 {padding:7px 20px;border:1px solid #444;border-radius:2px;background:#fff;position:absolute;right:10px;top:810px;cursor:pointer;}
 body{font-size:16px;font-family: 'Nanum Gothic', sans-serif;}
 .container{width:100%;position:relative;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;background:#fff;}
 .wrapper{position:relative;}
@@ -52,7 +52,7 @@ p{margin:0;padding:10px;}
 .content ul li button.btn3{padding:7px 20px;border:1px solid #444;border-radius:2px;background:#fff;position:absolute;right:10px;top:16%;cursor:pointer;}
 .content ul li button.btn4{padding:7px 20px;border:1px solid #444;border-radius:2px;background:#fff;position:absolute;right:10px;top:15%;cursor:pointer;}
 .content ul li button.btn2{padding:7px 20px;border:1px solid #444;border-radius:2px;background:#fff;position:absolute;right:10px;top:16%;cursor:pointer;}
-.content ul li button.btn{padding:7px 20px;border:1px solid #444;border-radius:2px;background:#fff;position:absolute;right:140px;top:53%;cursor:pointer;}
+.content ul li button.btn{padding:7px 20px;border:1px solid #444;border-radius:2px;background:#fff;position:absolute;right:140px;top:51%;cursor:pointer;}
 .content ul li button:hover{background:#444;color:#fff;}
 .content ul li button:active{border-color:#888;background:#888;color:#fff;}
 .content ul li button.disable{opacity:0.3;cursor:no-drop;}

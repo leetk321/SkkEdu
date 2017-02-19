@@ -1,4 +1,6 @@
 RewriteEngine On
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
 # reserve XE Layout Template Source File (*.html)
 RewriteRule ^(layouts|m.layouts)/(.+)\.html$ - [L,F]
