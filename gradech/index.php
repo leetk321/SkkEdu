@@ -58,7 +58,7 @@ if( strpos($_SERVER['HTTP_REFERER'], '//skkedu.net') === false )
                 처리가 지연될 경우 홈페이지 접속이 불가하거나 지연에 따른 추가비용을 지불해야 할 수 있습니다.<br/>
                 마감일 10일~3일 이전에 처리하는 것이 바람직합니다.<br/>
                 <strong>※ 도메인 만료 : 매년 5월 1일, 호스팅 만료 : 매년 8월 11일</strong><br/>
-                <button class="btn5" onclick="window.open('about:blank')">유지비용 처리 가이드 (새 창) : 준비중</button><br/>    
+                <button class="btn5" onclick="window.open('https://skkedu.net/guide_cost')">유지비용 처리 가이드 (새 창)</button><br/>    
                 3. 게시물 관리 : 게시물 관리 가이드 참고 (글 이동 및 삭제, 공지 등록 및 삭제)<br/><br/>
                 <button class="btn6" onclick="window.open('about:blank')">게시물 관리 가이드 (새 창) : 준비중</button><br/>               
                 4. 비밀번호 분실 및 기타 기술 지원 문의<br/>
